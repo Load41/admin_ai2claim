@@ -1,0 +1,160 @@
+.button:global.ant-btn {
+  font-family: var(--font-primary);
+  font-size: 20px;
+  font-weight: 600;
+  min-width: 150px;
+  min-height: 60px;
+  padding: 5px 15px;
+  letter-spacing: 1px;
+  gap: 12px;
+  line-height: normal;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.button:global.ant-btn,
+.button:global.ant-btn.ant-btn-round.ant-btn {
+  border-radius: 12px;
+}
+
+.button:global.ant-btn-lg {
+  min-width: 200px;
+  height: 50px;
+  font-size: 18px;
+}
+
+.button:global.ant-btn-sm {
+  font-size: 14px;
+  min-height: 45px;
+}
+
+.borderDefault {
+  border-radius: 30px;
+}
+
+.borderMd {
+  border-radius: 14px 0px;
+}
+
+.button:global.ant-btn-fill {
+  background-color: rgba(var(--clr-bleu-de-france), 50%);
+  color: rgba(var(--clr-white), 1);
+  border: 2px solid rgba(var(--clr-bleu-de-france), 1);
+}
+
+.button:global.ant-btn-no-fill {
+  color: var(--clr-primary-color);
+  background-color: transparent;
+  border-color: var(--clr-primary-color);
+}
+
+.button:global:hover,
+.isSecondaryBtn:global.ant-btn:hover {
+  border-color: rgba(var(--clr-bleu-de-france), 1);
+  color: rgba(var(--clr-white), 1);
+  background-color: rgba(var(--clr-bleu-de-france), 1);
+}
+
+/* isSecondaryBtn css start */
+.isSecondaryBtn:global.ant-btn {
+  background-color: rgba(var(--clr-white), 50%);
+  border-width: 2px;
+  border-color: rgba(var(--clr-bleu-de-france), 1);
+  color: rgba(var(--clr-black), 1);
+}
+/* isSecondaryBtn css end */
+/* isFillBtn */
+.isFillBtn.button:global.ant-btn-fill {
+  background-color: rgba(var(--clr-bleu-de-france), 1);
+}
+.isFillBtn.button:global.ant-btn-fill:hover {
+  background-color: transparent;
+  color: rgba(var(--clr-bleu-de-france), 1);
+}
+/* isYellowBtn */
+.isYellowBtn.button:global.ant-btn-fill {
+  background-color: var(--clr-party-sponge-cake);
+  border-color: var(--clr-party-sponge-cake);
+  color: rgba(var(--clr-black), 1);
+}
+.isYellowBtn.button:global.ant-btn-fill:hover {
+  background-color: transparent;
+  color: var(--clr-party-sponge-cake);
+}
+/* isRedBg */
+.isRedBg.button:global.ant-btn-fill {
+  background-color: var( --clr-bright-red);
+  border-color: var( --clr-bright-red);
+}
+.isRedBg.button:global.ant-btn-fill:hover {
+  background-color: transparent;
+  color: var( --clr-bright-red);
+}
+/* isSkyBlueBg */
+.isSkyBlueBg.button:global.ant-btn-fill {
+  background-color: var(--clr-sky-blue);
+  border-color: var(--clr-sky-blue);
+}
+.isSkyBlueBg.button:global.ant-btn-fill:hover {
+  background-color: transparent;
+  color: var(--clr-sky-blue);
+}
+/* isDarkBlueBg */
+.isDarkBlueBg.button:global.ant-btn-fill {
+  background-color: rgba(var(--clr-bleu-de-france), 1);
+  border-color: rgba(var(--clr-bleu-de-france), 1);
+}
+.isDarkBlueBg.button:global.ant-btn-fill:hover {
+  background-color: transparent;
+  color: rgba(var(--clr-bleu-de-france), 1);
+}
+/* isGrayBg */
+.isGrayBg.button:global.ant-btn-fill{
+  background-color: var(--clr-fortress-grey);
+  border-color: var(--clr-fortress-grey);
+}
+.isGrayBg.button:global.ant-btn-fill:hover{
+  background-color: transparent;
+  color: var(--clr-fortress-grey);
+}
+/* isGreenBg */
+.isGreenBg.button:global.ant-btn-fill{
+  background-color: var(--clr-matt-green);
+  border-color: var(--clr-matt-green);
+}
+.isGreenBg.button:global.ant-btn-fill:hover{
+  background-color: transparent;
+  color: var(--clr-matt-green);
+  border-color: var(--clr-matt-green);
+}
+/* isSmallBtn */
+.isSmallBtn.button:global.ant-btn.ant-btn-round.ant-btn,
+.isSmallBtn.button:global.ant-btn-fill{
+  min-height: 40px;
+  font-size: 16px;
+  min-width: 90px;
+  gap: 5px;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+/* resposnive css */
+@media (max-width: 1599px) {
+  .button:global.ant-btn {
+    min-height: 50px;
+    font-size: 16px;
+    min-width: 120px;
+  }
+}
+@media (max-width: 575px) {
+  .button:global.ant-btn {
+    min-height: 45px;
+    font-size: 14px;
+  }
+  .button:global.ant-btn,
+  .button:global.ant-btn.ant-btn-round.ant-btn {
+    border-radius: 8px;
+  }
+}

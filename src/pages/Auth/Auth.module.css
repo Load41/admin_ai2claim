@@ -1,0 +1,20 @@
+.authCardWrap{
+    --authHeadHeight: 70px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    max-width: 500px;
+    border-radius: 15px;
+    background-color: rgba(var(--clr-white), 1);
+}
+.authHead{
+    background-color: var(--clr-clear-blue);
+    border-radius: 15px 15px 0 0;
+    min-height: var(--authHeadHeight);
+}
+.logo{
+    max-width: 180px;
+}
+.authBox{
+    padding: 4rem 3rem 0;
+    max-height: calc(100vh - var(--authHeadHeight) - 150px);
+    overflow-y: auto;
+}

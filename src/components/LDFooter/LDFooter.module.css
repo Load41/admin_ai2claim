@@ -1,0 +1,50 @@
+footer{
+    background-color: rgba(var(--clr-black), 0.09);
+    min-height: var(--footer-height);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-top: 1px solid rgba(var(--clr-black), 0.3);
+}
+  .footerOption{
+    gap: 0 6rem;
+  }
+  footer  :global .ant-dropdown-trigger img{
+    max-width: 25px;
+  }
+  .dropDownIcon svg{
+    max-width: 20px;
+  }
+  /* resposnive css */
+  @media (max-width: 767px){
+    footer h5{
+      font-size: 14px;
+    }
+    footer :global .h5{
+      font-size: 14px;
+    }
+    .footerOption{
+      gap: 0 15px;
+    }
+    footer h5,.footerOption{
+      transform: translateY(3px);
+    }
+    .footerOption{
+      border-bottom: 1px solid rgba(var(--clr-black), 0.3);
+      width: 100%;
+    }
+    footer{
+      padding: 10px;
+    }
+  }
+  @media (max-width: 575px){
+    footer h5{
+      font-size: 12px;
+    }
+    footer :global .h5{
+      font-size: 12px;
+    }
+  }
+  @media (max-width: 349px){
+    footer :global .h5{
+      font-size: 10px;
+    }
+  }

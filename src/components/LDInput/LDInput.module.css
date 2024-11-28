@@ -1,0 +1,16 @@
+.customInput{
+    min-height: var(--form-control-hright);
+    padding: 5px var(--form-control-space);
+    margin-bottom: 3rem;
+}
+.customInput :global input.ant-input{
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+.customInput :global .ant-input-prefix{
+    margin-inline-end: 10px;
+}
+::placeholder{
+    color: rgba(var(--clr-black), 0.4) !important;
+}

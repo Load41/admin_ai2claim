@@ -1,0 +1,24 @@
+header{
+    background-color: rgba(var(--clr-bleu-de-france), 0.4);
+    min-height: var(--header-height);
+    padding-right: 2.5rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-bottom: 1px solid rgba(var(--clr-black), 0.3);
+}
+.headerSearchBarWrap{
+    max-width: 400px;
+}
+
+.profileIcon{
+    width: 40px;
+    height: 40px;
+    background-color: rgba(var(--clr-black), 0.05);
+}
+
+.popoverList a,.popoverList span{
+    border-top: 1px solid rgba(var(--clr-black), 0.05);
+    padding: 10px 0;
+}
+/* .popoverList a:last-child{
+    border-bottom: 1px solid rgba(var(--clr-black), 0.05);
+} */
