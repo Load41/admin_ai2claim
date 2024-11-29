@@ -71,6 +71,39 @@ export const useLoginHook = () => {
       setIsLoading(false);
     }
   }, [validateMessages]);
+  const callback = async () => {
+    if (Object.keys(validateMessages).length === 0 && isLoginSubmit) {
+      const prepareRequestBody = {
+        email: loginData?.email,
+        password: loginData?.password,
+      };
+      localStorage.clear();
+      const loginResponse = await doFetchLogin(prepareRequestBody);
+      // console.log({ loginResponse });
+      if (loginResponse?.status==200) {
+        // const loginToken = JSON.parse(
+        //   getDescryptionString(loginResponse?.data?.data)
+        // );
+        const loginToken = loginResponse?.data;
+        console.log({ loginToken });
+        localStorage.setItem("role", `${loginToken?.role}`);
+        localStorage.setItem("id", `${loginToken?.id}`);
+        localStorage.setItem("token", `${loginToken?.token}`);
+        await setAuthHeader(`Bearer ${loginToken?.token}`);
+        setValidateMessages({});
+        setLoginData({});
+        setIsLoginSubmit(false);
+        setIsLoading(false);
+        navigate("/");
+      } else {
+        toast.error(loginResponse?.data?.msg);
+        setIsLoading(false);
+        return false;
+      }
+    } else {
+      setIsLoading(false);
+    }
+  };
 
   return {
     loginData,

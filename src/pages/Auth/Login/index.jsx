@@ -5,12 +5,19 @@ import { svgIcons } from "../../../constants/icons";
 import { LDInput } from "../../../components/LDInput";
 import { LDButton } from "../../../components";
 import { useNavigate } from "react-router-dom";
+import { useLoginHook } from "../../../hooks";
 const Login = () => {
-    
-    const navigate = useNavigate();
 
-
-    return(
+    const {
+        errorMessage,
+        handleInputChange,
+        handleLoginSubmit,
+        isLoading,
+        loginData,
+        showIcon,
+        validateMessages
+    } = useLoginHook()
+    return (
         <>
             <div className={clsx(styles.authCardWrap, "w-100")}>
                 <div className={clsx(styles.authHead, "d-flex align-items-center justify-content-center")}>
@@ -19,27 +26,29 @@ const Login = () => {
                 <h3 className="text-center mb-0 pt-5">Login</h3>
                 <div className={clsx(styles.authBox)}>
                     <LDInput
-                        id="emailAddress"
+                        id="email"
                         dataTestId="emailAddress"
-                        name="emailAddress"
-                        // value="emailAddress"
-                        type="emaill"
+                        name="email"
+                        value={loginData?.email}
+                        type="email"
                         placeholder="Enter email address"
-                        handleChange={() => {return false}}
+                        handleChange={handleInputChange}
                         className={clsx(styles.authField)}
                         prefix={svgIcons.emaillAddressIcon}
-                        
+                        errorMessage={validateMessages?.email}
+
                     />
                     <LDInput
-                        id="emailAddress"
+                        id="password"
                         dataTestId="emailAddress"
-                        name="emailAddress"
-                        // value="emailAddress"
+                        name="password"
+                        value={loginData?.password}
                         type="password"
                         placeholder="Enter password"
-                        handleChange={() => {return false}}
+                        handleChange={handleInputChange}
                         className={clsx(styles.authField)}
                         prefix={svgIcons.passwordIcon}
+                        errorMessage={validateMessages?.password}
                     />
 
                     <div className="position-sticky bottom-0 bg-white py-5">
@@ -50,8 +59,8 @@ const Login = () => {
                             isSmallBtn
                             isFillBtn
                             customClass={clsx("w-100")}
-                            handleClick={() => {navigate('/')}}
-                            >
+                            handleClick={() => handleLoginSubmit()}
+                        >
                             Login
                         </LDButton>
                     </div>

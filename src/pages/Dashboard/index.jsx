@@ -19,40 +19,40 @@ const Dashboard = () => {
       <div className="w-100 mt-5">
         <div className="d-flex align-items-center justify-content-between gap-4 w-100">
           <h4 className="mb-0">
-            Management<span className="ps-2">(250)</span>
+            Management<span className="ps-2">({managementList?.length})</span>
           </h4>
           <Link to="/management-list" className="text-underline">
             View More
           </Link>
         </div>
         <div>
-          <LDProjectsCard projectCardData={managementCardData} />
+          {managementList?.length > 0 && <LDProjectsCard projectCardData={managementList} />}
         </div>
       </div>
       <div className="w-100 mt-5">
         <div className="d-flex align-items-center justify-content-between gap-4 w-100">
           <h4 className="mb-0">
-            Crew<span className="ps-2">(350)</span>
+            Crew<span className="ps-2">({crewList?.length})</span>
           </h4>
           <Link to="/crew-list" className="text-underline">
             View More
           </Link>
         </div>
         <div>
-          <LDProjectsCard projectCardData={crewCardData} />
+          {crewList?.length > 0 && <LDProjectsCard projectCardData={crewList} />}
         </div>
       </div>
       <div className="w-100 mt-5">
         <div className="d-flex align-items-center justify-content-between gap-4 w-100">
           <h4 className="mb-0">
-            Clients<span className="ps-2">(900+)</span>
+            Clients<span className="ps-2">({clientList?.length})</span>
           </h4>
           <Link to="/client-list" className="text-underline">
             View More
           </Link>
         </div>
         <div>
-          <LDProjectsCard projectCardData={clientsCardData} />
+          {clientList?.length > 0 && <LDProjectsCard projectCardData={clientList} />}
         </div>
       </div>
     </div>

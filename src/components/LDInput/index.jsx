@@ -11,22 +11,26 @@ export const LDInput = ({
     placeholder,
     handleChange,
     suffix,
+    errorMessage,
     prefix,
 }) => {
-    return(
+    return (
         <>
-            <Input 
+            <Input
                 className={clsx(styles.customInput, className)}
                 id={id}
                 dataTestId={dataTestId}
                 name={name}
                 value={value}
                 type={type}
-                placeholder={placeholder} 
+                placeholder={placeholder}
                 onChange={handleChange}
                 suffix={suffix}
                 prefix={prefix}
             />
+            {errorMessage && (
+                <div className={clsx(styles.errorMessage)}>{errorMessage}</div>
+            )}
         </>
     )
 }

@@ -22,9 +22,9 @@ export const validateLogin = (name, value) => {
         valid = false;
       }
       if (value) {
-        if (value.length < 6 || value.length > 16) {
+        if (value.length < 3 || value.length > 16) {
           errors.password =
-            "Password length must be in between 6 to 16 characters only";
+            "Password length must be in between 4 to 16 characters only";
 
           valid = false;
         }
@@ -65,9 +65,9 @@ export const validateSubmitLogin = (loginData) => {
     valid = false;
   }
   if (loginData.password) {
-    if (loginData.password.length < 6 || loginData.password.length > 16) {
+    if (loginData.password.length < 3 || loginData.password.length > 16) {
       errors.password =
-        "Password length must be in between 6 to 16 characters only";
+        "Password length must be in between 4 to 16 characters only";
       valid = false;
     }
   }

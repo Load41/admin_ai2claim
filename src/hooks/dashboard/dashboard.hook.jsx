@@ -20,7 +20,7 @@ export const useDashboardHook = () => {
     const clientListResponse = await doFetchAllUserList({
       ...paginationData,
     });
-    if (clientListResponse?.success) {
+    if (clientListResponse?.status == 200) {
       setClientList(clientListResponse?.data);
     }
     setIsLoading(false);
@@ -30,7 +30,7 @@ export const useDashboardHook = () => {
     const crewListResponse = await doFetchAllCrewList({
       ...paginationData,
     });
-    if (crewListResponse?.success) {
+    if (crewListResponse?.status == 200) {
       setCrewList(crewListResponse?.data);
     }
     setIsLoading(false);
@@ -40,7 +40,7 @@ export const useDashboardHook = () => {
     const managementListResponse = await doFetchAllManagementList({
       ...paginationData,
     });
-    if (managementListResponse?.success) {
+    if (managementListResponse?.status == 200) {
       setManagementList(managementListResponse?.data);
     }
     setIsLoading(false);
@@ -50,7 +50,7 @@ export const useDashboardHook = () => {
     doGetUserList();
     doGetCrewList();
     doGetManagementList();
-  }, [paginationData]);
+  }, []);
 
   return { isLoading, managementList, crewList, clientList };
 };

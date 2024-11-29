@@ -7,8 +7,8 @@ const axiosApi = axios.create({
 });
 
 const setAuthHeader = (token) => {
-  axiosApi.defaults.headers.Authorization = token || `Bearer ${token}`;
-  axiosApi.defaults.headers.common["ngrok-skip-browser-warning"] = `69420`;
+  axiosApi.defaults.headers.Authorization = token || `${token}`;
+  // axiosApi.defaults.headers.common["ngrok-skip-browser-warning"] = `69420`;
 };
 
 axiosApi.defaults.headers = {

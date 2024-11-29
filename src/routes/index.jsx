@@ -16,13 +16,14 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      // <ProtectedRoute isAuth={false}>
-      <RootLayout />
-      // </ProtectedRoute>
+      <ProtectedRoute isAuth={true}>
+        <RootLayout />
+      </ProtectedRoute>
     ),
     children: [
       {
-        index: true,
+
+        path:"/",
         element: <Dashboard />,
       },
       {
