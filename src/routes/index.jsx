@@ -10,10 +10,16 @@ import CrewListPending from "../pages/CrewListPending";
 import ClientListPending from "../pages/ClientListPending";
 import { AuthLayout } from "../layout/AuthLayout";
 import Login from "../pages/Auth/Login";
+import { ProtectedRoute } from "./ProtectedRoute";
+
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <RootLayout />,
+    element: (
+      // <ProtectedRoute isAuth={false}>
+      <RootLayout />
+      // </ProtectedRoute>
+    ),
     children: [
       {
         index: true,
@@ -21,37 +27,41 @@ export const router = createBrowserRouter([
       },
       {
         path: "/management-list",
-        element: <ManagementListInfo/>
+        element: <ManagementListInfo />,
       },
       {
         path: "/crew-list",
-        element: <CrewList/>
+        element: <CrewList />,
       },
       {
         path: "client-list",
-        element: <ClientList/>
+        element: <ClientList />,
       },
       {
         path: "/coming-soon",
-        element: <ComingSoon/>
+        element: <ComingSoon />,
       },
       {
         path: "/management-list-pending",
-        element: <ManagementListPending/>
+        element: <ManagementListPending />,
       },
       {
         path: "/crew-list-pending",
-        element: <CrewListPending/>
+        element: <CrewListPending />,
       },
       {
         path: "/client-list-pending",
-        element: <ClientListPending/>
-      }
+        element: <ClientListPending />,
+      },
     ],
   },
   {
     path: "/login",
-    element: <AuthLayout />,
+    element: (
+      <ProtectedRoute isAuth={false}>
+        <AuthLayout />
+      </ProtectedRoute>
+    ),
     children: [
       {
         index: true,

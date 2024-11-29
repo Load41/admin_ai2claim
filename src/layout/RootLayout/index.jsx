@@ -5,11 +5,11 @@ import { LDFooter } from "../../components/LDFooter";
 export const RootLayout = () => {
   return (
     <div className="d-flex vw-100">
-      <LDSidebar/>
+      <LDSidebar />
       <main className="w-100 overflow-y-auto">
-        <LDHeader/>
+        <LDHeader />
         <Outlet />
-        <LDFooter/>
+        <LDFooter />
       </main>
     </div>
   );
