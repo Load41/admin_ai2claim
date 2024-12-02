@@ -14,7 +14,7 @@ export const useManagementListHook = () => {
     const managementListResponse = await doFetchAllManagementList({
       ...paginationData,
     });
-    if (managementListResponse?.success) {
+    if (managementListResponse?.status == 200) {
       setManagementList(managementListResponse?.data);
     }
     setIsLoading(false);

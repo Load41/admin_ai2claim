@@ -3,7 +3,7 @@ import { doFetchAllUserList } from "../../actions";
 
 export const useClientHook = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [clientList, setClientList] = useState({});
+  const [clientDataList, setClientDataList] = useState({});
   const [paginationData, setPaginationData] = useState({
     currentPage: 1,
     pageSize: 10,
@@ -14,8 +14,8 @@ export const useClientHook = () => {
     const clientListResponse = await doFetchAllUserList({
       ...paginationData,
     });
-    if (clientListResponse?.success) {
-      setClientList(clientListResponse?.data);
+    if (clientListResponse?.status == 200) {
+      setClientDataList(clientListResponse?.data);
     }
     setIsLoading(false);
   };
@@ -24,5 +24,5 @@ export const useClientHook = () => {
     doGetUserList();
   }, [paginationData]);
 
-  return { isLoading, clientList };
+  return { isLoading, clientDataList };
 };

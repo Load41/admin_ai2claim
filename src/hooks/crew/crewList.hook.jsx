@@ -3,7 +3,7 @@ import { doFetchAllCrewList } from "../../actions";
 
 export const useCrewListHook = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [crewList, setCrewList] = useState({});
+  const [crewDataList, setCrewDataList] = useState({});
   const [paginationData, setPaginationData] = useState({
     currentPage: 1,
     pageSize: 10,
@@ -14,8 +14,8 @@ export const useCrewListHook = () => {
     const crewListResponse = await doFetchAllCrewList({
       ...paginationData,
     });
-    if (crewListResponse?.success) {
-      setCrewList(crewListResponse?.data);
+    if (crewListResponse?.status == 200) {
+      setCrewDataList(crewListResponse?.data);
     }
     setIsLoading(false);
   };
@@ -24,5 +24,5 @@ export const useCrewListHook = () => {
     doGetCrewList();
   }, [paginationData]);
 
-  return { isLoading, crewList };
+  return { isLoading, crewDataList };
 };
