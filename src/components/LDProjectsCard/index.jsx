@@ -31,7 +31,7 @@ export const LDProjectsCard = ({ projectCardData, isNotSwiper, isBtn, handleClic
                             alt=""
                           />
                         </div>
-                        <h6 className="mt-3 mb-0 fw-bold word-break-word">
+                        <h6 className="mt-3 mb-0 fw-bold word-break-word p small">
                           {item?.username
                             ? item?.username
                             : item?.createdBy?.username ? item?.createdBy?.username : item?.company_name}
@@ -48,28 +48,28 @@ export const LDProjectsCard = ({ projectCardData, isNotSwiper, isBtn, handleClic
                                                 })} */}
                         </ul>
                         <div className="d-flex flex-column flex-lg-row w-100 mb-4">
-                          <h6 className="w-50 w-100-md mb-0 lh-base">
+                          <h6 className="w-50 w-100-md mb-0 lh-base p small">
                             Projects Done{" "}
                             <b className="d-none d-lg-inline">:-</b>
                           </h6>
-                          <h6 className="w-50 w-100-md mb-0 lh-base word-break-word">
+                          <h6 className="w-50 w-100-md mb-0 lh-base p small word-break-word p small">
                             {item?.projectsDone ? item?.projectsDone : 0}
                           </h6>
                         </div>
                         <div className="d-flex flex-column flex-lg-row w-100 mb-4">
-                          <h6 className="w-50 w-100-md mb-0 lh-base">
+                          <h6 className="w-50 w-100-md mb-0 lh-base p small">
                             Projects Pending{" "}
                             <b className="d-none d-lg-inline">:-</b>
                           </h6>
-                          <h6 className="w-50 w-100-md mb-0 lh-base word-break-word">
+                          <h6 className="w-50 w-100-md mb-0 lh-base p small word-break-word p small">
                             {item?.projectCount ? item?.projectCount : 0}
                           </h6>
                         </div>
                         <div className="d-flex flex-column flex-lg-row w-100 mb-4">
-                          <h6 className="w-50 w-100-md mb-0 lh-base">
+                          <h6 className="w-50 w-100-md mb-0 lh-base p small">
                             Address <b className="d-none d-lg-inline">:-</b>
                           </h6>
-                          <h6 className="w-50 w-100-md mb-0 lh-base word-break-word">
+                          <h6 className="w-50 w-100-md mb-0 lh-base p small word-break-word p small">
                             {item?.address}
                           </h6>
                         </div>
@@ -142,7 +142,7 @@ export const LDProjectsCard = ({ projectCardData, isNotSwiper, isBtn, handleClic
                                       alt=""
                                     />
                                   </div>
-                                  <h6 className="mt-3 mb-0 fw-bold word-break-word">
+                                  <h6 className="mt-3 mb-0 fw-bold word-break-word p small">
                                     {item?.username
                                       ? item?.username
                                       : item?.createdBy?.username ? item?.createdBy?.username : item?.company_name}
@@ -159,33 +159,33 @@ export const LDProjectsCard = ({ projectCardData, isNotSwiper, isBtn, handleClic
                                                                 })} */}
                                   </ul>
                                   <div className="d-flex flex-column flex-lg-row w-100 mb-4">
-                                    <h6 className="w-50 w-100-md mb-0 lh-base">
+                                    <h6 className="w-50 w-100-md mb-0 lh-base p small">
                                       Projects Done{" "}
                                       <b className="d-none d-lg-inline">:-</b>
                                     </h6>
-                                    <h6 className="w-50 w-100-md mb-0 lh-base word-break-word">
+                                    <h6 className="w-50 w-100-md mb-0 lh-base p small word-break-word p small">
                                       {item?.projectsDone
                                         ? item?.projectsDone
                                         : 0}
                                     </h6>
                                   </div>
                                   <div className="d-flex flex-column flex-lg-row w-100 mb-4">
-                                    <h6 className="w-50 w-100-md mb-0 lh-base">
+                                    <h6 className="w-50 w-100-md mb-0 lh-base p small">
                                       Projects Pending{" "}
                                       <b className="d-none d-lg-inline">:-</b>
                                     </h6>
-                                    <h6 className="w-50 w-100-md mb-0 lh-base word-break-word">
+                                    <h6 className="w-50 w-100-md mb-0 lh-base p small word-break-word p small">
                                       {item?.projectCount
                                         ? item?.projectCount
                                         : 0}
                                     </h6>
                                   </div>
                                   <div className="d-flex flex-column flex-lg-row w-100 mb-4">
-                                    <h6 className="w-50 w-100-md mb-0 lh-base">
+                                    <h6 className="w-50 w-100-md mb-0 lh-base p small">
                                       Address{" "}
                                       <b className="d-none d-lg-inline">:-</b>
                                     </h6>
-                                    <h6 className="w-50 w-100-md mb-0 lh-base word-break-word">
+                                    <h6 className="w-50 w-100-md mb-0 lh-base p small word-break-word p small">
                                       {item?.address}
                                     </h6>
                                   </div>

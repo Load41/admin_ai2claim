@@ -23,6 +23,7 @@ export function LDButton({
   isRedBg,
   isSkyBlueBg,
   isDarkBlueBg,
+  isOrangeBg,
   loading,
   ...rest
 }) {
@@ -39,6 +40,7 @@ export function LDButton({
           isRedBg ? styles.isRedBg : "",
           isSkyBlueBg ? styles.isSkyBlueBg : "",
           isDarkBlueBg ? styles.isDarkBlueBg : "",
+          isOrangeBg ? styles.isOrangeBg : "",
           styles.button,
           customClass,
           borderSize == "md" ? styles.borderMd : styles.borderDefault

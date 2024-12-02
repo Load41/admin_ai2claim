@@ -1,9 +1,9 @@
 .button:global.ant-btn {
   font-family: var(--font-primary);
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   min-width: 150px;
-  min-height: 60px;
+  min-height: 50px;
   padding: 5px 15px;
   letter-spacing: 1px;
   gap: 12px;
@@ -17,7 +17,7 @@
 
 .button:global.ant-btn,
 .button:global.ant-btn.ant-btn-round.ant-btn {
-  border-radius: 12px;
+  border-radius: 7px;
 }
 
 .button:global.ant-btn-lg {
@@ -130,6 +130,16 @@
   color: var(--clr-matt-green);
   border-color: var(--clr-matt-green);
 }
+/* isGreenBg */
+.isOrangeBg.button:global.ant-btn-fill{
+  background-color: var(--clr-orange);
+  border-color: var(--clr-orange);
+}
+.isOrangeBg.button:global.ant-btn-fill:hover{
+  background-color: transparent;
+  color: var(--clr-orange);
+  border-color: var(--clr-orange);
+}
 /* isSmallBtn */
 .isSmallBtn.button:global.ant-btn.ant-btn-round.ant-btn,
 .isSmallBtn.button:global.ant-btn-fill{
@@ -143,7 +153,6 @@
 /* resposnive css */
 @media (max-width: 1599px) {
   .button:global.ant-btn {
-    min-height: 50px;
     font-size: 16px;
     min-width: 120px;
   }

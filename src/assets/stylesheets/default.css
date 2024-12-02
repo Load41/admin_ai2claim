@@ -596,6 +596,10 @@ hr {
   word-break: break-all;
 }
 
+.word-break-word{
+  word-break: break-word;
+}
+
 .vw-100{
   width: 100vw;
 }
@@ -608,5 +612,8 @@ hr {
 }
 .remove-footer-modal .ant-modal-footer{
   display: none;
+}
+.swiper-slide{
+  height: auto;
 }
 /* DEFAULT CSS END */

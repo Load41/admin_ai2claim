@@ -7,3 +7,6 @@ export * from "./ManagementListPending";
 export * from "./CrewListPending";
 export * from "./ClientListPending";
 export * from "./Auth";
+export * from "./AboutClient";
+export * from "./AboutManagement";
+export * from "./AboutCrew";

@@ -27,7 +27,7 @@ const items = [
   getItem(<><h6 className='mb-0'>Pending files</h6></>, '2', svgIcons.pendingListIcon, [
     getItem(<><Link to="/management-list-pending">Management</Link></>, '20', svgIcons.directFreight),
     getItem(<><Link to="/crew-list-pending">Crew list</Link></>, '21', svgIcons.viewTruckPath),
-    getItem(<><Link to="/client-list-pending">Client list</Link></>, '22', svgIcons.viewTruckStop),
+    // getItem(<><Link to="/client-list-pending">Client list</Link></>, '22', svgIcons.viewTruckStop),
   ]),
 //   getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
 getItem(<><Link to="/coming-soon">Check Files(50+)</Link></>, '3', svgIcons.dat),

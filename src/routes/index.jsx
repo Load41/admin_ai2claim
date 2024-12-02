@@ -11,6 +11,9 @@ import ClientListPending from "../pages/ClientListPending";
 import { AuthLayout } from "../layout/AuthLayout";
 import Login from "../pages/Auth/Login";
 import { ProtectedRoute } from "./ProtectedRoute";
+import AboutClient from "../pages/AboutClient";
+import AboutManagement from "../pages/AboutManagement";
+import AboutCrew from "../pages/AboutCrew";
 
 export const router = createBrowserRouter([
   {
@@ -53,6 +56,18 @@ export const router = createBrowserRouter([
       {
         path: "/client-list-pending",
         element: <ClientListPending />,
+      },
+      {
+        path: "/about-client",
+        element: <AboutClient/>
+      },
+      {
+        path: "/about-management",
+        element: <AboutManagement/>
+      },
+      {
+        path: "/about-crew",
+        element: <AboutCrew/>
       },
     ],
   },
