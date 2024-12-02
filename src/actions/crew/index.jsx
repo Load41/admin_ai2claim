@@ -13,6 +13,19 @@ export const doFetchAllCrewList = async (data) => {
   }
 };
 
+export const doFetchAllCrewPendingList = async (data) => {
+  try {
+    const response = await axiosApi({
+      method: "get",
+      url: `admin/crew/pending-list?page=${data?.currentPage}&pageSize=${data?.pageSize}&search=${data?.search}`,
+    });
+    return response.data;
+  } catch (error) {
+    console.log({ error });
+    return error.response;
+  }
+};
+
 export const doFetchCrewCreate = async (data) => {
   try {
     const response = await axiosApi({
@@ -59,6 +72,20 @@ export const doFetchCrewDelete = async (id) => {
     const response = await axiosApi({
       method: "get",
       url: `admin/crew/delete/${id}`,
+    });
+    return response.data;
+  } catch (error) {
+    console.log({ error });
+    return error.response;
+  }
+};
+
+export const doFetchCrewStatusUpdate = async (data) => {
+  try {
+    const response = await axiosApi({
+      method: "post",
+      url: `admin/crew/status-update`,
+      data: data
     });
     return response.data;
   } catch (error) {

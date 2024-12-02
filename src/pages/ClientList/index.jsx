@@ -52,13 +52,13 @@ const ClientList = () => {
             <h4 className="mb-0">
               Client's<span className="ps-2">({clientDataList?.length})</span>
             </h4>
-            <Dropdown.Button
+            {/* <Dropdown.Button
               menu={menuProps}
               onClick={handleButtonClick}
               className="w-auto"
             >
               <h6 className="fw-medium mb-0">Sort by</h6>
-            </Dropdown.Button>
+            </Dropdown.Button> */}
           </div>
           <div>
             {clientDataList?.length > 0 && (

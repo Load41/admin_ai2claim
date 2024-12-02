@@ -3,7 +3,7 @@ import { projectCardSwiperBreakPoints } from "../../constants/data";
 import { LDSwiper, LDButton } from "./../../components";
 import { clsx } from "clsx";
 
-export const LDProjectsCard = ({ projectCardData, isNotSwiper, isBtn }) => {
+export const LDProjectsCard = ({ projectCardData, isNotSwiper, isBtn, handleClickStatusUpdate }) => {
   console.log({ projectCardData });
   return (
     <>
@@ -62,7 +62,7 @@ export const LDProjectsCard = ({ projectCardData, isNotSwiper, isBtn }) => {
                             <b className="d-none d-lg-inline">:-</b>
                           </h6>
                           <h6 className="w-50 w-100-md mb-0 lh-base word-break-word">
-                            {item?.projectsPending ? item?.projectsPending : 0}
+                            {item?.projectCount ? item?.projectCount : 0}
                           </h6>
                         </div>
                         <div className="d-flex flex-column flex-lg-row w-100 mb-4">
@@ -84,9 +84,7 @@ export const LDProjectsCard = ({ projectCardData, isNotSwiper, isBtn }) => {
                           isGreenBg
                           isSmallBtn
                           customClass={clsx("w-50")}
-                          handleClick={() => {
-                            return false;
-                          }}
+                          handleClick={() => handleClickStatusUpdate(true, item?.createdBy?.id ? item?.createdBy?.id : item?.id,)}
                         >
                           Accept
                         </LDButton>
@@ -97,9 +95,7 @@ export const LDProjectsCard = ({ projectCardData, isNotSwiper, isBtn }) => {
                           isRedBg
                           isSmallBtn
                           customClass={clsx("w-50")}
-                          handleClick={() => {
-                            return false;
-                          }}
+                          handleClick={() => handleClickStatusUpdate(false, item?.createdBy?.id ? item?.createdBy?.id : item?.id,)}
                         >
                           Cancel
                         </LDButton>
@@ -179,8 +175,8 @@ export const LDProjectsCard = ({ projectCardData, isNotSwiper, isBtn }) => {
                                       <b className="d-none d-lg-inline">:-</b>
                                     </h6>
                                     <h6 className="w-50 w-100-md mb-0 lh-base word-break-word">
-                                      {item?.projectsPending
-                                        ? item?.projectsPending
+                                      {item?.projectCount
+                                        ? item?.projectCount
                                         : 0}
                                     </h6>
                                   </div>

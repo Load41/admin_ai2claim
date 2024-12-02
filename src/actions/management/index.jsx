@@ -13,6 +13,19 @@ export const doFetchAllManagementList = async (data) => {
   }
 };
 
+export const doFetchAllManagementPendingList = async (data) => {
+  try {
+    const response = await axiosApi({
+      method: "get",
+      url: `admin/management/pending-list?page=${data?.currentPage}&pageSize=${data?.pageSize}&search=${data?.search}`,
+    });
+    return response.data;
+  } catch (error) {
+    console.log({ error });
+    return error.response;
+  }
+};
+
 export const doFetchManagementCreate = async (data) => {
   try {
     const response = await axiosApi({
@@ -59,6 +72,19 @@ export const doFetchManagementDelete = async (id) => {
     const response = await axiosApi({
       method: "get",
       url: `admin/management/delete/${id}`,
+    });
+    return response.data;
+  } catch (error) {
+    console.log({ error });
+    return error.response;
+  }
+};
+export const doFetchManagementStatusUpdate = async (data) => {
+  try {
+    const response = await axiosApi({
+      method: "post",
+      url: `admin/management/status-update`,
+      data: data
     });
     return response.data;
   } catch (error) {

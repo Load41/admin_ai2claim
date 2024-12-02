@@ -13,6 +13,19 @@ export const doFetchAllUserList = async (data) => {
   }
 };
 
+export const doFetchAllUserPendingList = async (data) => {
+  try {
+    const response = await axiosApi({
+      method: "get",
+      url: `admin/user/pending-list?page=${data?.currentPage}&pageSize=${data?.pageSize}&search=${data?.search}`,
+    });
+    return response.data;
+  } catch (error) {
+    console.log({ error });
+    return error.response;
+  }
+};
+
 export const doFetchUserCreate = async (data) => {
   try {
     const response = await axiosApi({
@@ -59,6 +72,20 @@ export const doFetchUserDelete = async (id) => {
     const response = await axiosApi({
       method: "get",
       url: `admin/user/delete/${id}`,
+    });
+    return response.data;
+  } catch (error) {
+    console.log({ error });
+    return error.response;
+  }
+};
+
+export const doFetchClientStatusUpdate = async (data) => {
+  try {
+    const response = await axiosApi({
+      method: "post",
+      url: `admin/management/status-update`,
+      data: data
     });
     return response.data;
   } catch (error) {
