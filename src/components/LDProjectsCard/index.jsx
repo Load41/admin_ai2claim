@@ -34,7 +34,7 @@ export const LDProjectsCard = ({ projectCardData, isNotSwiper, isBtn, handleClic
                         <h6 className="mt-3 mb-0 fw-bold word-break-word">
                           {item?.username
                             ? item?.username
-                            : item?.createdBy?.username}
+                            : item?.createdBy?.username ? item?.createdBy?.username : item?.company_name}
                         </h6>
                       </div>
                       <div className={"pendingProjectListRightCol"}>
@@ -145,7 +145,7 @@ export const LDProjectsCard = ({ projectCardData, isNotSwiper, isBtn, handleClic
                                   <h6 className="mt-3 mb-0 fw-bold word-break-word">
                                     {item?.username
                                       ? item?.username
-                                      : item?.createdBy?.username}
+                                      : item?.createdBy?.username ? item?.createdBy?.username : item?.company_name}
                                   </h6>
                                 </div>
                                 <div className={"pendingProjectListRightCol"}>
