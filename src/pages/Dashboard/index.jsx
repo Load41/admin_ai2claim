@@ -26,7 +26,12 @@ const Dashboard = () => {
           </Link>
         </div>
         <div>
-          {managementList?.length > 0 && <LDProjectsCard projectCardData={managementList} />}
+          {managementList?.length > 0 && (
+            <LDProjectsCard
+              projectCardData={managementList}
+              redirectPath={"/management-detail"}
+            />
+          )}
         </div>
       </div>
       <div className="w-100 mt-5">
@@ -39,7 +44,12 @@ const Dashboard = () => {
           </Link>
         </div>
         <div>
-          {crewList?.length > 0 && <LDProjectsCard projectCardData={crewList} />}
+          {crewList?.length > 0 && (
+            <LDProjectsCard
+              projectCardData={crewList}
+              redirectPath={"/crew-detail"}
+            />
+          )}
         </div>
       </div>
       <div className="w-100 mt-5">
@@ -52,7 +62,12 @@ const Dashboard = () => {
           </Link>
         </div>
         <div>
-          {clientList?.length > 0 && <LDProjectsCard projectCardData={clientList} />}
+          {clientList?.length > 0 && (
+            <LDProjectsCard
+              projectCardData={clientList}
+              redirectPath={"/client-detail"}
+            />
+          )}
         </div>
       </div>
     </div>

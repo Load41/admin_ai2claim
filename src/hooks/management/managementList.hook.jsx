@@ -23,5 +23,5 @@ export const useManagementListHook = () => {
     doGetManagementList();
   }, [paginationData]);
 
-  return { isLoading, managementList };
+  return { isLoading, managementList, paginationData };
 };

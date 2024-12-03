@@ -24,5 +24,5 @@ export const useCrewListHook = () => {
     doGetCrewList();
   }, [paginationData]);
 
-  return { isLoading, crewDataList };
+  return { isLoading, crewDataList, paginationData };
 };

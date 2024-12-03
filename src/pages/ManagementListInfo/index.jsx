@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { clsx } from "clsx";
-import { LDProjectsCard } from "../../components";
+import { LDPagination, LDProjectsCard } from "../../components";
 import { managementListData } from "../../constants/data";
 import styles from "./ManagementListInfo.module.css";
 import { Dropdown } from "antd";
@@ -42,7 +42,7 @@ const menuProps = {
   onClick: handleMenuClick,
 };
 const ManagementListInfo = () => {
-  const { managementList } = useManagementListHook();
+  const { managementList, paginationData } = useManagementListHook();
   return (
     <>
       <div className={clsx("admin-content")}>
@@ -62,8 +62,20 @@ const ManagementListInfo = () => {
           </div>
           <div>
             {managementList?.length > 0 && (
-              <LDProjectsCard projectCardData={managementList} isNotSwiper />
+              <LDProjectsCard
+                projectCardData={managementList}
+                isNotSwiper
+                redirectPath={"/management-detail"}
+              />
             )}
+            <div className="w-100 d-flex justify-content-center mt-4 pt-3">
+              {managementList?.length > 0 && (
+                <LDPagination
+                  defaultCurrent={paginationData?.currentPage}
+                  total={paginationData?.pageSize}
+                />
+              )}
+            </div>
           </div>
         </div>
       </div>

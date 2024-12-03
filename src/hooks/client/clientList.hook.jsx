@@ -24,5 +24,5 @@ export const useClientHook = () => {
     doGetUserList();
   }, [paginationData]);
 
-  return { isLoading, clientDataList };
+  return { isLoading, clientDataList, paginationData };
 };

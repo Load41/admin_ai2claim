@@ -58,7 +58,7 @@ export const doFetchCrewDetail = async (id) => {
   try {
     const response = await axiosApi({
       method: "get",
-      url: `admin/crew/update/${id}`,
+      url: `admin/crew/detail/${id}`,
     });
     return response.data;
   } catch (error) {
@@ -85,7 +85,7 @@ export const doFetchCrewStatusUpdate = async (data) => {
     const response = await axiosApi({
       method: "post",
       url: `admin/crew/status-update`,
-      data: data
+      data: data,
     });
     return response.data;
   } catch (error) {

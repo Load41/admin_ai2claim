@@ -25,8 +25,7 @@ export const router = createBrowserRouter([
     ),
     children: [
       {
-
-        path:"/",
+        path: "/",
         element: <Dashboard />,
       },
       {
@@ -58,16 +57,16 @@ export const router = createBrowserRouter([
         element: <ClientListPending />,
       },
       {
-        path: "/about-client",
-        element: <AboutClient/>
+        path: "/client-detail/:id",
+        element: <AboutClient />,
       },
       {
-        path: "/about-management",
-        element: <AboutManagement/>
+        path: "/management-detail/:id",
+        element: <AboutManagement />,
       },
       {
-        path: "/about-crew",
-        element: <AboutCrew/>
+        path: "/crew-detail/:id",
+        element: <AboutCrew />,
       },
     ],
   },

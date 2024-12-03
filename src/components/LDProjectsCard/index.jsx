@@ -2,9 +2,16 @@ import { SwiperSlide } from "swiper/react";
 import { projectCardSwiperBreakPoints } from "../../constants/data";
 import { LDSwiper, LDButton } from "./../../components";
 import { clsx } from "clsx";
+import { useNavigate } from "react-router-dom";
 
-export const LDProjectsCard = ({ projectCardData, isNotSwiper, isBtn, handleClickStatusUpdate }) => {
-  console.log({ projectCardData });
+export const LDProjectsCard = ({
+  projectCardData,
+  isNotSwiper,
+  isBtn,
+  handleClickStatusUpdate,
+  redirectPath,
+}) => {
+  const navigate = useNavigate();
   return (
     <>
       {isNotSwiper ? (
@@ -14,7 +21,10 @@ export const LDProjectsCard = ({ projectCardData, isNotSwiper, isBtn, handleClic
               return (
                 <div className="col-md-6 col-xl-4 mt-4">
                   <div className="pendingProjectListCard h-100" key={index}>
-                    <div className="pendingProjectLisRow w-100">
+                    <div
+                      className="pendingProjectLisRow w-100"
+                      onClick={() => navigate(`${redirectPath}/${item?.id}`)}
+                    >
                       <div
                         className={
                           "pendingProjectListLeftCol text-center flex-0-auto"
@@ -34,7 +44,9 @@ export const LDProjectsCard = ({ projectCardData, isNotSwiper, isBtn, handleClic
                         <h6 className="mt-3 mb-0 fw-bold word-break-word p small">
                           {item?.username
                             ? item?.username
-                            : item?.createdBy?.username ? item?.createdBy?.username : item?.company_name}
+                            : item?.createdBy?.username
+                            ? item?.createdBy?.username
+                            : item?.company_name}
                         </h6>
                       </div>
                       <div className={"pendingProjectListRightCol"}>
@@ -84,7 +96,14 @@ export const LDProjectsCard = ({ projectCardData, isNotSwiper, isBtn, handleClic
                           isGreenBg
                           isSmallBtn
                           customClass={clsx("w-50")}
-                          handleClick={() => handleClickStatusUpdate(true, item?.createdBy?.id ? item?.createdBy?.id : item?.id,)}
+                          handleClick={() =>
+                            handleClickStatusUpdate(
+                              true,
+                              item?.createdBy?.id
+                                ? item?.createdBy?.id
+                                : item?.id
+                            )
+                          }
                         >
                           Accept
                         </LDButton>
@@ -95,7 +114,14 @@ export const LDProjectsCard = ({ projectCardData, isNotSwiper, isBtn, handleClic
                           isRedBg
                           isSmallBtn
                           customClass={clsx("w-50")}
-                          handleClick={() => handleClickStatusUpdate(false, item?.createdBy?.id ? item?.createdBy?.id : item?.id,)}
+                          handleClick={() =>
+                            handleClickStatusUpdate(
+                              false,
+                              item?.createdBy?.id
+                                ? item?.createdBy?.id
+                                : item?.id
+                            )
+                          }
                         >
                           Cancel
                         </LDButton>
@@ -124,6 +150,9 @@ export const LDProjectsCard = ({ projectCardData, isNotSwiper, isBtn, handleClic
                             <div
                               className="pendingProjectListCard h-100"
                               key={index}
+                              onClick={() =>
+                                navigate(`${redirectPath}/${item?.id}`)
+                              }
                             >
                               <div className="pendingProjectLisRow w-100">
                                 <div
@@ -145,7 +174,9 @@ export const LDProjectsCard = ({ projectCardData, isNotSwiper, isBtn, handleClic
                                   <h6 className="mt-3 mb-0 fw-bold word-break-word p small">
                                     {item?.username
                                       ? item?.username
-                                      : item?.createdBy?.username ? item?.createdBy?.username : item?.company_name}
+                                      : item?.createdBy?.username
+                                      ? item?.createdBy?.username
+                                      : item?.company_name}
                                   </h6>
                                 </div>
                                 <div className={"pendingProjectListRightCol"}>

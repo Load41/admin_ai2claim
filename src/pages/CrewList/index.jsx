@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { clsx } from "clsx";
-import { LDProjectsCard } from "../../components";
+import { LDPagination, LDProjectsCard } from "../../components";
 import { crewListData } from "../../constants/data";
 import { Dropdown } from "antd";
 import styles from "./CrewList.module.css";
@@ -42,7 +42,7 @@ const menuProps = {
   onClick: handleMenuClick,
 };
 const CrewList = () => {
-  const { crewDataList } = useCrewListHook();
+  const { crewDataList, paginationData } = useCrewListHook();
   return (
     <>
       <div className={clsx("admin-content")}>
@@ -62,8 +62,20 @@ const CrewList = () => {
           </div>
           <div>
             {crewDataList?.length > 0 && (
-              <LDProjectsCard projectCardData={crewDataList} isNotSwiper />
+              <LDProjectsCard
+                projectCardData={crewDataList}
+                isNotSwiper
+                redirectPath={"/crew-detail"}
+              />
             )}
+            <div className="w-100 d-flex justify-content-center mt-4 pt-3">
+              {crewDataList?.length > 0 && (
+                <LDPagination
+                  defaultCurrent={paginationData?.currentPage}
+                  total={paginationData?.pageSize}
+                />
+              )}
+            </div>
           </div>
         </div>
       </div>

@@ -58,7 +58,7 @@ export const doFetchUserDetail = async (id) => {
   try {
     const response = await axiosApi({
       method: "get",
-      url: `admin/user/update/${id}`,
+      url: `admin/user/detail/${id}`,
     });
     return response.data;
   } catch (error) {
@@ -85,7 +85,7 @@ export const doFetchClientStatusUpdate = async (data) => {
     const response = await axiosApi({
       method: "post",
       url: `admin/management/status-update`,
-      data: data
+      data: data,
     });
     return response.data;
   } catch (error) {

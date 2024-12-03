@@ -58,7 +58,7 @@ export const doFetchManagementDetail = async (id) => {
   try {
     const response = await axiosApi({
       method: "get",
-      url: `admin/management/update/${id}`,
+      url: `admin/management/detail/${id}`,
     });
     return response.data;
   } catch (error) {
@@ -84,7 +84,7 @@ export const doFetchManagementStatusUpdate = async (data) => {
     const response = await axiosApi({
       method: "post",
       url: `admin/management/status-update`,
-      data: data
+      data: data,
     });
     return response.data;
   } catch (error) {

@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
-import { doFetchAllManagementList, doFetchAllManagementPendingList, doFetchManagementStatusUpdate } from "../../actions";
+import {
+  doFetchAllManagementPendingList,
+  doFetchManagementStatusUpdate,
+} from "../../actions";
 
 export const useManagementPendingListHook = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -23,13 +26,15 @@ export const useManagementPendingListHook = () => {
     doGetManagementList();
   }, [paginationData]);
 
-
   const handleClickStatusUpdate = async (status, id) => {
-    const managementListResponse = await doFetchManagementStatusUpdate({ userId: id, is_active: status })
+    const managementListResponse = await doFetchManagementStatusUpdate({
+      userId: id,
+      is_active: status,
+    });
     if (managementListResponse?.status == 200) {
-      doGetManagementList()
+      doGetManagementList();
     }
-  }
+  };
 
   return { isLoading, paginationData, managementList, handleClickStatusUpdate };
 };
