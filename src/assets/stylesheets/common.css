@@ -61,6 +61,7 @@ table tbody tr td{
   border-radius: 15px;
   background-color: rgba(var(--clr-black), 0.03);
   min-height: 200px;
+  cursor: pointer;
 }
 
 .pendingProjectListLeftCol > div{
