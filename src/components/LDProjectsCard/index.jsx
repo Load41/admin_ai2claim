@@ -9,6 +9,7 @@ export const LDProjectsCard = ({
   isNotSwiper,
   isBtn,
   handleClickStatusUpdate,
+  handleClickRejected,
   redirectPath,
 }) => {
   const navigate = useNavigate();
@@ -115,7 +116,7 @@ export const LDProjectsCard = ({
                           isSmallBtn
                           customClass={clsx("w-50")}
                           handleClick={() =>
-                            handleClickStatusUpdate(
+                            handleClickRejected(
                               false,
                               item?.createdBy?.id
                                 ? item?.createdBy?.id
@@ -123,7 +124,7 @@ export const LDProjectsCard = ({
                             )
                           }
                         >
-                          Cancel
+                          Reject
                         </LDButton>
                       </div>
                     )}

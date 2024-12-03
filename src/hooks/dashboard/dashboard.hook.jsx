@@ -12,7 +12,7 @@ export const useDashboardHook = () => {
   const [clientList, setClientList] = useState({});
   const [paginationData, setPaginationData] = useState({
     currentPage: 1,
-    pageSize: 10,
+    pageSize: 5,
     search: "",
   });
 

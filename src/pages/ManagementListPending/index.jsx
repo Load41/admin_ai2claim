@@ -1,14 +1,16 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { clsx } from "clsx";
-import { LDPagination, LDProjectsCard } from "../../components";
+import { LDButton, LDPagination, LDProjectsCard } from "../../components";
 import {
   managementListData,
   managementListPendingData,
 } from "../../constants/data";
 import styles from "./ManagementListPending.module.css";
-import { Dropdown } from "antd";
+import { Dropdown, Modal } from "antd";
 import { useManagementPendingListHook } from "../../hooks";
+import { LDInput } from "../../components/LDInput";
+import { svgIcons } from "../../constants/icons";
 const handleButtonClick = (e) => {
   message.info("Click on left button.");
   console.log("click left button", e);
@@ -45,8 +47,20 @@ const menuProps = {
   onClick: handleMenuClick,
 };
 const ManagementListPending = () => {
-  const { managementList, paginationData, handleClickStatusUpdate } =
-    useManagementPendingListHook();
+  const {
+    isLoading,
+    paginationData,
+    managementList,
+    paginationServerData,
+    managementData,
+    rejectedReasonModal,
+    handleClickStatusUpdate,
+    handleOrderTableChange,
+    handleKeyDownSearch,
+    handleCloseModal,
+    handleClickRejected,
+    handleInputChange,
+  } = useManagementPendingListHook();
   return (
     <>
       <div className={clsx("admin-content")}>
@@ -56,6 +70,16 @@ const ManagementListPending = () => {
             <h4 className="mb-0">
               Management<span className="ps-2">({managementList?.length})</span>
             </h4>
+            <LDInput
+              id="searchData"
+              dataTestId="searchData"
+              name="searchData"
+              type="text"
+              placeholder="Search"
+              handleChange={handleKeyDownSearch}
+              className={clsx(styles.headerSearchBarWrap, "mb-0")}
+              suffix={svgIcons.searchIcon}
+            />
             {/* <Dropdown.Button menu={menuProps} onClick={handleButtonClick} className="w-auto">
               <h6 className="fw-medium mb-0">Sort by</h6>
             </Dropdown.Button> */}
@@ -67,6 +91,7 @@ const ManagementListPending = () => {
                 isNotSwiper
                 isBtn
                 handleClickStatusUpdate={handleClickStatusUpdate}
+                handleClickRejected={handleClickRejected}
                 redirectPath={"/management-detail"}
               />
             )}
@@ -74,13 +99,68 @@ const ManagementListPending = () => {
               {managementList?.length > 0 && (
                 <LDPagination
                   defaultCurrent={paginationData?.currentPage}
-                  total={paginationData?.pageSize}
+                  showTotal={paginationData?.pageSize}
+                  total={paginationServerData?.totalRecords}
+                  onChange={handleOrderTableChange}
                 />
               )}
             </div>
           </div>
         </div>
       </div>
+      <Modal
+        title=""
+        open={rejectedReasonModal}
+        onCancel={handleCloseModal}
+        centered
+        className="remove-footer-modal"
+      >
+        <div className="text-center d-flex flex-column gap-4">
+          <h2>Reject User Reason</h2>
+          <h4></h4>
+          <div>
+            <LDInput
+              id="reason"
+              dataTestId="reason"
+              name="reason"
+              type="text"
+              value={managementData?.reason}
+              placeholder="reason"
+              handleChange={handleInputChange}
+              className={clsx(styles.headerSearchBarWrap, "mb-0")}
+            />
+          </div>
+          <div className="d-flex align-items-centr gap-5 justify-content-center mt-3 mt-xxl-2">
+            <LDButton
+              type="fill"
+              shape={"round"}
+              iconPosition={"end"}
+              isGreenBg
+              isSmallBtn
+              customClass={clsx("w-50")}
+              handleClick={() =>
+                handleClickStatusUpdate(
+                  managementData?.status,
+                  managementData?.id
+                )
+              }
+            >
+              Submit
+            </LDButton>
+            <LDButton
+              type="fill"
+              shape={"round"}
+              iconPosition={"end"}
+              isRedBg
+              isSmallBtn
+              customClass={clsx("w-50")}
+              handleClick={handleCloseModal}
+            >
+              Close
+            </LDButton>
+          </div>
+        </div>
+      </Modal>
     </>
   );
 };

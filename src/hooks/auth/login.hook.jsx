@@ -80,7 +80,7 @@ export const useLoginHook = () => {
       localStorage.clear();
       const loginResponse = await doFetchLogin(prepareRequestBody);
       // console.log({ loginResponse });
-      if (loginResponse?.status==200) {
+      if (loginResponse?.status == 200) {
         // const loginToken = JSON.parse(
         //   getDescryptionString(loginResponse?.data?.data)
         // );
@@ -94,9 +94,10 @@ export const useLoginHook = () => {
         setLoginData({});
         setIsLoginSubmit(false);
         setIsLoading(false);
+        toast.success("Login Success!");
         navigate("/");
       } else {
-        toast.error(loginResponse?.data?.msg);
+        toast.error(loginResponse?.data?.message);
         setIsLoading(false);
         return false;
       }

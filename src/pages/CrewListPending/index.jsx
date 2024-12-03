@@ -1,11 +1,13 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { clsx } from "clsx";
-import { LDPagination, LDProjectsCard } from "../../components";
+import { LDButton, LDPagination, LDProjectsCard } from "../../components";
 import { crewListPendingData } from "../../constants/data";
 import styles from "./CrewListPending.module.css";
-import { Dropdown } from "antd";
+import { Dropdown, Modal } from "antd";
 import { useCrewPendingListHook } from "../../hooks";
+import { LDInput } from "../../components/LDInput";
+import { svgIcons } from "../../constants/icons";
 
 const handleButtonClick = (e) => {
   message.info("Click on left button.");
@@ -43,8 +45,19 @@ const menuProps = {
   onClick: handleMenuClick,
 };
 const CrewListPending = () => {
-  const { crewDataList, paginationData, handleClickStatusUpdate } =
-    useCrewPendingListHook();
+  const {
+    crewDataList,
+    paginationData,
+    handleClickStatusUpdateSubmit,
+    crewData,
+    paginationServerData,
+    handleCloseModal,
+    handleKeyDownSearch,
+    handleOrderTableChange,
+    handleClickRejected,
+    handleInputChange,
+    rejectedReasonModal,
+  } = useCrewPendingListHook();
   return (
     <>
       <div className={clsx("admin-content")}>
@@ -54,6 +67,16 @@ const CrewListPending = () => {
             <h4 className="mb-0">
               Crew<span className="ps-2">({crewDataList?.length})</span>
             </h4>
+            <LDInput
+              id="searchData"
+              dataTestId="searchData"
+              name="searchData"
+              type="text"
+              placeholder="Search"
+              handleChange={handleKeyDownSearch}
+              className={clsx(styles.headerSearchBarWrap, "mb-0")}
+              suffix={svgIcons.searchIcon}
+            />
             {/* <Dropdown.Button menu={menuProps} onClick={handleButtonClick} className="w-auto">
               <h6 className="fw-medium mb-0">Sort by</h6>
             </Dropdown.Button> */}
@@ -64,7 +87,8 @@ const CrewListPending = () => {
                 projectCardData={crewDataList}
                 isNotSwiper
                 isBtn
-                handleClickStatusUpdate={handleClickStatusUpdate}
+                handleClickStatusUpdate={handleClickStatusUpdateSubmit}
+                handleClickRejected={handleClickRejected}
                 redirectPath={"/crew-detail"}
               />
             )}
@@ -72,13 +96,65 @@ const CrewListPending = () => {
               {crewDataList?.length > 0 && (
                 <LDPagination
                   defaultCurrent={paginationData?.currentPage}
-                  total={paginationData?.pageSize}
+                  showTotal={paginationData?.pageSize}
+                  total={paginationServerData?.totalRecords}
+                  onChange={handleOrderTableChange}
                 />
               )}
             </div>
           </div>
         </div>
       </div>
+      <Modal
+        title=""
+        open={rejectedReasonModal}
+        onCancel={handleCloseModal}
+        centered
+        className="remove-footer-modal"
+      >
+        <div className="text-center d-flex flex-column gap-4">
+          <h2>Reject User Reason</h2>
+          <h4></h4>
+          <div>
+            <LDInput
+              id="reason"
+              dataTestId="reason"
+              name="reason"
+              type="text"
+              value={crewData?.reason}
+              placeholder="reason"
+              handleChange={handleInputChange}
+              className={clsx(styles.headerSearchBarWrap, "mb-0")}
+            />
+          </div>
+          <div className="d-flex align-items-centr gap-5 justify-content-center mt-3 mt-xxl-2">
+            <LDButton
+              type="fill"
+              shape={"round"}
+              iconPosition={"end"}
+              isGreenBg
+              isSmallBtn
+              customClass={clsx("w-50")}
+              handleClick={() =>
+                handleClickStatusUpdateSubmit(crewData?.status, crewData?.id)
+              }
+            >
+              Submit
+            </LDButton>
+            <LDButton
+              type="fill"
+              shape={"round"}
+              iconPosition={"end"}
+              isRedBg
+              isSmallBtn
+              customClass={clsx("w-50")}
+              handleClick={handleCloseModal}
+            >
+              Close
+            </LDButton>
+          </div>
+        </div>
+      </Modal>
     </>
   );
 };

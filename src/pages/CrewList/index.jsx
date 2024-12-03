@@ -6,6 +6,8 @@ import { crewListData } from "../../constants/data";
 import { Dropdown } from "antd";
 import styles from "./CrewList.module.css";
 import { useCrewListHook } from "../../hooks";
+import { LDInput } from "../../components/LDInput";
+import { svgIcons } from "../../constants/icons";
 const handleButtonClick = (e) => {
   message.info("Click on left button.");
   console.log("click left button", e);
@@ -42,7 +44,13 @@ const menuProps = {
   onClick: handleMenuClick,
 };
 const CrewList = () => {
-  const { crewDataList, paginationData } = useCrewListHook();
+  const {
+    crewDataList,
+    paginationData,
+    paginationServerData,
+    handleKeyDownSearch,
+    handleOrderTableChange,
+  } = useCrewListHook();
   return (
     <>
       <div className={clsx("admin-content")}>
@@ -52,6 +60,16 @@ const CrewList = () => {
             <h4 className="mb-0">
               Crew<span className="ps-2">({crewDataList?.length})</span>
             </h4>
+            <LDInput
+              id="searchData"
+              dataTestId="searchData"
+              name="searchData"
+              type="text"
+              placeholder="Search"
+              handleChange={handleKeyDownSearch}
+              className={clsx(styles.headerSearchBarWrap, "mb-0")}
+              suffix={svgIcons.searchIcon}
+            />
             {/* <Dropdown.Button
               menu={menuProps}
               onClick={handleButtonClick}
@@ -72,7 +90,9 @@ const CrewList = () => {
               {crewDataList?.length > 0 && (
                 <LDPagination
                   defaultCurrent={paginationData?.currentPage}
-                  total={paginationData?.pageSize}
+                  showTotal={paginationData?.pageSize}
+                  total={paginationServerData?.totalRecords}
+                  onChange={handleOrderTableChange}
                 />
               )}
             </div>

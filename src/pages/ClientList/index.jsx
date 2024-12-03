@@ -6,10 +6,9 @@ import { clientListData } from "../../constants/data";
 import { Dropdown } from "antd";
 import styles from "./ClientList.module.css";
 import { useClientHook } from "../../hooks";
-const handleButtonClick = (e) => {
-  message.info("Click on left button.");
-  console.log("click left button", e);
-};
+import { LDInput } from "../../components/LDInput";
+import { svgIcons } from "../../constants/icons";
+
 const handleMenuClick = (e) => {
   message.info("Click on menu item.");
   console.log("click", e);
@@ -37,12 +36,19 @@ const items = [
     key: "5",
   },
 ];
-const menuProps = {
-  items,
-  onClick: handleMenuClick,
-};
 const ClientList = () => {
-  const { clientDataList, paginationData } = useClientHook();
+  const menuProps = {
+    items,
+    onClick: handleMenuClick,
+  };
+
+  const {
+    clientDataList,
+    paginationData,
+    paginationServerData,
+    handleOrderTableChange,
+    handleKeyDownSearch,
+  } = useClientHook();
   return (
     <>
       <div className={clsx("admin-content")}>
@@ -52,6 +58,16 @@ const ClientList = () => {
             <h4 className="mb-0">
               Client's<span className="ps-2">({clientDataList?.length})</span>
             </h4>
+            <LDInput
+              id="searchData"
+              dataTestId="searchData"
+              name="searchData"
+              type="text"
+              placeholder="Search"
+              handleChange={handleKeyDownSearch}
+              className={clsx(styles.headerSearchBarWrap, "mb-0")}
+              suffix={svgIcons.searchIcon}
+            />
             {/* <Dropdown.Button
               menu={menuProps}
               onClick={handleButtonClick}
@@ -72,7 +88,9 @@ const ClientList = () => {
               {clientDataList?.length > 0 && (
                 <LDPagination
                   defaultCurrent={paginationData?.currentPage}
-                  total={paginationData?.pageSize}
+                  showTotal={paginationData?.pageSize}
+                  total={paginationServerData?.totalRecords}
+                  onChange={handleOrderTableChange}
                 />
               )}
             </div>

@@ -1,9 +1,18 @@
 import { useState, useEffect } from "react";
-import { doFetchAllCrewPendingList, doFetchCrewStatusUpdate } from "../../actions";
+import { toast } from "react-toastify";
+import {
+  doFetchAllCrewPendingList,
+  doFetchCrewStatusUpdate,
+} from "../../actions";
 
 export const useCrewPendingListHook = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [crewDataList, setCrewDataList] = useState({});
+  const [paginationServerData, setPaginationServerData] = useState();
+  const [rejectedReasonModal, setRejectedReasonModal] = useState(false);
+  const [crewData, setCrewData] = useState({
+    reason: "",
+  });
   const [paginationData, setPaginationData] = useState({
     currentPage: 1,
     pageSize: 10,
@@ -16,6 +25,7 @@ export const useCrewPendingListHook = () => {
     });
     if (crewListResponse?.status == 200) {
       setCrewDataList(crewListResponse?.data);
+      setPaginationServerData(crewListResponse?.pagination);
     }
     setIsLoading(false);
   };
@@ -24,12 +34,70 @@ export const useCrewPendingListHook = () => {
     doGetCrewList();
   }, [paginationData]);
 
-  const handleClickStatusUpdate = async (status, id) => {
-    const managementListResponse = await doFetchCrewStatusUpdate({ userId: id, is_active: status })
-    if (managementListResponse?.status == 200) {
-      doGetCrewList()
+  const handleKeyDownSearch = async (event) => {
+    setPaginationData((prev) => ({
+      ...prev,
+      search: event?.target?.value ? event?.target?.value : "",
+    }));
+  };
+  //   / handleTableChange
+  const handleOrderTableChange = (event, filter, sort) => {
+    try {
+      // console.log({ event });
+      setPaginationData((prev) => ({
+        ...prev,
+        currentPage: event,
+      }));
+    } catch (error) {
+      console.error("Error occurred during login:", error);
     }
-  }
+  };
 
-  return { isLoading, paginationData, crewDataList, handleClickStatusUpdate };
+  const handleInputChange = (event) => {
+    const { name, value } = event?.target;
+    setCrewData((prevState) => ({ ...prevState, [name]: value }));
+  };
+
+  const handleCloseModal = () => {
+    setRejectedReasonModal((prevState) => false);
+    setCrewData({});
+  };
+
+  const handleClickRejected = (status, id) => {
+    setRejectedReasonModal((prevState) => true);
+    setCrewData((prevState) => ({ ...prevState, status, id }));
+  };
+
+  const handleClickStatusUpdateSubmit = async (status, id) => {
+    if (crewData?.reason == "" && status == false) {
+      toast.error("User rejected reason required!");
+    }
+    const crewStatusUpdateResponse = await doFetchCrewStatusUpdate({
+      userId: id,
+      is_active: status,
+      reason: crewData?.reason,
+    });
+    if (crewStatusUpdateResponse?.status == 200) {
+      doGetCrewList();
+      handleCloseModal();
+      toast.error(crewStatusUpdateResponse?.message);
+    } else {
+      toast.error(crewStatusUpdateResponse?.data?.message);
+    }
+  };
+
+  return {
+    isLoading,
+    crewData,
+    paginationData,
+    crewDataList,
+    paginationServerData,
+    rejectedReasonModal,
+    handleKeyDownSearch,
+    handleClickRejected,
+    handleOrderTableChange,
+    handleClickStatusUpdateSubmit,
+    handleCloseModal,
+    handleInputChange,
+  };
 };

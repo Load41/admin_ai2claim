@@ -42,8 +42,15 @@ const menuProps = {
   onClick: handleMenuClick,
 };
 const ClientListPending = () => {
-  const { handleClickStatusUpdate, clientDataList, isLoading, paginationData } =
-    useClientPendingHook();
+  const {
+    handleClickStatusUpdate,
+    clientDataList,
+    isLoading,
+    paginationData,
+    paginationServerData,
+    handleKeyDownSearch,
+    handleOrderTableChange,
+  } = useClientPendingHook();
   return (
     <>
       <div className={clsx("admin-content")}>
@@ -74,7 +81,9 @@ const ClientListPending = () => {
               {clientDataList?.length > 0 && (
                 <LDPagination
                   defaultCurrent={paginationData?.currentPage}
-                  total={paginationData?.pageSize}
+                  showTotal={paginationData?.pageSize}
+                  total={paginationServerData?.totalRecords}
+                  onChange={handleOrderTableChange}
                 />
               )}
             </div>

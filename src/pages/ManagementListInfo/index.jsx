@@ -6,6 +6,8 @@ import { managementListData } from "../../constants/data";
 import styles from "./ManagementListInfo.module.css";
 import { Dropdown } from "antd";
 import { useManagementListHook } from "../../hooks";
+import { LDInput } from "../../components/LDInput";
+import { svgIcons } from "../../constants/icons";
 const handleButtonClick = (e) => {
   message.info("Click on left button.");
   console.log("click left button", e);
@@ -42,7 +44,13 @@ const menuProps = {
   onClick: handleMenuClick,
 };
 const ManagementListInfo = () => {
-  const { managementList, paginationData } = useManagementListHook();
+  const {
+    managementList,
+    paginationData,
+    paginationServerData,
+    handleKeyDownSearch,
+    handleOrderTableChange,
+  } = useManagementListHook();
   return (
     <>
       <div className={clsx("admin-content")}>
@@ -52,6 +60,16 @@ const ManagementListInfo = () => {
             <h4 className="mb-0">
               Management<span className="ps-2">({managementList?.length})</span>
             </h4>
+            <LDInput
+              id="searchData"
+              dataTestId="searchData"
+              name="searchData"
+              type="text"
+              placeholder="Search"
+              handleChange={handleKeyDownSearch}
+              className={clsx(styles.headerSearchBarWrap, "mb-0")}
+              suffix={svgIcons.searchIcon}
+            />
             {/* <Dropdown.Button
               menu={menuProps}
               onClick={handleButtonClick}
@@ -72,7 +90,9 @@ const ManagementListInfo = () => {
               {managementList?.length > 0 && (
                 <LDPagination
                   defaultCurrent={paginationData?.currentPage}
-                  total={paginationData?.pageSize}
+                  showTotal={paginationData?.pageSize}
+                  total={paginationServerData?.totalRecords}
+                  onChange={handleOrderTableChange}
                 />
               )}
             </div>

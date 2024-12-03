@@ -6,11 +6,20 @@ export function LDPagination({
   total,
   defaultCurrent,
   className,
+  onChange,
+  showTotal,
   ...rest
 }) {
   return (
     <>
-      <Pagination defaultCurrent={defaultCurrent} total={total} className={className} {...rest}/>
+      <Pagination
+        defaultCurrent={defaultCurrent}
+        total={total}
+        className={className}
+        defaultPageSize={showTotal}
+        onChange={onChange}
+        {...rest}
+      />
     </>
   );
 }
