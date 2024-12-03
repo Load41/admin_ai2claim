@@ -17,11 +17,11 @@ export const LDProjectsCard = ({
     <>
       {isNotSwiper ? (
         <>
-          <div className="row">
+          <div className="pendingProjectListCard-not-slider-grid d-grid">
             {projectCardData?.map((item, index) => {
               return (
-                <div className="col-md-6 col-xl-4 mt-4">
-                  <div className="pendingProjectListCard h-100" key={index}>
+                <div className="mt-4">
+                  <div className="pendingProjectListCard h-100 d-flex flex-column" key={index}>
                     <div
                       className="pendingProjectLisRow w-100"
                       onClick={() => navigate(`${redirectPath}/${item?.id}`)}
@@ -42,7 +42,7 @@ export const LDProjectsCard = ({
                             alt=""
                           />
                         </div>
-                        <h6 className="mt-3 mb-0 fw-bold word-break-word p small">
+                        <h6 className="mt-4 mb-0 fw-bold word-break-word p small pe-3">
                           {item?.username
                             ? item?.username
                             : item?.createdBy?.username
@@ -61,7 +61,7 @@ export const LDProjectsCard = ({
                                                 })} */}
                         </ul>
                         <div className="d-flex flex-column flex-lg-row w-100 mb-4">
-                          <h6 className="w-50 w-100-md mb-0 lh-base p small">
+                          <h6 className="w-50 w-100-md mb-0 lh-base p small fw-bold">
                             Projects Done{" "}
                             <b className="d-none d-lg-inline">:-</b>
                           </h6>
@@ -70,7 +70,7 @@ export const LDProjectsCard = ({
                           </h6>
                         </div>
                         <div className="d-flex flex-column flex-lg-row w-100 mb-4">
-                          <h6 className="w-50 w-100-md mb-0 lh-base p small">
+                          <h6 className="w-50 w-100-md mb-0 lh-base p small fw-bold">
                             Projects Pending{" "}
                             <b className="d-none d-lg-inline">:-</b>
                           </h6>
@@ -78,18 +78,18 @@ export const LDProjectsCard = ({
                             {item?.projectCount ? item?.projectCount : 0}
                           </h6>
                         </div>
-                        <div className="d-flex flex-column flex-lg-row w-100 mb-4">
-                          <h6 className="w-50 w-100-md mb-0 lh-base p small">
+                        <div className="d-flex flex-column flex-xxl-1900-row w-100 mb-4">
+                          <h6 className="w-50 w-100-md mb-0 lh-base p small fw-bold">
                             Address <b className="d-none d-lg-inline">:-</b>
                           </h6>
-                          <h6 className="w-50 w-100-md mb-0 lh-base p small word-break-word p small">
+                          <h6 className="w-50 w-100-xxl-1899 mb-0 lh-base p small word-break-word p small mt-3 mt-xxl-0">
                             {item?.address}
                           </h6>
                         </div>
                       </div>
                     </div>
                     {isBtn && (
-                      <div className="d-flex align-items-centr gap-5 justify-content-center mt-3 mt-xxl-2">
+                      <div className="d-flex align-items-centr gap-5 justify-content-center mt-auto pt-3">
                         <LDButton
                           type="fill"
                           shape={"round"}
@@ -172,7 +172,7 @@ export const LDProjectsCard = ({
                                       alt=""
                                     />
                                   </div>
-                                  <h6 className="mt-3 mb-0 fw-bold word-break-word p small">
+                                  <h6 className="mt-4 mb-0 fw-bold word-break-word p small pe-3">
                                     {item?.username
                                       ? item?.username
                                       : item?.createdBy?.username
@@ -191,7 +191,7 @@ export const LDProjectsCard = ({
                                                                 })} */}
                                   </ul>
                                   <div className="d-flex flex-column flex-lg-row w-100 mb-4">
-                                    <h6 className="w-50 w-100-md mb-0 lh-base p small">
+                                    <h6 className="w-50 w-100-md mb-0 lh-base p small fw-bold">
                                       Projects Done{" "}
                                       <b className="d-none d-lg-inline">:-</b>
                                     </h6>
@@ -202,7 +202,7 @@ export const LDProjectsCard = ({
                                     </h6>
                                   </div>
                                   <div className="d-flex flex-column flex-lg-row w-100 mb-4">
-                                    <h6 className="w-50 w-100-md mb-0 lh-base p small">
+                                    <h6 className="w-50 w-100-md mb-0 lh-base p small fw-bold">
                                       Projects Pending{" "}
                                       <b className="d-none d-lg-inline">:-</b>
                                     </h6>
@@ -212,12 +212,12 @@ export const LDProjectsCard = ({
                                         : 0}
                                     </h6>
                                   </div>
-                                  <div className="d-flex flex-column flex-lg-row w-100 mb-4">
-                                    <h6 className="w-50 w-100-md mb-0 lh-base p small">
+                                  <div className="d-flex flex-column flex-xxl-1600-row w-100 mb-4">
+                                    <h6 className="w-50 w-100-md mb-0 lh-base p small fw-bold">
                                       Address{" "}
                                       <b className="d-none d-lg-inline">:-</b>
                                     </h6>
-                                    <h6 className="w-50 w-100-md mb-0 lh-base p small word-break-word p small">
+                                    <h6 className="w-50 w-100-xxl mb-0 lh-base p small word-break-word p small mt-3 mt-xxl-0">
                                       {item?.address}
                                     </h6>
                                   </div>

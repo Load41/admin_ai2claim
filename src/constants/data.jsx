@@ -399,18 +399,22 @@ export const projectCardSwiperBreakPoints = {
     spaceBetween: 15,
   },
   1200: {
-    slidesPerView: 2.2,
+    slidesPerView: 2,
     spaceBetween: 15,
   },
-  1280: {
-    slidesPerView: 2.5,
+  1366: {
+    slidesPerView: 2.1,
     spaceBetween: 15,
   },
-  1440: {
-    slidesPerView: 2.7,
+  1600: {
+    slidesPerView: 2.4,
     spaceBetween: 20,
   },
   1680: {
+    slidesPerView: 2.5,
+    spaceBetween: 20,
+  },
+  1900: {
     slidesPerView: 3,
     spaceBetween: 24,
   },

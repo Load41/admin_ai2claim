@@ -55,21 +55,27 @@ table tbody tr td{
 }
 /* project css start */
 .pendingProjectListCard{
-  --pendingProjectListCardWidth: 100px;
+  --pendingProjectListCardWidth: 130px;
   border: 1px solid rgba(var(--clr-black), 0.5);
   padding: 15px;
   border-radius: 15px;
   background-color: rgba(var(--clr-black), 0.03);
+  min-height: 200px;
 }
 
 .pendingProjectListLeftCol > div{
-  width: var(--pendingProjectListCardWidth);
-  height: var(--pendingProjectListCardWidth);
+  width: calc(var(--pendingProjectListCardWidth) - 30px);
+  height: calc(var(--pendingProjectListCardWidth) - 30px);
   border-radius: 100%;
   border: 1px solid rgba(var(--clr-black), 0.2);
+  margin: 0 auto;
 }
 .aboutPendingProjectListCard{
   --pendingProjectListCardWidth: 150px;
+}
+.pendingProjectListCard-not-slider-grid{
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 0 15px;
 }
 .aboutPendingProjectListCard .pendingProjectListRightCol{
   padding-left: 4rem;
@@ -135,11 +141,16 @@ table tbody tr td{
   min-width: 300px;
 }
 @media (min-width: 1680px) and (max-width: 1799px) {
-  .pendingProjectListCard{
+  /* .pendingProjectListCard{
     --pendingProjectListCardWidth: 80px;
+  } */
+}
+@media (max-width: 1599px){
+  .pendingProjectListCard-not-slider-grid{
+    grid-template-columns: repeat(2, 1fr);
   }
 }
-@media (min-width: 1680px){
+@media (min-width: 1200px){
   .pendingProjectLisRow{
     display: flex;
   }
@@ -148,15 +159,7 @@ table tbody tr td{
   }
   .pendingProjectListRightCol{
     width: calc(100% - var(--pendingProjectListCardWidth));
-    padding-left: 15px;
-  }
-}
-@media (max-width: 1679px){
-  .pendingProjectListRightCol{
-    margin: 15px 0;
-  }
-  .pendingProjectListLeftCol > div{
-    margin: 0 auto;
+    padding-left: 0px;
   }
 }
 @media (max-width: 767px){
