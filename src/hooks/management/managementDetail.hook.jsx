@@ -20,5 +20,4 @@ export const useManagementDetailHook = () => {
   }, [id]);
 
   return { isLoading, managementData };
-  return {};
 };
