@@ -16,21 +16,23 @@ export const LDInput = ({
 }) => {
     return (
         <>
-            <Input
-                className={clsx(styles.customInput, className)}
-                id={id}
-                dataTestId={dataTestId}
-                name={name}
-                value={value}
-                type={type}
-                placeholder={placeholder}
-                onChange={handleChange}
-                suffix={suffix}
-                prefix={prefix}
-            />
-            {errorMessage && (
-                <div className={clsx(styles.errorMessage)}>{errorMessage}</div>
-            )}
+            <div className={clsx(styles.inputWrap)}>
+                <Input
+                    className={clsx(styles.customInput, className)}
+                    id={id}
+                    dataTestId={dataTestId}
+                    name={name}
+                    value={value}
+                    type={type}
+                    placeholder={placeholder}
+                    onChange={handleChange}
+                    suffix={suffix}
+                    prefix={prefix}
+                />
+                {errorMessage && (
+                    <p className={clsx(styles.errorMessage, "d-flex fw-400 text-red small error-msg-text mt-2 mb-0 letter-space-1")}>{errorMessage}</p>
+                )}
+            </div>
         </>
     )
 }

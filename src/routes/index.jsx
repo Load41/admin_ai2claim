@@ -14,6 +14,7 @@ import { ProtectedRoute } from "./ProtectedRoute";
 import AboutClient from "../pages/AboutClient";
 import AboutManagement from "../pages/AboutManagement";
 import AboutCrew from "../pages/AboutCrew";
+import ResetPassword from "../pages/Auth/ResetPassword";
 
 export const router = createBrowserRouter([
   {
@@ -71,7 +72,7 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: "/login",
+    path: "/",
     element: (
       <ProtectedRoute isAuth={false}>
         <AuthLayout />
@@ -79,8 +80,13 @@ export const router = createBrowserRouter([
     ),
     children: [
       {
-        index: true,
+        // index: true,
+        path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/reset-password",
+        element: <ResetPassword />,
       },
     ],
   },

@@ -1,7 +1,9 @@
+.inputWrap{
+    margin-bottom: 3rem;
+}
 .customInput{
     min-height: var(--form-control-hright);
     padding: 5px var(--form-control-space);
-    margin-bottom: 3rem;
 }
 .customInput :global input.ant-input{
     font-size: 16px;

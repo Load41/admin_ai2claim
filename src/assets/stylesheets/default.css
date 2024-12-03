@@ -616,4 +616,7 @@ hr {
 .swiper-slide{
   height: auto;
 }
+.letter-space-1{
+  letter-spacing: 1px;
+}
 /* DEFAULT CSS END */
