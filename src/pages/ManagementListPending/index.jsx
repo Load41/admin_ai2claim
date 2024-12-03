@@ -70,16 +70,18 @@ const ManagementListPending = () => {
             <h4 className="mb-0">
               Management<span className="ps-2">({managementList?.length})</span>
             </h4>
-            <LDInput
-              id="searchData"
-              dataTestId="searchData"
-              name="searchData"
-              type="text"
-              placeholder="Search"
-              handleChange={handleKeyDownSearch}
-              className={clsx(styles.headerSearchBarWrap, "mb-0")}
-              suffix={svgIcons.searchIcon}
-            />
+            <div className="ms-auto">
+              <LDInput
+                id="searchData"
+                dataTestId="searchData"
+                name="searchData"
+                type="text"
+                placeholder="Search"
+                handleChange={handleKeyDownSearch}
+                className={clsx("mb-0 search-min-300")}
+                suffix={svgIcons.searchIcon}
+              />
+            </div>
             {/* <Dropdown.Button menu={menuProps} onClick={handleButtonClick} className="w-auto">
               <h6 className="fw-medium mb-0">Sort by</h6>
             </Dropdown.Button> */}

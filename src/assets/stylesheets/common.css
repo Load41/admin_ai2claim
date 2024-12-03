@@ -130,6 +130,9 @@ table tbody tr td{
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 7px;
 }
+.search-min-300{
+  min-width: 300px;
+}
 @media (min-width: 1680px) and (max-width: 1799px) {
   .pendingProjectListCard{
     --pendingProjectListCardWidth: 80px;

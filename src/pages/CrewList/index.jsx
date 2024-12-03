@@ -60,16 +60,18 @@ const CrewList = () => {
             <h4 className="mb-0">
               Crew<span className="ps-2">({crewDataList?.length})</span>
             </h4>
-            <LDInput
-              id="searchData"
-              dataTestId="searchData"
-              name="searchData"
-              type="text"
-              placeholder="Search"
-              handleChange={handleKeyDownSearch}
-              className={clsx(styles.headerSearchBarWrap, "mb-0")}
-              suffix={svgIcons.searchIcon}
-            />
+            <div className="ms-auto">
+              <LDInput
+                id="searchData"
+                dataTestId="searchData"
+                name="searchData"
+                type="text"
+                placeholder="Search"
+                handleChange={handleKeyDownSearch}
+                className={clsx(styles.headerSearchBarWrap, "mb-0 search-min-300")}
+                suffix={svgIcons.searchIcon}
+              />
+            </div>
             {/* <Dropdown.Button
               menu={menuProps}
               onClick={handleButtonClick}
