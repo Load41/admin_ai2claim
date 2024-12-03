@@ -9,9 +9,9 @@ import {
 import { Breadcrumb, Layout, Menu, theme } from "antd";
 import { Link } from "react-router-dom";
 import { svgIcons } from "../../constants/icons";
-import styles from "./LDSidebar.module.css";
 import { logo } from "../../constants/imageData";
 import { clsx } from "clsx";
+import styles from "./LDSidebar.module.css";
 const { Header, Content, Footer, Sider } = Layout;
 function getItem(label, key, icon, children) {
   return {
@@ -157,7 +157,7 @@ export const LDSidebar = ({ mainContentWrap }) => {
         onCollapse={(value) => setCollapsed(value)}
         width={"250"}
         className=""
-        breakpoint="lg"
+        breakpoint="xl"
       >
         <div
           className={clsx(

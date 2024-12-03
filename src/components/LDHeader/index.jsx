@@ -166,8 +166,9 @@ export const LDHeader = ({}) => {
           handleChange={() => {
             return false;
           }}
-          className={clsx(styles.headerSearchBarWrap, "mb-0")}
+          className={clsx(styles.headerSearchBarWrap, "mb-0 search-min-300")}
           suffix={svgIcons.searchIcon}
+          isNotBottomSpace
         />
         <div className="d-flex align-items-center gap-5">
           <Popover content={notificationPopoverData} title="Notification">

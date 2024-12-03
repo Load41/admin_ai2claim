@@ -6,6 +6,7 @@ import { clientListPendingData } from "../../constants/data";
 import styles from "./ClientListPending.module.css";
 import { Dropdown } from "antd";
 import { useClientPendingHook } from "../../hooks";
+import { svgIcons } from "../../constants/icons";
 const handleButtonClick = (e) => {
   message.info("Click on left button.");
   console.log("click left button", e);
@@ -54,19 +55,33 @@ const ClientListPending = () => {
   return (
     <>
       <div className={clsx("admin-content")}>
-        <h3 className="text-bleu-de-france-one mb-0">Pending List</h3>
+        <div className="d-flex align-items-center justify-content-between gap-4">
+              <div className="d-flex align-items-center gap-3">
+                  <Link to="/" className="back-next-arrow-wrap flex-0-auto d-flex align-items-center justify-content-center rounded-circle cursor-pointer hover-text-white me-2">{svgIcons.backArrowFillIcon}</Link>
+                  <h4 className="text-bleu-de-france-one mb-0">Pending List</h4>
+                  <span>{svgIcons.doubleRightArrowIcon}</span>
+                  <h4 className="mb-0">
+                    Client's
+                    <span className="ps-2">
+                      ({clientDataList?.length ? clientDataList?.length : 0})
+                    </span>
+                  </h4>
+              </div>
+              <div className="">
+                <LDInput
+                    id="searchData"
+                    dataTestId="searchData"
+                    name="searchData"
+                    type="text"
+                    placeholder="Search"
+                    handleChange={handleKeyDownSearch}
+                    className={clsx(styles.headerSearchBarWrap, "mb-0 search-min-300")}
+                    suffix={svgIcons.searchIcon}
+                    isNotBottomSpace
+                  />
+                </div>
+        </div>
         <div className="w-100 mt-5">
-          <div className="d-flex align-items-center justify-content-between gap-4 w-100">
-            <h4 className="mb-0">
-              Client's
-              <span className="ps-2">
-                ({clientDataList?.length ? clientDataList?.length : 0})
-              </span>
-            </h4>
-            {/* <Dropdown.Button menu={menuProps} onClick={handleButtonClick} className="w-auto">
-              <h6 className="fw-medium mb-0">Sort by</h6>
-            </Dropdown.Button> */}
-          </div>
           <div>
             {clientDataList?.length > 0 && (
               <LDProjectsCard

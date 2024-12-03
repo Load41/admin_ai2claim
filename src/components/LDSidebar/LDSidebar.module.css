@@ -24,8 +24,18 @@
     transform: translateY(3px);
 }
 /* resposnive css */
-@media (max-width: 991px){
-    .logo{
-        max-width: 60px;
+@media (max-width: 1199px){
+    :global .ant-layout{
+        position: fixed;
+        top: 0;
+        z-index: 9;
+    }
+    :global .ant-layout-sider-collapsed{
+        width: var(--sidebar-size) !important;
+        min-width: var(--sidebar-size) !important;
+        max-width: var(--sidebar-size) !important;
+    }
+    :global  .ant-layout-sider-collapsed .ant-layout-sider-trigger{
+        width: var(--sidebar-size) !important;
     }
 }

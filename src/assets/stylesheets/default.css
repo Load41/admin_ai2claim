@@ -340,7 +340,8 @@ header,
 .hover-text-primary,
 .hover-text-secondary,
 .hover-text-light-white,
-.hover-text-white
+.hover-text-white,
+.hover-text-black
 .transition {
   transition: var(--transition);
 }
@@ -359,6 +360,10 @@ header,
 
 .hover-text-white:hover{
   color: rgba(var(--clr-white), 1) !important;
+}
+
+.hover-text-black:hover{
+  color: rgba(var(--clr-black), 1) !important;
 }
 
 .active-page,

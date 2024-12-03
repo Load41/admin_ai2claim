@@ -13,10 +13,14 @@ export const LDInput = ({
     suffix,
     errorMessage,
     prefix,
+    isNotBottomSpace
 }) => {
     return (
         <>
-            <div className={clsx(styles.inputWrap)}>
+            <div className={clsx(
+                isNotBottomSpace && "mb-0",
+                styles.inputWrap
+                )}>
                 <Input
                     className={clsx(styles.customInput, className)}
                     id={id}

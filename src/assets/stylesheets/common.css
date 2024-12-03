@@ -98,7 +98,8 @@ table tbody tr td{
 .back-next-arrow-wrap{
   width: 35px;
   height: 35px;
-  background-color: rgba(var(--clr-white), 1);
+  background-color: rgba(var(--clr-black), 1);
+  color: rgba(var(--clr-white), 1);
   transition: all 0.3s;
 }
 .back-next-arrow-wrap svg{
@@ -106,7 +107,7 @@ table tbody tr td{
   height: 25px;
 }
 .back-next-arrow-wrap:hover{
-  background-color: rgba(var(--clr-white), 50%);
+  background-color: var(--clr-bleu-de-france-one);
 }
 .back-next-arrow-wrap.rotate-arrow{
   transform: rotate(180deg);
@@ -156,5 +157,10 @@ table tbody tr td{
   }
   .pendingProjectListLeftCol > div{
     margin: 0 auto;
+  }
+}
+@media (max-width: 767px){
+  .admin-content{
+    height: calc(100vh - var(--header-height) - var(--footer-height) * 1.7);
   }
 }

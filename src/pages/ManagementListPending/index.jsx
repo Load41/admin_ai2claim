@@ -64,13 +64,16 @@ const ManagementListPending = () => {
   return (
     <>
       <div className={clsx("admin-content")}>
-        <h3 className="text-bleu-de-france-one mb-0">Pending List</h3>
-        <div className="w-100 mt-5">
-          <div className="d-flex align-items-center justify-content-between gap-4 w-100">
-            <h4 className="mb-0">
-              Management<span className="ps-2">({managementList?.length})</span>
-            </h4>
-            <div className="ms-auto">
+        <div className="d-flex align-items-center justify-content-between gap-4">
+          <div className="d-flex align-items-center gap-3">
+              <Link to="/" className="back-next-arrow-wrap flex-0-auto d-flex align-items-center justify-content-center rounded-circle cursor-pointer hover-text-white me-2">{svgIcons.backArrowFillIcon}</Link>
+              <h4 className="text-bleu-de-france-one mb-0">Pending List</h4>
+              <span>{svgIcons.doubleRightArrowIcon}</span>
+              <h4 className="mb-0">
+                Management<span className="ps-2">({managementList?.length})</span>
+              </h4>
+          </div>
+          <div className="">
               <LDInput
                 id="searchData"
                 dataTestId="searchData"
@@ -80,12 +83,11 @@ const ManagementListPending = () => {
                 handleChange={handleKeyDownSearch}
                 className={clsx("mb-0 search-min-300")}
                 suffix={svgIcons.searchIcon}
+                isNotBottomSpace
               />
             </div>
-            {/* <Dropdown.Button menu={menuProps} onClick={handleButtonClick} className="w-auto">
-              <h6 className="fw-medium mb-0">Sort by</h6>
-            </Dropdown.Button> */}
-          </div>
+        </div>
+        <div className="w-100 mt-5">
           <div>
             {managementList?.length > 0 && (
               <LDProjectsCard

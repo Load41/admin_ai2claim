@@ -64,6 +64,9 @@
 
     /* footer height */
     --footer-height: 48px;
+
+    /* sidebar size */
+    --sidebar-size: 80px;
   }
   
   @media (max-width: 767px) {
