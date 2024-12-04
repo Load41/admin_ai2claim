@@ -10,21 +10,26 @@ import {
 import { LDButton } from "../../components";
 import styles from "./AboutManagement.module.css";
 import { useManagementDetailHook } from "../../hooks";
+import { Link } from "react-router-dom";
 
 const AboutManagement = () => {
   const { isLoading, managementData } = useManagementDetailHook();
   return (
     <>
       <div className={clsx("admin-content")}>
-        <h3 className="text-bleu-de-france-one mb-0">Management</h3>
+        <div className="d-flex align-items-center justify-content-between flex-wrap gap-5 gap-xxl-4">
+            <div className="d-flex align-items-center flex-wrap gap-4 gap-xl-3">
+                <Link to="/management-list-pending" className="back-next-arrow-wrap flex-0-auto d-flex align-items-center justify-content-center rounded-circle cursor-pointer hover-text-white me-2">{svgIcons.backArrowFillIcon}</Link>
+                <h4 className="text-bleu-de-france-one mb-0">About Management</h4>
+                <b>{svgIcons.doubleRightArrowIcon}</b>
+                <Link to="/management-list-pending" className="h4 mb-0">
+                  Management<span className="ps-2"> </span>
+                </Link>
+                <b>{svgIcons.doubleRightArrowIcon}</b>
+                <h4 className="mb-0">{managementData?.createdBy?.username}</h4>
+            </div>
+        </div>
         <div className="w-100 mt-5">
-          <div className="d-flex align-items-center gap-2 w-100">
-            <h4 className="mb-0">
-              Management<span className="ps-2"> </span>
-            </h4>
-            <b>{svgIcons.doubleRightArrowIcon}</b>
-            <h4 className="mb-0">{managementData?.createdBy?.username}</h4>
-          </div>
           <div className="row mt-4">
             <div className="col-xxl-6">
               <div className="pendingProjectListCard aboutPendingProjectListCard h-100">
@@ -41,78 +46,78 @@ const AboutManagement = () => {
                         alt=""
                       />
                     </div>
-                    <h6 className="mt-3 mb-0 fw-bold word-break-word">
+                    <h6 className="mt-4 mb-0 fw-bold word-break-word">
                       {managementData?.createdBy?.username}
                     </h6>
                   </div>
                   <div
                     className={
-                      "pendingProjectListRightCol d-flex flex-column gap-4"
+                      "pendingProjectListRightCol d-flex flex-column gap-5 gap-md-4 mt-5 mt-xl-0"
                     }
                   >
-                    <div className="d-flex flex-column flex-lg-row w-100">
-                      <h6 className="w-35 w-100-md mb-0 lh-base">
-                        Company Name <b className="d-none d-lg-inline">:-</b>
+                    <div className="d-flex w-100">
+                      <h6 className="w-35 mb-0 lh-base fw-bold">
+                        Company Name <b className="d-none d-sm-inline">:-</b>
                       </h6>
-                      <h6 className="w-65 w-100-md mb-0 lh-base word-break-word">
+                      <h6 className="w-65 mb-0 lh-base word-break-word ps-3">
                         {managementData?.company_name}
                       </h6>
                     </div>
-                    <div className="d-flex flex-column flex-lg-row w-100">
-                      <h6 className="w-35 w-100-md mb-0 lh-base">
-                        Manager Name <b className="d-none d-lg-inline">:-</b>
+                    <div className="d-flex w-100">
+                      <h6 className="w-35 mb-0 lh-base fw-bold">
+                        Manager Name <b className="d-none d-sm-inline">:-</b>
                       </h6>
-                      <h6 className="w-65 w-100-md mb-0 lh-base word-break-word">
+                      <h6 className="w-65 mb-0 lh-base word-break-word ps-3">
                         Michael
                       </h6>
                     </div>
-                    <div className="d-flex flex-column flex-lg-row w-100">
-                      <h6 className="w-35 w-100-md mb-0 lh-base">
-                        Status <b className="d-none d-lg-inline">:-</b>
+                    <div className="d-flex w-100">
+                      <h6 className="w-35 mb-0 lh-base fw-bold">
+                        Status <b className="d-none d-sm-inline">:-</b>
                       </h6>
-                      <h6 className="w-65 w-100-md mb-0 lh-base word-break-word">
+                      <h6 className="w-65 mb-0 lh-base word-break-word ps-3">
                         {managementData?.createdBy?.is_active
                           ? "Active"
                           : "De-Active"}
                       </h6>
                     </div>
-                    <div className="d-flex flex-column flex-lg-row w-100">
-                      <h6 className="w-35 w-100-md mb-0 lh-base">
-                        Active Since <b className="d-none d-lg-inline">:-</b>
+                    <div className="d-flex w-100">
+                      <h6 className="w-35 mb-0 lh-base fw-bold">
+                        Active Since <b className="d-none d-sm-inline">:-</b>
                       </h6>
-                      <h6 className="w-65 w-100-md mb-0 lh-base word-break-word">
+                      <h6 className="w-65 mb-0 lh-base word-break-word ps-3">
                         {"-"}
                       </h6>
                     </div>
-                    <div className="d-flex flex-column flex-lg-row w-100">
-                      <h6 className="w-35 w-100-md mb-0 lh-base">
-                        Mobile <b className="d-none d-lg-inline">:-</b>
+                    <div className="d-flex w-100">
+                      <h6 className="w-35 mb-0 lh-base fw-bold">
+                        Mobile <b className="d-none d-sm-inline">:-</b>
                       </h6>
-                      <h6 className="w-65 w-100-md mb-0 lh-base word-break-word">
+                      <h6 className="w-65 mb-0 lh-base word-break-word ps-3">
                         {managementData?.createdBy?.mobile}
                       </h6>
                     </div>
-                    <div className="d-flex flex-column flex-lg-row w-100">
-                      <h6 className="w-35 w-100-md mb-0 lh-base">
-                        Email <b className="d-none d-lg-inline">:-</b>
+                    <div className="d-flex w-100">
+                      <h6 className="w-35 mb-0 lh-base fw-bold">
+                        Email <b className="d-none d-sm-inline">:-</b>
                       </h6>
-                      <h6 className="w-65 w-100-md mb-0 lh-base word-break-word">
+                      <h6 className="w-65 mb-0 lh-base word-break-word ps-3">
                         {managementData?.createdBy?.email}
                       </h6>
                     </div>
-                    <div className="d-flex flex-column flex-lg-row w-100">
-                      <h6 className="w-35 w-100-md mb-0 lh-base">
-                        Address <b className="d-none d-lg-inline">:-</b>
+                    <div className="d-flex w-100">
+                      <h6 className="w-35 mb-0 lh-base fw-bold">
+                        Address <b className="d-none d-sm-inline">:-</b>
                       </h6>
-                      <h6 className="w-65 w-100-md mb-0 lh-base word-break-word">
+                      <h6 className="w-65 mb-0 lh-base word-break-word ps-3">
                         {managementData?.address}
                       </h6>
                     </div>
-                    <div className="d-flex flex-column flex-lg-row w-100">
-                      <h6 className="w-35 w-100-md mb-0 lh-base">
-                        Website <b className="d-none d-lg-inline">:-</b>
+                    <div className="d-flex w-100">
+                      <h6 className="w-35 mb-0 lh-base fw-bold">
+                        Website <b className="d-none d-sm-inline">:-</b>
                       </h6>
-                      <h6 className="w-65 w-100-md mb-0 lh-base word-break-word">
+                      <h6 className="w-65 mb-0 lh-base word-break-word ps-3">
                         {managementData?.website}
                       </h6>
                     </div>

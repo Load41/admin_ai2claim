@@ -383,10 +383,10 @@ export const clientsCardData = [
 ]
 export const projectCardSwiperBreakPoints = {
   0: {
-    slidesPerView: 1.1,
+    slidesPerView: 1,
     spaceBetween: 10,
   },
-  400: {
+  576: {
     slidesPerView: 1.2,
     spaceBetween: 10,
   },

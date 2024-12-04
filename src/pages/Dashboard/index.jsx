@@ -16,8 +16,8 @@ const Dashboard = () => {
   return (
     <div className={clsx(styles.DashboardSection, "admin-content")}>
       <h3 className="text-bleu-de-france-one mb-0">Dashboard</h3>
-      <div className="w-100 mt-5">
-        <div className="d-flex align-items-center justify-content-between gap-4 w-100">
+      <div className="w-100 pt-4 pt-xl-0 mt-5">
+        <div className="d-flex align-items-center justify-content-between flex-wrap gap-4 w-100">
           <h4 className="mb-0">
             Management<span className="ps-2">({managementList?.length})</span>
           </h4>
@@ -34,8 +34,8 @@ const Dashboard = () => {
           )}
         </div>
       </div>
-      <div className="w-100 mt-5">
-        <div className="d-flex align-items-center justify-content-between gap-4 w-100">
+      <div className="w-100 pt-4 pt-xl-0 mt-5">
+        <div className="d-flex align-items-center justify-content-between flex-wrap gap-4 w-100">
           <h4 className="mb-0">
             Crew<span className="ps-2">({crewList?.length})</span>
           </h4>
@@ -52,8 +52,8 @@ const Dashboard = () => {
           )}
         </div>
       </div>
-      <div className="w-100 mt-5">
-        <div className="d-flex align-items-center justify-content-between gap-4 w-100">
+      <div className="w-100 pt-4 pt-xl-0 mt-5">
+        <div className="d-flex align-items-center justify-content-between flex-wrap gap-4 w-100">
           <h4 className="mb-0">
             Clients<span className="ps-2">({clientList?.length})</span>
           </h4>

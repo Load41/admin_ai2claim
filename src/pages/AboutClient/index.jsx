@@ -12,17 +12,21 @@ const AboutClient = () => {
   return (
     <>
       <div className={clsx("admin-content")}>
-        <h3 className="text-bleu-de-france-one mb-0"> Client</h3>
+        <div className="d-flex align-items-center justify-content-between flex-wrap gap-5 gap-xxl-4">
+            <div className="d-flex align-items-center flex-wrap gap-4 gap-xl-3">
+                <Link to="/client-list-pending" className="back-next-arrow-wrap flex-0-auto d-flex align-items-center justify-content-center rounded-circle cursor-pointer hover-text-white me-2">{svgIcons.backArrowFillIcon}</Link>
+                <h4 className="text-bleu-de-france-one mb-0">About Client</h4>
+                <b>{svgIcons.doubleRightArrowIcon}</b>
+                <Link to="/client-list-pending" className="h4 mb-0">
+                Client's<span className="ps-2">(150)</span>
+                </Link>
+                <b>{svgIcons.doubleRightArrowIcon}</b>
+                <h4 className="mb-0">
+                  {clientData?.firstName} {clientData?.lastName}
+                </h4>
+            </div>
+        </div>
         <div className="w-100 mt-5">
-          <div className="d-flex align-items-center gap-2 w-100">
-            <h4 className="mb-0">
-              Client's<span className="ps-2">(150)</span>
-            </h4>
-            <b>{svgIcons.doubleRightArrowIcon}</b>
-            <h4 className="mb-0">
-              {clientData?.firstName} {clientData?.lastName}
-            </h4>
-          </div>
           <div className="row mt-4">
             <div className="col-xxl-6 order-2 order-xxl-1">
               <div className="pendingProjectListCard aboutPendingProjectListCard h-100">
@@ -39,61 +43,61 @@ const AboutClient = () => {
                         alt=""
                       />
                     </div>
-                    <h6 className="mt-3 mb-0 fw-bold word-break-word">
+                    <h6 className="mt-4 mb-0 fw-bold word-break-word">
                       {" "}
                       {clientData?.username}
                     </h6>
                   </div>
                   <div
                     className={
-                      "pendingProjectListRightCol d-flex flex-column gap-4 ps-5 ps-xxl-0"
+                      "pendingProjectListRightCol d-flex flex-column gap-4 gap-5 gap-md-4 mt-5 mt-xl-0"
                     }
                   >
-                    <div className="d-flex flex-column flex-lg-row w-100">
-                      <h6 className="w-35 w-100-md mb-0 lh-base">
-                        Name <b className="d-none d-lg-inline">:-</b>
+                    <div className="d-flex w-100">
+                      <h6 className="w-35 mb-0 lh-base fw-bold">
+                        Name <b className="d-none d-sm-inline">:-</b>
                       </h6>
-                      <h6 className="w-65 w-100-md mb-0 lh-base word-break-word">
+                      <h6 className="w-65 w-100-md mb-0 lh-base word-break-word ps-3">
                         {clientData?.firstName} {clientData?.lastName}
                       </h6>
                     </div>
-                    <div className="d-flex flex-column flex-lg-row w-100">
-                      <h6 className="w-35 w-100-md mb-0 lh-base">
-                        Status <b className="d-none d-lg-inline">:-</b>
+                    <div className="d-flex w-100">
+                      <h6 className="w-35 mb-0 lh-base fw-bold">
+                        Status <b className="d-none d-sm-inline">:-</b>
                       </h6>
-                      <h6 className="w-65 w-100-md mb-0 lh-base word-break-word">
+                      <h6 className="w-65 w-100-md mb-0 lh-base word-break-word ps-3">
                         {clientData?.is_active ? "Active" : "Active"}
                       </h6>
                     </div>
-                    <div className="d-flex flex-column flex-lg-row w-100">
-                      <h6 className="w-35 w-100-md mb-0 lh-base">
-                        Active since <b className="d-none d-lg-inline">:-</b>
+                    <div className="d-flex w-100">
+                      <h6 className="w-35 mb-0 lh-base fw-bold">
+                        Active since <b className="d-none d-sm-inline">:-</b>
                       </h6>
-                      <h6 className="w-65 w-100-md mb-0 lh-base word-break-word">
+                      <h6 className="w-65 w-100-md mb-0 lh-base word-break-word ps-3">
                         2015
                       </h6>
                     </div>
-                    <div className="d-flex flex-column flex-lg-row w-100">
-                      <h6 className="w-35 w-100-md mb-0 lh-base">
-                        Mobile <b className="d-none d-lg-inline">:-</b>
+                    <div className="d-flex w-100">
+                      <h6 className="w-35 mb-0 lh-base fw-bold">
+                        Mobile <b className="d-none d-sm-inline">:-</b>
                       </h6>
-                      <h6 className="w-65 w-100-md mb-0 lh-base word-break-word">
+                      <h6 className="w-65 w-100-md mb-0 lh-base word-break-word ps-3">
                         {clientData?.mobile}
                       </h6>
                     </div>
-                    <div className="d-flex flex-column flex-lg-row w-100">
-                      <h6 className="w-35 w-100-md mb-0 lh-base">
-                        Email <b className="d-none d-lg-inline">:-</b>
+                    <div className="d-flex w-100">
+                      <h6 className="w-35 mb-0 lh-base fw-bold">
+                        Email <b className="d-none d-sm-inline">:-</b>
                       </h6>
-                      <h6 className="w-65 w-100-md mb-0 lh-base word-break-word">
+                      <h6 className="w-65 w-100-md mb-0 lh-base word-break-word ps-3">
                         {clientData?.email}
                       </h6>
                     </div>
-                    <div className="d-flex flex-column flex-lg-row w-100">
-                      <h6 className="w-35 w-100-md mb-0 lh-base">
-                        Address <b className="d-none d-lg-inline">:-</b>
+                    <div className="d-flex w-100">
+                      <h6 className="w-35 mb-0 lh-base fw-bold">
+                        Address <b className="d-none d-sm-inline">:-</b>
                       </h6>
-                      <h6 className="w-65 w-100-md mb-0 lh-base word-break-word">
+                      <h6 className="w-65 w-100-md mb-0 lh-base word-break-word ps-3">
                         {clientData?.address}
                       </h6>
                     </div>
@@ -115,7 +119,7 @@ const AboutClient = () => {
                 shape={"round"}
                 iconPosition={"end"}
                 isFillBtn
-                customClass={clsx("w-50")}
+                customClass={clsx("w-50 w-100-md")}
                 handleClick={() => {
                   return false;
                 }}
@@ -138,56 +142,56 @@ const AboutClient = () => {
                               "pendingProjectListRightCol ps-0 d-flex flex-column gap-4"
                             }
                           >
-                            <div className="d-flex flex-column flex-lg-row w-100">
-                              <h6 className="w-50 w-100-md mb-0 lh-base">
+                            <div className="d-flex flex-column flex-sm-row w-100">
+                              <h6 className="w-45 mb-0 lh-base fw-bold">
                                 Project {++index}{" "}
-                                <b className="d-none d-lg-inline">:-</b>
+                                <b className="d-none d-sm-inline">:-</b>
                               </h6>
-                              <h6 className="w-50 w-100-md mb-0 lh-base word-break-word">
+                              <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
                                 {projectData?.projectName}
                               </h6>
                             </div>
-                            <div className="d-flex flex-column flex-lg-row w-100">
-                              <h6 className="w-50 w-100-md mb-0 lh-base">
+                            <div className="d-flex flex-column flex-sm-row w-100">
+                              <h6 className="w-45 mb-0 lh-base fw-bold">
                                 Damage date{" "}
-                                <b className="d-none d-lg-inline">:-</b>
+                                <b className="d-none d-sm-inline">:-</b>
                               </h6>
-                              <h6 className="w-50 w-100-md mb-0 lh-base word-break-word">
+                              <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
                                 {projectData?.dateOfDamage}
                               </h6>
                             </div>
-                            <div className="d-flex flex-column flex-lg-row w-100">
-                              <h6 className="w-50 w-100-md mb-0 lh-base">
-                                Reason <b className="d-none d-lg-inline">:-</b>
+                            <div className="d-flex flex-column flex-sm-row w-100">
+                              <h6 className="w-45 mb-0 lh-base fw-bold">
+                                Reason <b className="d-none d-sm-inline">:-</b>
                               </h6>
-                              <h6 className="w-50 w-100-md mb-0 lh-base word-break-word">
+                              <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
                                 {projectData?.dateOfDamage}
                               </h6>
                             </div>
-                            <div className="d-flex flex-column flex-lg-row w-100">
-                              <h6 className="w-50 w-100-md mb-0 lh-base">
+                            <div className="d-flex flex-column flex-sm-row w-100">
+                              <h6 className="w-45 mb-0 lh-base fw-bold">
                                 Hired management{" "}
-                                <b className="d-none d-lg-inline">:-</b>
+                                <b className="d-none d-sm-inline">:-</b>
                               </h6>
-                              <h6 className="w-50 w-100-md mb-0 lh-base word-break-word">
+                              <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
                                 {"-"}
                               </h6>
                             </div>
-                            <div className="d-flex flex-column flex-lg-row w-100">
-                              <h6 className="w-50 w-100-md mb-0 lh-base">
+                            <div className="d-flex flex-column flex-sm-row w-100">
+                              <h6 className="w-45 mb-0 lh-base fw-bold">
                                 Hired crew{" "}
-                                <b className="d-none d-lg-inline">:-</b>
+                                <b className="d-none d-sm-inline">:-</b>
                               </h6>
-                              <h6 className="w-50 w-100-md mb-0 lh-base word-break-word">
+                              <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
                                 {"-"}
                               </h6>
                             </div>
-                            <div className="d-flex flex-column flex-lg-row w-100">
-                              <h6 className="w-50 w-100-md mb-0 lh-base">
+                            <div className="d-flex flex-column flex-sm-row w-100">
+                              <h6 className="w-45 mb-0 lh-base fw-bold">
                                 Uploaded docs{" "}
-                                <b className="d-none d-lg-inline">:-</b>
+                                <b className="d-none d-sm-inline">:-</b>
                               </h6>
-                              <div className="w505 w-100-md mb-0 d-flex flex-wrap gap-2">
+                              <div className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
                                 {projectData?.linkin?.insurance_company
                                   ?.fileName && (
                                   <Link
@@ -197,7 +201,7 @@ const AboutClient = () => {
                                     }
                                     target={"_blank"}
                                   >
-                                    <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0 text-center">
+                                    <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
                                       {
                                         projectData?.linkin?.insurance_company
                                           ?.fileName
@@ -210,7 +214,7 @@ const AboutClient = () => {
                                     to={projectData?.linkin?.material?.file}
                                     target={"_blank"}
                                   >
-                                    <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0 text-center">
+                                    <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
                                       {projectData?.linkin?.material?.fileName}
                                     </label>
                                   </Link>
@@ -220,7 +224,7 @@ const AboutClient = () => {
                                     to={projectData?.linkin?.optimation?.file}
                                     target={"_blank"}
                                   >
-                                    <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0 text-center">
+                                    <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
                                       {
                                         projectData?.linkin?.optimation
                                           ?.fileName
@@ -233,7 +237,7 @@ const AboutClient = () => {
                                     to={projectData?.linkin?.signature?.file}
                                     target={"_blank"}
                                   >
-                                    <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0 text-center">
+                                    <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
                                       {projectData?.linkin?.signature?.fileName}
                                     </label>
                                   </Link>
@@ -243,7 +247,7 @@ const AboutClient = () => {
                                     to={projectData?.linkin?.payment?.file}
                                     target={"_blank"}
                                   >
-                                    <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0 text-center">
+                                    <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
                                       {projectData?.linkin?.payment?.fileName}
                                     </label>
                                   </Link>
@@ -253,7 +257,7 @@ const AboutClient = () => {
                                     to={projectData?.linkin?.certificate?.file}
                                     target={"_blank"}
                                   >
-                                    <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0 text-center">
+                                    <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
                                       {
                                         projectData?.linkin?.certificate
                                           ?.fileName
@@ -269,7 +273,7 @@ const AboutClient = () => {
                                     }
                                     target={"_blank"}
                                   >
-                                    <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0 text-center">
+                                    <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
                                       {
                                         projectData?.linkin?.final_estimate
                                           ?.fileName
@@ -277,7 +281,7 @@ const AboutClient = () => {
                                     </label>
                                   </Link>
                                 )}
-                                {/* <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0 text-center">
+                                {/* <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
                                   {"-"}
                                 </label> */}
                               </div>
@@ -285,10 +289,10 @@ const AboutClient = () => {
                           </div>
                         </div>
                         <div className="col-xxl-6 text-center d-flex flex-column gap-4 align-items-xxl-center h-100 pt-5 pt-xxl-0">
-                          <h4 className="lh-base fw-medium">
+                          <h4 className="lh-base fw-medium mb-0">
                             Project was In progress.
                           </h4>
-                          <h4 className="lh-base fw-medium">
+                          <h4 className="lh-base fw-medium mb-0">
                             The review will be updated when the project was
                             finished
                           </h4>
@@ -298,7 +302,7 @@ const AboutClient = () => {
                             iconPosition={"end"}
                             isFillBtn
                             isOrangeBg
-                            customClass={clsx("w-50")}
+                            customClass={clsx("w-35")}
                             handleClick={() => {
                               return false;
                             }}
@@ -321,56 +325,56 @@ const AboutClient = () => {
                         "pendingProjectListRightCol ps-0 d-flex flex-column gap-4"
                       }
                     >
-                      <div className="d-flex flex-column flex-lg-row w-100">
-                        <h6 className="w-50 w-100-md mb-0 lh-base">
-                          Project 1 <b className="d-none d-lg-inline">:-</b>
+                      <div className="d-flex flex-column flex-sm-row w-100">
+                        <h6 className="w-45 mb-0 lh-base fw-bold">
+                          Project 1 <b className="d-none d-sm-inline">:-</b>
                         </h6>
-                        <h6 className="w-50 w-100-md mb-0 lh-base word-break-word">
+                        <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
                           Drimo
                         </h6>
                       </div>
-                      <div className="d-flex flex-column flex-lg-row w-100">
-                        <h6 className="w-50 w-100-md mb-0 lh-base">
-                          Damage date <b className="d-none d-lg-inline">:-</b>
+                      <div className="d-flex flex-column flex-sm-row w-100">
+                        <h6 className="w-45 mb-0 lh-base fw-bold">
+                          Damage date <b className="d-none d-sm-inline">:-</b>
                         </h6>
-                        <h6 className="w-50 w-100-md mb-0 lh-base word-break-word">
+                        <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
                           12/7/2024
                         </h6>
                       </div>
-                      <div className="d-flex flex-column flex-lg-row w-100">
-                        <h6 className="w-50 w-100-md mb-0 lh-base">
-                          Reason <b className="d-none d-lg-inline">:-</b>
+                      <div className="d-flex flex-column flex-sm-row w-100">
+                        <h6 className="w-45 mb-0 lh-base fw-bold">
+                          Reason <b className="d-none d-sm-inline">:-</b>
                         </h6>
-                        <h6 className="w-50 w-100-md mb-0 lh-base word-break-word">
+                        <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
                           12/7/2024
                         </h6>
                       </div>
-                      <div className="d-flex flex-column flex-lg-row w-100">
-                        <h6 className="w-50 w-100-md mb-0 lh-base">
+                      <div className="d-flex flex-column flex-sm-row w-100">
+                        <h6 className="w-45 mb-0 lh-base fw-bold">
                           Hired management{" "}
-                          <b className="d-none d-lg-inline">:-</b>
+                          <b className="d-none d-sm-inline">:-</b>
                         </h6>
-                        <h6 className="w-50 w-100-md mb-0 lh-base word-break-word">
+                        <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
                           MR. Roof
                         </h6>
                       </div>
-                      <div className="d-flex flex-column flex-lg-row w-100">
-                        <h6 className="w-50 w-100-md mb-0 lh-base">
-                          Hired crew <b className="d-none d-lg-inline">:-</b>
+                      <div className="d-flex flex-column flex-sm-row w-100">
+                        <h6 className="w-45 mb-0 lh-base fw-bold">
+                          Hired crew <b className="d-none d-sm-inline">:-</b>
                         </h6>
-                        <h6 className="w-50 w-100-md mb-0 lh-base word-break-word">
+                        <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
                           Harris & Hyde
                         </h6>
                       </div>
-                      <div className="d-flex flex-column flex-lg-row w-100">
-                        <h6 className="w-50 w-100-md mb-0 lh-base">
-                          Uploaded docs <b className="d-none d-lg-inline">:-</b>
+                      <div className="d-flex flex-column flex-sm-row w-100">
+                        <h6 className="w-45 mb-0 lh-base fw-bold">
+                          Uploaded docs <b className="d-none d-sm-inline">:-</b>
                         </h6>
-                        <div className="w505 w-100-md mb-0 d-flex flex-wrap gap-2">
-                          <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0 text-center">
+                        <div className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
+                          <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
                             Insurance 1
                           </label>
-                          <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0 text-center">
+                          <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
                             Insurance 2
                           </label>
                         </div>
@@ -378,10 +382,10 @@ const AboutClient = () => {
                     </div>
                   </div>
                   <div className="col-md-6 text-center d-flex flex-column gap-4 align-items-center h-100">
-                    <h4 className="lh-base fw-medium">
+                    <h4 className="lh-base fw-medium mb-0">
                       Project was In progress.
                     </h4>
-                    <h4 className="lh-base fw-medium">
+                    <h4 className="lh-base fw-medium mb-0">
                       The review will be updated when the project was finished
                     </h4>
                     <LDButton
@@ -390,7 +394,7 @@ const AboutClient = () => {
                       iconPosition={"end"}
                       isFillBtn
                       isDarkBlueBg
-                      customClass={clsx("w-50")}
+                      customClass={clsx("w-35")}
                       handleClick={() => {
                         return false;
                       }}
@@ -410,56 +414,56 @@ const AboutClient = () => {
                         "pendingProjectListRightCol ps-0 d-flex flex-column gap-4"
                       }
                     >
-                      <div className="d-flex flex-column flex-lg-row w-100">
-                        <h6 className="w-50 w-100-md mb-0 lh-base">
-                          Project 1 <b className="d-none d-lg-inline">:-</b>
+                      <div className="d-flex flex-column flex-sm-row w-100">
+                        <h6 className="w-45 mb-0 lh-base fw-bold">
+                          Project 1 <b className="d-none d-sm-inline">:-</b>
                         </h6>
-                        <h6 className="w-50 w-100-md mb-0 lh-base word-break-word">
+                        <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
                           Drimo
                         </h6>
                       </div>
-                      <div className="d-flex flex-column flex-lg-row w-100">
-                        <h6 className="w-50 w-100-md mb-0 lh-base">
-                          Damage date <b className="d-none d-lg-inline">:-</b>
+                      <div className="d-flex flex-column flex-sm-row w-100">
+                        <h6 className="w-45 mb-0 lh-base fw-bold">
+                          Damage date <b className="d-none d-sm-inline">:-</b>
                         </h6>
-                        <h6 className="w-50 w-100-md mb-0 lh-base word-break-word">
+                        <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
                           12/7/2024
                         </h6>
                       </div>
-                      <div className="d-flex flex-column flex-lg-row w-100">
-                        <h6 className="w-50 w-100-md mb-0 lh-base">
-                          Reason <b className="d-none d-lg-inline">:-</b>
+                      <div className="d-flex flex-column flex-sm-row w-100">
+                        <h6 className="w-45 mb-0 lh-base fw-bold">
+                          Reason <b className="d-none d-sm-inline">:-</b>
                         </h6>
-                        <h6 className="w-50 w-100-md mb-0 lh-base word-break-word">
+                        <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
                           12/7/2024
                         </h6>
                       </div>
-                      <div className="d-flex flex-column flex-lg-row w-100">
-                        <h6 className="w-50 w-100-md mb-0 lh-base">
+                      <div className="d-flex flex-column flex-sm-row w-100">
+                        <h6 className="w-45 mb-0 lh-base fw-bold">
                           Hired management{" "}
-                          <b className="d-none d-lg-inline">:-</b>
+                          <b className="d-none d-sm-inline">:-</b>
                         </h6>
-                        <h6 className="w-50 w-100-md mb-0 lh-base word-break-word">
+                        <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
                           MR. Roof
                         </h6>
                       </div>
-                      <div className="d-flex flex-column flex-lg-row w-100">
-                        <h6 className="w-50 w-100-md mb-0 lh-base">
-                          Hired crew <b className="d-none d-lg-inline">:-</b>
+                      <div className="d-flex flex-column flex-sm-row w-100">
+                        <h6 className="w-45 mb-0 lh-base fw-bold">
+                          Hired crew <b className="d-none d-sm-inline">:-</b>
                         </h6>
-                        <h6 className="w-50 w-100-md mb-0 lh-base word-break-word">
+                        <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
                           Harris & Hyde
                         </h6>
                       </div>
-                      <div className="d-flex flex-column flex-lg-row w-100">
-                        <h6 className="w-50 w-100-md mb-0 lh-base">
-                          Uploaded docs <b className="d-none d-lg-inline">:-</b>
+                      <div className="d-flex flex-column flex-sm-row w-100">
+                        <h6 className="w-45 mb-0 lh-base fw-bold">
+                          Uploaded docs <b className="d-none d-sm-inline">:-</b>
                         </h6>
-                        <div className="w505 w-100-md mb-0 d-flex flex-wrap gap-2">
-                          <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0 text-center">
+                        <div className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
+                          <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
                             Insurance 1
                           </label>
-                          <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0 text-center">
+                          <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
                             Insurance 2
                           </label>
                         </div>
@@ -467,10 +471,10 @@ const AboutClient = () => {
                     </div>
                   </div>
                   <div className="col-md-6 text-center d-flex flex-column gap-4 align-items-center h-100">
-                    <h4 className="lh-base fw-medium">
+                    <h4 className="lh-base fw-medium mb-0">
                       Project was In progress.
                     </h4>
-                    <h4 className="lh-base fw-medium">
+                    <h4 className="lh-base fw-medium mb-0">
                       The review will be updated when the project was finished
                     </h4>
                     <LDButton

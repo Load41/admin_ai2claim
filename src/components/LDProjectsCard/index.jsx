@@ -50,7 +50,7 @@ export const LDProjectsCard = ({
                             : item?.company_name}
                         </h6>
                       </div>
-                      <div className={"pendingProjectListRightCol"}>
+                      <div className={"pendingProjectListRightCol mt-4 mt-xl-0"}>
                         <ul className="d-flex align-items-center gap-2 mb-4">
                           {/* {item?.ratingProjectData.map((ratingItem, ratingIndex) => {
                                                     return (
@@ -60,21 +60,21 @@ export const LDProjectsCard = ({
                                                     );
                                                 })} */}
                         </ul>
-                        <div className="d-flex flex-column flex-lg-row w-100 mb-4">
-                          <h6 className="w-50 w-100-md mb-0 lh-base p small fw-bold">
+                        <div className="d-flex w-100 mb-4">
+                          <h6 className="w-75-xs w-50 mb-0 lh-base p small fw-bold">
                             Projects Done{" "}
                             <b className="d-none d-lg-inline">:-</b>
                           </h6>
-                          <h6 className="w-50 w-100-md mb-0 lh-base p small word-break-word p small">
+                          <h6 className="w-25-xs w-50 mb-0 lh-base p small word-break-word p small">
                             {item?.projectsDone ? item?.projectsDone : 0}
                           </h6>
                         </div>
-                        <div className="d-flex flex-column flex-lg-row w-100 mb-4">
-                          <h6 className="w-50 w-100-md mb-0 lh-base p small fw-bold">
+                        <div className="d-flex w-100 mb-4">
+                          <h6 className="w-75-xs w-50 mb-0 lh-base p small fw-bold">
                             Projects Pending{" "}
                             <b className="d-none d-lg-inline">:-</b>
                           </h6>
-                          <h6 className="w-50 w-100-md mb-0 lh-base p small word-break-word p small">
+                          <h6 className="w-25-xs w-50 mb-0 lh-base p small word-break-word p small">
                             {item?.projectCount ? item?.projectCount : 0}
                           </h6>
                         </div>
@@ -89,7 +89,7 @@ export const LDProjectsCard = ({
                       </div>
                     </div>
                     {isBtn && (
-                      <div className="d-flex align-items-centr gap-5 justify-content-center mt-auto pt-3">
+                      <div className="d-flex align-items-centr gap-4 gap-xl-5 justify-content-center mt-auto pt-5">
                         <LDButton
                           type="fill"
                           shape={"round"}
@@ -137,7 +137,7 @@ export const LDProjectsCard = ({
       ) : (
         <>
           <div className="row">
-            <div className="col-12 mt-4">
+            <div className="col-12 mt-5 mt-xxl-4">
               <LDSwiper
                 grabCursor={true}
                 //   clsssName={clsx(styles.dashboardSwiperCardWrap)}
@@ -180,7 +180,7 @@ export const LDProjectsCard = ({
                                       : item?.company_name}
                                   </h6>
                                 </div>
-                                <div className={"pendingProjectListRightCol"}>
+                                <div className={"pendingProjectListRightCol mt-4 mt-xl-0"}>
                                   <ul className="d-flex align-items-center gap-2 mb-4">
                                     {/* {item?.ratingProjectData?.map((ratingItem, ratingIndex) => {
                                                                     return (
@@ -190,32 +190,32 @@ export const LDProjectsCard = ({
                                                                     );
                                                                 })} */}
                                   </ul>
-                                  <div className="d-flex flex-column flex-lg-row w-100 mb-4">
-                                    <h6 className="w-50 w-100-md mb-0 lh-base p small fw-bold">
+                                  <div className="d-flex w-100 mb-4">
+                                    <h6 className="w-75-xs w-50 mb-0 lh-base p small fw-bold">
                                       Projects Done{" "}
-                                      <b className="d-none d-lg-inline">:-</b>
+                                      <b className="d-inline">:-</b>
                                     </h6>
-                                    <h6 className="w-50 w-100-md mb-0 lh-base p small word-break-word p small">
+                                    <h6 className="w-25-xs w-50 mb-0 lh-base p small word-break-word p small">
                                       {item?.projectsDone
                                         ? item?.projectsDone
                                         : 0}
                                     </h6>
                                   </div>
-                                  <div className="d-flex flex-column flex-lg-row w-100 mb-4">
-                                    <h6 className="w-50 w-100-md mb-0 lh-base p small fw-bold">
+                                  <div className="d-flex w-100 mb-4">
+                                    <h6 className="w-75-xs w-50 mb-0 lh-base p small fw-bold">
                                       Projects Pending{" "}
-                                      <b className="d-none d-lg-inline">:-</b>
+                                      <b className="d-inline">:-</b>
                                     </h6>
-                                    <h6 className="w-50 w-100-md mb-0 lh-base p small word-break-word p small">
+                                    <h6 className="w-25-xs w-50 mb-0 lh-base p small word-break-word p small">
                                       {item?.projectCount
                                         ? item?.projectCount
                                         : 0}
                                     </h6>
                                   </div>
                                   <div className="d-flex flex-column flex-xxl-1600-row w-100 mb-4">
-                                    <h6 className="w-50 w-100-md mb-0 lh-base p small fw-bold">
+                                    <h6 className="w-50 mb-0 lh-base p small fw-bold">
                                       Address{" "}
-                                      <b className="d-none d-lg-inline">:-</b>
+                                      <b className="d-inline">:-</b>
                                     </h6>
                                     <h6 className="w-50 w-100-xxl mb-0 lh-base p small word-break-word p small mt-3 mt-xxl-0">
                                       {item?.address}

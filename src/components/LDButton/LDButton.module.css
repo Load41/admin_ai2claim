@@ -157,7 +157,7 @@
     min-width: 120px;
   }
 }
-@media (max-width: 575px) {
+@media (max-width: 1199px) {
   .button:global.ant-btn {
     min-height: 45px;
     font-size: 14px;

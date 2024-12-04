@@ -73,16 +73,6 @@
   }
 }
 
-@media (min-width: 1440px) and (max-width: 1599px){
-  .aboutPendingProjectListCard .pendingProjectLisRow{
-    flex-direction: column;
-  }
-  .aboutPendingProjectListCard .pendingProjectListRightCol{
-    margin-top: 15px;
-    width: 100%;
-  }
-}
-
 @media (max-width: 1350px) {
   html {
     font-size: 6px;
@@ -130,12 +120,24 @@
   p.error-msg-text{
     font-size: 12px;
   }
+  .w-100-sm{
+    width: 100% !important;
+  }
+  .search-min-300 {
+    min-width: 100%;
+  }
 }
 
 @media (min-width: 576px){
   .btn-min-width.custom-min-width-md-btn.ant-btn,
   .btn-min-width.custom-min-width-md-btn{
     min-width: 350px;
+  }
+  .w-45{
+    width: 45%;
+  }
+  .w-55{
+    width: 55%;
   }
 }
 
@@ -157,5 +159,16 @@
   }
   table thead tr th, table tbody tr td{
     min-width: 100px;
+  }
+  .w-75-xs{
+    width: 75% !important;
+  }
+  .w-25-xs{
+    width: 25% !important;
+  }
+}
+@media (max-width: 349px){
+  .pendingProjectListCard{
+    padding: 10px;
   }
 }
