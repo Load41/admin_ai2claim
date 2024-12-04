@@ -6,12 +6,13 @@ import {
   TeamOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Breadcrumb, Layout, Menu, theme } from "antd";
-import { Link } from "react-router-dom";
+import { Breadcrumb, Layout, Menu, Modal, theme } from "antd";
+import { Link, useNavigate } from "react-router-dom";
 import { svgIcons } from "../../constants/icons";
 import { logo } from "../../constants/imageData";
 import { clsx } from "clsx";
 import styles from "./LDSidebar.module.css";
+import { LDButton } from "../LDButton";
 const { Header, Content, Footer, Sider } = Layout;
 function getItem(label, key, icon, children) {
   return {
@@ -141,6 +142,30 @@ const items = [
 ];
 
 export const LDSidebar = ({ mainContentWrap }) => {
+  const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleClickMenu = (data) => {
+    // console.log({ data });
+    if (data?.key == "14") {
+      showModal();
+    }
+  };
+  const handleClickLogout = (data) => {
+    setIsModalOpen(false);
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+    localStorage.clear();
+    navigate("/login");
+  };
+
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -180,7 +205,12 @@ export const LDSidebar = ({ mainContentWrap }) => {
           </i>
         </div>
         <div className="demo-logo-vertical" />
-        <Menu defaultSelectedKeys={["1"]} mode="inline" items={items} />
+        <Menu
+          onClick={handleClickMenu}
+          defaultSelectedKeys={["1"]}
+          mode="inline"
+          items={items}
+        />
       </Sider>
       {/* <Layout>
         <Header
@@ -203,7 +233,48 @@ export const LDSidebar = ({ mainContentWrap }) => {
         >
           Ant Design ©{new Date().getFullYear()} Created by Ant UED
         </Footer>
+        
       </Layout> */}
+      <Modal
+        title=""
+        open={isModalOpen}
+        onCancel={handleCancel}
+        centered
+        className="remove-footer-modal"
+      >
+        <div className="text-center d-flex flex-column gap-4">
+          <h2>Confirm</h2>
+          <h4>
+            Are you sure you want to{" "}
+            <span className="text-bleu-de-france-one">logout your account</span>{" "}
+            ?
+          </h4>
+          <div className="d-flex align-items-centr gap-5 justify-content-center mt-3 mt-xxl-2">
+            <LDButton
+              type="fill"
+              shape={"round"}
+              iconPosition={"end"}
+              isGreenBg
+              isSmallBtn
+              customClass={clsx("w-50")}
+              handleClick={handleClickLogout}
+            >
+              Yes
+            </LDButton>
+            <LDButton
+              type="fill"
+              shape={"round"}
+              iconPosition={"end"}
+              isRedBg
+              isSmallBtn
+              customClass={clsx("w-50")}
+              handleClick={handleCancel}
+            >
+              No
+            </LDButton>
+          </div>
+        </div>
+      </Modal>
     </Layout>
   );
 };

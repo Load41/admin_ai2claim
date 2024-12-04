@@ -5,6 +5,7 @@ import { companyOne } from "../../constants/imageData";
 import { LDButton } from "../../components";
 import styles from "./AboutClient.module.css";
 import { useClientDetailHook } from "../../hooks";
+import { Link } from "react-router-dom";
 
 const AboutClient = () => {
   const { clientData } = useClientDetailHook();
@@ -139,7 +140,7 @@ const AboutClient = () => {
                           >
                             <div className="d-flex flex-column flex-lg-row w-100">
                               <h6 className="w-50 w-100-md mb-0 lh-base">
-                                Project 1{" "}
+                                Project {++index}{" "}
                                 <b className="d-none d-lg-inline">:-</b>
                               </h6>
                               <h6 className="w-50 w-100-md mb-0 lh-base word-break-word">
@@ -187,9 +188,95 @@ const AboutClient = () => {
                                 <b className="d-none d-lg-inline">:-</b>
                               </h6>
                               <div className="w505 w-100-md mb-0 d-flex flex-wrap gap-2">
-                                <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0">
-                                  {"-"}
-                                </label>
+                                {projectData?.linkin?.insurance_company
+                                  ?.fileName && (
+                                  <Link
+                                    to={
+                                      projectData?.linkin?.insurance_company
+                                        ?.file
+                                    }
+                                    target={"_blank"}
+                                  >
+                                    <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0">
+                                      {
+                                        projectData?.linkin?.insurance_company
+                                          ?.fileName
+                                      }
+                                    </label>
+                                  </Link>
+                                )}
+                                {projectData?.linkin?.material?.fileName && (
+                                  <Link
+                                    to={projectData?.linkin?.material?.file}
+                                    target={"_blank"}
+                                  >
+                                    <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0">
+                                      {projectData?.linkin?.material?.fileName}
+                                    </label>
+                                  </Link>
+                                )}
+                                {projectData?.linkin?.optimation?.fileName && (
+                                  <Link
+                                    to={projectData?.linkin?.optimation?.file}
+                                    target={"_blank"}
+                                  >
+                                    <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0">
+                                      {
+                                        projectData?.linkin?.optimation
+                                          ?.fileName
+                                      }
+                                    </label>
+                                  </Link>
+                                )}
+                                {projectData?.linkin?.signature?.fileName && (
+                                  <Link
+                                    to={projectData?.linkin?.signature?.file}
+                                    target={"_blank"}
+                                  >
+                                    <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0">
+                                      {projectData?.linkin?.signature?.fileName}
+                                    </label>
+                                  </Link>
+                                )}
+                                {projectData?.linkin?.payment?.fileName && (
+                                  <Link
+                                    to={projectData?.linkin?.payment?.file}
+                                    target={"_blank"}
+                                  >
+                                    <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0">
+                                      {projectData?.linkin?.payment?.fileName}
+                                    </label>
+                                  </Link>
+                                )}
+                                {projectData?.linkin?.certificate?.fileName && (
+                                  <Link
+                                    to={projectData?.linkin?.certificate?.file}
+                                    target={"_blank"}
+                                  >
+                                    <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0">
+                                      {
+                                        projectData?.linkin?.certificate
+                                          ?.fileName
+                                      }
+                                    </label>
+                                  </Link>
+                                )}
+                                {projectData?.linkin?.final_estimate
+                                  ?.fileName && (
+                                  <Link
+                                    to={
+                                      projectData?.linkin?.final_estimate?.file
+                                    }
+                                    target={"_blank"}
+                                  >
+                                    <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0">
+                                      {
+                                        projectData?.linkin?.final_estimate
+                                          ?.fileName
+                                      }
+                                    </label>
+                                  </Link>
+                                )}
                                 {/* <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0">
                                   {"-"}
                                 </label> */}

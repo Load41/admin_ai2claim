@@ -22,12 +22,15 @@ export const LDHeader = ({}) => {
   const showModal = () => {
     setIsModalOpen(true);
   };
-  const handleOk = () => {
+  const handleCancel = () => {
     setIsModalOpen(false);
   };
-  const handleCancel = () => {
-    navigate("/login");
+  const handleClickLogout = (data) => {
     setIsModalOpen(false);
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+    localStorage.clear();
+    navigate("/login");
   };
 
   // logout modal js end
@@ -192,7 +195,6 @@ export const LDHeader = ({}) => {
       <Modal
         title=""
         open={isModalOpen}
-        onOk={handleOk}
         onCancel={handleCancel}
         centered
         className="remove-footer-modal"
@@ -212,7 +214,7 @@ export const LDHeader = ({}) => {
               isGreenBg
               isSmallBtn
               customClass={clsx("w-50")}
-              handleClick={handleCancel}
+              handleClick={handleClickLogout}
             >
               Yes
             </LDButton>

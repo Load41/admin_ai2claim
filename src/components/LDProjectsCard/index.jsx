@@ -20,8 +20,8 @@ export const LDProjectsCard = ({
           <div className="pendingProjectListCard-not-slider-grid d-grid">
             {projectCardData?.map((item, index) => {
               return (
-                <div className="mt-4">
-                  <div className="pendingProjectListCard h-100 d-flex flex-column" key={index}>
+                <div className="mt-4" key={index}>
+                  <div className="pendingProjectListCard h-100 d-flex flex-column">
                     <div
                       className="pendingProjectLisRow w-100"
                       onClick={() => navigate(`${redirectPath}/${item?.id}`)}
@@ -147,7 +147,7 @@ export const LDProjectsCard = ({
                     {projectCardData?.length > 0 &&
                       projectCardData?.map((item, index) => {
                         return (
-                          <SwiperSlide>
+                          <SwiperSlide key={index}>
                             <div
                               className="pendingProjectListCard h-100"
                               key={index}
