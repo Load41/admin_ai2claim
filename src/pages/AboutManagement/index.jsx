@@ -26,7 +26,7 @@ const AboutManagement = () => {
             <h4 className="mb-0">{managementData?.createdBy?.username}</h4>
           </div>
           <div className="row mt-4">
-            <div className="col-md-6">
+            <div className="col-xxl-6">
               <div className="pendingProjectListCard aboutPendingProjectListCard h-100">
                 <div className="pendingProjectLisRow w-100">
                   <div
@@ -120,7 +120,7 @@ const AboutManagement = () => {
                 </div>
               </div>
             </div>
-            <div className="col-md-6 ps-5">
+            <div className="col-xxl-6 ps-xxl-5 mt-5 mt-xxl-0">
               <div className="d-flex align-items-center gap-4 justify-content-between">
                 {/* <h6 className="fw-bold">Overall Rating:</h6>
                 <ul className="d-flex align-items-center justify-content-end gap-2 mb-4">
@@ -131,7 +131,7 @@ const AboutManagement = () => {
                   <li className="text-aureolin">{svgIcons.starIcon}</li>
                 </ul> */}
               </div>
-              <div className="d-flex align-items-center flex-wrap gap-4 mt-4">
+              <div className="d-flex align-items-center flex-wrap gap-4 mt-xxl-4">
                 <LDButton
                   type="fill"
                   shape={"round"}
@@ -171,14 +171,14 @@ const AboutManagement = () => {
               </div>
             </div>
           </div>
-          <div className="row mt-4 align-items-start">
-            <div className="col-md-6">
+          <div className="row align-items-start">
+            <div className="col-xxl-6 mt-5 mt-xxl-4">
               <div className="pendingProjectListCard d-flex flex-column gap-4">
                 <h4 className="mb-0">About</h4>
                 <p className="lh-base mb-0">{managementData?.description}</p>
               </div>
             </div>
-            <div className="col-md-6 d-grid about-crew-management-img-grid gap-4">
+            <div className="col-xxl-6 d-grid about-crew-management-img-grid gap-4 mt-5 mt-xxl-4">
               {managementData?.images &&
                 managementData?.images?.map((imageItem, index) => (
                   <div className="ratio ratio-16x9" key={index}>

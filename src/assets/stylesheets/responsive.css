@@ -73,6 +73,16 @@
   }
 }
 
+@media (min-width: 1440px) and (max-width: 1599px){
+  .aboutPendingProjectListCard .pendingProjectLisRow{
+    flex-direction: column;
+  }
+  .aboutPendingProjectListCard .pendingProjectListRightCol{
+    margin-top: 15px;
+    width: 100%;
+  }
+}
+
 @media (max-width: 1350px) {
   html {
     font-size: 6px;

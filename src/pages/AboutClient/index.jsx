@@ -24,7 +24,7 @@ const AboutClient = () => {
             </h4>
           </div>
           <div className="row mt-4">
-            <div className="col-md-6">
+            <div className="col-xxl-6 order-2 order-xxl-1">
               <div className="pendingProjectListCard aboutPendingProjectListCard h-100">
                 <div className="pendingProjectLisRow w-100">
                   <div
@@ -46,7 +46,7 @@ const AboutClient = () => {
                   </div>
                   <div
                     className={
-                      "pendingProjectListRightCol d-flex flex-column gap-4"
+                      "pendingProjectListRightCol d-flex flex-column gap-4 ps-5 ps-xxl-0"
                     }
                   >
                     <div className="d-flex flex-column flex-lg-row w-100">
@@ -101,7 +101,7 @@ const AboutClient = () => {
                 </div>
               </div>
             </div>
-            <div className="col-md-5 offset-1 text-end">
+            <div className="col-xxl-5 offset-xxl-1 text-end mb-5 mb-xxl-0 order-1 order-xxl-2">
               {/* <h6 className="fw-bold">Overall Rating:</h6> */}
               {/* <ul className="d-flex align-items-center justify-content-end gap-2 mb-4">
                 <li className="text-aureolin">{svgIcons.starIcon}</li>
@@ -132,7 +132,7 @@ const AboutClient = () => {
                   <div className="w-100" key={index}>
                     <div className="pendingProjectListCard aboutListProjectListCard h-100">
                       <div className="pendingProjectLisRow row w-100 mx-0 h-100 align-items-center">
-                        <div className="col-md-6 h-100">
+                        <div className="col-xxl-6 h-100 pb-5 pb-xxl-0">
                           <div
                             className={
                               "pendingProjectListRightCol ps-0 d-flex flex-column gap-4"
@@ -197,7 +197,7 @@ const AboutClient = () => {
                                     }
                                     target={"_blank"}
                                   >
-                                    <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0">
+                                    <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0 text-center">
                                       {
                                         projectData?.linkin?.insurance_company
                                           ?.fileName
@@ -210,7 +210,7 @@ const AboutClient = () => {
                                     to={projectData?.linkin?.material?.file}
                                     target={"_blank"}
                                   >
-                                    <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0">
+                                    <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0 text-center">
                                       {projectData?.linkin?.material?.fileName}
                                     </label>
                                   </Link>
@@ -220,7 +220,7 @@ const AboutClient = () => {
                                     to={projectData?.linkin?.optimation?.file}
                                     target={"_blank"}
                                   >
-                                    <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0">
+                                    <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0 text-center">
                                       {
                                         projectData?.linkin?.optimation
                                           ?.fileName
@@ -233,7 +233,7 @@ const AboutClient = () => {
                                     to={projectData?.linkin?.signature?.file}
                                     target={"_blank"}
                                   >
-                                    <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0">
+                                    <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0 text-center">
                                       {projectData?.linkin?.signature?.fileName}
                                     </label>
                                   </Link>
@@ -243,7 +243,7 @@ const AboutClient = () => {
                                     to={projectData?.linkin?.payment?.file}
                                     target={"_blank"}
                                   >
-                                    <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0">
+                                    <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0 text-center">
                                       {projectData?.linkin?.payment?.fileName}
                                     </label>
                                   </Link>
@@ -253,7 +253,7 @@ const AboutClient = () => {
                                     to={projectData?.linkin?.certificate?.file}
                                     target={"_blank"}
                                   >
-                                    <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0">
+                                    <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0 text-center">
                                       {
                                         projectData?.linkin?.certificate
                                           ?.fileName
@@ -269,7 +269,7 @@ const AboutClient = () => {
                                     }
                                     target={"_blank"}
                                   >
-                                    <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0">
+                                    <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0 text-center">
                                       {
                                         projectData?.linkin?.final_estimate
                                           ?.fileName
@@ -277,14 +277,14 @@ const AboutClient = () => {
                                     </label>
                                   </Link>
                                 )}
-                                {/* <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0">
+                                {/* <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0 text-center">
                                   {"-"}
                                 </label> */}
                               </div>
                             </div>
                           </div>
                         </div>
-                        <div className="col-md-6 text-center d-flex flex-column gap-4 align-items-center h-100">
+                        <div className="col-xxl-6 text-center d-flex flex-column gap-4 align-items-xxl-center h-100 pt-5 pt-xxl-0">
                           <h4 className="lh-base fw-medium">
                             Project was In progress.
                           </h4>
@@ -367,10 +367,10 @@ const AboutClient = () => {
                           Uploaded docs <b className="d-none d-lg-inline">:-</b>
                         </h6>
                         <div className="w505 w-100-md mb-0 d-flex flex-wrap gap-2">
-                          <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0">
+                          <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0 text-center">
                             Insurance 1
                           </label>
-                          <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0">
+                          <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0 text-center">
                             Insurance 2
                           </label>
                         </div>
@@ -456,10 +456,10 @@ const AboutClient = () => {
                           Uploaded docs <b className="d-none d-lg-inline">:-</b>
                         </h6>
                         <div className="w505 w-100-md mb-0 d-flex flex-wrap gap-2">
-                          <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0">
+                          <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0 text-center">
                             Insurance 1
                           </label>
-                          <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0">
+                          <label className="py-1 px-2 bg-fortress-grey text-black p sm mb-0 text-center">
                             Insurance 2
                           </label>
                         </div>
