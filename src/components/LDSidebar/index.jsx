@@ -86,23 +86,47 @@ const items = [
   ),
   getItem(
     <>
-      <Link to="/coming-soon">Transactions</Link>
+      <h6 className="mb-0">Rejected files</h6>
     </>,
     "7",
+    svgIcons.fileFillIcon,
+    [
+      getItem(
+        <>
+          <Link to="/management-rejected">Management</Link>
+        </>,
+        "71",
+        svgIcons.crosshairFillIcon
+      ),
+      getItem(
+        <>
+          <Link to="/crew-rejected">Crew</Link>
+        </>,
+        "72",
+        svgIcons.focusFillIcon
+      ),
+    ]
+  ),
+
+  getItem(
+    <>
+      <Link to="/coming-soon">Transactions</Link>
+    </>,
+    "8",
     svgIcons.bulkPost
   ),
   getItem(
     <>
       <Link to="/coming-soon">Complaints(70+)</Link>
     </>,
-    "8",
+    "9",
     svgIcons.singlePost
   ),
   getItem(
     <>
       <Link to="/coming-soon">Approved things</Link>
     </>,
-    "9",
+    "10",
     svgIcons.shippersList
   ),
   // getItem(<><Link to="/coming-soon">Account</Link></>, '10', svgIcons.consigneeList),
@@ -110,21 +134,21 @@ const items = [
     <>
       <h6 className="mb-0">Account</h6>
     </>,
-    "10",
+    "11",
     svgIcons.consigneeList,
     [
       getItem(
         <>
           <Link to="/edit-profile">Edit</Link>
         </>,
-        "101",
+        "111",
         svgIcons.editIcon
       ),
       getItem(
         <>
           <Link to="/change-password">Change password</Link>
         </>,
-        "102",
+        "112",
         svgIcons.changePasswordIcon
       ),
     ]
@@ -133,12 +157,12 @@ const items = [
     <>
       <Link to="/coming-soon">About</Link>
     </>,
-    "11",
+    "12",
     svgIcons.history
   ),
   // getItem(<><Link to="/coming-soon">Logout</Link></>, '12', svgIcons.history),
   // getItem(<><Link to="/coming-soon">Trucks</Link></>, '13', svgIcons.trucks),
-  getItem(<>Logout</>, "14", svgIcons.logOut),
+  getItem(<>Logout</>, "13", svgIcons.logOut),
 ];
 
 export const LDSidebar = ({ mainContentWrap }) => {

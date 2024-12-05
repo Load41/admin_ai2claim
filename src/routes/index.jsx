@@ -17,6 +17,8 @@ import AboutCrew from "../pages/AboutCrew";
 import ResetPassword from "../pages/Auth/ResetPassword";
 import EditProfile from "../pages/Account/EditProfile";
 import ChangePassword from "../pages/Account/ChangePassword";
+import RejectedManagement from "../pages/RejectedFiles/RejectedManagement";
+import RejectedCrew from "../pages/RejectedFiles/RejectedCrew";
 
 export const router = createBrowserRouter([
   {
@@ -78,6 +80,14 @@ export const router = createBrowserRouter([
       {
         path: "/change-password",
         element: <ChangePassword />,
+      },
+      {
+        path: "/management-rejected",
+        element: <RejectedManagement />,
+      },
+      {
+        path: "/crew-rejected",
+        element: <RejectedCrew />,
       },
     ],
   },
