@@ -166,6 +166,9 @@
   .w-25-xs{
     width: 25% !important;
   }
+  .w-100-xs{
+    width: 100% !important;
+  }
 }
 @media (max-width: 349px){
   .pendingProjectListCard{

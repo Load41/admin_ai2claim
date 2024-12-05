@@ -469,6 +469,10 @@ ul li {
   cursor: pointer;
 }
 
+.cursor.cursor-auto{
+  cursor: auto;
+}
+
 .heading-text {
   font-family: var(--font-primary);
   font-size: var(--text-xxl);

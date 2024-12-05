@@ -1,0 +1,20 @@
+.pendingProjectListCard{
+    background-color: rgba(var(--clr-black), 0.01);
+}
+.pendingProjectListCard :global .pendingProjectListRightCol{
+    padding-left: 15px;
+}
+/* responsive css */
+@media (min-width: 1440px) and (max-width: 1599px) {
+    .pendingProjectListCard :global .pendingProjectListRightCol{
+        padding-left: 5px;
+    }
+}
+@media (max-width: 1199px){
+    /* .pendingProjectListCard :global .pendingProjectListLeftCol > div{
+        margin: 0;
+    } */
+    .pendingProjectListCard :global .pendingProjectListRightCol{
+        padding-left: 0;
+    }
+}

@@ -1277,3 +1277,84 @@ export const clientListPendingData = [
     address: "1006 W Centennial Rd, Papillion, NE 68046, United States."
   },
 ]
+
+export const crewRejectedListData = [
+  {
+    img: companyOne,
+    projectName: "ROOFLINE",
+    ratingProjectData: [
+      { icon: svgIcons.starIcon },
+      { icon: svgIcons.starIcon },
+      { icon: svgIcons.starIcon },
+      { icon: svgIcons.starIcon },
+      { icon: svgIcons.starIcon },
+    ],
+    projectsReason: "in sufficient details due it, we are unable to process the request. in sufficient details due it, we are unable to process the request.",
+    projectDone: "257",
+    projectPending: "20",
+    address: "1006 W Centennial Rd, Papillion, NE 68046, United States."
+  },
+  {
+    img: companyTwo,
+    projectName: "ROOFLINE",
+    ratingProjectData: [
+      { icon: svgIcons.starIcon },
+      { icon: svgIcons.starIcon },
+      { icon: svgIcons.starIcon },
+      { icon: svgIcons.starIcon },
+      { icon: svgIcons.starIcon },
+    ],
+    projectsReason: "in sufficient details due it, we are unable to process the request. in sufficient details due it, we are unable to process the request.",
+    projectDone: "257",
+    projectPending: "20",
+    address: "1006 W Centennial Rd, Papillion, NE 68046, United States."
+  },
+  {
+    img: manWorkerFive,
+    projectName: "ROOFLINE",
+    ratingProjectData: [
+      { icon: svgIcons.starIcon },
+      { icon: svgIcons.starIcon },
+      { icon: svgIcons.starIcon },
+      { icon: svgIcons.starIcon },
+      { icon: svgIcons.starIcon },
+    ],
+    projectsReason: "in sufficient details due it, we are unable to process the request. in sufficient details due it, we are unable to process the request.",
+    projectDone: "257",
+    projectPending: "20",
+    address: "1006 W Centennial Rd, Papillion, NE 68046, United States."
+  },
+]
+
+export const managementRejectedListData = [
+  {
+    img: companyTwo,
+    projectName: "ROOFLINE",
+    ratingProjectData: [
+      { icon: svgIcons.starIcon },
+      { icon: svgIcons.starIcon },
+      { icon: svgIcons.starIcon },
+      { icon: svgIcons.starIcon },
+      { icon: svgIcons.starIcon },
+    ],
+    projectsReason: "in sufficient details due it, we are unable to process the request. in sufficient details due it, we are unable to process the request.",
+    projectDone: "257",
+    projectPending: "20",
+    address: "1006 W Centennial Rd, Papillion, NE 68046, United States."
+  },
+  {
+    img: companyOne,
+    projectName: "ROOFLINE",
+    ratingProjectData: [
+      { icon: svgIcons.starIcon },
+      { icon: svgIcons.starIcon },
+      { icon: svgIcons.starIcon },
+      { icon: svgIcons.starIcon },
+      { icon: svgIcons.starIcon },
+    ],
+    projectsReason: "in sufficient details due it, we are unable to process the request. in sufficient details due it, we are unable to process the request.",
+    projectDone: "257",
+    projectPending: "20",
+    address: "1006 W Centennial Rd, Papillion, NE 68046, United States."
+  },
+]

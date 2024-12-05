@@ -6,3 +6,4 @@ export * from "./LDSwiper";
 export * from "./LDButton";
 export * from "./LDPagination";
 export * from "./LDFileUpload";
+export * from "./LDRejectedProjectCard";
