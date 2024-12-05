@@ -25,6 +25,18 @@ export const doFetchAllCrewPendingList = async (data) => {
     return error.response;
   }
 };
+export const doFetchAllCrewRejectList = async (data) => {
+  try {
+    const response = await axiosApi({
+      method: "get",
+      url: `admin/crew/reject-list?page=${data?.currentPage}&pageSize=${data?.pageSize}&search=${data?.search}`,
+    });
+    return response.data;
+  } catch (error) {
+    console.log({ error });
+    return error.response;
+  }
+};
 
 export const doFetchCrewCreate = async (data) => {
   try {

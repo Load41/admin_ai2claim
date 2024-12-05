@@ -25,6 +25,18 @@ export const doFetchAllManagementPendingList = async (data) => {
     return error.response;
   }
 };
+export const doFetchAllManagementRejectList = async (data) => {
+  try {
+    const response = await axiosApi({
+      method: "get",
+      url: `admin/management/reject-list?page=${data?.currentPage}&pageSize=${data?.pageSize}&search=${data?.search}`,
+    });
+    return response.data;
+  } catch (error) {
+    console.log({ error });
+    return error.response;
+  }
+};
 
 export const doFetchManagementCreate = async (data) => {
   try {
@@ -58,7 +70,7 @@ export const doFetchManagementDetail = async (id) => {
   try {
     const response = await axiosApi({
       method: "get",
-      url: `admin/management/detail/${id}`,
+      url: `admin/management/update/${id}`,
     });
     return response.data;
   } catch (error) {
@@ -79,12 +91,13 @@ export const doFetchManagementDelete = async (id) => {
     return error.response;
   }
 };
+
 export const doFetchManagementStatusUpdate = async (data) => {
   try {
     const response = await axiosApi({
       method: "post",
       url: `admin/management/status-update`,
-      data: data,
+      data: data
     });
     return response.data;
   } catch (error) {
