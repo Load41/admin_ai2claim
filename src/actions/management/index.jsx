@@ -70,7 +70,7 @@ export const doFetchManagementDetail = async (id) => {
   try {
     const response = await axiosApi({
       method: "get",
-      url: `admin/management/update/${id}`,
+      url: `admin/management/detail/${id}`,
     });
     return response.data;
   } catch (error) {

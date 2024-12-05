@@ -79,7 +79,7 @@ export const useManagementRejectListHook = () => {
     if (managementListResponse?.status == 200) {
       doGetManagementList();
       handleCloseModal();
-      toast.error(managementListResponse?.message);
+      toast.success(managementListResponse?.message);
     } else {
       toast.error(managementListResponse?.data?.message);
     }
