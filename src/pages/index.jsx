@@ -10,3 +10,4 @@ export * from "./Auth";
 export * from "./AboutClient";
 export * from "./AboutManagement";
 export * from "./AboutCrew";
+export * from "./Account";

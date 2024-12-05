@@ -5,3 +5,4 @@ export * from "./LDProjectsCard"
 export * from "./LDSwiper";
 export * from "./LDButton";
 export * from "./LDPagination";
+export * from "./LDFileUpload";
