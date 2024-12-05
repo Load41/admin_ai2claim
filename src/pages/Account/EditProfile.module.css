@@ -1,0 +1,4 @@
+.profileUpdateContentWerap{
+    max-width: 400px;
+    min-height: calc(100vh - var(--header-height) - var(--footer-height) - 40px - 3rem * 2);
+}

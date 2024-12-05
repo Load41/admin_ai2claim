@@ -1,0 +1,56 @@
+.uploadBtnWrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.btn {
+  border: 2px solid var(--clr-fortress-grey);
+  color: var(--clr-fortress-grey);
+  background-color: white;
+  border-radius: 100%;
+  font-size: 20px;
+  font-weight: bold;
+  width: 180px;
+  height: 180px;
+  padding: 3px;
+}
+
+.uploadBtnWrapper .input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+
+.pencilIcon{
+  width: 30px;
+  height: 30px;
+  background-color: var(--clr-bleu-de-france-one);
+  bottom: 20px;
+  right: 7px;
+}
+
+/* resposnive css */
+@media (max-width: 1199px){
+  .btn {
+    width: 150px;
+    height: 150px;
+  }
+  .pencilIcon{
+    bottom: 15px;
+  }
+  
+}
+@media (max-width: 767px){
+  .btn {
+    width: 110px;
+    height: 110px;
+  }
+  .pencilIcon{
+    bottom: 7px;
+  }
+}

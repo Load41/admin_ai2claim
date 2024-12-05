@@ -115,14 +115,14 @@ const items = [
     [
       getItem(
         <>
-          <Link to="/coming-soon">Edit</Link>
+          <Link to="/edit-profile">Edit</Link>
         </>,
         "101",
         svgIcons.editIcon
       ),
       getItem(
         <>
-          <Link to="/coming-soon">Change password</Link>
+          <Link to="/change-password">Change password</Link>
         </>,
         "102",
         svgIcons.changePasswordIcon
@@ -242,7 +242,7 @@ export const LDSidebar = ({ mainContentWrap }) => {
         centered
         className="remove-footer-modal"
       >
-        <div className="text-center d-flex flex-column gap-4">
+        <div className="text-center d-flex flex-column gap-5 gap-xxl-4">
           <h2>Confirm</h2>
           <h4>
             Are you sure you want to{" "}

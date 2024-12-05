@@ -199,7 +199,7 @@ export const LDHeader = ({}) => {
         centered
         className="remove-footer-modal"
       >
-        <div className="text-center d-flex flex-column gap-4">
+        <div className="text-center d-flex flex-column gap-5 gap-xxl-4">
           <h2>Confirm</h2>
           <h4>
             Are you sure you want to{" "}

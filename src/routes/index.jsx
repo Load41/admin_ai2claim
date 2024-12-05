@@ -15,6 +15,8 @@ import AboutClient from "../pages/AboutClient";
 import AboutManagement from "../pages/AboutManagement";
 import AboutCrew from "../pages/AboutCrew";
 import ResetPassword from "../pages/Auth/ResetPassword";
+import EditProfile from "../pages/Account/EditProfile";
+import ChangePassword from "../pages/Account/ChangePassword";
 
 export const router = createBrowserRouter([
   {
@@ -68,6 +70,14 @@ export const router = createBrowserRouter([
       {
         path: "/crew-detail/:id",
         element: <AboutCrew />,
+      },
+      {
+        path: "/edit-profile",
+        element: <EditProfile />,
+      },
+      {
+        path: "/change-password",
+        element: <ChangePassword />,
       },
     ],
   },
