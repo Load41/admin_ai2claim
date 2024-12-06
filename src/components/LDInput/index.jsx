@@ -14,10 +14,15 @@ export const LDInput = ({
     errorMessage,
     prefix,
     isNotBottomSpace,
-    isSearchBarInputWrap
+    isSearchBarInputWrap,
+    isTextarea
 }) => {
+    const { TextArea } = Input;
     return (
         <>
+            {isTextarea ? 
+             <TextArea rows={4} placeholder="Other reason...." className={clsx(styles.inputWrap, styles.customInput, className)}/>
+            :
             <div className={clsx(
                 isNotBottomSpace && "mb-0",
                 styles.inputWrap,
@@ -39,6 +44,7 @@ export const LDInput = ({
                     <p className={clsx(styles.errorMessage, "d-flex fw-400 text-red small error-msg-text mt-2 mb-0 letter-space-1")}>{errorMessage}</p>
                 )}
             </div>
+            }
         </>
     )
 }

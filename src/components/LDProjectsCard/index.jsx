@@ -1,6 +1,6 @@
 import { SwiperSlide } from "swiper/react";
 import { projectCardSwiperBreakPoints } from "../../constants/data";
-import { LDSwiper, LDButton } from "./../../components";
+import { LDSwiper, LDButton, LDDeclineModal, LDApproveModal } from "./../../components";
 import { clsx } from "clsx";
 import { useNavigate } from "react-router-dom";
 
@@ -124,8 +124,10 @@ export const LDProjectsCard = ({
                             )
                           }
                         >
-                          Reject
+                          Decline
                         </LDButton>
+                        {/* <LDDeclineModal title="Decline Management" cardName="Management"/>
+                        <LDApproveModal isApproveBtn/> */}
                       </div>
                     )}
                   </div>

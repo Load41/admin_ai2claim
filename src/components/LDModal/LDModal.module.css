@@ -1,0 +1,28 @@
+:global .ant-modal-header .ant-modal-title{
+    font-size: 24px;
+    margin-bottom: 0;
+}
+:global .ant-modal .ant-modal-header{
+    margin-bottom: 0;
+}
+:global .ant-modal .ant-modal-body{
+    padding-top: 15px;
+}
+:global .ant-modal .ant-modal-close{
+    background: var(--clr-clear-blue);
+    color: rgba(var(--clr-white), 1);
+    font-weight: 700;
+    top: 0;
+    right: 0;
+    border-radius: 0;
+}
+:global .ant-modal .ant-modal-close:hover{
+    background-color: rgba(var(--clr-black), 1);
+    color: rgba(var(--clr-white), 1);
+}
+/* responsive css */
+@media (max-width: 767px){
+    :global .ant-modal-header .ant-modal-title{
+        font-size: 20px;
+    }
+}

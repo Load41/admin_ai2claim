@@ -143,6 +143,22 @@ table tbody tr td{
 .search-min-300{
   min-width: 300px;
 }
+/* radio button css */
+.ant-radio-wrapper .ant-radio-inner{
+  width: 20px;
+  height: 20px;
+  border-color: var(--clr-bleu-de-france-one);
+}
+.ant-radio-wrapper .ant-radio-checked .ant-radio-inner::after{
+  width: 26px;
+  height: 26px;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  left: 50%;
+  top: 50%;
+  transform:scale(0.375) translate(-50%, -50%);
+}
+/* radio button end */
 @media (min-width: 1680px) and (max-width: 1799px) {
   /* .pendingProjectListCard{
     --pendingProjectListCardWidth: 80px;
