@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { svgIcons } from "./icons";
-import { companyOne, companyTwo, manWorkerFive } from "./imageData";
+import { companyOne, companyTwo, manWorkerFive, manWorkerSix, manWorkerThree, USFlag } from "./imageData";
 
 export const trackingDasboardColumns = [
   {
@@ -1358,3 +1358,165 @@ export const managementRejectedListData = [
     address: "1006 W Centennial Rd, Papillion, NE 68046, United States."
   },
 ]
+export const complaintsQueriesData = [
+  {
+    img: manWorkerFive,
+    queries: "Rachel's wants to change her email id.",
+    date: "18/11/2024"
+  },
+  {
+    img: manWorkerThree,
+    queries: "Andy raised a complaint about yyyyy management.",
+    date: "21/06/2024"
+  },
+  {
+    img: manWorkerSix,
+    queries: "Andy requested for management change.",
+    date: "01/10/2024"
+  },
+  {
+    img: companyOne,
+    queries: "Andy wants to change his mail id.",
+    date: "04/03/2024"
+  },
+  {
+    img: companyTwo,
+    queries: "Andy raised a complaint.",
+    date: "1/12/2024"
+  },
+]
+export const checkFilesData = [
+  {
+    img: companyOne,
+    queries: "Rachel's wants to change her email id.",
+    docURL: "",
+    docName: "Click here to view doc's",
+    date: "18/11/2024",
+  },
+  {
+    img: companyTwo,
+    queries: "Rachel's wants to change her email id.",
+    docURL: "",
+    docName: "Click here to view doc's",
+    date: "18/11/2024",
+  },
+  {
+    img: manWorkerThree,
+    queries: "Rachel's wants to change her email id.",
+    docURL: "",
+    docName: "Click here to view doc's",
+    date: "18/11/2024",
+  },
+  {
+    img: manWorkerFive,
+    queries: "Rachel's wants to change her email id.",
+    docURL: "",
+    docName: "Click here to view doc's",
+    date: "18/11/2024",
+  },
+  {
+    img: manWorkerSix,
+    queries: "Rachel's wants to change her email id.",
+    docURL: "",
+    docName: "Click here to view doc's",
+    date: "18/11/2024",
+  },
+  {
+    img: USFlag,
+    queries: "Rachel's wants to change her email id.",
+    docURL: "",
+    docName: "Click here to view doc's",
+    date: "18/11/2024",
+  },
+  {
+    img: '',
+    queries: "Rachel's wants to change her email id.",
+    docURL: "",
+    docName: "Click here to view doc's",
+    date: "18/11/2024",
+  },
+]
+export const approvedColumns = [
+  {
+    title: 'Approved info',
+    dataIndex: 'approvedInfo',
+    key: 'approvedInfo',
+  },
+  {
+    title: 'Requested date',
+    dataIndex: 'requestedDate',
+    key: 'requestedDate',
+  },
+  {
+    title: 'Approved date',
+    dataIndex: 'approvedDate',
+    key: 'approvedDate',
+  },
+];
+export const approvedData = [
+  {
+    key: '1',
+    approvedInfo: <>
+      <div className="d-flex align-items-center gap-4">
+        <div className="ratio ratio-1x1 rounded-circle queries-profile-box flex-0-auto">
+            <img src={companyOne} className="img-fluid radius-inherit object-fit-cover bg-ma-white p-1" alt="" />
+        </div>
+        <h5 className="mb-0">Verified Rachel's Insurance doc's.</h5>
+      </div>
+    </>,
+    requestedDate: '17/11/2024',
+    approvedDate: '18/11/2024',
+  },
+  {
+    key: '2',
+    approvedInfo: <>
+      <div className="d-flex align-items-center gap-4">
+        <div className="ratio ratio-1x1 rounded-circle queries-profile-box flex-0-auto">
+            <img src={companyTwo} className="img-fluid radius-inherit object-fit-cover bg-ma-white p-1" alt="" />
+        </div>
+        <h5 className="mb-0">Verified Rachel's Insurance doc's.</h5>
+      </div>
+    </>,
+    requestedDate: '17/11/2024',
+    approvedDate: '18/11/2024',
+  },
+  {
+    key: '3',
+    approvedInfo: <>
+      <div className="d-flex align-items-center gap-4">
+        <div className="ratio ratio-1x1 rounded-circle queries-profile-box flex-0-auto">
+            <img src={manWorkerFive} className="img-fluid radius-inherit object-fit-cover bg-ma-white p-1" alt="" />
+        </div>
+        <h5 className="mb-0">Verified Rachel's Insurance doc's.</h5>
+      </div>
+    </>,
+    requestedDate: '17/11/2024',
+    approvedDate: '18/11/2024',
+  },
+  {
+    key: '4',
+    approvedInfo: <>
+      <div className="d-flex align-items-center gap-4">
+        <div className="ratio ratio-1x1 rounded-circle queries-profile-box flex-0-auto">
+            <img src={manWorkerSix} className="img-fluid radius-inherit object-fit-cover bg-ma-white p-1" alt="" />
+        </div>
+        <h5 className="mb-0">Verified Rachel's Insurance doc's.</h5>
+      </div>
+    </>,
+    requestedDate: '17/11/2024',
+    approvedDate: '18/11/2024',
+  },
+  {
+    key: '5',
+    approvedInfo: <>
+      <div className="d-flex align-items-center gap-4">
+        <div className="ratio ratio-1x1 rounded-circle queries-profile-box flex-0-auto">
+            <img src={manWorkerThree} className="img-fluid radius-inherit object-fit-cover bg-ma-white p-1" alt="" />
+        </div>
+        <h5 className="mb-0">Verified Rachel's Insurance doc's.</h5>
+      </div>
+    </>,
+    requestedDate: '17/11/2024',
+    approvedDate: '18/11/2024',
+  },
+];

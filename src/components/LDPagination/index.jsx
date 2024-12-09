@@ -15,7 +15,7 @@ export function LDPagination({
       <Pagination
         defaultCurrent={defaultCurrent}
         total={total}
-        className={className}
+        className={clsx(className, "flex-wrap")}
         defaultPageSize={showTotal}
         onChange={onChange}
         {...rest}

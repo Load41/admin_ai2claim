@@ -5,6 +5,7 @@ import companyTwo from "../assets/images/company-logo/mo-4.jpg";
 import manWorkerFive from "../assets/images/covers/man-worker-five.jpg";
 import manWorkerSix from "../assets/images/company-logo/man-worker-six.jpg";
 import manWorkerThree from "../assets/images/company-logo/man-worker-three.jpg";
+import aboutUs from "../assets/images/covers/about-us.png";
 export { 
    logo,
    USFlag,
@@ -12,5 +13,6 @@ export {
    companyTwo,
    manWorkerFive,
    manWorkerThree,
-   manWorkerSix
+   manWorkerSix,
+   aboutUs
  };

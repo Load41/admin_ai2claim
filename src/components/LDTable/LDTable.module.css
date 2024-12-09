@@ -1,0 +1,31 @@
+:global table,
+:global .ant-table-wrapper table{
+    border: 1px solid rgba(var(--clr-black), 0.3);
+    border-radius: 0;
+}
+:global table thead tr th,
+:global table tbody tr td{
+  min-width: 150px;
+}
+:global table thead tr th{
+    font-size: 18px;
+}
+:global table tbody tr td{
+    font-size: 16px;
+    font-weight: 500;
+}
+:global .ant-table-wrapper table tr td.ant-table-cell{
+    padding: 14px 16px;
+}
+/* :global table tbody tr:nth-child(even){
+    background-color: rgba(var(--clr-party-sponge-cake-rgba), 25%);
+} */
+/* responsive css start */
+@media (max-width: 1199px){
+    :global table thead tr th{
+        font-size: 16px;
+    }
+    :global table tbody tr td{
+        font-size: 14px;
+    }
+}

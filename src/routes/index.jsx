@@ -19,6 +19,10 @@ import EditProfile from "../pages/Account/EditProfile";
 import ChangePassword from "../pages/Account/ChangePassword";
 import RejectedManagement from "../pages/RejectedFiles/RejectedManagement";
 import RejectedCrew from "../pages/RejectedFiles/RejectedCrew";
+import ComplaintsQueries from "../pages/ComplaintsQueries";
+import CheckFiles from "../pages/CheckFiles";
+import ApprovedThings from "../pages/ApprovedThings";
+import AboutUs from "../pages/AboutUs";
 
 export const router = createBrowserRouter([
   {
@@ -88,6 +92,22 @@ export const router = createBrowserRouter([
       {
         path: "/crew-rejected",
         element: <RejectedCrew />,
+      },
+      {
+        path: "/complaints-queries",
+        element: <ComplaintsQueries />,
+      },
+      {
+        path: "/check-files",
+        element: <CheckFiles />,
+      },
+      {
+        path: "/approved-things",
+        element: <ApprovedThings />,
+      },
+      {
+        path: "/about-us",
+        element: <AboutUs />,
       },
     ],
   },

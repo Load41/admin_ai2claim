@@ -112,15 +112,13 @@ const ManagementListPending = () => {
         </div>
       </div>
       <Modal
-        title=""
+        title="Reject User Reason"
         open={rejectedReasonModal}
         onCancel={handleCloseModal}
         centered
         className="remove-footer-modal"
       >
         <div className="text-center d-flex flex-column gap-5 gap-xxl-4">
-          <h2>Reject User Reason</h2>
-          <h4></h4>
           <div>
             <LDInput
               id="reason"
@@ -128,7 +126,7 @@ const ManagementListPending = () => {
               name="reason"
               type="text"
               value={managementData?.reason}
-              placeholder="reason"
+              placeholder="Reason"
               handleChange={handleInputChange}
               className={clsx(styles.headerSearchBarWrap, "mb-0")}
             />

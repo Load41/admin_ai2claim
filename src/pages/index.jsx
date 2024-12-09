@@ -12,3 +12,7 @@ export * from "./AboutManagement";
 export * from "./AboutCrew";
 export * from "./Account";
 export * from "./RejectedFiles";
+export * from "./ComplaintsQueries";
+export * from "./CheckFiles";
+export * from "./ApprovedThings";
+export * from "./AboutUs";

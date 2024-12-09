@@ -58,7 +58,7 @@ const items = [
   //   getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
   getItem(
     <>
-      <Link to="/coming-soon">Check Files(50+)</Link>
+      <Link to="/check-files">Check Files(50+)</Link>
     </>,
     "3",
     svgIcons.dat
@@ -117,14 +117,14 @@ const items = [
   ),
   getItem(
     <>
-      <Link to="/coming-soon">Complaints(70+)</Link>
+      <Link to="/complaints-queries">Complaints(70+)</Link>
     </>,
     "9",
     svgIcons.singlePost
   ),
   getItem(
     <>
-      <Link to="/coming-soon">Approved things</Link>
+      <Link to="/approved-things">Approved things</Link>
     </>,
     "10",
     svgIcons.shippersList
@@ -155,7 +155,7 @@ const items = [
   ),
   getItem(
     <>
-      <Link to="/coming-soon">About</Link>
+      <Link to="/about-us">About</Link>
     </>,
     "12",
     svgIcons.history

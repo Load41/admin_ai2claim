@@ -1,0 +1,22 @@
+.container {
+    background-color: var(--clr-ma-white);
+}
+
+.content {
+    max-width: 400px;
+    padding: 40px;
+    background: var(--clr-body);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.content h1 {
+    font-size: 7.2rem;
+}
+/* responsive css start */
+@media (max-width: 349px){
+    .aboutUsRow h4{
+        font-size: 14px;
+    }
+}
+/* responsive css end */
