@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { clsx } from "clsx";
 import { LDPagination, LDProjectsCard } from "../../components";
 import { clientListData } from "../../constants/data";
-import { Dropdown } from "antd";
+import { Button, Dropdown } from "antd";
 import styles from "./ClientList.module.css";
 import { useClientHook } from "../../hooks";
 import { LDInput } from "../../components/LDInput";
@@ -61,18 +61,33 @@ const ClientList = () => {
                     Client's<span className="ps-2">({clientDataList?.length})</span>
                   </h4>
               </div>
-              <LDInput
-                id="searchData"
-                dataTestId="searchData"
-                name="searchData"
-                type="text"
-                placeholder="Search"
-                handleChange={handleKeyDownSearch}
-                className={clsx(styles.headerSearchBarWrap, "mb-0 search-min-300")}
-                suffix={svgIcons.searchIcon}
-                isNotBottomSpace
-                isSearchBarInputWrap="w-100-sm"
-              />
+              <div className="d-flex align-items-center gap-4 flex-wrap">
+                <LDInput
+                  id="searchData"
+                  dataTestId="searchData"
+                  name="searchData"
+                  type="text"
+                  placeholder="Search"
+                  handleChange={handleKeyDownSearch}
+                  className={clsx(styles.headerSearchBarWrap, "mb-0 search-min-300")}
+                  suffix={svgIcons.searchIcon}
+                  isNotBottomSpace
+                  isSearchBarInputWrap="w-100-sm"
+                />
+                <Dropdown
+                      menu={{
+                        items,
+                      }}
+                      placement="bottomRight"
+                      className="sort-dropdown-wrap d-flexa align-items-center gap-3"
+                    >
+                      <Button className="fw-semibold">
+                        {svgIcons.sortIcon}
+                        Sort By
+                        <span className="down-icon">{svgIcons.downArrowLineIcon}</span>
+                      </Button>
+                </Dropdown>
+              </div>
         </div>
         <div className="w-100 mt-5">
           <div>

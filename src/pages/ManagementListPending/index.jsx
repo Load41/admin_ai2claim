@@ -7,7 +7,7 @@ import {
   managementListPendingData,
 } from "../../constants/data";
 import styles from "./ManagementListPending.module.css";
-import { Dropdown, Modal } from "antd";
+import { Button, Dropdown, Modal } from "antd";
 import { useManagementPendingListHook } from "../../hooks";
 import { LDInput } from "../../components/LDInput";
 import { svgIcons } from "../../constants/icons";
@@ -73,26 +73,43 @@ const ManagementListPending = () => {
                 Management<span className="ps-2">({managementList?.length})</span>
               </h4>
           </div>
-          <LDInput
-            id="searchData"
-            dataTestId="searchData"
-            name="searchData"
-            type="text"
-            placeholder="Search"
-            handleChange={handleKeyDownSearch}
-            className={clsx("mb-0 search-min-300")}
-            suffix={svgIcons.searchIcon}
-            isNotBottomSpace
-            isSearchBarInputWrap="w-100-sm"
-          />
+          <div className="d-flex align-items-center gap-4 flex-wrap">
+            <LDInput
+              id="searchData"
+              dataTestId="searchData"
+              name="searchData"
+              type="text"
+              placeholder="Search"
+              handleChange={handleKeyDownSearch}
+              className={clsx("mb-0 search-min-300")}
+              suffix={svgIcons.searchIcon}
+              isNotBottomSpace
+              isSearchBarInputWrap="w-100-sm"
+            />
+            <Dropdown
+                menu={{
+                  items,
+                }}
+                placement="bottomRight"
+                className="sort-dropdown-wrap d-flexa align-items-center gap-3"
+              >
+                <Button className="fw-semibold">
+                  {svgIcons.sortIcon}
+                  Sort By
+                  <span className="down-icon">{svgIcons.downArrowLineIcon}</span>
+                </Button>
+            </Dropdown>
+          </div>
         </div>
         <div className="w-100 mt-5">
           <div>
             {managementList?.length > 0 && (
               <LDProjectsCard
-                projectCardData={managementList}
+                // projectCardData={managementList}
+                projectCardData={managementListPendingData}
                 isNotSwiper
                 isBtn
+                isFullDetails
                 handleClickStatusUpdate={handleClickStatusUpdate}
                 handleClickRejected={handleClickRejected}
                 redirectPath={"/management-detail"}

@@ -851,7 +851,7 @@ export const clientListData = [
 
 export const managementListPendingData = [
   {
-    img: manWorkerFive,
+    // img: manWorkerFive,
     ratingProjectData: [
       { icon: svgIcons.starIcon },
       { icon: svgIcons.starIcon },
@@ -859,136 +859,15 @@ export const managementListPendingData = [
       { icon: svgIcons.starIcon },
       { icon: svgIcons.starIcon },
     ],
-    name: "Massy Doklad",
-    projectsDone: "263",
-    projectsPending: "63",
-    address: "1006 W Centennial Rd, Papillion, NE 68046, United States."
-  },
-  {
-    img: companyTwo,
-    ratingProjectData: [
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-    ],
-    name: "Massy Doklad",
-    projectsDone: "264",
-    projectsPending: "64",
-    address: "1006 W Centennial Rd, Papillion, NE 68046, United States."
-  },
-  {
-    img: companyOne,
-    ratingProjectData: [
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-    ],
-    name: "Massy Doklad",
-    projectsDone: "262",
-    projectsPending: "62",
-    address: "1006 W Centennial Rd, Papillion, NE 68046, United States."
-  },
-  {
-    img: companyTwo,
-    ratingProjectData: [
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-    ],
-    name: "Andy",
-    projectsDone: "260",
-    projectsPending: "60",
-    address: "1006 W Centennial Rd, Papillion, NE 68046, United States."
-  },
-  {
-    img: companyTwo,
-    ratingProjectData: [
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-    ],
-    name: "Tom",
-    projectsDone: "261",
-    projectsPending: "61",
-    address: "1006 W Centennial Rd, Papillion, NE 68046, United States."
-  },
-  {
-    img: companyOne,
-    ratingProjectData: [
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-    ],
-    name: "Andy",
-    projectsDone: "250",
-    projectsPending: "20",
-    address: "1006 W Centennial Rd, Papillion, NE 68046, United States."
-  },
-  {
-    img: manWorkerFive,
-    ratingProjectData: [
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-    ],
-    name: "Tom",
-    projectsDone: "251",
-    projectsPending: "21",
-    address: "1006 W Centennial Rd, Papillion, NE 68046, United States."
-  },
-  {
-    img: companyTwo,
-    ratingProjectData: [
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-    ],
-    name: "Massy Doklad",
-    projectsDone: "252",
-    projectsPending: "22",
-    address: "1006 W Centennial Rd, Papillion, NE 68046, United States."
-  },
-  {
-    img: manWorkerFive,
-    ratingProjectData: [
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-    ],
-    name: "Massy Doklad",
-    projectsDone: "253",
-    projectsPending: "23",
-    address: "1006 W Centennial Rd, Papillion, NE 68046, United States."
-  },
-  {
-    img: companyOne,
-    ratingProjectData: [
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-    ],
-    name: "Massy Doklad",
-    projectsDone: "254",
-    projectsPending: "24",
-    address: "1006 W Centennial Rd, Papillion, NE 68046, United States."
+    companyName: "Mr. Roof",
+    managerName: "Michael",
+    status: "Active",
+    mobileNumber: "+1 23567909 ",
+    emailUrl: "mailto:Tom@gmail.com",
+    email: "Tom@gmail.com",
+    address: "1006 W Centennial Rd, Papillion, NE 68046, United States.",
+    URL: "https://www.mrroof.com/",
+    website: "https://www.mrroof.com/",
   },
 ]
 
@@ -1002,10 +881,15 @@ export const crewListPendingData = [
       { icon: svgIcons.starIcon },
       { icon: svgIcons.starIcon },
     ],
-    name: "Andy",
-    projectsDone: "260",
-    projectsPending: "60",
-    address: "1006 W Centennial Rd, Papillion, NE 68046, United States."
+    companyName: "Mr. Roof",
+    managerName: "Michael",
+    status: "Active",
+    mobileNumber: "+1 23567909 ",
+    emailUrl: "mailto:Tom@gmail.com",
+    email: "Tom@gmail.com",
+    address: "1006 W Centennial Rd, Papillion, NE 68046, United States.",
+    URL: "https://www.mrroof.com/",
+    website: "https://www.mrroof.com/",
   },
   {
     img: companyTwo,
@@ -1016,38 +900,15 @@ export const crewListPendingData = [
       { icon: svgIcons.starIcon },
       { icon: svgIcons.starIcon },
     ],
-    name: "Tom",
-    projectsDone: "261",
-    projectsPending: "61",
-    address: "1006 W Centennial Rd, Papillion, NE 68046, United States."
-  },
-  {
-    img: companyOne,
-    ratingProjectData: [
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-    ],
-    name: "Massy Doklad",
-    projectsDone: "262",
-    projectsPending: "62",
-    address: "1006 W Centennial Rd, Papillion, NE 68046, United States."
-  },
-  {
-    img: manWorkerFive,
-    ratingProjectData: [
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-    ],
-    name: "Massy Doklad",
-    projectsDone: "263",
-    projectsPending: "63",
-    address: "1006 W Centennial Rd, Papillion, NE 68046, United States."
+    companyName: "Mr. Roof",
+    managerName: "Michael",
+    status: "Active",
+    mobileNumber: "+1 23567909 ",
+    emailUrl: "mailto:Tom@gmail.com",
+    email: "Tom@gmail.com",
+    address: "1006 W Centennial Rd, Papillion, NE 68046, United States.",
+    URL: "https://www.mrroof.com/",
+    website: "https://www.mrroof.com/",
   },
   {
     img: companyTwo,
@@ -1058,80 +919,15 @@ export const crewListPendingData = [
       { icon: svgIcons.starIcon },
       { icon: svgIcons.starIcon },
     ],
-    name: "Massy Doklad",
-    projectsDone: "264",
-    projectsPending: "64",
-    address: "1006 W Centennial Rd, Papillion, NE 68046, United States."
-  },
-  {
-    img: companyOne,
-    ratingProjectData: [
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-    ],
-    name: "Andy",
-    projectsDone: "250",
-    projectsPending: "20",
-    address: "1006 W Centennial Rd, Papillion, NE 68046, United States."
-  },
-  {
-    img: manWorkerFive,
-    ratingProjectData: [
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-    ],
-    name: "Tom",
-    projectsDone: "251",
-    projectsPending: "21",
-    address: "1006 W Centennial Rd, Papillion, NE 68046, United States."
-  },
-  {
-    img: companyTwo,
-    ratingProjectData: [
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-    ],
-    name: "Massy Doklad",
-    projectsDone: "252",
-    projectsPending: "22",
-    address: "1006 W Centennial Rd, Papillion, NE 68046, United States."
-  },
-  {
-    img: manWorkerFive,
-    ratingProjectData: [
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-    ],
-    name: "Massy Doklad",
-    projectsDone: "253",
-    projectsPending: "23",
-    address: "1006 W Centennial Rd, Papillion, NE 68046, United States."
-  },
-  {
-    img: companyOne,
-    ratingProjectData: [
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-      { icon: svgIcons.starIcon },
-    ],
-    name: "Massy Doklad",
-    projectsDone: "254",
-    projectsPending: "24",
-    address: "1006 W Centennial Rd, Papillion, NE 68046, United States."
+    companyName: "Mr. Roof",
+    managerName: "Michael",
+    status: "Active",
+    mobileNumber: "+1 23567909 ",
+    emailUrl: "mailto:Tom@gmail.com",
+    email: "Tom@gmail.com",
+    address: "1006 W Centennial Rd, Papillion, NE 68046, United States.",
+    URL: "https://www.mrroof.com/",
+    website: "https://www.mrroof.com/",
   },
 ]
 

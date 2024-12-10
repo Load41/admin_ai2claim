@@ -155,7 +155,7 @@ table thead.ant-table-thead tr th.ant-table-cell{
   transform:scale(0.375) translate(-50%, -50%);
 }
 .sort-dropdown-wrap{
-  min-height: 35px;
+  min-height: 45px;
 }
 /* queries css start */
 .queries-list-box{
@@ -179,6 +179,11 @@ table thead.ant-table-thead tr th.ant-table-cell{
     --pendingProjectListCardWidth: 80px;
   } */
 }
+@media (max-width: 1899px){
+  .isFullDetails{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 @media (max-width: 1599px){
   .pendingProjectListCard-not-slider-grid{
     grid-template-columns: repeat(2, 1fr);
@@ -188,6 +193,11 @@ table thead.ant-table-thead tr th.ant-table-cell{
   .aboutListProjectListCard .pendingProjectLisRow > div:not(:last-child){
     border-bottom: 1px solid rgba(var(--clr-black), 1);
     border-right: 0;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1279px){
+  .isFullDetails{
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 @media (min-width: 1200px){
