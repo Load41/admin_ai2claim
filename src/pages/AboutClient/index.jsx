@@ -13,18 +13,18 @@ const AboutClient = () => {
     <>
       <div className={clsx("admin-content")}>
         <div className="d-flex align-items-center justify-content-between flex-wrap gap-5 gap-xxl-4">
-            <div className="d-flex align-items-center flex-wrap gap-4 gap-xl-3">
-                <Link to="/client-list-pending" className="back-next-arrow-wrap flex-0-auto d-flex align-items-center justify-content-center rounded-circle cursor-pointer hover-text-white me-2">{svgIcons.backArrowFillIcon}</Link>
-                <h4 className="text-bleu-de-france-one mb-0">About Client</h4>
-                <b>{svgIcons.doubleRightArrowIcon}</b>
-                <Link to="/client-list-pending" className="h4 mb-0">
-                Client's<span className="ps-2">(150)</span>
-                </Link>
-                <b>{svgIcons.doubleRightArrowIcon}</b>
-                <h4 className="mb-0">
-                  {clientData?.firstName} {clientData?.lastName}
-                </h4>
-            </div>
+          <div className="d-flex align-items-center flex-wrap gap-4 gap-xl-3">
+            <Link to="/client-list-pending" className="back-next-arrow-wrap flex-0-auto d-flex align-items-center justify-content-center rounded-circle cursor-pointer hover-text-white me-2">{svgIcons.backArrowFillIcon}</Link>
+            <h4 className="text-bleu-de-france-one mb-0">About Client</h4>
+            <b>{svgIcons.doubleRightArrowIcon}</b>
+            <Link to="/client-list-pending" className="h4 mb-0">
+              Client's<span className="ps-2">(150)</span>
+            </Link>
+            <b>{svgIcons.doubleRightArrowIcon}</b>
+            <h4 className="mb-0">
+              {clientData?.firstName} {clientData?.lastName}
+            </h4>
+          </div>
         </div>
         <div className="w-100 mt-5">
           <div className="row mt-4">
@@ -69,14 +69,14 @@ const AboutClient = () => {
                         {clientData?.is_active ? "Active" : "Active"}
                       </h6>
                     </div>
-                    <div className="d-flex w-100">
+                    {/* <div className="d-flex w-100">
                       <h6 className="w-35 mb-0 lh-base fw-bold">
                         Active since <b className="d-none d-sm-inline">:-</b>
                       </h6>
                       <h6 className="w-65 w-100-md mb-0 lh-base word-break-word ps-3">
                         2015
                       </h6>
-                    </div>
+                    </div> */}
                     <div className="d-flex w-100">
                       <h6 className="w-35 mb-0 lh-base fw-bold">
                         Mobile <b className="d-none d-sm-inline">:-</b>
@@ -174,7 +174,7 @@ const AboutClient = () => {
                                 <b className="d-none d-sm-inline">:-</b>
                               </h6>
                               <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
-                                {"-"}
+                                {projectData?.linkin?.management?.linkinId?.company_name}
                               </h6>
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
@@ -183,7 +183,16 @@ const AboutClient = () => {
                                 <b className="d-none d-sm-inline">:-</b>
                               </h6>
                               <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
-                                {"-"}
+                                {projectData?.linkin?.crew?.linkinId?.company_name}
+                              </h6>
+                            </div>
+                            <div className="d-flex flex-column flex-sm-row w-100">
+                              <h6 className="w-45 mb-0 lh-base fw-bold">
+                                Hired Material{" "}
+                                <b className="d-none d-sm-inline">:-</b>
+                              </h6>
+                              <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
+                                {`${projectData?.linkin?.material?.brand} >> ${projectData?.linkin?.material?.pick_your_singles} >> ${projectData?.linkin?.material?.single_color}`}
                               </h6>
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
@@ -194,21 +203,21 @@ const AboutClient = () => {
                               <div className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
                                 {projectData?.linkin?.insurance_company
                                   ?.fileName && (
-                                  <Link
-                                    to={
-                                      projectData?.linkin?.insurance_company
-                                        ?.file
-                                    }
-                                    target={"_blank"}
-                                  >
-                                    <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
-                                      {
+                                    <Link
+                                      to={
                                         projectData?.linkin?.insurance_company
-                                          ?.fileName
+                                          ?.file
                                       }
-                                    </label>
-                                  </Link>
-                                )}
+                                      target={"_blank"}
+                                    >
+                                      <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
+                                        {
+                                          projectData?.linkin?.insurance_company
+                                            ?.fileName
+                                        }
+                                      </label>
+                                    </Link>
+                                  )}
                                 {projectData?.linkin?.material?.fileName && (
                                   <Link
                                     to={projectData?.linkin?.material?.file}
@@ -267,20 +276,20 @@ const AboutClient = () => {
                                 )}
                                 {projectData?.linkin?.final_estimate
                                   ?.fileName && (
-                                  <Link
-                                    to={
-                                      projectData?.linkin?.final_estimate?.file
-                                    }
-                                    target={"_blank"}
-                                  >
-                                    <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
-                                      {
-                                        projectData?.linkin?.final_estimate
-                                          ?.fileName
+                                    <Link
+                                      to={
+                                        projectData?.linkin?.final_estimate?.file
                                       }
-                                    </label>
-                                  </Link>
-                                )}
+                                      target={"_blank"}
+                                    >
+                                      <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
+                                        {
+                                          projectData?.linkin?.final_estimate
+                                            ?.fileName
+                                        }
+                                      </label>
+                                    </Link>
+                                  )}
                                 {/* <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
                                   {"-"}
                                 </label> */}
