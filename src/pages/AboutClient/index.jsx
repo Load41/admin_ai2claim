@@ -15,16 +15,16 @@ const AboutClient = () => {
         <div className="d-flex align-items-center justify-content-between flex-wrap gap-5 gap-xxl-4">
           <div className="d-flex align-items-center flex-wrap gap-4 gap-xl-3">
             <Link
-              to="/client-list-pending"
+              to="/client-list"
               className="back-next-arrow-wrap flex-0-auto d-flex align-items-center justify-content-center rounded-circle cursor-pointer hover-text-white me-2"
             >
               {svgIcons.backArrowFillIcon}
             </Link>
             <h4 className="text-bleu-de-france-one mb-0">About Client</h4>
             <b>{svgIcons.doubleRightArrowIcon}</b>
-            <Link to="/client-list-pending" className="h4 mb-0">
+            <h4 className="mb-0">
               Client's<span className="ps-2"></span>
-            </Link>
+            </h4>
             <b>{svgIcons.doubleRightArrowIcon}</b>
             <h4 className="mb-0">
               {clientData?.firstName} {clientData?.lastName}
