@@ -170,7 +170,7 @@ const AboutClient = () => {
                                 Reason <b className="d-none d-sm-inline">:-</b>
                               </h6>
                               <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
-                                {projectData?.dateOfDamage}
+                                {projectData?.reasonOfDamage}
                               </h6>
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
