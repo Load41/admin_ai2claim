@@ -61,10 +61,10 @@ export const router = createBrowserRouter([
         path: "/crew-list-pending",
         element: <CrewListPending />,
       },
-      {
-        path: "/client-list-pending",
-        element: <ClientListPending />,
-      },
+      // {
+      //   path: "/client-list-pending",
+      //   element: <ClientListPending />,
+      // },
       {
         path: "/client-detail/:id",
         element: <AboutClient />,

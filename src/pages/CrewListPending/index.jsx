@@ -4,7 +4,7 @@ import { clsx } from "clsx";
 import { LDButton, LDPagination, LDProjectsCard } from "../../components";
 import { crewListPendingData } from "../../constants/data";
 import styles from "./CrewListPending.module.css";
-import { Button, Dropdown, Modal } from "antd";
+import { Button, Dropdown, Modal, Radio } from "antd";
 import { useCrewPendingListHook } from "../../hooks";
 import { LDInput } from "../../components/LDInput";
 import { svgIcons } from "../../constants/icons";
@@ -62,28 +62,36 @@ const CrewListPending = () => {
     <>
       <div className={clsx("admin-content")}>
         <div className="d-flex align-items-center justify-content-between flex-wrap gap-5 gap-xxl-4">
-            <div className="d-flex align-items-center flex-wrap gap-4 gap-xl-3">
-                <Link to="/" className="back-next-arrow-wrap flex-0-auto d-flex align-items-center justify-content-center rounded-circle cursor-pointer hover-text-white me-2">{svgIcons.backArrowFillIcon}</Link>
-                <h4 className="text-bleu-de-france-one mb-0">Pending List</h4>
-                <span>{svgIcons.doubleRightArrowIcon}</span>
-                <h4 className="mb-0">
-                  Crew<span className="ps-2">({crewDataList?.length})</span>
-                </h4>
-            </div>
-            <div className="d-flex align-items-center gap-4 flex-wrap">
-              <LDInput
-                  id="searchData"
-                  dataTestId="searchData"
-                  name="searchData"
-                  type="text"
-                  placeholder="Search"
-                  handleChange={handleKeyDownSearch}
-                  className={clsx(styles.headerSearchBarWrap, "mb-0 search-min-300")}
-                  suffix={svgIcons.searchIcon}
-                  isNotBottomSpace
-                  isSearchBarInputWrap="w-100-sm"
-                />
-                <Dropdown
+          <div className="d-flex align-items-center flex-wrap gap-4 gap-xl-3">
+            <Link
+              to="/"
+              className="back-next-arrow-wrap flex-0-auto d-flex align-items-center justify-content-center rounded-circle cursor-pointer hover-text-white me-2"
+            >
+              {svgIcons.backArrowFillIcon}
+            </Link>
+            <h4 className="text-bleu-de-france-one mb-0">Pending List</h4>
+            <span>{svgIcons.doubleRightArrowIcon}</span>
+            <h4 className="mb-0">
+              Crew<span className="ps-2">({crewDataList?.length})</span>
+            </h4>
+          </div>
+          <div className="d-flex align-items-center gap-4 flex-wrap">
+            <LDInput
+              id="searchData"
+              dataTestId="searchData"
+              name="searchData"
+              type="text"
+              placeholder="Search"
+              handleChange={handleKeyDownSearch}
+              className={clsx(
+                styles.headerSearchBarWrap,
+                "mb-0 search-min-300"
+              )}
+              suffix={svgIcons.searchIcon}
+              isNotBottomSpace
+              isSearchBarInputWrap="w-100-sm"
+            />
+            {/* <Dropdown
                   menu={{
                     items,
                   }}
@@ -95,15 +103,15 @@ const CrewListPending = () => {
                     Sort By
                     <span className="down-icon">{svgIcons.downArrowLineIcon}</span>
                   </Button>
-                </Dropdown>
-            </div>
+                </Dropdown> */}
+          </div>
         </div>
         <div className="w-100 mt-5">
           <div>
             {crewDataList?.length > 0 && (
               <LDProjectsCard
-                // projectCardData={crewDataList}
-                projectCardData={crewListPendingData}
+                projectCardData={crewDataList}
+                // projectCardData={crewListPendingData}
                 isNotSwiper
                 isBtn
                 isFullDetails
@@ -132,20 +140,29 @@ const CrewListPending = () => {
         centered
         className="remove-footer-modal"
       >
-        <div className="text-center d-flex flex-column gap-5 gap-xxl-4">
-          <div>
-            <LDInput
-              id="reason"
-              dataTestId="reason"
-              name="reason"
-              type="text"
-              value={crewData?.reason}
-              placeholder="Reason"
-              handleChange={handleInputChange}
-              className={clsx(styles.headerSearchBarWrap, "mb-0")}
-            />
-          </div>
-          <div className="d-flex align-items-centr gap-5 justify-content-center mt-3 mt-xxl-2">
+        <div className="">
+          <h4 className="lh-base mb-0 fw-medium">
+            {/* {cardName} */}
+            name<b className="px-2">:-</b>
+            <span className="text-bleu-de-france-one">MR.Roof</span>
+          </h4>
+          <Radio.Group
+            // onChange={onChange}
+            // value={value}
+            className={clsx("declineList d-flex flex-column")}
+          >
+            <Radio className="w-100 h5 fw-medium" value={1}>
+              Already taken by the name
+            </Radio>
+            <Radio className="w-100 h5 fw-medium" value={2}>
+              Insufficient Data
+            </Radio>
+            <Radio className="w-100 h5 fw-medium" value={3}>
+              Others
+            </Radio>
+          </Radio.Group>
+          <LDInput isTextarea />
+          <div className="d-flex align-items-centr gap-5 justify-content-center mt-5 mt-xxl-3">
             <LDButton
               type="fill"
               shape={"round"}
@@ -153,11 +170,9 @@ const CrewListPending = () => {
               isGreenBg
               isSmallBtn
               customClass={clsx("w-50")}
-              handleClick={() =>
-                handleClickStatusUpdateSubmit(crewData?.status, crewData?.id)
-              }
+              // handleClick={handleCancel}
             >
-              Submit
+              Proceed
             </LDButton>
             <LDButton
               type="fill"
@@ -166,9 +181,9 @@ const CrewListPending = () => {
               isRedBg
               isSmallBtn
               customClass={clsx("w-50")}
-              handleClick={handleCloseModal}
+              // handleClick={handleCancel}
             >
-              Close
+              Cancel
             </LDButton>
           </div>
         </div>

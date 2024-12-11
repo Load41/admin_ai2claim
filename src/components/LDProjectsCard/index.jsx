@@ -1,6 +1,11 @@
 import { SwiperSlide } from "swiper/react";
 import { projectCardSwiperBreakPoints } from "../../constants/data";
-import { LDSwiper, LDButton, LDDeclineModal, LDApproveModal } from "./../../components";
+import {
+  LDSwiper,
+  LDButton,
+  LDDeclineModal,
+  LDApproveModal,
+} from "./../../components";
 import { clsx } from "clsx";
 import { useNavigate } from "react-router-dom";
 
@@ -11,17 +16,20 @@ export const LDProjectsCard = ({
   handleClickStatusUpdate,
   handleClickRejected,
   redirectPath,
-  isFullDetails
+  isFullDetails,
 }) => {
   const navigate = useNavigate();
+  console.log({ projectCardData });
   return (
     <>
       {isNotSwiper ? (
         <>
-          <div className={clsx(
-            isFullDetails && "isFullDetails",
-            "pendingProjectListCard-not-slider-grid d-grid"
-          )}>
+          <div
+            className={clsx(
+              isFullDetails && "isFullDetails",
+              "pendingProjectListCard-not-slider-grid d-grid"
+            )}
+          >
             {projectCardData?.map((item, index) => {
               return (
                 <div className="mt-4" key={index}>
@@ -54,26 +62,32 @@ export const LDProjectsCard = ({
                             : item?.company_name}
                         </h6>
                       </div>
-                      
-                      {
-                        isFullDetails ?
-                        <div className={"pendingProjectListRightCol mt-4 mt-xl-0"}>
-                          <ul className="d-flex align-items-center gap-2 mb-4">
-                            {item?.ratingProjectData.map((ratingItem, ratingIndex) => {
+
+                      {isFullDetails ? (
+                        <div
+                          className={"pendingProjectListRightCol mt-4 mt-xl-0"}
+                        >
+                          {/* <ul className="d-flex align-items-center gap-2 mb-4">
+                            {item?.ratingProjectData?.map(
+                              (ratingItem, ratingIndex) => {
                                 return (
-                                    <li className="text-aureolin" key={ratingIndex}>
-                                        {ratingItem?.icon}
-                                    </li>
+                                  <li
+                                    className="text-aureolin"
+                                    key={ratingIndex}
+                                  >
+                                    {ratingItem?.icon}
+                                  </li>
                                 );
-                            })}
-                          </ul>
+                              }
+                            )}
+                          </ul> */}
                           <div className="d-flex flex-column flex-sm-row w-100 mb-4">
                             <h6 className="w-45 mb-0 lh-base p small fw-bold">
                               Company Name{" "}
                               <b className="d-none d-lg-inline">:-</b>
                             </h6>
                             <h6 className="w-55 mb-0 lh-base p small word-break-word p small">
-                              {item.companyName}
+                              {item?.company_name}
                             </h6>
                           </div>
                           <div className="d-flex flex-column flex-sm-row w-100 mb-4">
@@ -82,40 +96,43 @@ export const LDProjectsCard = ({
                               <b className="d-none d-lg-inline">:-</b>
                             </h6>
                             <h6 className="w-55 mb-0 lh-base p small word-break-word p small">
-                              {item.managerName}
+                              {item?.username
+                                ? item?.username
+                                : item?.createdBy?.username
+                                ? item?.createdBy?.username
+                                : item?.company_name}
                             </h6>
                           </div>
-                          <div className="d-flex flex-column flex-sm-row w-100 mb-4">
+                          {/* <div className="d-flex flex-column flex-sm-row w-100 mb-4">
                             <h6 className="w-45 mb-0 lh-base p small fw-bold">
-                              Status{" "}
-                              <b className="d-none d-lg-inline">:-</b>
+                              Status <b className="d-none d-lg-inline">:-</b>
                             </h6>
                             <h6 className="w-55 mb-0 lh-base p small word-break-word p small">
                               {item.status}
                             </h6>
-                          </div>
+                          </div> */}
                           <div className="d-flex flex-column flex-sm-row w-100 mb-4">
                             <h6 className="w-45 mb-0 lh-base p small fw-bold">
-                              Mobile{" "}
-                              <b className="d-none d-lg-inline">:-</b>
+                              Mobile <b className="d-none d-lg-inline">:-</b>
                             </h6>
                             <h6 className="w-55 mb-0 lh-base p small word-break-word p small">
-                              {item.mobileNumber}
+                              {item?.createdBy?.mobile}
                             </h6>
                           </div>
                           <div className="d-flex flex-column flex-sm-row w-100 mb-4">
                             <h6 className="w-45 mb-0 lh-base p small fw-bold">
-                              Email{" "}
-                              <b className="d-none d-lg-inline">:-</b>
+                              Email <b className="d-none d-lg-inline">:-</b>
                             </h6>
-                            <a href={item.emailUrl} className="w-55 mb-0 lh-base p small word-break-word p small">
-                              {item.email}
+                            <a
+                              href={`mailto:${item?.createdBy?.email}`}
+                              className="w-55 mb-0 lh-base p small word-break-word p small"
+                            >
+                              {item?.createdBy?.email}
                             </a>
                           </div>
                           <div className="d-flex flex-column flex-sm-row w-100 mb-4">
                             <h6 className="w-45 mb-0 lh-base p small fw-bold">
-                              Address{" "}
-                              <b className="d-none d-lg-inline">:-</b>
+                              Address <b className="d-none d-lg-inline">:-</b>
                             </h6>
                             <h6 className="w-55 mb-0 lh-base p small word-break-word p small">
                               {item.address}
@@ -123,54 +140,58 @@ export const LDProjectsCard = ({
                           </div>
                           <div className="d-flex flex-column flex-sm-row w-100 mb-4">
                             <h6 className="w-45 mb-0 lh-base p small fw-bold">
-                              Website{" "}
-                              <b className="d-none d-lg-inline">:-</b>
+                              Website <b className="d-none d-lg-inline">:-</b>
                             </h6>
-                            <a href={item.URL} target="_blank" className="w-55 mb-0 lh-base p small word-break-word p small">
+                            <a
+                              href={item.URL}
+                              target="_blank"
+                              className="w-55 mb-0 lh-base p small word-break-word p small"
+                            >
                               {item.website}
                             </a>
                           </div>
                         </div>
-                        :
-                      <div className={"pendingProjectListRightCol mt-4 mt-xl-0"}>
-                        <ul className="d-flex align-items-center gap-2 mb-4">
-                          {/* {item?.ratingProjectData.map((ratingItem, ratingIndex) => {
+                      ) : (
+                        <div
+                          className={"pendingProjectListRightCol mt-4 mt-xl-0"}
+                        >
+                          <ul className="d-flex align-items-center gap-2 mb-4">
+                            {/* {item?.ratingProjectData.map((ratingItem, ratingIndex) => {
                                                     return (
                                                         <li className="text-aureolin" key={ratingIndex}>
                                                             {ratingItem?.icon}
                                                         </li>
                                                     );
                                                 })} */}
-                        </ul>
-                        <div className="d-flex w-100 mb-4">
-                          <h6 className="w-75-xs w-50 mb-0 lh-base p small fw-bold">
-                            Projects Done{" "}
-                            <b className="d-none d-lg-inline">:-</b>
-                          </h6>
-                          <h6 className="w-25-xs w-50 mb-0 lh-base p small word-break-word p small">
-                            {item?.projectsDone ? item?.projectsDone : 0}
-                          </h6>
+                          </ul>
+                          <div className="d-flex w-100 mb-4">
+                            <h6 className="w-75-xs w-50 mb-0 lh-base p small fw-bold">
+                              Projects Done{" "}
+                              <b className="d-none d-lg-inline">:-</b>
+                            </h6>
+                            <h6 className="w-25-xs w-50 mb-0 lh-base p small word-break-word p small">
+                              {item?.projectsDone ? item?.projectsDone : 0}
+                            </h6>
+                          </div>
+                          <div className="d-flex w-100 mb-4">
+                            <h6 className="w-75-xs w-50 mb-0 lh-base p small fw-bold">
+                              Projects Pending{" "}
+                              <b className="d-none d-lg-inline">:-</b>
+                            </h6>
+                            <h6 className="w-25-xs w-50 mb-0 lh-base p small word-break-word p small">
+                              {item?.projectCount ? item?.projectCount : 0}
+                            </h6>
+                          </div>
+                          <div className="d-flex flex-column flex-xxl-1900-row w-100 mb-4">
+                            <h6 className="w-50 w-100-md mb-0 lh-base p small fw-bold">
+                              Address <b className="d-none d-lg-inline">:-</b>
+                            </h6>
+                            <h6 className="w-50 w-100-xxl-1899 mb-0 lh-base p small word-break-word p small mt-3 mt-xxl-0">
+                              {item?.address}
+                            </h6>
+                          </div>
                         </div>
-                        <div className="d-flex w-100 mb-4">
-                          <h6 className="w-75-xs w-50 mb-0 lh-base p small fw-bold">
-                            Projects Pending{" "}
-                            <b className="d-none d-lg-inline">:-</b>
-                          </h6>
-                          <h6 className="w-25-xs w-50 mb-0 lh-base p small word-break-word p small">
-                            {item?.projectCount ? item?.projectCount : 0}
-                          </h6>
-                        </div>
-                        <div className="d-flex flex-column flex-xxl-1900-row w-100 mb-4">
-                          <h6 className="w-50 w-100-md mb-0 lh-base p small fw-bold">
-                            Address <b className="d-none d-lg-inline">:-</b>
-                          </h6>
-                          <h6 className="w-50 w-100-xxl-1899 mb-0 lh-base p small word-break-word p small mt-3 mt-xxl-0">
-                            {item?.address}
-                          </h6>
-                        </div>
-                      </div>
-                      }
-
+                      )}
                     </div>
                     {isBtn && (
                       <div className="d-flex align-items-centr gap-4 gap-xl-5 justify-content-center mt-auto pt-5">
@@ -266,7 +287,11 @@ export const LDProjectsCard = ({
                                       : item?.company_name}
                                   </h6>
                                 </div>
-                                <div className={"pendingProjectListRightCol mt-4 mt-xl-0"}>
+                                <div
+                                  className={
+                                    "pendingProjectListRightCol mt-4 mt-xl-0"
+                                  }
+                                >
                                   <ul className="d-flex align-items-center gap-2 mb-4">
                                     {/* {item?.ratingProjectData?.map((ratingItem, ratingIndex) => {
                                                                     return (
@@ -300,8 +325,7 @@ export const LDProjectsCard = ({
                                   </div>
                                   <div className="d-flex flex-column flex-xxl-1600-row w-100 mb-4">
                                     <h6 className="w-50 mb-0 lh-base p small fw-bold">
-                                      Address{" "}
-                                      <b className="d-inline">:-</b>
+                                      Address <b className="d-inline">:-</b>
                                     </h6>
                                     <h6 className="w-50 w-100-xxl mb-0 lh-base p small word-break-word p small mt-3 mt-xxl-0">
                                       {item?.address}

@@ -66,12 +66,20 @@ const ManagementListPending = () => {
       <div className={clsx("admin-content")}>
         <div className="d-flex align-items-center justify-content-between flex-wrap gap-5 gap-xxl-4">
           <div className="d-flex align-items-center flex-wrap gap-4 gap-xl-3">
-              <Link to="/" className="back-next-arrow-wrap flex-0-auto d-flex align-items-center justify-content-center rounded-circle cursor-pointer hover-text-white me-2">{svgIcons.backArrowFillIcon}</Link>
-              <h4 className="text-bleu-de-france-one mb-0">Pending List</h4>
-              <span>{svgIcons.doubleRightArrowIcon}</span>
-              <h4 className="mb-0">
-                Management<span className="ps-2">({managementList?.length})</span>
-              </h4>
+            <Link
+              to="/"
+              className="back-next-arrow-wrap flex-0-auto d-flex align-items-center justify-content-center rounded-circle cursor-pointer hover-text-white me-2"
+            >
+              {svgIcons.backArrowFillIcon}
+            </Link>
+            <h4 className="text-bleu-de-france-one mb-0">Pending List</h4>
+            <span>{svgIcons.doubleRightArrowIcon}</span>
+            <h4 className="mb-0">
+              Management
+              <span className="ps-2">
+                ({paginationServerData?.totalRecords})
+              </span>
+            </h4>
           </div>
           <div className="d-flex align-items-center gap-4 flex-wrap">
             <LDInput
@@ -86,7 +94,7 @@ const ManagementListPending = () => {
               isNotBottomSpace
               isSearchBarInputWrap="w-100-sm"
             />
-            <Dropdown
+            {/* <Dropdown
                 menu={{
                   items,
                 }}
@@ -98,7 +106,7 @@ const ManagementListPending = () => {
                   Sort By
                   <span className="down-icon">{svgIcons.downArrowLineIcon}</span>
                 </Button>
-            </Dropdown>
+            </Dropdown> */}
           </div>
         </div>
         <div className="w-100 mt-5">
@@ -106,7 +114,7 @@ const ManagementListPending = () => {
             {managementList?.length > 0 && (
               <LDProjectsCard
                 // projectCardData={managementList}
-                projectCardData={managementListPendingData}
+                projectCardData={managementList}
                 isNotSwiper
                 isBtn
                 isFullDetails
