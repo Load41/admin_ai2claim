@@ -11,21 +11,33 @@ import {
 import { LDButton } from "../../components";
 import styles from "./AboutCrew.module.css";
 import { useCrewDetailHook } from "../../hooks";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const AboutCrew = () => {
   const { crewData } = useCrewDetailHook();
+  // projects-handled-management-list open page start
+  const navigate = useNavigate();
+  const crewHandledList = () => {
+    navigate("/crew-handled-management-list")
+  }
+  // projects-handled-management-list open page end
+  // crww list pending open page start
+  const cpFileNavigate = useNavigate();
+  const crewPendingFile = () => {
+   cpFileNavigate("/crew-list-pending")
+  }
+ // crww list pending open page end
   return (
     <>
       <div className={clsx("admin-content")}>
         <div className="d-flex align-items-center justify-content-between flex-wrap gap-5 gap-xxl-4">
               <div className="d-flex align-items-center flex-wrap gap-4 gap-xl-3">
-                  <Link to="/crew-list-pending" className="back-next-arrow-wrap flex-0-auto d-flex align-items-center justify-content-center rounded-circle cursor-pointer hover-text-white me-2">{svgIcons.backArrowFillIcon}</Link>
+                  <Link to="/crew-list" className="back-next-arrow-wrap flex-0-auto d-flex align-items-center justify-content-center rounded-circle cursor-pointer hover-text-white me-2">{svgIcons.backArrowFillIcon}</Link>
                   <h4 className="text-bleu-de-france-one mb-0">About Crew</h4>
                   <b>{svgIcons.doubleRightArrowIcon}</b>
-                  <Link to="/crew-list-pending" className="h4 mb-0">
+                  <h4 className="mb-0">
                     Crew<span className="ps-2"></span>
-                  </Link>
+                  </h4>
                   <b>{svgIcons.doubleRightArrowIcon}</b>
                   <h4 className="mb-0">{crewData?.createdBy?.username}</h4>
               </div>
@@ -157,9 +169,7 @@ const AboutCrew = () => {
                   iconPosition={"end"}
                   isFillBtn
                   customClass={clsx("")}
-                  handleClick={() => {
-                    return false;
-                  }}
+                  handleClick={crewHandledList}
                 >
                   List of projects handled({crewData?.projectCount})
                 </LDButton>
@@ -169,9 +179,7 @@ const AboutCrew = () => {
                   iconPosition={"end"}
                   isFillBtn
                   customClass={clsx("")}
-                  handleClick={() => {
-                    return false;
-                  }}
+                  handleClick={crewPendingFile}
                 >
                   List of pending projects({crewData?.projectCount})
                 </LDButton>

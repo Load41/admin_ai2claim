@@ -23,6 +23,8 @@ import ComplaintsQueries from "../pages/ComplaintsQueries";
 import CheckFiles from "../pages/CheckFiles";
 import ApprovedThings from "../pages/ApprovedThings";
 import AboutUs from "../pages/AboutUs";
+import ProjectsHandledManagementList from "../pages/ProjectHandle/ProjectsHandledManagementList";
+import ProjectsHandledCrewList from "../pages/ProjectHandle/ProjectsHandledCrewList";
 
 export const router = createBrowserRouter([
   {
@@ -46,7 +48,7 @@ export const router = createBrowserRouter([
         element: <CrewList />,
       },
       {
-        path: "client-list",
+        path: "/client-list",
         element: <ClientList />,
       },
       {
@@ -108,6 +110,14 @@ export const router = createBrowserRouter([
       {
         path: "/about-us",
         element: <AboutUs />,
+      },
+      {
+        path: "/projects-handled-management-list",
+        element: <ProjectsHandledManagementList />,
+      },
+      {
+        path: "/crew-handled-management-list",
+        element: <ProjectsHandledCrewList />,
       },
     ],
   },

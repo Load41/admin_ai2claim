@@ -1316,3 +1316,118 @@ export const approvedData = [
     approvedDate: '18/11/2024',
   },
 ];
+
+export const managementProjectsHandledColumns = [
+  {
+    title: 'Project name',
+    dataIndex: 'projectName',
+    key: 'projectName',
+  },
+  {
+    title: 'Client name',
+    dataIndex: 'clientName',
+    key: 'clientName',
+  },
+  {
+    title: 'Crew name',
+    dataIndex: 'crewName',
+    key: 'crewName',
+  },
+  {
+    title: 'Take up date',
+    dataIndex: 'takeUpDate',
+    key: 'takeUpDate',
+  },
+  {
+    title: 'Status',
+    dataIndex: 'status',
+    key: 'status',
+  },
+  {
+    title: 'Finished date',
+    dataIndex: 'finishedDate',
+    key: 'finishedDate',
+  },
+];
+export const managementProjectsHandledData = [
+  {
+    key: '1',
+    projectName: 'Rainbow',
+    clientName: 'Thomas jr.',
+    crewName: 'Harris & hyde',
+    takeUpDate: '17/11/2024',
+    status: 'Pending',
+    finishedDate: '--/--/----',
+  },
+  {
+    key: '2',
+    projectName: 'Bruno',
+    clientName: 'Bruno j',
+    crewName: 'Harris & hyde',
+    takeUpDate: '17/11/2024',
+    status: 'Finished',
+    finishedDate: '18/11/2024',
+  },
+];
+
+export const crewProjectsHandledColumns = [
+  {
+    title: 'Project name',
+    dataIndex: 'projectName',
+    key: 'projectName',
+  },
+  {
+    title: 'Client name',
+    dataIndex: 'clientName',
+    key: 'clientName',
+  },
+  {
+    title: 'Crew name',
+    dataIndex: 'crewName',
+    key: 'crewName',
+  },
+  {
+    title: 'Take up date',
+    dataIndex: 'takeUpDate',
+    key: 'takeUpDate',
+  },
+  {
+    title: 'Status',
+    dataIndex: 'status',
+    key: 'status',
+  },
+  {
+    title: 'Finished date',
+    dataIndex: 'finishedDate',
+    key: 'finishedDate',
+  },
+];
+export const crewProjectsHandledData = [
+  {
+    key: '1',
+    projectName: "Rebel's nation",
+    clientName: 'Rambo',
+    crewName: 'Mr. roof',
+    takeUpDate: '17/11/2024',
+    status: 'Finished',
+    finishedDate: '18/11/2024',
+  },
+  {
+    key: '2',
+    projectName: 'Den ',
+    clientName: 'Denis rich',
+    crewName: 'Mr. roof',
+    takeUpDate: '19/11/2024',
+    status: 'Finished',
+    finishedDate: '18/11/2024',
+  },
+  {
+    key: '3',
+    projectName: "Tom's castle",
+    clientName: 'Tom',
+    crewName: 'Mr. roof',
+    takeUpDate: '19/11/2024',
+    status: 'Finished',
+    finishedDate: '20/11/2024',
+  },
+];

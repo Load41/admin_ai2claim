@@ -10,21 +10,33 @@ import {
 import { LDButton } from "../../components";
 import styles from "./AboutManagement.module.css";
 import { useManagementDetailHook } from "../../hooks";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const AboutManagement = () => {
   const { isLoading, managementData } = useManagementDetailHook();
+  // projects-handled-management-list open page start
+  const navigate = useNavigate();
+  const managementHandledList = () => {
+    navigate("/projects-handled-management-list")
+  }
+  // projects-handled-management-list open page end
+  // management list pending open page start
+   const mpFileNavigate = useNavigate();
+   const managementPendingFile = () => {
+    mpFileNavigate("/management-list-pending")
+   }
+  // management list pending open page end
   return (
     <>
       <div className={clsx("admin-content")}>
         <div className="d-flex align-items-center justify-content-between flex-wrap gap-5 gap-xxl-4">
             <div className="d-flex align-items-center flex-wrap gap-4 gap-xl-3">
-                <Link to="/management-list-pending" className="back-next-arrow-wrap flex-0-auto d-flex align-items-center justify-content-center rounded-circle cursor-pointer hover-text-white me-2">{svgIcons.backArrowFillIcon}</Link>
+                <Link to="/management-list" className="back-next-arrow-wrap flex-0-auto d-flex align-items-center justify-content-center rounded-circle cursor-pointer hover-text-white me-2">{svgIcons.backArrowFillIcon}</Link>
                 <h4 className="text-bleu-de-france-one mb-0">About Management</h4>
                 <b>{svgIcons.doubleRightArrowIcon}</b>
-                <Link to="/management-list-pending" className="h4 mb-0">
+                <h4 className="mb-0">
                   Management<span className="ps-2"> </span>
-                </Link>
+                </h4>
                 <b>{svgIcons.doubleRightArrowIcon}</b>
                 <h4 className="mb-0">{managementData?.createdBy?.username}</h4>
             </div>
@@ -155,9 +167,7 @@ const AboutManagement = () => {
                   iconPosition={"end"}
                   isFillBtn
                   customClass={clsx("")}
-                  handleClick={() => {
-                    return false;
-                  }}
+                  handleClick={managementHandledList}
                 >
                   List of projects handled({managementData?.projectCount})
                 </LDButton>
@@ -167,9 +177,7 @@ const AboutManagement = () => {
                   iconPosition={"end"}
                   isFillBtn
                   customClass={clsx("")}
-                  handleClick={() => {
-                    return false;
-                  }}
+                  handleClick={managementPendingFile}
                 >
                   List of pending projects({managementData?.projectCount})
                 </LDButton>

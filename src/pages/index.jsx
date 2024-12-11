@@ -16,3 +16,4 @@ export * from "./ComplaintsQueries";
 export * from "./CheckFiles";
 export * from "./ApprovedThings";
 export * from "./AboutUs";
+export * from "./ProjectHandle";
