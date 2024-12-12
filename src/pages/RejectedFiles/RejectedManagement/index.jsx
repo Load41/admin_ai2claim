@@ -30,7 +30,7 @@ const RejectedManagement = () => {
           <h4 className="text-bleu-de-france-one mb-0">Rejected List</h4>
           <span>{svgIcons.doubleRightArrowIcon}</span>
           <h4 className="mb-0">
-            Management<span className="ps-2">(2)</span>
+            Management<span className="ps-2">({managementList?.length > 0 ? paginationServerData?.totalRecords : 0})</span>
           </h4>
         </div>
       </div>
