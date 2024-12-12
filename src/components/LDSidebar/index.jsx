@@ -40,14 +40,14 @@ const items = [
     [
       getItem(
         <>
-          <Link to="/management-list-pending">Management</Link>
+          <Link to="/management-list-pending">Management file</Link>
         </>,
         "20",
         svgIcons.directFreight
       ),
       getItem(
         <>
-          <Link to="/crew-list-pending">Crew list</Link>
+          <Link to="/crew-list-pending">Crew file</Link>
         </>,
         "21",
         svgIcons.viewTruckPath
