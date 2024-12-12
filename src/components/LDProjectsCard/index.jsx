@@ -8,6 +8,7 @@ import {
 } from "./../../components";
 import { clsx } from "clsx";
 import { useNavigate } from "react-router-dom";
+import { svgIcons } from "../../constants/icons";
 
 export const LDProjectsCard = ({
   projectCardData,
@@ -182,6 +183,24 @@ export const LDProjectsCard = ({
                               {item?.projectCount ? item?.projectCount : 0}
                             </h6>
                           </div>
+                          <div className="d-flex w-100 mb-4">
+                            <h6 className="w-75-xs w-50 mb-0 lh-base p small fw-bold">
+                              Mobile{" "}
+                              <b className="d-none d-lg-inline">:-</b>
+                            </h6>
+                            <h6 className="w-25-xs w-50 mb-0 lh-base p small word-break-word p small">
+                              +1 23456789
+                            </h6>
+                          </div>
+                          <div className="d-flex w-100 mb-4">
+                            <h6 className="w-75-xs w-50 mb-0 lh-base p small fw-bold">
+                              Email{" "}
+                              <b className="d-none d-lg-inline">:-</b>
+                            </h6>
+                            <h6 className="w-25-xs w-50 mb-0 lh-base p small word-break-word p small">
+                              Tom@gmail.com
+                            </h6>
+                          </div>
                           <div className="d-flex flex-column flex-xxl-1900-row w-100 mb-4">
                             <h6 className="w-50 w-100-md mb-0 lh-base p small fw-bold">
                               Address <b className="d-none d-lg-inline">:-</b>
@@ -198,10 +217,11 @@ export const LDProjectsCard = ({
                         <LDButton
                           type="fill"
                           shape={"round"}
-                          iconPosition={"end"}
+                          iconPosition={"start"}
                           isGreenBg
                           isSmallBtn
                           customClass={clsx("w-50")}
+                          icon={svgIcons.approveIcon}
                           handleClick={() =>
                             handleClickStatusUpdate(
                               true,
@@ -211,7 +231,7 @@ export const LDProjectsCard = ({
                             )
                           }
                         >
-                          Accept
+                          Approve
                         </LDButton>
                         <LDButton
                           type="fill"
@@ -220,6 +240,7 @@ export const LDProjectsCard = ({
                           isRedBg
                           isSmallBtn
                           customClass={clsx("w-50")}
+                          icon={svgIcons.declineIcon}
                           handleClick={() =>
                             handleClickRejected(
                               false,
@@ -232,7 +253,7 @@ export const LDProjectsCard = ({
                           Decline
                         </LDButton>
                         {/* <LDDeclineModal title="Decline Management" cardName="Management"/>
-                        <LDApproveModal isApproveBtn/> */}
+                        <LDApproveModal/> */}
                       </div>
                     )}
                   </div>
@@ -321,6 +342,24 @@ export const LDProjectsCard = ({
                                       {item?.projectCount
                                         ? item?.projectCount
                                         : 0}
+                                    </h6>
+                                  </div>
+                                  <div className="d-flex w-100 mb-4">
+                                    <h6 className="w-75-xs w-50 mb-0 lh-base p small fw-bold">
+                                      Mobile{" "}
+                                      <b className="d-none d-lg-inline">:-</b>
+                                    </h6>
+                                    <h6 className="w-25-xs w-50 mb-0 lh-base p small word-break-word p small">
+                                      +1 23456789
+                                    </h6>
+                                  </div>
+                                  <div className="d-flex w-100 mb-4">
+                                    <h6 className="w-75-xs w-50 mb-0 lh-base p small fw-bold">
+                                      Email{" "}
+                                      <b className="d-none d-lg-inline">:-</b>
+                                    </h6>
+                                    <h6 className="w-25-xs w-50 mb-0 lh-base p small word-break-word p small">
+                                      Tom@gmail.com
                                     </h6>
                                   </div>
                                   <div className="d-flex flex-column flex-xxl-1600-row w-100 mb-4">

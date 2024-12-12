@@ -1157,28 +1157,36 @@ export const managementRejectedListData = [
 export const complaintsQueriesData = [
   {
     img: manWorkerFive,
-    queries: "Rachel's wants to change her email id.",
-    date: "18/11/2024"
-  },
-  {
-    img: manWorkerThree,
-    queries: "Andy raised a complaint about yyyyy management.",
-    date: "21/06/2024"
+    name: "MR.ROOF",
+    message: "Hi, We need to update our future branch and add it to this can we have an account in discount.",
+    time: "10:55 AM",
+    date: "12/12/2024",
+    companyName: "MR.Roof",
+    email: "Mrrrof@gmail.com",
+    mobile: "+123 345 567",
+    address: "1006 W Centennial Rd, Papillion, NE 68046, United States"
   },
   {
     img: manWorkerSix,
-    queries: "Andy requested for management change.",
-    date: "01/10/2024"
+    name: "MR.ROOF",
+    message: "Hi, We need to update our future branch and add it to this can we have an account in discount.",
+    time: "10:55 AM",
+    date: "12/12/2024",
+    companyName: "MR.Roof",
+    email: "Mrrrof@gmail.com",
+    mobile: "+123 345 567",
+    address: "1006 W Centennial Rd, Papillion, NE 68046, United States"
   },
   {
-    img: companyOne,
-    queries: "Andy wants to change his mail id.",
-    date: "04/03/2024"
-  },
-  {
-    img: companyTwo,
-    queries: "Andy raised a complaint.",
-    date: "1/12/2024"
+    img: manWorkerThree,
+    name: "MR.ROOF",
+    message: "Hi, We need to update our future branch and add it to this can we have an account in discount.",
+    time: "10:55 AM",
+    date: "12/12/2024",
+    companyName: "MR.Roof",
+    email: "Mrrrof@gmail.com",
+    mobile: "+123 345 567",
+    address: "1006 W Centennial Rd, Papillion, NE 68046, United States"
   },
 ]
 export const checkFilesData = [

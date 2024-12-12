@@ -21,7 +21,7 @@ export const LDInput = ({
     return (
         <>
             {isTextarea ? 
-             <TextArea rows={4} placeholder="Other reason...." className={clsx(styles.inputWrap, styles.customInput, className)}/>
+             <TextArea rows={4} placeholder={placeholder} className={clsx(styles.inputWrap, styles.customInput, className)}/>
             :
             <div className={clsx(
                 isNotBottomSpace && "mb-0",

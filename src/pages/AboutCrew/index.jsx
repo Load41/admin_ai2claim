@@ -85,7 +85,7 @@ const AboutCrew = () => {
                         {"-"}
                       </h6>
                     </div>
-                    <div className="d-flex w-100">
+                    {/* <div className="d-flex w-100">
                       <h6 className="w-35 mb-0 lh-base fw-bold">
                         Status <b className="d-none d-sm-inline">:-</b>
                       </h6>
@@ -94,15 +94,15 @@ const AboutCrew = () => {
                           ? "Active"
                           : "De-Active"}
                       </h6>
-                    </div>
-                    <div className="d-flex w-100">
+                    </div> */}
+                    {/* <div className="d-flex w-100">
                       <h6 className="w-35 mb-0 lh-base fw-bold">
                         Active Since <b className="d-none d-sm-inline">:-</b>
                       </h6>
                       <h6 className="w-65 mb-0 lh-base word-break-word ps-3">
                         {"-"}
                       </h6>
-                    </div>
+                    </div> */}
                     <div className="d-flex w-100">
                       <h6 className="w-35 mb-0 lh-base fw-bold">
                         Mobile <b className="d-none d-sm-inline">:-</b>
@@ -171,7 +171,7 @@ const AboutCrew = () => {
                   customClass={clsx("")}
                   handleClick={crewHandledList}
                 >
-                  List of projects handled({crewData?.projectCount})
+                  List of Projects Handled({crewData?.projectCount})
                 </LDButton>
                 <LDButton
                   type="fill"
@@ -181,7 +181,7 @@ const AboutCrew = () => {
                   customClass={clsx("")}
                   handleClick={crewPendingFile}
                 >
-                  List of pending projects({crewData?.projectCount})
+                  List of Pending Projects({crewData?.projectCount})
                 </LDButton>
               </div>
             </div>
