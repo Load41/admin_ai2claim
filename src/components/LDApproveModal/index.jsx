@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { LDButton, LDModal } from "../../components";
 import { clsx } from "clsx";
+import { svgIcons } from "../../constants/icons";
 
-export const LDApproveModal = ({isApproveBtn, isRejectedBtn}) => {
+export const LDApproveModal = ({}) => {
     // confirm modal js start
         const [isApproveRejectedModalOpen, setIsApproveRejectedModalOpen] = useState(false);
         const showApproveRejectedModal = () => {
@@ -15,32 +16,18 @@ export const LDApproveModal = ({isApproveBtn, isRejectedBtn}) => {
     // confirm modal js end
     return(
         <>
-            {isApproveBtn && (
             <LDButton
                 type="fill"
                 shape={"round"}
-                iconPosition={"end"}
+                iconPosition={"start"}
                 isGreenBg
                 isSmallBtn
                 customClass={clsx("w-35 w-100-md mt-auto")}
+                icon={svgIcons.approveIcon}
                 handleClick={showApproveRejectedModal}
             >
                 Approve
             </LDButton>
-            )}
-            {isRejectedBtn &&
-                <LDButton
-                    type="fill"
-                    shape={"round"}
-                    iconPosition={"end"}
-                    isRedBg
-                    isSmallBtn
-                    customClass={clsx("w-35 w-100-md mt-auto")}
-                    handleClick={showApproveRejectedModal}
-                >
-                    Decline
-                </LDButton>
-            }
             <LDModal 
                 title="Confirm"
                 open={isApproveRejectedModalOpen} 

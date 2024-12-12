@@ -66,14 +66,14 @@ const AboutClient = () => {
                         {clientData?.firstName} {clientData?.lastName}
                       </h6>
                     </div>
-                    <div className="d-flex w-100">
+                    {/* <div className="d-flex w-100">
                       <h6 className="w-35 mb-0 lh-base fw-bold">
                         Status <b className="d-none d-sm-inline">:-</b>
                       </h6>
                       <h6 className="w-65 w-100-md mb-0 lh-base word-break-word ps-3">
                         {clientData?.is_active ? "Active" : "Active"}
                       </h6>
-                    </div>
+                    </div> */}
                     {/* <div className="d-flex w-100">
                       <h6 className="w-35 mb-0 lh-base fw-bold">
                         Active since <b className="d-none d-sm-inline">:-</b>

@@ -4,6 +4,7 @@ import { clsx } from "clsx";
 import { Radio } from "antd";
 import { LDInput } from "../LDInput";
 import styles from "./LDDeclineModal.module.css";
+import { svgIcons } from "../../constants/icons";
 export const LDDeclineModal = ({ title, cardName }) => {
   // confirm modal js start
   const [isDeclineModalOpen, setIsDeclineModalOpen] = useState(false);
@@ -33,6 +34,7 @@ export const LDDeclineModal = ({ title, cardName }) => {
         isSmallBtn
         customClass={clsx("w-50")}
         handleClick={showDeclineModal}
+        icon={svgIcons.declineIcon}
       >
         Decline
       </LDButton>
@@ -62,16 +64,17 @@ export const LDDeclineModal = ({ title, cardName }) => {
                   Others
                 </Radio>
               </Radio.Group>
-              <LDInput isTextarea />
+              <LDInput isTextarea placeholder="Other reason...."/>
               <div className="d-flex align-items-centr gap-5 justify-content-center mt-5 mt-xxl-3">
                 <LDButton
                   type="fill"
                   shape={"round"}
-                  iconPosition={"end"}
+                  iconPosition={"start"}
                   isGreenBg
                   isSmallBtn
                   customClass={clsx("w-50")}
                   handleClick={handleCancel}
+                  icon={svgIcons.approveIcon}
                 >
                   Proceed
                 </LDButton>
@@ -83,6 +86,7 @@ export const LDDeclineModal = ({ title, cardName }) => {
                   isSmallBtn
                   customClass={clsx("w-50")}
                   handleClick={handleCancel}
+                  icon={svgIcons.declineIcon}
                 >
                   Cancel
                 </LDButton>

@@ -83,7 +83,7 @@ const AboutManagement = () => {
                         Michael
                       </h6>
                     </div>
-                    <div className="d-flex w-100">
+                    {/* <div className="d-flex w-100">
                       <h6 className="w-35 mb-0 lh-base fw-bold">
                         Status <b className="d-none d-sm-inline">:-</b>
                       </h6>
@@ -92,15 +92,15 @@ const AboutManagement = () => {
                           ? "Active"
                           : "De-Active"}
                       </h6>
-                    </div>
-                    <div className="d-flex w-100">
+                    </div> */}
+                    {/* <div className="d-flex w-100">
                       <h6 className="w-35 mb-0 lh-base fw-bold">
                         Active Since <b className="d-none d-sm-inline">:-</b>
                       </h6>
                       <h6 className="w-65 mb-0 lh-base word-break-word ps-3">
                         {"-"}
                       </h6>
-                    </div>
+                    </div> */}
                     <div className="d-flex w-100">
                       <h6 className="w-35 mb-0 lh-base fw-bold">
                         Mobile <b className="d-none d-sm-inline">:-</b>
@@ -169,7 +169,7 @@ const AboutManagement = () => {
                   customClass={clsx("")}
                   handleClick={managementHandledList}
                 >
-                  List of projects handled({managementData?.projectCount})
+                  List of Projects Handled({managementData?.projectCount})
                 </LDButton>
                 <LDButton
                   type="fill"
@@ -179,7 +179,7 @@ const AboutManagement = () => {
                   customClass={clsx("")}
                   handleClick={managementPendingFile}
                 >
-                  List of pending projects({managementData?.projectCount})
+                  List of Pending Projects({managementData?.projectCount})
                 </LDButton>
               </div>
             </div>

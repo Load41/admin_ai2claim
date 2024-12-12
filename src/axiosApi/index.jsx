@@ -12,7 +12,7 @@ const setAuthHeader = (token) => {
 };
 
 axiosApi.defaults.headers = {
-  Authorization: localStorage.getItem("token") ? `Bearer ${localStorage.getItem("token")}:` : null,
+  Authorization: localStorage.getItem("token") ? `Bearer ${localStorage.getItem("token")}` : null,
   "ngrok-skip-browser-warning": `69420`,
 };
 

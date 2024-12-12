@@ -69,6 +69,9 @@ table thead.ant-table-thead tr th.ant-table-cell {
   cursor: pointer;
   transition: all 0.3s;
 }
+.pendingProjectListCardBig{
+  --pendingProjectListCardWidth: 150px;
+}
 
 .pendingProjectListCard:hover {
   border-color: var(--clr-bleu-de-france-one);

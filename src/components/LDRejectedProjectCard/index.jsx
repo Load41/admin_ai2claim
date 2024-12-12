@@ -18,7 +18,7 @@ export const LDRejectedProjectCard = ({
           return (
             <div className="col-lg-6 col-xl-12 col-xxl-6 mt-5">
               <div className="h-100" key={index}>
-                <div className={clsx(styles.pendingProjectListCard, "pendingProjectListCard h-100 d-flex flex-column cursor cursor-auto")} key={index}>
+                <div className={clsx(styles.pendingProjectListCard, "pendingProjectListCard pendingProjectListCardBig h-100 d-flex flex-column cursor cursor-auto")} key={index}>
                   <div
                     className="pendingProjectLisRow w-100 h-100"
                     onClick={() => navigate(`${redirectPath}/${item?.id}`)}
@@ -39,7 +39,7 @@ export const LDRejectedProjectCard = ({
                           alt=""
                         />
                       </div>
-                      <h6 className="mt-4 pt-4 pt-xs-2 mb-0 fw-bold word-break-word p small">
+                      <h6 className="mt-4 pt-4 pt-xs-2 mb-0 fw-bold word-break-word p small pe-3">
                         {item?.username
                           ? item?.username
                           : item?.createdBy?.username

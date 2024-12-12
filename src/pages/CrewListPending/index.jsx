@@ -161,7 +161,7 @@ const CrewListPending = () => {
               Others
             </Radio>
           </Radio.Group>
-          <LDInput isTextarea />
+          <LDInput isTextarea placeholder="Other reason...."/>
           <div className="d-flex align-items-centr gap-5 justify-content-center mt-5 mt-xxl-3">
             <LDButton
               type="fill"

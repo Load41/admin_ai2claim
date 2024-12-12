@@ -53,7 +53,7 @@ const EditProfile = () => {
                   name="email"
                   // value={loginData?.email}
                   type="email"
-                  placeholder="Enter email"
+                  placeholder="Enter email address"
                   handleChange={() => {return false}}
                   className={clsx(styles.authField)}
                   suffix={svgIcons.pencilIcon}
