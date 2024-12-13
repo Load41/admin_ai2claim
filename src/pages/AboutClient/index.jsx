@@ -16,7 +16,7 @@ const AboutClient = () => {
           setIsOptimizationModalOpen(true);
       };
 
-      const handleCancel = () => {
+      const handleOptimizationModalCancel = () => {
           setIsOptimizationModalOpen(false);
       };
   // Send Final Estimate (Optimization) modal js end
@@ -655,7 +655,7 @@ const AboutClient = () => {
       <LDModal
       title="Send Final Estimate (Optimization)"
       open={isOptimizationModalOpen} 
-      onCancel={handleCancel}
+      onCancel={handleOptimizationModalCancel}
       width={800}
       modalContent={
         <div className={clsx(styles.optimizationBox)}>
@@ -679,9 +679,7 @@ const AboutClient = () => {
                 isFillBtn
                 isGreenBg
                 customClass={clsx("w-50 w-100-md")}
-                handleClick={() => {
-                  return false;
-                }}
+                handleClick={handleOptimizationModalCancel}
               >
                 Send Final Estimate
             </LDButton>
