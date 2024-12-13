@@ -1,13 +1,18 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { clsx } from "clsx";
-import { LDButton, LDPagination, LDProjectsCard } from "../../components";
+import {
+  LDButton,
+  LDModal,
+  LDPagination,
+  LDProjectsCard,
+} from "../../components";
 import {
   managementListData,
   managementListPendingData,
 } from "../../constants/data";
 import styles from "./ManagementListPending.module.css";
-import { Button, Dropdown, Modal } from "antd";
+import { Button, Dropdown, Modal, Radio } from "antd";
 import { useManagementPendingListHook } from "../../hooks";
 import { LDInput } from "../../components/LDInput";
 import { svgIcons } from "../../constants/icons";
@@ -60,6 +65,9 @@ const ManagementListPending = () => {
     handleCloseModal,
     handleClickRejected,
     handleInputChange,
+    isApproveRejectedModalOpen,
+    handleCancel,
+    showApproveRejectedModal,
   } = useManagementPendingListHook();
   return (
     <>
@@ -143,8 +151,54 @@ const ManagementListPending = () => {
         centered
         className="remove-footer-modal"
       >
-        <div className="text-center d-flex flex-column gap-5 gap-xxl-4">
-          <div>
+        <div className=" ">
+          <h4 className="lh-base mb-0 fw-medium">
+            name<b className="px-2">:-</b>
+            <span className="text-bleu-de-france-one">
+              {managementData?.name}
+            </span>
+          </h4>
+          <Radio.Group
+            name="reason"
+            onChange={handleInputChange}
+            value={managementData?.reason}
+            className={clsx("declineList d-flex flex-column")}
+          >
+            <Radio
+              name="reason"
+              className="w-100 h5 fw-normal"
+              value={"Already taken by the name"}
+              onClick={handleInputChange}
+            >
+              Already taken by the name
+            </Radio>
+            <Radio
+              name="reason"
+              className="w-100 h5 fw-normal"
+              value={"Insufficient Data"}
+              onClick={handleInputChange}
+            >
+              Insufficient Data
+            </Radio>
+            <Radio
+              className="w-100 h5 fw-normal"
+              value={"Others"}
+              onClick={handleInputChange}
+            >
+              Others
+            </Radio>
+          </Radio.Group>
+          {managementData?.reason === "Others" && (
+            <LDInput
+              id="other_reason"
+              name="other_reason"
+              isTextarea
+              value={managementData?.other_reason}
+              placeholder="Other reason...."
+              handleChange={handleInputChange}
+            />
+          )}
+          {/* <div>
             <LDInput
               id="reason"
               dataTestId="reason"
@@ -155,7 +209,7 @@ const ManagementListPending = () => {
               handleChange={handleInputChange}
               className={clsx(styles.headerSearchBarWrap, "mb-0")}
             />
-          </div>
+          </div> */}
           <div className="d-flex align-items-centr gap-5 justify-content-center mt-3 mt-xxl-2">
             <LDButton
               type="fill"
@@ -170,6 +224,7 @@ const ManagementListPending = () => {
                   managementData?.id
                 )
               }
+              icon={svgIcons.approveIcon}
             >
               Submit
             </LDButton>
@@ -181,12 +236,60 @@ const ManagementListPending = () => {
               isSmallBtn
               customClass={clsx("w-50")}
               handleClick={handleCloseModal}
+              icon={svgIcons.declineIcon}
             >
               Close
             </LDButton>
           </div>
         </div>
       </Modal>
+      <LDModal
+        title="Confirm"
+        open={isApproveRejectedModalOpen}
+        onCancel={handleCancel}
+        modalContent={
+          <>
+            <div className="text-center d-flex flex-column gap-5">
+              <h4 className="lh-base mb-0">
+                Are you sure you want to Approve&nbsp;
+                <span className="text-bleu-de-france-one">
+                  "{managementData?.name}"
+                </span>{" "}
+                &nbsp;to use ai2claim services?
+              </h4>
+              <div className="d-flex align-items-centr gap-5 justify-content-center mt-5 mt-xxl-3">
+                <LDButton
+                  type="fill"
+                  shape={"round"}
+                  iconPosition={"end"}
+                  isGreenBg
+                  isSmallBtn
+                  customClass={clsx("w-50")}
+                  handleClick={() =>
+                    handleClickStatusUpdate(
+                      managementData?.status,
+                      managementData?.id
+                    )
+                  }
+                >
+                  Yes
+                </LDButton>
+                <LDButton
+                  type="fill"
+                  shape={"round"}
+                  iconPosition={"end"}
+                  isRedBg
+                  isSmallBtn
+                  customClass={clsx("w-50")}
+                  handleClick={handleCancel}
+                >
+                  No
+                </LDButton>
+              </div>
+            </div>
+          </>
+        }
+      />
     </>
   );
 };

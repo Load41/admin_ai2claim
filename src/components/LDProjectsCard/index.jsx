@@ -59,8 +59,8 @@ export const LDProjectsCard = ({
                           {item?.username
                             ? item?.username
                             : item?.createdBy?.username
-                              ? item?.createdBy?.username
-                              : item?.company_name}
+                            ? item?.createdBy?.username
+                            : item?.company_name}
                         </h6>
                       </div>
 
@@ -100,8 +100,8 @@ export const LDProjectsCard = ({
                               {item?.username
                                 ? item?.username
                                 : item?.createdBy?.username
-                                  ? item?.createdBy?.username
-                                  : item?.company_name}
+                                ? item?.createdBy?.username
+                                : item?.company_name}
                             </h6>
                           </div>
                           {/* <div className="d-flex flex-column flex-sm-row w-100 mb-4">
@@ -185,20 +185,22 @@ export const LDProjectsCard = ({
                           </div>
                           <div className="d-flex w-100 mb-4">
                             <h6 className="w-75-xs w-50 mb-0 lh-base p small fw-bold">
-                              Mobile{" "}
-                              <b className="d-none d-lg-inline">:-</b>
+                              Mobile <b className="d-none d-lg-inline">:-</b>
                             </h6>
                             <h6 className="w-25-xs w-50 mb-0 lh-base p small word-break-word p small">
-                              {item?.mobile ? item.mobile : item?.createdBy?.mobile}
+                              {item?.mobile
+                                ? item.mobile
+                                : item?.createdBy?.mobile}
                             </h6>
                           </div>
                           <div className="d-flex w-100 mb-4">
                             <h6 className="w-75-xs w-50 mb-0 lh-base p small fw-bold">
-                              Email{" "}
-                              <b className="d-none d-lg-inline">:-</b>
+                              Email <b className="d-none d-lg-inline">:-</b>
                             </h6>
                             <h6 className="w-25-xs w-50 mb-0 lh-base p small word-break-word p small">
-                              {item?.email ? item.email : item?.createdBy?.email}
+                              {item?.email
+                                ? item.email
+                                : item?.createdBy?.email}
                             </h6>
                           </div>
                           <div className="d-flex flex-column flex-xxl-1900-row w-100 mb-4">
@@ -223,11 +225,16 @@ export const LDProjectsCard = ({
                           customClass={clsx("w-50")}
                           icon={svgIcons.approveIcon}
                           handleClick={() =>
-                            handleClickStatusUpdate(
+                            handleClickRejected(
                               true,
                               item?.createdBy?.id
                                 ? item?.createdBy?.id
-                                : item?.id
+                                : item?.id,
+                              item?.username
+                                ? item?.username
+                                : item?.createdBy?.username
+                                ? item?.createdBy?.username
+                                : item?.company_name
                             )
                           }
                         >
@@ -246,14 +253,22 @@ export const LDProjectsCard = ({
                               false,
                               item?.createdBy?.id
                                 ? item?.createdBy?.id
-                                : item?.id
+                                : item?.id,
+                              item?.username
+                                ? item?.username
+                                : item?.createdBy?.username
+                                ? item?.createdBy?.username
+                                : item?.company_name
                             )
                           }
                         >
                           Decline
                         </LDButton>
-                        {/* <LDDeclineModal title="Decline Management" cardName="Management"/>
-                        <LDApproveModal/> */}
+                        {/* <LDDeclineModal
+                          title="Decline Management"
+                          cardName="Management"
+                        />
+                        <LDApproveModal /> */}
                       </div>
                     )}
                   </div>
@@ -304,8 +319,8 @@ export const LDProjectsCard = ({
                                     {item?.username
                                       ? item?.username
                                       : item?.createdBy?.username
-                                        ? item?.createdBy?.username
-                                        : item?.company_name}
+                                      ? item?.createdBy?.username
+                                      : item?.company_name}
                                   </h6>
                                 </div>
                                 <div
@@ -350,7 +365,9 @@ export const LDProjectsCard = ({
                                       <b className="d-none d-lg-inline">:-</b>
                                     </h6>
                                     <h6 className="w-25-xs w-50 mb-0 lh-base p small word-break-word p small">
-                                      {item?.mobile ? item.mobile : item?.createdBy?.mobile}
+                                      {item?.mobile
+                                        ? item.mobile
+                                        : item?.createdBy?.mobile}
                                     </h6>
                                   </div>
                                   <div className="d-flex w-100 mb-4">
@@ -359,7 +376,9 @@ export const LDProjectsCard = ({
                                       <b className="d-none d-lg-inline">:-</b>
                                     </h6>
                                     <h6 className="w-25-xs w-50 mb-0 lh-base p small word-break-word p small">
-                                      {item?.email ? item.email : item?.createdBy?.email}
+                                      {item?.email
+                                        ? item.email
+                                        : item?.createdBy?.email}
                                     </h6>
                                   </div>
                                   <div className="d-flex flex-column flex-xxl-1600-row w-100 mb-4">

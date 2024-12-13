@@ -1,7 +1,12 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { clsx } from "clsx";
-import { LDButton, LDPagination, LDProjectsCard } from "../../components";
+import {
+  LDButton,
+  LDModal,
+  LDPagination,
+  LDProjectsCard,
+} from "../../components";
 import { crewListPendingData } from "../../constants/data";
 import styles from "./CrewListPending.module.css";
 import { Button, Dropdown, Modal, Radio } from "antd";
@@ -57,6 +62,9 @@ const CrewListPending = () => {
     handleClickRejected,
     handleInputChange,
     rejectedReasonModal,
+    showApproveRejectedModal,
+    handleCancel,
+    isApproveRejectedModalOpen,
   } = useCrewPendingListHook();
   return (
     <>
@@ -140,28 +148,51 @@ const CrewListPending = () => {
         centered
         className="remove-footer-modal"
       >
-        <div className="">
+        <div className=" ">
           <h4 className="lh-base mb-0 fw-medium">
-            {/* {cardName} */}
             name<b className="px-2">:-</b>
-            <span className="text-bleu-de-france-one">MR.Roof</span>
+            <span className="text-bleu-de-france-one">{crewData?.name}</span>
           </h4>
           <Radio.Group
-            // onChange={onChange}
-            // value={value}
+            name="reason"
+            onChange={handleInputChange}
+            value={crewData?.reason}
             className={clsx("declineList d-flex flex-column")}
           >
-            <Radio className="w-100 h5 fw-medium" value={1}>
+            <Radio
+              name="reason"
+              className="w-100 h5 fw-normal"
+              value={"Already taken by the name"}
+              onClick={handleInputChange}
+            >
               Already taken by the name
             </Radio>
-            <Radio className="w-100 h5 fw-medium" value={2}>
+            <Radio
+              name="reason"
+              className="w-100 h5 fw-normal"
+              value={"Insufficient Data"}
+              onClick={handleInputChange}
+            >
               Insufficient Data
             </Radio>
-            <Radio className="w-100 h5 fw-medium" value={3}>
+            <Radio
+              className="w-100 h5 fw-normal"
+              value={"Others"}
+              onClick={handleInputChange}
+            >
               Others
             </Radio>
           </Radio.Group>
-          <LDInput isTextarea placeholder="Other reason...."/>
+          {crewData?.reason === "Others" && (
+            <LDInput
+              id="other_reason"
+              name="other_reason"
+              isTextarea
+              value={crewData?.other_reason}
+              placeholder="Other reason...."
+              handleChange={handleInputChange}
+            />
+          )}
           <div className="d-flex align-items-centr gap-5 justify-content-center mt-5 mt-xxl-3">
             <LDButton
               type="fill"
@@ -170,7 +201,10 @@ const CrewListPending = () => {
               isGreenBg
               isSmallBtn
               customClass={clsx("w-50")}
-              // handleClick={handleCancel}
+              handleClick={() =>
+                handleClickStatusUpdateSubmit(crewData?.status, crewData?.id)
+              }
+              icon={svgIcons.approveIcon}
             >
               Proceed
             </LDButton>
@@ -188,6 +222,53 @@ const CrewListPending = () => {
           </div>
         </div>
       </Modal>
+      <LDModal
+        title="Confirm"
+        open={isApproveRejectedModalOpen}
+        onCancel={handleCancel}
+        modalContent={
+          <>
+            <div className="text-center d-flex flex-column gap-5">
+              <h4 className="lh-base mb-0">
+                Are you sure you want to Approve&nbsp;
+                <span className="text-bleu-de-france-one">
+                  "{crewData?.name}"
+                </span>{" "}
+                &nbsp;to use ai2claim services?
+              </h4>
+              <div className="d-flex align-items-centr gap-5 justify-content-center mt-5 mt-xxl-3">
+                <LDButton
+                  type="fill"
+                  shape={"round"}
+                  iconPosition={"end"}
+                  isGreenBg
+                  isSmallBtn
+                  customClass={clsx("w-50")}
+                  handleClick={() =>
+                    handleClickStatusUpdateSubmit(
+                      crewData?.status,
+                      crewData?.id
+                    )
+                  }
+                >
+                  Yes
+                </LDButton>
+                <LDButton
+                  type="fill"
+                  shape={"round"}
+                  iconPosition={"end"}
+                  isRedBg
+                  isSmallBtn
+                  customClass={clsx("w-50")}
+                  handleClick={handleCancel}
+                >
+                  No
+                </LDButton>
+              </div>
+            </div>
+          </>
+        }
+      />
     </>
   );
 };

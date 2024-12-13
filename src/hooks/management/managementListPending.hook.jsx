@@ -10,6 +10,9 @@ export const useManagementPendingListHook = () => {
   const [managementList, setManagementList] = useState({});
   const [paginationServerData, setPaginationServerData] = useState({});
   const [rejectedReasonModal, setRejectedReasonModal] = useState(false);
+  const [isApproveRejectedModalOpen, setIsApproveRejectedModalOpen] =
+    useState(false);
+
   const [paginationData, setPaginationData] = useState({
     currentPage: 1,
     pageSize: 10,
@@ -62,19 +65,37 @@ export const useManagementPendingListHook = () => {
     setManagementData({});
   };
 
-  const handleClickRejected = (status, id) => {
-    setRejectedReasonModal((prevState) => true);
-    setManagementData((prevState) => ({ ...prevState, status, id }));
+  const handleClickRejected = (status, id, name) => {
+    if (status) {
+      showApproveRejectedModal();
+      setManagementData((prevState) => ({ ...prevState, status, id, name }));
+    } else {
+      setRejectedReasonModal((prevState) => true);
+      setManagementData((prevState) => ({ ...prevState, status, id, name }));
+    }
   };
 
   const handleClickStatusUpdate = async (status, id) => {
-    if (managementData?.reason == "" && status == false) {
+    if (
+      (!managementData?.reason || managementData?.reason == "") &&
+      status == false
+    ) {
       toast.error("User rejected reason required!");
+      return false;
     }
+    if (
+      managementData?.reason == "Others" &&
+      (!managementData?.other_reason || managementData?.other_reason == "")
+    ) {
+      toast.error("User rejected other reason required!");
+      return false;
+    }
+    console.log({ managementData });
     const managementListResponse = await doFetchManagementStatusUpdate({
       userId: id,
       is_active: status,
       reason: managementData?.reason,
+      other_reason: managementData?.other_reason,
     });
     if (managementListResponse?.status == 200) {
       doGetManagementList();
@@ -84,6 +105,16 @@ export const useManagementPendingListHook = () => {
       toast.error(managementListResponse?.data?.message);
     }
   };
+
+  // confirm modal js start
+  const showApproveRejectedModal = () => {
+    setIsApproveRejectedModalOpen(true);
+  };
+
+  const handleCancel = () => {
+    setIsApproveRejectedModalOpen(false);
+  };
+  // confirm modal js end
 
   return {
     isLoading,
@@ -98,5 +129,8 @@ export const useManagementPendingListHook = () => {
     handleCloseModal,
     handleClickRejected,
     handleInputChange,
+    isApproveRejectedModalOpen,
+    showApproveRejectedModal,
+    handleCancel,
   };
 };

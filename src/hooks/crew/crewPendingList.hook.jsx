@@ -10,6 +10,8 @@ export const useCrewPendingListHook = () => {
   const [crewDataList, setCrewDataList] = useState({});
   const [paginationServerData, setPaginationServerData] = useState();
   const [rejectedReasonModal, setRejectedReasonModal] = useState(false);
+  const [isApproveRejectedModalOpen, setIsApproveRejectedModalOpen] =
+    useState(false);
   const [crewData, setCrewData] = useState({
     reason: "",
   });
@@ -63,19 +65,34 @@ export const useCrewPendingListHook = () => {
     setCrewData({});
   };
 
-  const handleClickRejected = (status, id) => {
-    setRejectedReasonModal((prevState) => true);
-    setCrewData((prevState) => ({ ...prevState, status, id }));
+  const handleClickRejected = (status, id, name) => {
+    if (status) {
+      showApproveRejectedModal();
+      setCrewData((prevState) => ({ ...prevState, status, id, name }));
+    } else {
+      setRejectedReasonModal((prevState) => true);
+      setCrewData((prevState) => ({ ...prevState, status, id, name }));
+    }
   };
 
   const handleClickStatusUpdateSubmit = async (status, id) => {
-    if (crewData?.reason == "" && status == false) {
+    if ((!crewData?.reason || crewData?.reason == "") && status == false) {
       toast.error("User rejected reason required!");
+      return false;
     }
+    if (
+      crewData?.reason == "Others" &&
+      (!crewData?.other_reason || crewData?.other_reason == "")
+    ) {
+      toast.error("User rejected other reason required!");
+      return false;
+    }
+
     const crewStatusUpdateResponse = await doFetchCrewStatusUpdate({
       userId: id,
       is_active: status,
       reason: crewData?.reason,
+      other_reason: crewData?.other_reason,
     });
     if (crewStatusUpdateResponse?.status == 200) {
       doGetCrewList();
@@ -86,6 +103,16 @@ export const useCrewPendingListHook = () => {
     }
   };
 
+  // confirm modal js start
+  const showApproveRejectedModal = () => {
+    setIsApproveRejectedModalOpen(true);
+  };
+
+  const handleCancel = () => {
+    setIsApproveRejectedModalOpen(false);
+  };
+  // confirm modal js end
+
   return {
     isLoading,
     crewData,
@@ -93,11 +120,14 @@ export const useCrewPendingListHook = () => {
     crewDataList,
     paginationServerData,
     rejectedReasonModal,
+    isApproveRejectedModalOpen,
     handleKeyDownSearch,
     handleClickRejected,
     handleOrderTableChange,
     handleClickStatusUpdateSubmit,
     handleCloseModal,
     handleInputChange,
+    showApproveRejectedModal,
+    handleCancel,
   };
 };
