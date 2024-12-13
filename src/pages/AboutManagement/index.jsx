@@ -17,29 +17,35 @@ const AboutManagement = () => {
   // projects-handled-management-list open page start
   const navigate = useNavigate();
   const managementHandledList = () => {
-    navigate("/projects-handled-management-list")
-  }
+    navigate("/projects-handled-management-list");
+  };
   // projects-handled-management-list open page end
   // management list pending open page start
-   const mpFileNavigate = useNavigate();
-   const managementPendingFile = () => {
-    mpFileNavigate("/management-list-pending")
-   }
+  const managementPendingFile = () => {
+    // navigate("/management-list-pending");
+  };
   // management list pending open page end
   return (
     <>
       <div className={clsx("admin-content")}>
         <div className="d-flex align-items-center justify-content-between flex-wrap gap-5 gap-xxl-4">
-            <div className="d-flex align-items-center flex-wrap gap-4 gap-xl-3">
-                <Link to="/management-list" className="back-next-arrow-wrap flex-0-auto d-flex align-items-center justify-content-center rounded-circle cursor-pointer hover-text-white me-2">{svgIcons.backArrowFillIcon}</Link>
-                <h4 className="text-bleu-de-france-one mb-0">About Management</h4>
-                <b>{svgIcons.doubleRightArrowIcon}</b>
-                <h4 className="mb-0">
-                  Management<span className="ps-2"> </span>
-                </h4>
-                <b>{svgIcons.doubleRightArrowIcon}</b>
-                <h4 className="mb-0">{managementData?.createdBy?.username}</h4>
-            </div>
+          <div className="d-flex align-items-center flex-wrap gap-4 gap-xl-3">
+            <Link
+              to="/management-list"
+              className="back-next-arrow-wrap flex-0-auto d-flex align-items-center justify-content-center rounded-circle cursor-pointer hover-text-white me-2"
+            >
+              {svgIcons.backArrowFillIcon}
+            </Link>
+            <h4 className="text-bleu-de-france-one mb-0">About Management</h4>
+            <b>{svgIcons.doubleRightArrowIcon}</b>
+            <h4 className="mb-0">
+              Management<span className="ps-2"> </span>
+            </h4>
+            <b>{svgIcons.doubleRightArrowIcon}</b>
+            <h4 className="mb-0">
+              {managementData?.managementDetail?.createdBy?.username}
+            </h4>
+          </div>
         </div>
         <div className="w-100 mt-5">
           <div className="row mt-4">
@@ -53,13 +59,16 @@ const AboutManagement = () => {
                   >
                     <div className="ratio ratio-1x1">
                       <img
-                        src={managementData?.createdBy?.profileimage}
+                        src={
+                          managementData?.managementDetail?.createdBy
+                            ?.profileimage
+                        }
                         className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
                         alt=""
                       />
                     </div>
                     <h6 className="mt-4 mb-0 fw-bold word-break-word">
-                      {managementData?.createdBy?.username}
+                      {managementData?.managementDetail?.createdBy?.username}
                     </h6>
                   </div>
                   <div
@@ -72,7 +81,7 @@ const AboutManagement = () => {
                         Company Name <b className="d-none d-sm-inline">:-</b>
                       </h6>
                       <h6 className="w-65 mb-0 lh-base word-break-word ps-3">
-                        {managementData?.company_name}
+                        {managementData?.managementDetail?.company_name}
                       </h6>
                     </div>
                     <div className="d-flex w-100">
@@ -88,7 +97,7 @@ const AboutManagement = () => {
                         Status <b className="d-none d-sm-inline">:-</b>
                       </h6>
                       <h6 className="w-65 mb-0 lh-base word-break-word ps-3">
-                        {managementData?.createdBy?.is_active
+                        {managementData?.managementDetail?.createdBy?.is_active
                           ? "Active"
                           : "De-Active"}
                       </h6>
@@ -106,7 +115,7 @@ const AboutManagement = () => {
                         Mobile <b className="d-none d-sm-inline">:-</b>
                       </h6>
                       <h6 className="w-65 mb-0 lh-base word-break-word ps-3">
-                        {managementData?.createdBy?.mobile}
+                        {managementData?.managementDetail?.createdBy?.mobile}
                       </h6>
                     </div>
                     <div className="d-flex w-100">
@@ -114,7 +123,7 @@ const AboutManagement = () => {
                         Email <b className="d-none d-sm-inline">:-</b>
                       </h6>
                       <h6 className="w-65 mb-0 lh-base word-break-word ps-3">
-                        {managementData?.createdBy?.email}
+                        {managementData?.managementDetail?.createdBy?.email}
                       </h6>
                     </div>
                     <div className="d-flex w-100">
@@ -122,7 +131,7 @@ const AboutManagement = () => {
                         Address <b className="d-none d-sm-inline">:-</b>
                       </h6>
                       <h6 className="w-65 mb-0 lh-base word-break-word ps-3">
-                        {managementData?.address}
+                        {managementData?.managementDetail?.address}
                       </h6>
                     </div>
                     <div className="d-flex w-100">
@@ -169,7 +178,7 @@ const AboutManagement = () => {
                   customClass={clsx("")}
                   handleClick={managementHandledList}
                 >
-                  List of Projects Handled({managementData?.projectCount})
+                  List of Projects Handled({managementData?.projectAccept})
                 </LDButton>
                 <LDButton
                   type="fill"
@@ -179,7 +188,7 @@ const AboutManagement = () => {
                   customClass={clsx("")}
                   handleClick={managementPendingFile}
                 >
-                  List of Pending Projects({managementData?.projectCount})
+                  List of Pending Projects({managementData?.projectPending})
                 </LDButton>
               </div>
             </div>
@@ -188,20 +197,25 @@ const AboutManagement = () => {
             <div className="col-xxl-6 mt-5 mt-xxl-4">
               <div className="pendingProjectListCard d-flex flex-column gap-4">
                 <h4 className="mb-0">About</h4>
-                <p className="lh-base mb-0">{managementData?.description}</p>
+                <p className="lh-base mb-0">
+                  {managementData?.managementDetail?.description}
+                </p>
               </div>
             </div>
             <div className="col-xxl-6 d-grid about-crew-management-img-grid gap-4 mt-5 mt-xxl-4">
-              {managementData?.images &&
-                managementData?.images?.map((imageItem, index) => (
-                  <div className="ratio ratio-16x9" key={index}>
-                    <img
-                      src={imageItem}
-                      className="w-100 h-100 object-fit-cover"
-                      alt=""
-                    />
-                  </div>
-                ))}
+              {managementData &&
+                managementData?.managementDetail?.images &&
+                managementData?.managementDetail?.images?.map(
+                  (imageItem, index) => (
+                    <div className="ratio ratio-16x9" key={index}>
+                      <img
+                        src={imageItem}
+                        className="w-100 h-100 object-fit-cover"
+                        alt=""
+                      />
+                    </div>
+                  )
+                )}
             </div>
           </div>
         </div>

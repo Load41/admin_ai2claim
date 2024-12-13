@@ -18,31 +18,35 @@ const AboutCrew = () => {
   // projects-handled-management-list open page start
   const navigate = useNavigate();
   const crewHandledList = () => {
-    navigate("/crew-handled-management-list")
-  }
+    navigate("/crew-handled-management-list");
+  };
   // projects-handled-management-list open page end
   // crww list pending open page start
-  const cpFileNavigate = useNavigate();
   const crewPendingFile = () => {
-   cpFileNavigate("/crew-list-pending")
-  }
- // crww list pending open page end
+    // navigate("/crew-list-pending");
+  };
+  // crww list pending open page end
   return (
     <>
       <div className={clsx("admin-content")}>
         <div className="d-flex align-items-center justify-content-between flex-wrap gap-5 gap-xxl-4">
-              <div className="d-flex align-items-center flex-wrap gap-4 gap-xl-3">
-                  <Link to="/crew-list" className="back-next-arrow-wrap flex-0-auto d-flex align-items-center justify-content-center rounded-circle cursor-pointer hover-text-white me-2">{svgIcons.backArrowFillIcon}</Link>
-                  <h4 className="text-bleu-de-france-one mb-0">About Crew</h4>
-                  <b>{svgIcons.doubleRightArrowIcon}</b>
-                  <h4 className="mb-0">
-                    Crew<span className="ps-2"></span>
-                  </h4>
-                  <b>{svgIcons.doubleRightArrowIcon}</b>
-                  <h4 className="mb-0">{crewData?.createdBy?.username}</h4>
-              </div>
+          <div className="d-flex align-items-center flex-wrap gap-4 gap-xl-3">
+            <Link
+              to="/crew-list"
+              className="back-next-arrow-wrap flex-0-auto d-flex align-items-center justify-content-center rounded-circle cursor-pointer hover-text-white me-2"
+            >
+              {svgIcons.backArrowFillIcon}
+            </Link>
+            <h4 className="text-bleu-de-france-one mb-0">About Crew</h4>
+            <b>{svgIcons.doubleRightArrowIcon}</b>
+            <h4 className="mb-0">
+              Crew<span className="ps-2"></span>
+            </h4>
+            <b>{svgIcons.doubleRightArrowIcon}</b>
+            <h4 className="mb-0">{crewData?.cewDetail?.createdBy?.username}</h4>
           </div>
-       
+        </div>
+
         <div className="w-100 mt-5">
           <div className="row mt-4">
             <div className="col-xxl-6">
@@ -55,13 +59,13 @@ const AboutCrew = () => {
                   >
                     <div className="ratio ratio-1x1">
                       <img
-                        src={crewData?.createdBy?.profileimage}
+                        src={crewData?.cewDetail?.createdBy?.profileimage}
                         className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
                         alt=""
                       />
                     </div>
                     <h6 className="mt-4 mb-0 fw-bold word-break-word">
-                      {crewData?.createdBy?.username}
+                      {crewData?.cewDetail?.createdBy?.username}
                     </h6>
                   </div>
                   <div
@@ -74,7 +78,7 @@ const AboutCrew = () => {
                         Company Name <b className="d-none d-sm-inline">:-</b>
                       </h6>
                       <h6 className="w-65 mb-0 lh-base word-break-word ps-3">
-                        {crewData?.company_name}
+                        {crewData?.cewDetail?.company_name}
                       </h6>
                     </div>
                     <div className="d-flex w-100">
@@ -90,7 +94,7 @@ const AboutCrew = () => {
                         Status <b className="d-none d-sm-inline">:-</b>
                       </h6>
                       <h6 className="w-65 mb-0 lh-base word-break-word ps-3">
-                        {crewData?.createdBy?.is_active
+                        {crewData?.cewDetail?.createdBy?.is_active
                           ? "Active"
                           : "De-Active"}
                       </h6>
@@ -108,7 +112,7 @@ const AboutCrew = () => {
                         Mobile <b className="d-none d-sm-inline">:-</b>
                       </h6>
                       <h6 className="w-65 mb-0 lh-base word-break-word ps-3">
-                        {crewData?.createdBy?.mobile}
+                        {crewData?.cewDetail?.createdBy?.mobile}
                       </h6>
                     </div>
                     <div className="d-flex w-100">
@@ -116,7 +120,7 @@ const AboutCrew = () => {
                         Email <b className="d-none d-sm-inline">:-</b>
                       </h6>
                       <h6 className="w-65 mb-0 lh-base word-break-word ps-3">
-                        {crewData?.createdBy?.email}
+                        {crewData?.cewDetail?.createdBy?.email}
                       </h6>
                     </div>
                     <div className="d-flex w-100">
@@ -124,7 +128,7 @@ const AboutCrew = () => {
                         Address <b className="d-none d-sm-inline">:-</b>
                       </h6>
                       <h6 className="w-65 mb-0 lh-base word-break-word ps-3">
-                        {crewData?.address}
+                        {crewData?.cewDetail?.address}
                       </h6>
                     </div>
                     <div className="d-flex w-100">
@@ -132,7 +136,7 @@ const AboutCrew = () => {
                         Website <b className="d-none d-sm-inline">:-</b>
                       </h6>
                       <h6 className="w-65 mb-0 lh-base word-break-word ps-3">
-                        {crewData?.website}
+                        {crewData?.cewDetail?.website}
                       </h6>
                     </div>
                   </div>
@@ -171,7 +175,7 @@ const AboutCrew = () => {
                   customClass={clsx("")}
                   handleClick={crewHandledList}
                 >
-                  List of Projects Handled({crewData?.projectCount})
+                  List of Projects Handled({crewData?.projectAccept})
                 </LDButton>
                 <LDButton
                   type="fill"
@@ -181,7 +185,7 @@ const AboutCrew = () => {
                   customClass={clsx("")}
                   handleClick={crewPendingFile}
                 >
-                  List of Pending Projects({crewData?.projectCount})
+                  List of Pending Projects({crewData?.projectPending})
                 </LDButton>
               </div>
             </div>
@@ -190,12 +194,14 @@ const AboutCrew = () => {
             <div className="col-xxl-6 mt-5 mt-xxl-4">
               <div className="pendingProjectListCard d-flex flex-column gap-4">
                 <h4 className="mb-0">About</h4>
-                <p className="lh-base mb-0">{crewData?.description}</p>
+                <p className="lh-base mb-0">
+                  {crewData?.cewDetail?.description}
+                </p>
               </div>
             </div>
             <div className="col-xxl-6 d-grid about-crew-management-img-grid gap-4 mt-5 mt-xxl-4">
-              {crewData?.images &&
-                crewData?.images?.map((imageItem, index) => (
+              {crewData?.cewDetail?.images &&
+                crewData?.cewDetail?.images?.map((imageItem, index) => (
                   <div className="ratio ratio-16x9" key={index}>
                     <img
                       src={imageItem}
