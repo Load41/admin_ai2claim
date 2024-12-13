@@ -15,7 +15,8 @@ export const LDInput = ({
     prefix,
     isNotBottomSpace,
     isSearchBarInputWrap,
-    isTextarea
+    isTextarea,
+    isSmallCustomInput
 }) => {
     const { TextArea } = Input;
     return (
@@ -29,7 +30,9 @@ export const LDInput = ({
                 isSearchBarInputWrap
                 )}>
                 <Input
-                    className={clsx(styles.customInput, className)}
+                    className={clsx(
+                        isSmallCustomInput && styles.isSmallCustomInput,
+                        styles.customInput, className)}
                     id={id}
                     dataTestId={dataTestId}
                     name={name}

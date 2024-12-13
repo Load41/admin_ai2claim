@@ -1,0 +1,14 @@
+.optimizationBox{
+    border: 1px solid rgba(var(--clr-black), 0.08);
+    padding: 12px;
+    border-radius: 10px;
+    background-color: rgba(var(--clr-bleu-de-france), 0.05);
+    min-height: 20rem;
+}
+/* resposnive css */
+@media (max-width: 767px){
+    .optimizationTable :global thead tr th,
+    .optimizationTable :global tbody tr td{
+        min-width: auto;
+    }
+}

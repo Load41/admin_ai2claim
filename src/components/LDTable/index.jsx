@@ -5,11 +5,13 @@ import { Table } from 'antd';
 export const LDTable = ({
   columns,
   data,
-  className
+  className,
+  pagination
 }) => {
   return (
    <>
       <Table className={className} columns={columns} dataSource={data}
+      pagination={pagination}
         scroll={{
           x: 'max-content',
         }}

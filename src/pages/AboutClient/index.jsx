@@ -1,14 +1,150 @@
 import React from "react";
 import { clsx } from "clsx";
 import { svgIcons } from "../../constants/icons";
-import { companyOne } from "../../constants/imageData";
-import { LDButton } from "../../components";
-import styles from "./AboutClient.module.css";
+import { LDButton, LDDocUpload, LDModal, LDTable } from "../../components";
 import { useClientDetailHook } from "../../hooks";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { LDInput } from "../../components/LDInput";
+import styles from "./AboutClient.module.css";
 
 const AboutClient = () => {
   const { clientData } = useClientDetailHook();
+  // Send Final Estimate (Optimization) modal js start
+      const [isOptimizationModalOpen, setIsOptimizationModalOpen] = useState(false);
+      const showOptimizationModal = () => {
+          setIsOptimizationModalOpen(true);
+      };
+
+      const handleCancel = () => {
+          setIsOptimizationModalOpen(false);
+      };
+  // Send Final Estimate (Optimization) modal js end
+  // estimate table start
+  const estimateColumn = [
+    {
+      title: 'Name',
+      dataIndex: 'name',
+      key: 'name',
+    },
+    {
+      title: 'Price',
+      dataIndex: 'price',
+      key: 'price',
+    },
+    {
+      title: 'Add on cost',
+      dataIndex: 'addOnCost',
+      key: 'addOnCost',
+    },
+    {
+      title: 'Sub Total',
+      dataIndex: 'subTotal',
+      key: 'subTotal',
+    },
+  ];
+  const estimateData = [
+    {
+      key: '1',
+      name: 'Management cost',
+      price: <>
+        <LDInput
+          id="managementCostPrice"
+          dataTestId="managementCostPrice"
+          name="managementCostPrice"
+          // value={loginData?.managementCostPrice}
+          type="text"
+          handleChange={() => {return false}}
+          className={clsx()}
+          isSmallCustomInput
+          isNotBottomSpace
+          // errorMessage={validateMessages?.email}
+      />
+      </>,
+      addOnCost: <>
+      <LDInput
+          id="managementAddOnCost"
+          dataTestId="managementAddOnCost"
+          name="managementAddOnCost"
+          // value={loginData?.managementAddOnCost}
+          type="text"
+          handleChange={() => {return false}}
+          className={clsx()}
+          isSmallCustomInput
+          isNotBottomSpace
+          // errorMessage={validateMessages?.email}
+      />
+      </>,
+      subTotal: '$150.00',
+    },
+    {
+      key: '2',
+      name: 'Crew cost',
+      price: <>
+        <LDInput
+          id="crewCostPrice"
+          dataTestId="crewCostPrice"
+          name="crewCostPrice"
+          // value={loginData?.crewCostPrice}
+          type="text"
+          handleChange={() => {return false}}
+          className={clsx()}
+          isSmallCustomInput
+          isNotBottomSpace
+          // errorMessage={validateMessages?.email}
+      />
+      </>,
+      addOnCost: <>
+      <LDInput
+          id="crewAddOnCost"
+          dataTestId="crewAddOnCost"
+          name="crewAddOnCost"
+          // value={loginData?.crewAddOnCost}
+          type="text"
+          handleChange={() => {return false}}
+          className={clsx()}
+          isSmallCustomInput
+          isNotBottomSpace
+          // errorMessage={validateMessages?.email}
+      />
+      </>,
+      subTotal: '$150.00',
+    },
+    {
+      key: '3',
+      name: 'Ai2 claim service cost',
+      price: <>
+        <LDInput
+          id="serviceCostPrice"
+          dataTestId="serviceCostPrice"
+          name="serviceCostPrice"
+          // value={loginData?.serviceCostPrice}
+          type="text"
+          handleChange={() => {return false}}
+          className={clsx()}
+          isSmallCustomInput
+          isNotBottomSpace
+          // errorMessage={validateMessages?.email}
+      />
+      </>,
+      addOnCost: <>
+      <LDInput
+          id="serviceAddOnCost"
+          dataTestId="serviceAddOnCost"
+          name="serviceAddOnCost"
+          // value={loginData?.serviceAddOnCost}
+          type="text"
+          handleChange={() => {return false}}
+          className={clsx()}
+          isSmallCustomInput
+          isNotBottomSpace
+          // errorMessage={validateMessages?.email}
+      />
+      </>,
+      subTotal: '$150.00',
+    },
+  ];
+  // estimate table end
   return (
     <>
       <div className={clsx("admin-content")}>
@@ -125,9 +261,7 @@ const AboutClient = () => {
                 iconPosition={"end"}
                 isFillBtn
                 customClass={clsx("w-50 w-100-md")}
-                handleClick={() => {
-                  return false;
-                }}
+                handleClick={showOptimizationModal}
               >
                 Enable/Disable Services
               </LDButton>
@@ -517,6 +651,45 @@ const AboutClient = () => {
           </div>
         </div>
       </div>
+      {/* Send Final Estimate (Optimization) modal start */}
+      <LDModal
+      title="Send Final Estimate (Optimization)"
+      open={isOptimizationModalOpen} 
+      onCancel={handleCancel}
+      width={800}
+      modalContent={
+        <div className={clsx(styles.optimizationBox)}>
+          <h5 className="mb-5 mb-xl-4">Optimization :- </h5>
+          <LDDocUpload
+              accept=".docx, application/pdf"
+              label="Please upload the document"
+              supportLabel="Supported format: PDF or Doc"
+              // onFileUpload={handleFileUpload}
+            />
+            <LDTable columns={estimateColumn} data={estimateData} className={clsx(styles.optimizationTable, "mt-5 mt-xl-4")} pagination={false}/>
+            <div className="d-flex justify-content-center align-items-center pt-5 mt-3 mt-xl-0 pb-3">
+              <h5 className="me-3 mb-0 fw-bold">Total :-</h5>
+              <h5 className="mb-0 text-bleu-de-france-one">$ 350.00</h5>
+            </div>
+            <div className="text-center w-100 mt-5 mt-xl-3">
+              <LDButton
+                type="fill"
+                shape={"round"}
+                iconPosition={"end"}
+                isFillBtn
+                isGreenBg
+                customClass={clsx("w-50 w-100-md")}
+                handleClick={() => {
+                  return false;
+                }}
+              >
+                Send Final Estimate
+            </LDButton>
+            </div>
+        </div>
+      }
+    />
+    {/* Send Final Estimate (Optimization) modal end */}
     </>
   );
 };

@@ -10,3 +10,4 @@ export * from "./LDRejectedProjectCard";
 export * from "./LDModal";
 export * from "./LDApproveModal";
 export * from "./LDDeclineModal";
+export * from "./LDDocUpload";
