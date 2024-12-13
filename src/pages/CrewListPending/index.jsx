@@ -80,7 +80,11 @@ const CrewListPending = () => {
             <h4 className="text-bleu-de-france-one mb-0">Pending List</h4>
             <span>{svgIcons.doubleRightArrowIcon}</span>
             <h4 className="mb-0">
-              Crew<span className="ps-2">({crewDataList?.length})</span>
+              Crew
+              <span className="ps-2">
+                ({crewDataList?.length ? paginationServerData?.totalRecords : 0}
+                )
+              </span>
             </h4>
           </div>
           <div className="d-flex align-items-center gap-4 flex-wrap">
@@ -215,7 +219,8 @@ const CrewListPending = () => {
               isRedBg
               isSmallBtn
               customClass={clsx("w-50")}
-              // handleClick={handleCancel}
+              handleClick={handleCloseModal}
+              icon={svgIcons.declineIcon}
             >
               Cancel
             </LDButton>

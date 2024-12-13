@@ -18,7 +18,13 @@ export const LDRejectedProjectCard = ({
           return (
             <div className="col-lg-6 col-xl-12 col-xxl-6 mt-5">
               <div className="h-100" key={index}>
-                <div className={clsx(styles.pendingProjectListCard, "pendingProjectListCard pendingProjectListCardBig h-100 d-flex flex-column cursor cursor-auto")} key={index}>
+                <div
+                  className={clsx(
+                    styles.pendingProjectListCard,
+                    "pendingProjectListCard pendingProjectListCardBig h-100 d-flex flex-column cursor cursor-auto"
+                  )}
+                  key={index}
+                >
                   <div
                     className="pendingProjectLisRow w-100 h-100"
                     onClick={() => navigate(`${redirectPath}/${item?.id}`)}
@@ -43,8 +49,8 @@ export const LDRejectedProjectCard = ({
                         {item?.username
                           ? item?.username
                           : item?.createdBy?.username
-                            ? item?.createdBy?.username
-                            : item?.company_name}
+                          ? item?.createdBy?.username
+                          : item?.company_name}
                       </h6>
                       {/* <ul className="d-flex align-items-center justify-content-center gap-2 mt-4">
                             {item.ratingProjectData.map((ratingItem, ratingIndex) => {
@@ -56,7 +62,11 @@ export const LDRejectedProjectCard = ({
                             })}
                         </ul> */}
                     </div>
-                    <div className={"pendingProjectListRightCol mt-5 pt-sm-3 pt-xl-0 mt-xl-0 d-flex flex-column"}>
+                    <div
+                      className={
+                        "pendingProjectListRightCol mt-5 pt-sm-3 pt-xl-0 mt-xl-0 d-flex flex-column"
+                      }
+                    >
                       <div className="mb-4">
                         <div className="d-flex flex-column flex-sm-row w-100 mb-5 mb-sm-4">
                           <h6 className="w-35 w-100-xs mb-sm-0 lh-base p small fw-bold">
@@ -64,7 +74,9 @@ export const LDRejectedProjectCard = ({
                             <b className="d-none d-lg-inline">:-</b>
                           </h6>
                           <h6 className="w-65 w-100-xs mb-0 lh-base p small word-break-word p small ps-2">
-                            {item?.createdBy?.reason}
+                            {item?.createdBy?.reason == "Others"
+                              ? item?.createdBy?.reason
+                              : item?.createdBy?.other_reason}
                           </h6>
                         </div>
                         <div className="d-flex flex-column flex-sm-row w-100 mb-5 mb-sm-4">
@@ -87,7 +99,8 @@ export const LDRejectedProjectCard = ({
                         </div>
                         <div className="d-flex flex-column flex-sm-row w-100 mb-5 mb-sm-4">
                           <h6 className="w-35 w-100-xs mb-sm-0 lh-base p small fw-bold">
-                            Address&nbsp;<b className="d-none d-lg-inline">:-</b>
+                            Address&nbsp;
+                            <b className="d-none d-lg-inline">:-</b>
                           </h6>
                           <h6 className="w-65 w-100-xs mb-0 lh-base p small word-break-word p small ps-2 mt-3 mt-xxl-0">
                             {item.address}
@@ -114,7 +127,7 @@ export const LDRejectedProjectCard = ({
                           Approve
                         </LDButton>
                       )}
-                      {isRejectedBtn &&
+                      {isRejectedBtn && (
                         <LDButton
                           type="fill"
                           shape={"round"}
@@ -122,11 +135,13 @@ export const LDRejectedProjectCard = ({
                           isRedBg
                           isSmallBtn
                           customClass={clsx("w-35 w-100-md mt-auto")}
-                          handleClick={() => { return false }}
+                          handleClick={() => {
+                            return false;
+                          }}
                         >
                           Decline
                         </LDButton>
-                      }
+                      )}
                     </div>
                   </div>
                 </div>
