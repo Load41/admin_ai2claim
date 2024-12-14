@@ -214,21 +214,21 @@ const AboutClient = () => {
                               <div className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
                                 {projectData?.linkin?.insurance_company
                                   ?.fileName && (
-                                  <Link
-                                    to={
-                                      projectData?.linkin?.insurance_company
-                                        ?.file
-                                    }
-                                    target={"_blank"}
-                                  >
-                                    <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
-                                      {
+                                    <Link
+                                      to={
                                         projectData?.linkin?.insurance_company
-                                          ?.fileName
+                                          ?.file
                                       }
-                                    </label>
-                                  </Link>
-                                )}
+                                      target={"_blank"}
+                                    >
+                                      <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
+                                        {
+                                          projectData?.linkin?.insurance_company
+                                            ?.fileName
+                                        }
+                                      </label>
+                                    </Link>
+                                  )}
                                 {projectData?.linkin?.material?.fileName && (
                                   <Link
                                     to={projectData?.linkin?.material?.file}
@@ -287,20 +287,20 @@ const AboutClient = () => {
                                 )}
                                 {projectData?.linkin?.final_estimate
                                   ?.fileName && (
-                                  <Link
-                                    to={
-                                      projectData?.linkin?.final_estimate?.file
-                                    }
-                                    target={"_blank"}
-                                  >
-                                    <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
-                                      {
-                                        projectData?.linkin?.final_estimate
-                                          ?.fileName
+                                    <Link
+                                      to={
+                                        projectData?.linkin?.final_estimate?.file
                                       }
-                                    </label>
-                                  </Link>
-                                )}
+                                      target={"_blank"}
+                                    >
+                                      <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
+                                        {
+                                          projectData?.linkin?.final_estimate
+                                            ?.fileName
+                                        }
+                                      </label>
+                                    </Link>
+                                  )}
                                 {/* <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
                                   {"-"}
                                 </label> */}
@@ -316,7 +316,7 @@ const AboutClient = () => {
                             The review will be updated when the project was
                             finished
                           </h4>
-                          {/* <LDButton
+                          <LDButton
                             type="fill"
                             shape={"round"}
                             iconPosition={"end"}
@@ -327,8 +327,23 @@ const AboutClient = () => {
                               return false;
                             }}
                           >
-                            Status :- 25% complete
-                          </LDButton> */}
+                            Status
+                            {/* :- 25% complete */}
+                          </LDButton>
+                          <LDButton
+                            type="fill"
+                            shape={"round"}
+                            iconPosition={"end"}
+                            isFillBtn
+                            isGreenBg
+                            customClass={clsx("w-50")}
+                            handleClick={() => {
+                              return false;
+                            }}
+                          >
+                            Status
+                             {/* :- 75% complete */}
+                          </LDButton>
                         </div>
                       </div>
                     </div>
