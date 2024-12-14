@@ -1,6 +1,6 @@
 import { Modal } from "antd"
 import styles from "./LDModal.module.css";
-export const LDModal = ({open, onCancel, modalContent, title}) => {
+export const LDModal = ({open, onCancel, modalContent, title, width}) => {
     
     return(
         <>
@@ -9,6 +9,7 @@ export const LDModal = ({open, onCancel, modalContent, title}) => {
                 open={open}
                 onCancel={onCancel}
                 centered
+                width={width}
                 className="remove-footer-modal"
             >
                 {modalContent}
