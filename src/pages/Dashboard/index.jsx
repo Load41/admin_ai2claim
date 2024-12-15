@@ -19,6 +19,24 @@ const Dashboard = () => {
       <div className="w-100 pt-4 pt-xl-0 mt-5">
         <div className="d-flex align-items-center justify-content-between flex-wrap gap-4 w-100">
           <h4 className="mb-0">
+            Clients<span className="ps-2">({clientList?.length})</span>
+          </h4>
+          <Link to="/client-list" className="text-underline">
+            View More
+          </Link>
+        </div>
+        <div>
+          {clientList?.length > 0 && (
+            <LDProjectsCard
+              projectCardData={clientList}
+              redirectPath={"/client-detail"}
+            />
+          )}
+        </div>
+      </div>
+      <div className="w-100 pt-4 pt-xl-0 mt-5">
+        <div className="d-flex align-items-center justify-content-between flex-wrap gap-4 w-100">
+          <h4 className="mb-0">
             Management<span className="ps-2">({managementList?.length})</span>
           </h4>
           <Link to="/management-list" className="text-underline">
@@ -52,24 +70,7 @@ const Dashboard = () => {
           )}
         </div>
       </div>
-      <div className="w-100 pt-4 pt-xl-0 mt-5">
-        <div className="d-flex align-items-center justify-content-between flex-wrap gap-4 w-100">
-          <h4 className="mb-0">
-            Clients<span className="ps-2">({clientList?.length})</span>
-          </h4>
-          <Link to="/client-list" className="text-underline">
-            View More
-          </Link>
-        </div>
-        <div>
-          {clientList?.length > 0 && (
-            <LDProjectsCard
-              projectCardData={clientList}
-              redirectPath={"/client-detail"}
-            />
-          )}
-        </div>
-      </div>
+
     </div>
   );
 };
