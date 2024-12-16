@@ -11,14 +11,14 @@ import styles from "./AboutClient.module.css";
 const AboutClient = () => {
   const { clientData } = useClientDetailHook();
   // Send Final Estimate (Optimization) modal js start
-      const [isOptimizationModalOpen, setIsOptimizationModalOpen] = useState(false);
-      const showOptimizationModal = () => {
-          setIsOptimizationModalOpen(true);
-      };
+  const [isOptimizationModalOpen, setIsOptimizationModalOpen] = useState(false);
+  const showOptimizationModal = () => {
+    setIsOptimizationModalOpen(true);
+  };
 
-      const handleOptimizationModalCancel = () => {
-          setIsOptimizationModalOpen(false);
-      };
+  const handleOptimizationModalCancel = () => {
+    setIsOptimizationModalOpen(false);
+  };
   // Send Final Estimate (Optimization) modal js end
   // estimate table start
   const estimateColumn = [
@@ -54,26 +54,26 @@ const AboutClient = () => {
           name="managementCostPrice"
           // value={loginData?.managementCostPrice}
           type="text"
-          handleChange={() => {return false}}
+          handleChange={() => { return false }}
           className={clsx()}
           isSmallCustomInput
           isNotBottomSpace
-          // errorMessage={validateMessages?.email}
-      />
+        // errorMessage={validateMessages?.email}
+        />
       </>,
       addOnCost: <>
-      <LDInput
+        <LDInput
           id="managementAddOnCost"
           dataTestId="managementAddOnCost"
           name="managementAddOnCost"
           // value={loginData?.managementAddOnCost}
           type="text"
-          handleChange={() => {return false}}
+          handleChange={() => { return false }}
           className={clsx()}
           isSmallCustomInput
           isNotBottomSpace
-          // errorMessage={validateMessages?.email}
-      />
+        // errorMessage={validateMessages?.email}
+        />
       </>,
       subTotal: '$150.00',
     },
@@ -87,26 +87,26 @@ const AboutClient = () => {
           name="crewCostPrice"
           // value={loginData?.crewCostPrice}
           type="text"
-          handleChange={() => {return false}}
+          handleChange={() => { return false }}
           className={clsx()}
           isSmallCustomInput
           isNotBottomSpace
-          // errorMessage={validateMessages?.email}
-      />
+        // errorMessage={validateMessages?.email}
+        />
       </>,
       addOnCost: <>
-      <LDInput
+        <LDInput
           id="crewAddOnCost"
           dataTestId="crewAddOnCost"
           name="crewAddOnCost"
           // value={loginData?.crewAddOnCost}
           type="text"
-          handleChange={() => {return false}}
+          handleChange={() => { return false }}
           className={clsx()}
           isSmallCustomInput
           isNotBottomSpace
-          // errorMessage={validateMessages?.email}
-      />
+        // errorMessage={validateMessages?.email}
+        />
       </>,
       subTotal: '$150.00',
     },
@@ -120,26 +120,26 @@ const AboutClient = () => {
           name="serviceCostPrice"
           // value={loginData?.serviceCostPrice}
           type="text"
-          handleChange={() => {return false}}
+          handleChange={() => { return false }}
           className={clsx()}
           isSmallCustomInput
           isNotBottomSpace
-          // errorMessage={validateMessages?.email}
-      />
+        // errorMessage={validateMessages?.email}
+        />
       </>,
       addOnCost: <>
-      <LDInput
+        <LDInput
           id="serviceAddOnCost"
           dataTestId="serviceAddOnCost"
           name="serviceAddOnCost"
           // value={loginData?.serviceAddOnCost}
           type="text"
-          handleChange={() => {return false}}
+          handleChange={() => { return false }}
           className={clsx()}
           isSmallCustomInput
           isNotBottomSpace
-          // errorMessage={validateMessages?.email}
-      />
+        // errorMessage={validateMessages?.email}
+        />
       </>,
       subTotal: '$150.00',
     },
@@ -271,6 +271,11 @@ const AboutClient = () => {
           <div className="d-flex flex-column gap-5 mt-4">
             {clientData?.projects &&
               clientData?.projects?.map((projectData, index) => {
+                let insurance_company = projectData?.linkin?.insurance_company?.linkinId?._id ? 25 : 0
+                let management = projectData?.linkin?.management?.status == "accept" ? 25 : 0
+                let material = projectData?.linkin?.material?.brand ? 25 : 0
+                let crew = projectData?.linkin?.crew?.status == "accept" ? 25 : 0
+                let total = insurance_company + crew + management + material
                 return (
                   <div className="w-100" key={index}>
                     <div className="pendingProjectListCard aboutListProjectListCard h-100">
@@ -315,8 +320,13 @@ const AboutClient = () => {
                               <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
                                 {
                                   projectData?.linkin?.management?.linkinId
-                                    ?.company_name
-                                }
+                                    ?.company_name ? projectData?.linkin?.management?.linkinId
+                                    ?.company_name : "-"
+                                }{"  "}
+                                <span className="">
+
+                                  {projectData?.linkin?.management?.status == "accept" ? "Hire" : projectData?.linkin?.management?.status}
+                                </span>
                               </h6>
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
@@ -327,8 +337,12 @@ const AboutClient = () => {
                               <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
                                 {
                                   projectData?.linkin?.crew?.linkinId
-                                    ?.company_name
-                                }
+                                    ?.company_name ? projectData?.linkin?.crew?.linkinId
+                                    ?.company_name : "-"
+                                } {"  "}
+                                <span className="">
+                                  {projectData?.linkin?.crew?.status == "accept" ? "Hire" : projectData?.linkin?.crew?.status}
+                                </span>
                               </h6>
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
@@ -337,7 +351,7 @@ const AboutClient = () => {
                                 <b className="d-none d-sm-inline">:-</b>
                               </h6>
                               <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
-                                {`${projectData?.linkin?.material?.brand} >> ${projectData?.linkin?.material?.pick_your_singles} >> ${projectData?.linkin?.material?.single_color}`}
+                                {projectData?.linkin?.material?.brand ? `${projectData?.linkin?.material?.brand} >> ${projectData?.linkin?.material?.pick_your_singles} >> ${projectData?.linkin?.material?.single_color}` : "-"}
                               </h6>
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
@@ -455,16 +469,17 @@ const AboutClient = () => {
                             shape={"round"}
                             iconPosition={"end"}
                             isFillBtn
-                            isOrangeBg
+                            isOrangeBg={total < 99}
+                            isGreenBg={total >= 100}
                             customClass={clsx("w-35")}
                             handleClick={() => {
                               return false;
                             }}
                           >
-                            Status
-                            {/* :- 25% complete */}
+                            Status {" "}
+                            {insurance_company + crew + management + material}%
                           </LDButton>
-                          <LDButton
+                          {/* <LDButton
                             type="fill"
                             shape={"round"}
                             iconPosition={"end"}
@@ -475,9 +490,8 @@ const AboutClient = () => {
                               return false;
                             }}
                           >
-                            Status
-                             {/* :- 75% complete */}
-                          </LDButton>
+                            Status 
+                          </LDButton> */}
                         </div>
                       </div>
                     </div>
@@ -668,20 +682,20 @@ const AboutClient = () => {
       </div>
       {/* Send Final Estimate (Optimization) modal start */}
       <LDModal
-      title="Send Final Estimate (Optimization)"
-      open={isOptimizationModalOpen} 
-      onCancel={handleOptimizationModalCancel}
-      width={800}
-      modalContent={
-        <div className={clsx(styles.optimizationBox)}>
-          <h5 className="mb-5 mb-xl-4">Optimization :- </h5>
-          <LDDocUpload
+        title="Send Final Estimate (Optimization)"
+        open={isOptimizationModalOpen}
+        onCancel={handleOptimizationModalCancel}
+        width={800}
+        modalContent={
+          <div className={clsx(styles.optimizationBox)}>
+            <h5 className="mb-5 mb-xl-4">Optimization :- </h5>
+            <LDDocUpload
               accept=".docx, application/pdf"
               label="Please upload the document"
               supportLabel="Supported format: PDF or Doc"
-              // onFileUpload={handleFileUpload}
+            // onFileUpload={handleFileUpload}
             />
-            <LDTable columns={estimateColumn} data={estimateData} className={clsx(styles.optimizationTable, "mt-5 mt-xl-4")} pagination={false}/>
+            <LDTable columns={estimateColumn} data={estimateData} className={clsx(styles.optimizationTable, "mt-5 mt-xl-4")} pagination={false} />
             <div className="d-flex justify-content-center align-items-center pt-5 mt-3 mt-xl-0 pb-3">
               <h5 className="me-3 mb-0 fw-bold">Total :-</h5>
               <h5 className="mb-0 text-bleu-de-france-one">$ 350.00</h5>
@@ -697,12 +711,12 @@ const AboutClient = () => {
                 handleClick={handleOptimizationModalCancel}
               >
                 Send Final Estimate
-            </LDButton>
+              </LDButton>
             </div>
-        </div>
-      }
-    />
-    {/* Send Final Estimate (Optimization) modal end */}
+          </div>
+        }
+      />
+      {/* Send Final Estimate (Optimization) modal end */}
     </>
   );
 };
