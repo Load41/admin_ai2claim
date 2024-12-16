@@ -12,14 +12,14 @@ import styles from "./AboutClient.module.css";
 const AboutClient = () => {
   const { clientData } = useClientDetailHook();
   // Send Final Estimate (Optimization) modal js start
-      const [isOptimizationModalOpen, setIsOptimizationModalOpen] = useState(false);
-      const showOptimizationModal = () => {
-          setIsOptimizationModalOpen(true);
-      };
+  const [isOptimizationModalOpen, setIsOptimizationModalOpen] = useState(false);
+  const showOptimizationModal = () => {
+    setIsOptimizationModalOpen(true);
+  };
 
-      const handleOptimizationModalCancel = () => {
-          setIsOptimizationModalOpen(false);
-      };
+  const handleOptimizationModalCancel = () => {
+    setIsOptimizationModalOpen(false);
+  };
   // Send Final Estimate (Optimization) modal js end
   // Affidavit of Self-General Contractor Status modal js start
   const [isAffidavitSelfGeneralContractorOpen, setIsAffidavitSelfGeneralContractorOpen] = useState(false);
@@ -82,26 +82,26 @@ const AboutClient = () => {
           name="managementCostPrice"
           // value={loginData?.managementCostPrice}
           type="text"
-          handleChange={() => {return false}}
+          handleChange={() => { return false }}
           className={clsx()}
           isSmallCustomInput
           isNotBottomSpace
-          // errorMessage={validateMessages?.email}
-      />
+        // errorMessage={validateMessages?.email}
+        />
       </>,
       addOnCost: <>
-      <LDInput
+        <LDInput
           id="managementAddOnCost"
           dataTestId="managementAddOnCost"
           name="managementAddOnCost"
           // value={loginData?.managementAddOnCost}
           type="text"
-          handleChange={() => {return false}}
+          handleChange={() => { return false }}
           className={clsx()}
           isSmallCustomInput
           isNotBottomSpace
-          // errorMessage={validateMessages?.email}
-      />
+        // errorMessage={validateMessages?.email}
+        />
       </>,
       subTotal: '$150.00',
     },
@@ -115,26 +115,26 @@ const AboutClient = () => {
           name="crewCostPrice"
           // value={loginData?.crewCostPrice}
           type="text"
-          handleChange={() => {return false}}
+          handleChange={() => { return false }}
           className={clsx()}
           isSmallCustomInput
           isNotBottomSpace
-          // errorMessage={validateMessages?.email}
-      />
+        // errorMessage={validateMessages?.email}
+        />
       </>,
       addOnCost: <>
-      <LDInput
+        <LDInput
           id="crewAddOnCost"
           dataTestId="crewAddOnCost"
           name="crewAddOnCost"
           // value={loginData?.crewAddOnCost}
           type="text"
-          handleChange={() => {return false}}
+          handleChange={() => { return false }}
           className={clsx()}
           isSmallCustomInput
           isNotBottomSpace
-          // errorMessage={validateMessages?.email}
-      />
+        // errorMessage={validateMessages?.email}
+        />
       </>,
       subTotal: '$150.00',
     },
@@ -148,26 +148,26 @@ const AboutClient = () => {
           name="serviceCostPrice"
           // value={loginData?.serviceCostPrice}
           type="text"
-          handleChange={() => {return false}}
+          handleChange={() => { return false }}
           className={clsx()}
           isSmallCustomInput
           isNotBottomSpace
-          // errorMessage={validateMessages?.email}
-      />
+        // errorMessage={validateMessages?.email}
+        />
       </>,
       addOnCost: <>
-      <LDInput
+        <LDInput
           id="serviceAddOnCost"
           dataTestId="serviceAddOnCost"
           name="serviceAddOnCost"
           // value={loginData?.serviceAddOnCost}
           type="text"
-          handleChange={() => {return false}}
+          handleChange={() => { return false }}
           className={clsx()}
           isSmallCustomInput
           isNotBottomSpace
-          // errorMessage={validateMessages?.email}
-      />
+        // errorMessage={validateMessages?.email}
+        />
       </>,
       subTotal: '$150.00',
     },
@@ -299,6 +299,11 @@ const AboutClient = () => {
           <div className="d-flex flex-column gap-5 mt-4">
             {clientData?.projects &&
               clientData?.projects?.map((projectData, index) => {
+                let insurance_company = projectData?.linkin?.insurance_company?.linkinId?._id ? 25 : 0
+                let management = projectData?.linkin?.management?.status == "accept" ? 25 : 0
+                let material = projectData?.linkin?.material?.brand ? 25 : 0
+                let crew = projectData?.linkin?.crew?.status == "accept" ? 25 : 0
+                let total = insurance_company + crew + management + material
                 return (
                   <div className="w-100" key={index}>
                     <div className="pendingProjectListCard aboutListProjectListCard h-100">
@@ -343,8 +348,13 @@ const AboutClient = () => {
                               <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
                                 {
                                   projectData?.linkin?.management?.linkinId
-                                    ?.company_name
-                                }
+                                    ?.company_name ? projectData?.linkin?.management?.linkinId
+                                    ?.company_name : "-"
+                                }{"  "}
+                                <span className="">
+
+                                  {projectData?.linkin?.management?.status == "accept" ? "Hire" : projectData?.linkin?.management?.status}
+                                </span>
                               </h6>
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
@@ -355,8 +365,12 @@ const AboutClient = () => {
                               <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
                                 {
                                   projectData?.linkin?.crew?.linkinId
-                                    ?.company_name
-                                }
+                                    ?.company_name ? projectData?.linkin?.crew?.linkinId
+                                    ?.company_name : "-"
+                                } {"  "}
+                                <span className="">
+                                  {projectData?.linkin?.crew?.status == "accept" ? "Hire" : projectData?.linkin?.crew?.status}
+                                </span>
                               </h6>
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
@@ -365,7 +379,7 @@ const AboutClient = () => {
                                 <b className="d-none d-sm-inline">:-</b>
                               </h6>
                               <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
-                                {`${projectData?.linkin?.material?.brand} >> ${projectData?.linkin?.material?.pick_your_singles} >> ${projectData?.linkin?.material?.single_color}`}
+                                {projectData?.linkin?.material?.brand ? `${projectData?.linkin?.material?.brand} >> ${projectData?.linkin?.material?.pick_your_singles} >> ${projectData?.linkin?.material?.single_color}` : "-"}
                               </h6>
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
@@ -483,16 +497,17 @@ const AboutClient = () => {
                             shape={"round"}
                             iconPosition={"end"}
                             isFillBtn
-                            isOrangeBg
+                            isOrangeBg={total < 99}
+                            isGreenBg={total >= 100}
                             customClass={clsx("w-50")}
                             handleClick={() => {
                               return false;
                             }}
                           >
-                            Status
-                            {/* :- 25% complete */}
+                            Status {" "}
+                            {insurance_company + crew + management + material}%
                           </LDButton>
-                          <LDButton
+                          {/* <LDButton
                             type="fill"
                             shape={"round"}
                             iconPosition={"end"}
@@ -503,9 +518,8 @@ const AboutClient = () => {
                               return false;
                             }}
                           >
-                            Status
-                             {/* :- 75% complete */}
-                          </LDButton>
+                            Status 
+                          </LDButton> */}
                         </div>
                       </div>
                     </div>
@@ -701,20 +715,20 @@ const AboutClient = () => {
       </div>
       {/* Send Final Estimate (Optimization) modal start */}
       <LDModal
-      title="Send Final Estimate (Optimization)"
-      open={isOptimizationModalOpen} 
-      onCancel={handleOptimizationModalCancel}
-      width={800}
-      modalContent={
-        <div className={clsx(styles.optimizationBox)}>
-          <h5 className="mb-5 mb-xl-4">Optimization :- </h5>
-          <LDDocUpload
+        title="Send Final Estimate (Optimization)"
+        open={isOptimizationModalOpen}
+        onCancel={handleOptimizationModalCancel}
+        width={800}
+        modalContent={
+          <div className={clsx(styles.optimizationBox)}>
+            <h5 className="mb-5 mb-xl-4">Optimization :- </h5>
+            <LDDocUpload
               accept=".docx, application/pdf"
               label="Please upload the document"
               supportLabel="Supported format: PDF or Doc"
-              // onFileUpload={handleFileUpload}
+            // onFileUpload={handleFileUpload}
             />
-            <LDTable columns={estimateColumn} data={estimateData} className={clsx(styles.optimizationTable, "mt-5 mt-xl-4")} pagination={false}/>
+            <LDTable columns={estimateColumn} data={estimateData} className={clsx(styles.optimizationTable, "mt-5 mt-xl-4")} pagination={false} />
             <div className="d-flex justify-content-center align-items-center pt-5 mt-3 mt-xl-0 pb-3">
               <h5 className="me-3 mb-0 fw-bold">Total :-</h5>
               <h5 className="mb-0 text-bleu-de-france-one">$ 350.00</h5>
@@ -730,83 +744,83 @@ const AboutClient = () => {
                 handleClick={handleOptimizationModalCancel}
               >
                 Send Final Estimate
-            </LDButton>
+              </LDButton>
             </div>
-        </div>
-      }
-    />
-    {/* Send Final Estimate (Optimization) modal end */}
-    {/* Affidavit of Self-General Contractor Status modal start */}
-    <LDModal
-      title="Affidavit of Self-General Contractor Status"
-      open={isAffidavitSelfGeneralContractorOpen} 
-      onCancel={handleAffidavitSelfGeneralContractorCancel}
-      width={800}
-      modalContent={
-        <div>
-          <div className="mb-4 d-flex gap-3 gap-xxl-1 flex-column">
-            <h6>Dick Hoskins </h6>
-            <h6>14704 S 23 St.</h6>
-            <h6>Bellevue, NE 68123 </h6>
-            <h6>asianamazin12@gmail.com</h6>
-            <h6>(402) 415-9496</h6>
-            <h6>August 7, 2024</h6>
           </div>
-          <div className="d-flex gap-4 flex-column mb-5">
-            <h5 className="fw-bold mb-0">State of Nebraska County of Sarpy</h5>
-            <h5 className="fw-semibold mb-0 lh-base">1, Dick Hoskins, being of sound mind and competent to testify, hereby depose and state as follows:</h5>
-            <p className="h5 fw-normal lh-base mb-0">1. I am the owner of the property located at 14704 5 23rd St. Bellevue. NE 68123 which is situated within the state of Nebraska.</p>
-            <p className="h5 fw-normal lh-base mb-0">1. I am the owner of the property located at 14704 5 23rd St. Bellevue. NE 68123 which is situated within the state of Nebraska.</p>
-            <p className="h5 fw-normal lh-base mb-0">2. I am aware of the rights granted to homeowners in the state of Nebraska to act as their own general contractors on their property without the requirement of holding a general contractor's license, as provided by Nebraska law.</p>
-            <p className="h5 fw-normal lh-base mb-0">3. I affirm that I am acting as my own general contractor on the aforementioned property for the purpose of repairs and replacement of my roof and other damaged structures resulting from storm damage.</p>
-            <p className="h5 fw-normal lh-base mb-0">4. I understand and acknowledge that by acting as my own general contractor, I am responsible for ensuring that all work performed on the property complies with applicable local building codes, safety regulations, and other relevant laws.</p>
-            <p className="h5 fw-normal lh-base mb-0">5. I have received the scope of work and estimates of repair from my homeowner's insurance provider, Farm Bureau Financial Services, and I hereby accept the scope of work as provided.</p>
-            <p className="h5 fw-normal lh-base mb-0">6. I will file for my own building permit with the relevant local authority, and I will provide a copy of the issued permit alongside this affidavit as required.</p>
-            <p className="h5 fw-normal lh-base mb-0">7. I declare under penalty of perjury that the information provided in this affidavit is true and correct to the best of my knowledge and belief.</p>
-          </div>
-          <div className="w-100 d-flex flex-column flex-md-row gap-4">
-            <div className="w-50 w-100-md order-2 order-md-1 mt-4 mt-md-0">
-              <h4>Signature</h4>
-              <SignatureCanvas
-                ref={sigCanvas}
-                penColor='green'
-                canvasProps={{
-                  width: 320,
-                  height: 150,
-                  className: 'sigCanvas border border-2 mt-4',
-                }}
-              />
-                <div className="mt-5 mt-xl-3 gap-4 d-flex w-100">
-                  <LDButton
-                    type="fill"
-                    shape={"round"}
-                    iconPosition={"end"}
-                    isSmallBtn
-                    isFillBtn
-                    customClass={clsx("")}
-                    handleClick={handleReset}
-                  >
-                    Reset
-                  </LDButton>
-                  <LDButton
-                    type="fill"
-                    shape={"round"}
-                    iconPosition={"end"}
-                    isFillBtn
-                    isSmallBtn
-                    customClass={clsx("")}
-                    handleClick={handleDownload}
-                  >
-                      Downalod
-                  </LDButton>
-                </div>
+        }
+      />
+      {/* Send Final Estimate (Optimization) modal end */}
+      {/* Affidavit of Self-General Contractor Status modal start */}
+      <LDModal
+        title="Affidavit of Self-General Contractor Status"
+        open={isAffidavitSelfGeneralContractorOpen} 
+        onCancel={handleAffidavitSelfGeneralContractorCancel}
+        width={800}
+        modalContent={
+          <div>
+            <div className="mb-4 d-flex gap-3 gap-xxl-1 flex-column">
+              <h6>Dick Hoskins </h6>
+              <h6>14704 S 23 St.</h6>
+              <h6>Bellevue, NE 68123 </h6>
+              <h6>asianamazin12@gmail.com</h6>
+              <h6>(402) 415-9496</h6>
+              <h6>August 7, 2024</h6>
             </div>
-            <h5 className="ms-md-auto mb-0 fw-semibold order-1 order-md-2">Date :- <span className="text-bleu-de-france-one">2/12/2024</span></h5>
+            <div className="d-flex gap-4 flex-column mb-5">
+              <h5 className="fw-bold mb-0">State of Nebraska County of Sarpy</h5>
+              <h5 className="fw-semibold mb-0 lh-base">1, Dick Hoskins, being of sound mind and competent to testify, hereby depose and state as follows:</h5>
+              <p className="h5 fw-normal lh-base mb-0">1. I am the owner of the property located at 14704 5 23rd St. Bellevue. NE 68123 which is situated within the state of Nebraska.</p>
+              <p className="h5 fw-normal lh-base mb-0">1. I am the owner of the property located at 14704 5 23rd St. Bellevue. NE 68123 which is situated within the state of Nebraska.</p>
+              <p className="h5 fw-normal lh-base mb-0">2. I am aware of the rights granted to homeowners in the state of Nebraska to act as their own general contractors on their property without the requirement of holding a general contractor's license, as provided by Nebraska law.</p>
+              <p className="h5 fw-normal lh-base mb-0">3. I affirm that I am acting as my own general contractor on the aforementioned property for the purpose of repairs and replacement of my roof and other damaged structures resulting from storm damage.</p>
+              <p className="h5 fw-normal lh-base mb-0">4. I understand and acknowledge that by acting as my own general contractor, I am responsible for ensuring that all work performed on the property complies with applicable local building codes, safety regulations, and other relevant laws.</p>
+              <p className="h5 fw-normal lh-base mb-0">5. I have received the scope of work and estimates of repair from my homeowner's insurance provider, Farm Bureau Financial Services, and I hereby accept the scope of work as provided.</p>
+              <p className="h5 fw-normal lh-base mb-0">6. I will file for my own building permit with the relevant local authority, and I will provide a copy of the issued permit alongside this affidavit as required.</p>
+              <p className="h5 fw-normal lh-base mb-0">7. I declare under penalty of perjury that the information provided in this affidavit is true and correct to the best of my knowledge and belief.</p>
+            </div>
+            <div className="w-100 d-flex flex-column flex-md-row gap-4">
+              <div className="w-50 w-100-md order-2 order-md-1 mt-4 mt-md-0">
+                <h4>Signature</h4>
+                <SignatureCanvas
+                  ref={sigCanvas}
+                  penColor='green'
+                  canvasProps={{
+                    width: 320,
+                    height: 150,
+                    className: 'sigCanvas border border-2 mt-4',
+                  }}
+                />
+                  <div className="mt-5 mt-xl-3 gap-4 d-flex w-100">
+                    <LDButton
+                      type="fill"
+                      shape={"round"}
+                      iconPosition={"end"}
+                      isSmallBtn
+                      isFillBtn
+                      customClass={clsx("")}
+                      handleClick={handleReset}
+                    >
+                      Reset
+                    </LDButton>
+                    <LDButton
+                      type="fill"
+                      shape={"round"}
+                      iconPosition={"end"}
+                      isFillBtn
+                      isSmallBtn
+                      customClass={clsx("")}
+                      handleClick={handleDownload}
+                    >
+                        Downalod
+                    </LDButton>
+                  </div>
+              </div>
+              <h5 className="ms-md-auto mb-0 fw-semibold order-1 order-md-2">Date :- <span className="text-bleu-de-france-one">2/12/2024</span></h5>
+            </div>
           </div>
-        </div>
-      }
-    />
-    {/* Affidavit of Self-General Contractor Status modal end */}
+        }
+      />
+      {/* Affidavit of Self-General Contractor Status modal end */}
     </>
   );
 };
