@@ -352,7 +352,6 @@ const AboutClient = () => {
                                     ?.company_name : "-"
                                 }{"  "}
                                 <span className="">
-
                                   {projectData?.linkin?.management?.status == "accept" ? "Hire" : projectData?.linkin?.management?.status}
                                 </span>
                               </h6>
@@ -499,7 +498,7 @@ const AboutClient = () => {
                             isFillBtn
                             isOrangeBg={total < 99}
                             isGreenBg={total >= 100}
-                            customClass={clsx("w-50")}
+                            customClass={clsx("w-50 mx-auto")}
                             handleClick={() => {
                               return false;
                             }}
