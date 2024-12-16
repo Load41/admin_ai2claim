@@ -25,6 +25,7 @@ import ApprovedThings from "../pages/ApprovedThings";
 import AboutUs from "../pages/AboutUs";
 import ProjectsHandledManagementList from "../pages/ProjectHandle/ProjectsHandledManagementList";
 import ProjectsHandledCrewList from "../pages/ProjectHandle/ProjectsHandledCrewList";
+import TransactionsReport from "../pages/TransactionsReport";
 
 export const router = createBrowserRouter([
   {
@@ -119,6 +120,10 @@ export const router = createBrowserRouter([
         path: "/crew-handled-management-list",
         element: <ProjectsHandledCrewList />,
       },
+      {
+        path: "/transactions-report",
+        element: <TransactionsReport/>
+      }
     ],
   },
   {

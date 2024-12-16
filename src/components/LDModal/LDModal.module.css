@@ -1,3 +1,7 @@
+:global .ant-modal,
+:global .ant-modal-root .ant-modal{
+    margin: 15px 0;
+}
 :global .ant-modal-header .ant-modal-title{
     font-size: 24px;
     margin-bottom: 0;
@@ -23,8 +27,20 @@
     color: rgba(var(--clr-white), 1);
 }
 /* responsive css */
+@media (min-width: 768px){
+    :global .ant-modal .ant-modal-body{
+        max-height: calc(100vh - 120px);
+        overflow-y: auto;
+        padding-right: 5px;
+    }
+}
 @media (max-width: 767px){
     :global .ant-modal-header .ant-modal-title{
         font-size: 20px;
+    }
+}
+@media (max-width: 575px){
+    :global .ant-modal .ant-modal-content{
+        padding: 24px 14px;
     }
 }

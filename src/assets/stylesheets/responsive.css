@@ -17,6 +17,10 @@
     width: 5px;
   }
 
+  .ant-modal .ant-modal-body::-webkit-scrollbar{
+    width: 7px;
+  }
+
   ::-webkit-scrollbar-thumb {
     background-color: var(--clr-bleu-de-france-one);
   }
@@ -168,6 +172,11 @@
   }
   .w-100-xs{
     width: 100% !important;
+  }
+}
+@media (max-width: 369px){
+  .sigCanvas{
+    width: 100%;
   }
 }
 @media (max-width: 349px){

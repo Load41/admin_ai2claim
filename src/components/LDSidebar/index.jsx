@@ -110,7 +110,7 @@ const items = [
 
   getItem(
     <>
-      <Link to="/coming-soon">Transactions</Link>
+      <Link to="/transactions-report">Transactions</Link>
     </>,
     "8",
     svgIcons.bulkPost

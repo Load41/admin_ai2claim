@@ -1,0 +1,29 @@
+.transactionsReportBoxWrap{
+    background-color: rgba(var(--clr-bleu-de-france), 0.2);
+    padding: 14px;
+    border-radius: 10px;
+    min-height: 200px;
+}
+:global .ant-collapse>.ant-collapse-item >.ant-collapse-header{
+    align-items: center;
+}
+@media (max-width: 1799px){
+    .transactionsReportBoxWrap h4,
+    .transactionsReportBoxWrap h5{
+        font-size: 16px;
+    }
+}
+@media (max-width: 575px){
+    .transactionsReportBoxWrap h4,
+    .transactionsReportBoxWrap h5{
+        font-size: 14px;
+    }
+    :global .ant-collapse>.ant-collapse-item >.ant-collapse-header{
+        padding: 12px;
+    }
+}
+@media (max-width: 349px){
+    .transactionsReportBoxWrap{
+        padding: 14px 10px;
+    }
+}

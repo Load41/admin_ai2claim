@@ -1,5 +1,6 @@
-import React from "react";
+import React, {useRef} from "react";
 import { clsx } from "clsx";
+import SignatureCanvas from 'react-signature-canvas';
 import { svgIcons } from "../../constants/icons";
 import { LDButton, LDDocUpload, LDModal, LDTable } from "../../components";
 import { useClientDetailHook } from "../../hooks";
@@ -20,6 +21,33 @@ const AboutClient = () => {
           setIsOptimizationModalOpen(false);
       };
   // Send Final Estimate (Optimization) modal js end
+  // Affidavit of Self-General Contractor Status modal js start
+  const [isAffidavitSelfGeneralContractorOpen, setIsAffidavitSelfGeneralContractorOpen] = useState(false);
+  const showAffidavitSelfGeneralContractor = () => {
+      setIsAffidavitSelfGeneralContractorOpen(true);
+  };
+
+  const handleAffidavitSelfGeneralContractorCancel = () => {
+      setIsAffidavitSelfGeneralContractorOpen(false);
+  };
+// Affidavit of Self-General Contractor Status modal js end
+// signature js start
+  const sigCanvas = useRef(null);
+
+  // Function to clear the signature
+  const handleReset = () => {
+    sigCanvas.current.clear();
+  };
+
+  // Function to download the signature as an image
+  const handleDownload = () => {
+    const dataURL = sigCanvas.current.toDataURL("image/png");
+    const link = document.createElement('a');
+    link.href = dataURL;
+    link.download = 'signature.png';
+    link.click();
+  };
+// signature js end
   // estimate table start
   const estimateColumn = [
     {
@@ -261,7 +289,7 @@ const AboutClient = () => {
                 iconPosition={"end"}
                 isFillBtn
                 customClass={clsx("w-50 w-100-md")}
-                handleClick={showOptimizationModal}
+                handleClick={() => {return false;}}
               >
                 Enable/Disable Services
               </LDButton>
@@ -456,7 +484,7 @@ const AboutClient = () => {
                             iconPosition={"end"}
                             isFillBtn
                             isOrangeBg
-                            customClass={clsx("w-35")}
+                            customClass={clsx("w-50")}
                             handleClick={() => {
                               return false;
                             }}
@@ -665,6 +693,11 @@ const AboutClient = () => {
             </div> */}
           </div>
         </div>
+        {/* Two modal just  view purpose modal start */}
+        <h6 className="pt-5 pb-4 fw-bold">Note :- (only design view purpose)</h6>
+        <h6 onClick={showOptimizationModal} className="pb-4 cursor-pointer">Send Final Estimate (Optimization)</h6>
+        <h6 onClick={showAffidavitSelfGeneralContractor} className="cursor-pointer">Affidavit of self general contractor status</h6>
+        {/* Two modal just  view purpose modal end */}
       </div>
       {/* Send Final Estimate (Optimization) modal start */}
       <LDModal
@@ -703,6 +736,77 @@ const AboutClient = () => {
       }
     />
     {/* Send Final Estimate (Optimization) modal end */}
+    {/* Affidavit of Self-General Contractor Status modal start */}
+    <LDModal
+      title="Affidavit of Self-General Contractor Status"
+      open={isAffidavitSelfGeneralContractorOpen} 
+      onCancel={handleAffidavitSelfGeneralContractorCancel}
+      width={800}
+      modalContent={
+        <div>
+          <div className="mb-4 d-flex gap-3 gap-xxl-1 flex-column">
+            <h6>Dick Hoskins </h6>
+            <h6>14704 S 23 St.</h6>
+            <h6>Bellevue, NE 68123 </h6>
+            <h6>asianamazin12@gmail.com</h6>
+            <h6>(402) 415-9496</h6>
+            <h6>August 7, 2024</h6>
+          </div>
+          <div className="d-flex gap-4 flex-column mb-5">
+            <h5 className="fw-bold mb-0">State of Nebraska County of Sarpy</h5>
+            <h5 className="fw-semibold mb-0 lh-base">1, Dick Hoskins, being of sound mind and competent to testify, hereby depose and state as follows:</h5>
+            <p className="h5 fw-normal lh-base mb-0">1. I am the owner of the property located at 14704 5 23rd St. Bellevue. NE 68123 which is situated within the state of Nebraska.</p>
+            <p className="h5 fw-normal lh-base mb-0">1. I am the owner of the property located at 14704 5 23rd St. Bellevue. NE 68123 which is situated within the state of Nebraska.</p>
+            <p className="h5 fw-normal lh-base mb-0">2. I am aware of the rights granted to homeowners in the state of Nebraska to act as their own general contractors on their property without the requirement of holding a general contractor's license, as provided by Nebraska law.</p>
+            <p className="h5 fw-normal lh-base mb-0">3. I affirm that I am acting as my own general contractor on the aforementioned property for the purpose of repairs and replacement of my roof and other damaged structures resulting from storm damage.</p>
+            <p className="h5 fw-normal lh-base mb-0">4. I understand and acknowledge that by acting as my own general contractor, I am responsible for ensuring that all work performed on the property complies with applicable local building codes, safety regulations, and other relevant laws.</p>
+            <p className="h5 fw-normal lh-base mb-0">5. I have received the scope of work and estimates of repair from my homeowner's insurance provider, Farm Bureau Financial Services, and I hereby accept the scope of work as provided.</p>
+            <p className="h5 fw-normal lh-base mb-0">6. I will file for my own building permit with the relevant local authority, and I will provide a copy of the issued permit alongside this affidavit as required.</p>
+            <p className="h5 fw-normal lh-base mb-0">7. I declare under penalty of perjury that the information provided in this affidavit is true and correct to the best of my knowledge and belief.</p>
+          </div>
+          <div className="w-100 d-flex flex-column flex-md-row gap-4">
+            <div className="w-50 w-100-md order-2 order-md-1 mt-4 mt-md-0">
+              <h4>Signature</h4>
+              <SignatureCanvas
+                ref={sigCanvas}
+                penColor='green'
+                canvasProps={{
+                  width: 320,
+                  height: 150,
+                  className: 'sigCanvas border border-2 mt-4',
+                }}
+              />
+                <div className="mt-5 mt-xl-3 gap-4 d-flex w-100">
+                  <LDButton
+                    type="fill"
+                    shape={"round"}
+                    iconPosition={"end"}
+                    isSmallBtn
+                    isFillBtn
+                    customClass={clsx("")}
+                    handleClick={handleReset}
+                  >
+                    Reset
+                  </LDButton>
+                  <LDButton
+                    type="fill"
+                    shape={"round"}
+                    iconPosition={"end"}
+                    isFillBtn
+                    isSmallBtn
+                    customClass={clsx("")}
+                    handleClick={handleDownload}
+                  >
+                      Downalod
+                  </LDButton>
+                </div>
+            </div>
+            <h5 className="ms-md-auto mb-0 fw-semibold order-1 order-md-2">Date :- <span className="text-bleu-de-france-one">2/12/2024</span></h5>
+          </div>
+        </div>
+      }
+    />
+    {/* Affidavit of Self-General Contractor Status modal end */}
     </>
   );
 };
