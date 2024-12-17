@@ -25,6 +25,7 @@ export function LDButton({
   isDarkBlueBg,
   isOrangeBg,
   loading,
+  disabled,
   ...rest
 }) {
   return (
@@ -54,7 +55,7 @@ export function LDButton({
         size={size}
         iconPosition={iconPosition}
         loading={loading}
-        disabled={loading}
+        disabled={disabled}
         {...rest}
       >
         {children}
