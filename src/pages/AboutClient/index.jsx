@@ -498,7 +498,7 @@ const AboutClient = () => {
                             isFillBtn
                             isOrangeBg={total < 99}
                             isGreenBg={total >= 100}
-                            disabled={total <= 50 ? true : false}
+                            disabled={total >= 50 ? false : true}
                             customClass={clsx("w-50 mx-auto")}
                             handleClick={() => showOptimizationModal()}
                           >
