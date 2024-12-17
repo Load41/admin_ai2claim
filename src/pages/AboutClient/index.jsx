@@ -1,4 +1,4 @@
-import React, {useRef} from "react";
+import React, { useRef } from "react";
 import { clsx } from "clsx";
 import SignatureCanvas from 'react-signature-canvas';
 import { svgIcons } from "../../constants/icons";
@@ -24,14 +24,14 @@ const AboutClient = () => {
   // Affidavit of Self-General Contractor Status modal js start
   const [isAffidavitSelfGeneralContractorOpen, setIsAffidavitSelfGeneralContractorOpen] = useState(false);
   const showAffidavitSelfGeneralContractor = () => {
-      setIsAffidavitSelfGeneralContractorOpen(true);
+    setIsAffidavitSelfGeneralContractorOpen(true);
   };
 
   const handleAffidavitSelfGeneralContractorCancel = () => {
-      setIsAffidavitSelfGeneralContractorOpen(false);
+    setIsAffidavitSelfGeneralContractorOpen(false);
   };
-// Affidavit of Self-General Contractor Status modal js end
-// signature js start
+  // Affidavit of Self-General Contractor Status modal js end
+  // signature js start
   const sigCanvas = useRef(null);
 
   // Function to clear the signature
@@ -47,7 +47,7 @@ const AboutClient = () => {
     link.download = 'signature.png';
     link.click();
   };
-// signature js end
+  // signature js end
   // estimate table start
   const estimateColumn = [
     {
@@ -289,7 +289,7 @@ const AboutClient = () => {
                 iconPosition={"end"}
                 isFillBtn
                 customClass={clsx("w-50 w-100-md")}
-                handleClick={() => {return false;}}
+                handleClick={() => { return false; }}
               >
                 Enable/Disable Services
               </LDButton>
@@ -374,7 +374,7 @@ const AboutClient = () => {
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
                               <h6 className="w-45 mb-0 lh-base fw-bold">
-                                Hired Material{" "}
+                                Selected Material{" "}
                                 <b className="d-none d-sm-inline">:-</b>
                               </h6>
                               <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
@@ -498,10 +498,9 @@ const AboutClient = () => {
                             isFillBtn
                             isOrangeBg={total < 99}
                             isGreenBg={total >= 100}
+                            disabled={total <= 50 ? true : false}
                             customClass={clsx("w-50 mx-auto")}
-                            handleClick={() => {
-                              return false;
-                            }}
+                            handleClick={() => showOptimizationModal()}
                           >
                             Status {" "}
                             {insurance_company + crew + management + material}%
@@ -707,9 +706,9 @@ const AboutClient = () => {
           </div>
         </div>
         {/* Two modal just  view purpose modal start */}
-        <h6 className="pt-5 pb-4 fw-bold">Note :- (only design view purpose)</h6>
+        {/* <h6 className="pt-5 pb-4 fw-bold">Note :- (only design view purpose)</h6>
         <h6 onClick={showOptimizationModal} className="pb-4 cursor-pointer">Send Final Estimate (Optimization)</h6>
-        <h6 onClick={showAffidavitSelfGeneralContractor} className="cursor-pointer">Affidavit of self general contractor status</h6>
+        <h6 onClick={showAffidavitSelfGeneralContractor} className="cursor-pointer">Affidavit of self general contractor status</h6> */}
         {/* Two modal just  view purpose modal end */}
       </div>
       {/* Send Final Estimate (Optimization) modal start */}
@@ -752,7 +751,7 @@ const AboutClient = () => {
       {/* Affidavit of Self-General Contractor Status modal start */}
       <LDModal
         title="Affidavit of Self-General Contractor Status"
-        open={isAffidavitSelfGeneralContractorOpen} 
+        open={isAffidavitSelfGeneralContractorOpen}
         onCancel={handleAffidavitSelfGeneralContractorCancel}
         width={800}
         modalContent={
@@ -789,30 +788,30 @@ const AboutClient = () => {
                     className: 'sigCanvas border border-2 mt-4',
                   }}
                 />
-                  <div className="mt-5 mt-xl-3 gap-4 d-flex w-100">
-                    <LDButton
-                      type="fill"
-                      shape={"round"}
-                      iconPosition={"end"}
-                      isSmallBtn
-                      isFillBtn
-                      customClass={clsx("")}
-                      handleClick={handleReset}
-                    >
-                      Reset
-                    </LDButton>
-                    <LDButton
-                      type="fill"
-                      shape={"round"}
-                      iconPosition={"end"}
-                      isFillBtn
-                      isSmallBtn
-                      customClass={clsx("")}
-                      handleClick={handleDownload}
-                    >
-                        Downalod
-                    </LDButton>
-                  </div>
+                <div className="mt-5 mt-xl-3 gap-4 d-flex w-100">
+                  <LDButton
+                    type="fill"
+                    shape={"round"}
+                    iconPosition={"end"}
+                    isSmallBtn
+                    isFillBtn
+                    customClass={clsx("")}
+                    handleClick={handleReset}
+                  >
+                    Reset
+                  </LDButton>
+                  <LDButton
+                    type="fill"
+                    shape={"round"}
+                    iconPosition={"end"}
+                    isFillBtn
+                    isSmallBtn
+                    customClass={clsx("")}
+                    handleClick={handleDownload}
+                  >
+                    Downalod
+                  </LDButton>
+                </div>
               </div>
               <h5 className="ms-md-auto mb-0 fw-semibold order-1 order-md-2">Date :- <span className="text-bleu-de-france-one">2/12/2024</span></h5>
             </div>

@@ -165,7 +165,7 @@ export const LDProjectsCard = ({
                                                     );
                                                 })} */}
                           </ul>
-                          <div className="d-flex w-100 mb-4">
+                          {/* <div className="d-flex w-100 mb-4">
                             <h6 className="w-75-xs w-50 mb-0 lh-base p small fw-bold">
                               Projects Done{" "}
                               <b className="d-none d-lg-inline">:-</b>
@@ -173,7 +173,7 @@ export const LDProjectsCard = ({
                             <h6 className="w-25-xs w-50 mb-0 lh-base p small word-break-word p small">
                               {item?.projectsDone ? item?.projectsDone : 0}
                             </h6>
-                          </div>
+                          </div> */}
                           <div className="d-flex w-100 mb-4">
                             <h6 className="w-75-xs w-50 mb-0 lh-base p small fw-bold">
                               Projects Pending{" "}
