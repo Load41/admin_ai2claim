@@ -74,101 +74,72 @@ const AboutClient = () => {
   const estimateData = [
     {
       key: '1',
-      name: 'Management cost',
-      price: <>
+      name: 'Original Estimate',
+      price: <div className="d-flex align-items-center gap-2">
+        <span>$</span>
         <LDInput
-          id="managementCostPrice"
-          dataTestId="managementCostPrice"
-          name="managementCostPrice"
-          // value={loginData?.managementCostPrice}
-          type="text"
+          id="originalEstimatePrice"
+          dataTestId="originalEstimatePrice"
+          name="originalEstimatePrice"
+          // value={loginData?.originalEstimatePrice}
+          type="number"
           handleChange={() => { return false }}
           className={clsx()}
           isSmallCustomInput
           isNotBottomSpace
         // errorMessage={validateMessages?.email}
         />
-      </>,
-      addOnCost: <>
+      </div>,
+      addOnCost: <div className="d-flex align-items-center gap-2">
+        <span>$</span>
         <LDInput
-          id="managementAddOnCost"
-          dataTestId="managementAddOnCost"
-          name="managementAddOnCost"
-          // value={loginData?.managementAddOnCost}
-          type="text"
+          id="originalEstimateAddOnCost"
+          dataTestId="originalEstimateAddOnCost"
+          name="originalEstimateAddOnCost"
+          // value={loginData?.originalEstimateAddOnCost}
+          type="number"
           handleChange={() => { return false }}
           className={clsx()}
           isSmallCustomInput
           isNotBottomSpace
         // errorMessage={validateMessages?.email}
         />
-      </>,
+      </div>,
       subTotal: '$150.00',
     },
     {
       key: '2',
-      name: 'Crew cost',
-      price: <>
+      name: 'Ai2 Claim service cost',
+      price: <div className="d-flex align-items-center gap-2">
+        <span>$</span>
         <LDInput
-          id="crewCostPrice"
-          dataTestId="crewCostPrice"
-          name="crewCostPrice"
-          // value={loginData?.crewCostPrice}
-          type="text"
+          id="ai2ClaimServiceCostPrice"
+          dataTestId="ai2ClaimServiceCostPrice"
+          name="ai2ClaimServiceCostPrice"
+          // value={loginData?.ai2ClaimServiceCostPrice}
+          type="number"
           handleChange={() => { return false }}
           className={clsx()}
           isSmallCustomInput
           isNotBottomSpace
         // errorMessage={validateMessages?.email}
         />
-      </>,
-      addOnCost: <>
+      </div>,
+      addOnCost: <div className="d-flex align-items-center gap-2">
+        <span>$</span>
         <LDInput
-          id="crewAddOnCost"
-          dataTestId="crewAddOnCost"
-          name="crewAddOnCost"
-          // value={loginData?.crewAddOnCost}
-          type="text"
+          id="ai2ClaimServiceAddOnCost"
+          dataTestId="ai2ClaimServiceAddOnCost"
+          name="ai2ClaimServiceAddOnCost"
+          // value={loginData?.ai2ClaimServiceAddOnCost}
+          type="number"
           handleChange={() => { return false }}
           className={clsx()}
           isSmallCustomInput
           isNotBottomSpace
         // errorMessage={validateMessages?.email}
         />
-      </>,
-      subTotal: '$150.00',
-    },
-    {
-      key: '3',
-      name: 'Ai2 claim service cost',
-      price: <>
-        <LDInput
-          id="serviceCostPrice"
-          dataTestId="serviceCostPrice"
-          name="serviceCostPrice"
-          // value={loginData?.serviceCostPrice}
-          type="text"
-          handleChange={() => { return false }}
-          className={clsx()}
-          isSmallCustomInput
-          isNotBottomSpace
-        // errorMessage={validateMessages?.email}
-        />
-      </>,
-      addOnCost: <>
-        <LDInput
-          id="serviceAddOnCost"
-          dataTestId="serviceAddOnCost"
-          name="serviceAddOnCost"
-          // value={loginData?.serviceAddOnCost}
-          type="text"
-          handleChange={() => { return false }}
-          className={clsx()}
-          isSmallCustomInput
-          isNotBottomSpace
-        // errorMessage={validateMessages?.email}
-        />
-      </>,
+      </div>,
       subTotal: '$150.00',
     },
   ];
@@ -748,10 +719,10 @@ const AboutClient = () => {
                 iconPosition={"end"}
                 isFillBtn
                 isGreenBg
-                customClass={clsx("w-50 w-100-md")}
+                customClass={clsx("")}
                 handleClick={handleOptimizationModalCancel}
               >
-                Send Final Estimate
+                Send Final Estimate (with Optimization)
               </LDButton>
             </div>
           </div>

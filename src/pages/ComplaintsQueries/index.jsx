@@ -235,22 +235,22 @@ const ComplaintsQueries = () => {
                 <LDButton
                 type="fill"
                 shape={"round"}
-                iconPosition={"end"}
+                iconPosition={"start"}
                 isGreenBg
                 isSmallBtn
-                // icon={svgIcons.approveIcon}
+                icon={svgIcons.approveIcon}
                 customClass={clsx("w-50")}
                 handleClick={handleResponseModalCancel}
                 >
-                Send
+                Send mail
                 </LDButton>
                 <LDButton
                 type="fill"
                 shape={"round"}
-                iconPosition={"end"}
+                iconPosition={"start"}
                 isRedBg
                 isSmallBtn
-                // icon={svgIcons.declineIcon}
+                icon={svgIcons.declineIcon}
                 customClass={clsx("w-50")}
                 handleClick={handleResponseModalCancel}
                 >
