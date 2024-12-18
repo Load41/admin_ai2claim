@@ -283,7 +283,8 @@ const AboutClient = () => {
                 <li className="text-aureolin">{svgIcons.starIcon}</li>
                 <li className="text-aureolin">{svgIcons.starIcon}</li>
               </ul> */}
-              <LDButton
+
+              {/* <LDButton
                 type="fill"
                 shape={"round"}
                 iconPosition={"end"}
@@ -292,7 +293,8 @@ const AboutClient = () => {
                 handleClick={() => { return false; }}
               >
                 Enable/Disable Services
-              </LDButton>
+              </LDButton> */}
+
             </div>
           </div>
           <h4 className="mt-5 fw-semibold">List Projects :-</h4>
@@ -388,32 +390,40 @@ const AboutClient = () => {
                               </h6>
                               <div className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
                                 {projectData?.linkin?.insurance_company
-                                  ?.fileName && (
-                                    <Link
-                                      to={
-                                        projectData?.linkin?.insurance_company
-                                          ?.file
-                                      }
-                                      target={"_blank"}
-                                    >
-                                      <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
-                                        {
-                                          projectData?.linkin?.insurance_company
-                                            ?.fileName
-                                        }
-                                      </label>
-                                    </Link>
-                                  )}
-                                {projectData?.linkin?.material?.fileName && (
-                                  <Link
-                                    to={projectData?.linkin?.material?.file}
-                                    target={"_blank"}
-                                  >
-                                    <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
-                                      {projectData?.linkin?.material?.fileName}
-                                    </label>
-                                  </Link>
-                                )}
+                                  ?.files && typeof projectData?.linkin?.insurance_company
+                                    ?.files !== "string" && projectData?.linkin?.insurance_company
+                                      ?.files?.length > 0 ? projectData?.linkin?.insurance_company
+                                        ?.files?.map((fileItem, index) => {
+                                          return (
+                                            <Link
+                                              to={
+                                                `${projectData?.linkin?.insurance_company?.filePath}/${fileItem?.file}`
+                                              }
+                                              target={"_blank"}
+                                              key={index}
+                                            >
+                                              <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
+                                                {
+                                                  fileItem?.file
+                                                }
+                                              </label>
+                                            </Link>
+                                          )
+                                        }) : (<Link
+                                          to={
+                                            `${projectData?.linkin?.insurance_company?.filePath}/${projectData?.linkin?.insurance_company?.files}`
+                                          }
+                                          target={"_blank"}
+                                          key={index}
+                                        >
+                                          <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
+                                            {
+                                              projectData?.linkin?.insurance_company?.files
+                                            }
+                                          </label>
+                                        </Link>)
+                                }
+
                                 {projectData?.linkin?.optimation?.fileName && (
                                   <Link
                                     to={projectData?.linkin?.optimation?.file}
