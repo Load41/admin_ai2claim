@@ -714,15 +714,14 @@ const AboutClient = () => {
             </div>
             <div className="d-flex gap-4 flex-column mb-5">
               <h5 className="fw-bold mb-0">State of Nebraska County of Sarpy</h5>
-              <h5 className="fw-semibold mb-0 lh-base">1, Dick Hoskins, being of sound mind and competent to testify, hereby depose and state as follows:</h5>
-              <p className="h5 fw-normal lh-base mb-0">1. I am the owner of the property located at 14704 5 23rd St. Bellevue. NE 68123 which is situated within the state of Nebraska.</p>
-              <p className="h5 fw-normal lh-base mb-0">1. I am the owner of the property located at 14704 5 23rd St. Bellevue. NE 68123 which is situated within the state of Nebraska.</p>
-              <p className="h5 fw-normal lh-base mb-0">2. I am aware of the rights granted to homeowners in the state of Nebraska to act as their own general contractors on their property without the requirement of holding a general contractor's license, as provided by Nebraska law.</p>
-              <p className="h5 fw-normal lh-base mb-0">3. I affirm that I am acting as my own general contractor on the aforementioned property for the purpose of repairs and replacement of my roof and other damaged structures resulting from storm damage.</p>
-              <p className="h5 fw-normal lh-base mb-0">4. I understand and acknowledge that by acting as my own general contractor, I am responsible for ensuring that all work performed on the property complies with applicable local building codes, safety regulations, and other relevant laws.</p>
-              <p className="h5 fw-normal lh-base mb-0">5. I have received the scope of work and estimates of repair from my homeowner's insurance provider, Farm Bureau Financial Services, and I hereby accept the scope of work as provided.</p>
-              <p className="h5 fw-normal lh-base mb-0">6. I will file for my own building permit with the relevant local authority, and I will provide a copy of the issued permit alongside this affidavit as required.</p>
-              <p className="h5 fw-normal lh-base mb-0">7. I declare under penalty of perjury that the information provided in this affidavit is true and correct to the best of my knowledge and belief.</p>
+              <h5 className="fw-semibold mb-0 lh-base">1. Dick Hoskins, being of sound mind and competent to testify, hereby depose and state as follows:</h5>
+              <p className="h5 fw-normal lh-base gap-3 mb-0 d-flex ps-4"><span>1.</span> I am the owner of the property located at 14704 5 23rd St. Bellevue. NE 68123 which is situated within the state of Nebraska.</p>
+              <p className="h5 fw-normal lh-base gap-3 mb-0 d-flex ps-4"><span>2.</span> I am aware of the rights granted to homeowners in the state of Nebraska to act as their own general contractors on their property without the requirement of holding a general contractor's license, as provided by Nebraska law.</p>
+              <p className="h5 fw-normal lh-base gap-3 mb-0 d-flex ps-4"><span>3.</span> I affirm that I am acting as my own general contractor on the aforementioned property for the purpose of repairs and replacement of my roof and other damaged structures resulting from storm damage.</p>
+              <p className="h5 fw-normal lh-base gap-3 mb-0 d-flex ps-4"><span>4.</span> I understand and acknowledge that by acting as my own general contractor, I am responsible for ensuring that all work performed on the property complies with applicable local building codes, safety regulations, and other relevant laws.</p>
+              <p className="h5 fw-normal lh-base gap-3 mb-0 d-flex ps-4"><span>5.</span> I have received the scope of work and estimates of repair from my homeowner's insurance provider, Farm Bureau Financial Services, and I hereby accept the scope of work as provided.</p>
+              <p className="h5 fw-normal lh-base gap-3 mb-0 d-flex ps-4"><span>6.</span> I will file for my own building permit with the relevant local authority, and I will provide a copy of the issued permit alongside this affidavit as required.</p>
+              <p className="h5 fw-normal lh-base gap-3 mb-0 d-flex ps-4"><span>7.</span> I declare under penalty of perjury that the information provided in this affidavit is true and correct to the best of my knowledge and belief.</p>
             </div>
             <div className="w-100 d-flex flex-column flex-md-row gap-4">
               <div className="w-50 w-100-md order-2 order-md-1 mt-4 mt-md-0">
