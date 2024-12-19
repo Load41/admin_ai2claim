@@ -21,7 +21,7 @@ export function LDDocUpload({
     setStateMain(latestFileList);
     // Pass the latest file to the parent component
     if (latestFileList.length > 0) {
-      onFileUpload(latestFileList[0]); // Pass the file object
+      onFileUpload(latestFileList); // Pass the file object
     } else {
       onFileUpload(null); // Clear the file if removed
     }

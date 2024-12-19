@@ -84,7 +84,20 @@ export const doFetchClientStatusUpdate = async (data) => {
   try {
     const response = await axiosApi({
       method: "post",
-      url: `admin/management/status-update`,
+      url: `admin/user/status-update`,
+      data: data,
+    });
+    return response.data;
+  } catch (error) {
+    console.log({ error });
+    return error.response;
+  }
+};
+export const doFetchClientProjectLinkInUpdate = async (projectId, data) => {
+  try {
+    const response = await axiosApi({
+      method: "post",
+      url: `admin/user/projects/${projectId}/linkin-update`,
       data: data,
     });
     return response.data;

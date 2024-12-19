@@ -10,67 +10,25 @@ import { LDInput } from "../../components/LDInput";
 import styles from "./AboutClient.module.css";
 
 const AboutClient = () => {
-  const { clientData } = useClientDetailHook();
-  // Send Final Estimate (Optimization) modal js start
-  const [isOptimizationModalOpen, setIsOptimizationModalOpen] = useState(false);
-  const showOptimizationModal = () => {
-    setIsOptimizationModalOpen(true);
-  };
+  const {
+    sigCanvas,
+    isLoading,
+    clientData,
+    optimizationData,
+    estimateColumn,
+    isOptimizationModalOpen,
+    isAffidavitSelfGeneralContractorOpen,
+    handleDownload,
+    handleReset,
+    handleFileUpload,
+    handleInputChange,
+    showOptimizationModal,
+    handleOptimizationModalCancel,
+    showAffidavitSelfGeneralContractor,
+    handleAffidavitSelfGeneralContractorCancel,
+    handleOptimizationSubmit
+  } = useClientDetailHook();
 
-  const handleOptimizationModalCancel = () => {
-    setIsOptimizationModalOpen(false);
-  };
-  // Send Final Estimate (Optimization) modal js end
-  // Affidavit of Self-General Contractor Status modal js start
-  const [isAffidavitSelfGeneralContractorOpen, setIsAffidavitSelfGeneralContractorOpen] = useState(false);
-  const showAffidavitSelfGeneralContractor = () => {
-    setIsAffidavitSelfGeneralContractorOpen(true);
-  };
-
-  const handleAffidavitSelfGeneralContractorCancel = () => {
-    setIsAffidavitSelfGeneralContractorOpen(false);
-  };
-  // Affidavit of Self-General Contractor Status modal js end
-  // signature js start
-  const sigCanvas = useRef(null);
-
-  // Function to clear the signature
-  const handleReset = () => {
-    sigCanvas.current.clear();
-  };
-
-  // Function to download the signature as an image
-  const handleDownload = () => {
-    const dataURL = sigCanvas.current.toDataURL("image/png");
-    const link = document.createElement('a');
-    link.href = dataURL;
-    link.download = 'signature.png';
-    link.click();
-  };
-  // signature js end
-  // estimate table start
-  const estimateColumn = [
-    {
-      title: 'Name',
-      dataIndex: 'name',
-      key: 'name',
-    },
-    {
-      title: 'Price',
-      dataIndex: 'price',
-      key: 'price',
-    },
-    {
-      title: 'Add on cost',
-      dataIndex: 'addOnCost',
-      key: 'addOnCost',
-    },
-    {
-      title: 'Sub Total',
-      dataIndex: 'subTotal',
-      key: 'subTotal',
-    },
-  ];
   const estimateData = [
     {
       key: '1',
@@ -81,9 +39,9 @@ const AboutClient = () => {
           id="originalEstimatePrice"
           dataTestId="originalEstimatePrice"
           name="originalEstimatePrice"
-          // value={loginData?.originalEstimatePrice}
+          value={optimizationData?.originalEstimatePrice}
           type="number"
-          handleChange={() => { return false }}
+          handleChange={handleInputChange}
           className={clsx()}
           isSmallCustomInput
           isNotBottomSpace
@@ -96,16 +54,16 @@ const AboutClient = () => {
           id="originalEstimateAddOnCost"
           dataTestId="originalEstimateAddOnCost"
           name="originalEstimateAddOnCost"
-          // value={loginData?.originalEstimateAddOnCost}
+          value={optimizationData?.originalEstimateAddOnCost}
           type="number"
-          handleChange={() => { return false }}
+          handleChange={handleInputChange}
           className={clsx()}
           isSmallCustomInput
           isNotBottomSpace
         // errorMessage={validateMessages?.email}
         />
       </div>,
-      subTotal: '$150.00',
+      subTotal: optimizationData?.originalEstimatePrice + optimizationData?.originalEstimateAddOnCost,
     },
     {
       key: '2',
@@ -116,9 +74,9 @@ const AboutClient = () => {
           id="ai2ClaimServiceCostPrice"
           dataTestId="ai2ClaimServiceCostPrice"
           name="ai2ClaimServiceCostPrice"
-          // value={loginData?.ai2ClaimServiceCostPrice}
+          value={optimizationData?.ai2ClaimServiceCostPrice}
           type="number"
-          handleChange={() => { return false }}
+          handleChange={handleInputChange}
           className={clsx()}
           isSmallCustomInput
           isNotBottomSpace
@@ -131,16 +89,16 @@ const AboutClient = () => {
           id="ai2ClaimServiceAddOnCost"
           dataTestId="ai2ClaimServiceAddOnCost"
           name="ai2ClaimServiceAddOnCost"
-          // value={loginData?.ai2ClaimServiceAddOnCost}
+          value={optimizationData?.ai2ClaimServiceAddOnCost}
           type="number"
-          handleChange={() => { return false }}
+          handleChange={handleInputChange}
           className={clsx()}
           isSmallCustomInput
           isNotBottomSpace
         // errorMessage={validateMessages?.email}
         />
       </div>,
-      subTotal: '$150.00',
+      subTotal: optimizationData?.ai2ClaimServiceCostPrice + optimizationData?.ai2ClaimServiceAddOnCost,
     },
   ];
   // estimate table end
@@ -481,7 +439,7 @@ const AboutClient = () => {
                             isGreenBg={total >= 100}
                             disabled={total >= 50 ? false : true}
                             customClass={clsx("w-50 mx-auto")}
-                            handleClick={() => showOptimizationModal()}
+                            handleClick={() => showOptimizationModal(projectData?._id)}
                           >
                             Status {" "}
                             {insurance_company + crew + management + material}%
@@ -705,12 +663,21 @@ const AboutClient = () => {
               accept=".docx, application/pdf"
               label="Please upload the document"
               supportLabel="Supported format: PDF or Doc"
-            // onFileUpload={handleFileUpload}
+              onFileUpload={handleFileUpload}
             />
-            <LDTable columns={estimateColumn} data={estimateData} className={clsx(styles.optimizationTable, "mt-5 mt-xl-4")} pagination={false} />
+            <LDTable
+              columns={estimateColumn}
+              data={estimateData}
+              className={clsx(styles.optimizationTable, "mt-5 mt-xl-4")}
+              pagination={false}
+            />
             <div className="d-flex justify-content-center align-items-center pt-5 mt-3 mt-xl-0 pb-3">
               <h5 className="me-3 mb-0 fw-bold">Total :-</h5>
-              <h5 className="mb-0 text-bleu-de-france-one">$ 350.00</h5>
+              <h5 className="mb-0 text-bleu-de-france-one">$ {optimizationData?.originalEstimatePrice ?
+                optimizationData?.originalEstimatePrice + optimizationData?.originalEstimateAddOnCost +
+                optimizationData?.ai2ClaimServiceCostPrice + optimizationData?.ai2ClaimServiceAddOnCost
+                :
+                0}</h5>
             </div>
             <div className="text-center w-100 mt-5 mt-xl-3">
               <LDButton
@@ -720,7 +687,7 @@ const AboutClient = () => {
                 isFillBtn
                 isGreenBg
                 customClass={clsx("")}
-                handleClick={handleOptimizationModalCancel}
+                handleClick={handleOptimizationSubmit}
               >
                 Send Final Estimate (with Optimization)
               </LDButton>
