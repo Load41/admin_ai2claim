@@ -13,13 +13,8 @@ import { useManagementDetailHook } from "../../hooks";
 import { Link, useNavigate } from "react-router-dom";
 
 const AboutManagement = () => {
-  const { isLoading, managementData } = useManagementDetailHook();
-  // projects-handled-management-list open page start
-  const navigate = useNavigate();
-  const managementHandledList = () => {
-    navigate("/projects-handled-management-list");
-  };
-  // projects-handled-management-list open page end
+  const { isLoading, managementData, managementHandledList } = useManagementDetailHook();
+
   // management list pending open page start
   const managementPendingFile = () => {
     // navigate("/management-list-pending");
@@ -186,7 +181,7 @@ const AboutManagement = () => {
                   iconPosition={"end"}
                   isFillBtn
                   customClass={clsx("")}
-                  handleClick={managementPendingFile}
+                  handleClick={managementHandledList}
                 >
                   List of Pending Projects({managementData?.projectPending})
                 </LDButton>

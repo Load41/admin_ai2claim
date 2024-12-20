@@ -110,7 +110,7 @@ export const doFetchManagementProjectList = async (id) => {
   try {
     const response = await axiosApi({
       method: "get",
-      url: `admin/management/detail/${id}`,
+      url: `admin/management/project/list/${id}`,
     });
     return response.data;
   } catch (error) {

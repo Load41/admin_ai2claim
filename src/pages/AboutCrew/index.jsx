@@ -14,18 +14,9 @@ import { useCrewDetailHook } from "../../hooks";
 import { Link, useNavigate } from "react-router-dom";
 
 const AboutCrew = () => {
-  const { crewData } = useCrewDetailHook();
+  const { crewData,crewHandledList } = useCrewDetailHook();
   // projects-handled-management-list open page start
-  const navigate = useNavigate();
-  const crewHandledList = () => {
-    navigate("/crew-handled-management-list");
-  };
-  // projects-handled-management-list open page end
-  // crww list pending open page start
-  const crewPendingFile = () => {
-    // navigate("/crew-list-pending");
-  };
-  // crww list pending open page end
+   
   return (
     <>
       <div className={clsx("admin-content")}>
@@ -183,7 +174,7 @@ const AboutCrew = () => {
                   iconPosition={"end"}
                   isFillBtn
                   customClass={clsx("")}
-                  handleClick={crewPendingFile}
+                  handleClick={crewHandledList}
                 >
                   List of Pending Projects({crewData?.projectPending})
                 </LDButton>

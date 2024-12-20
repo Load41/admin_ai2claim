@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { doFetchManagementDetail } from "../../actions";
 
 export const useManagementDetailHook = () => {
   // doFetchManagementDetail
+  const navigate = useNavigate();
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(false);
   const [managementData, setManagementData] = useState({});
@@ -19,5 +20,9 @@ export const useManagementDetailHook = () => {
     doGetManagementDetail();
   }, [id]);
 
-  return { isLoading, managementData };
+  const managementHandledList = () => {
+    navigate(`/projects-handled-management-list/${id}`);
+  };
+
+  return { isLoading, managementData, managementHandledList };
 };

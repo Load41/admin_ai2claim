@@ -1263,7 +1263,7 @@ export const approvedData = [
     approvedInfo: <>
       <div className="d-flex align-items-center gap-4">
         <div className="ratio ratio-1x1 rounded-circle queries-profile-box flex-0-auto">
-            <img src={companyOne} className="img-fluid radius-inherit object-fit-cover bg-ma-white p-1" alt="" />
+          <img src={companyOne} className="img-fluid radius-inherit object-fit-cover bg-ma-white p-1" alt="" />
         </div>
         <h5 className="mb-0">Verified Rachel's Insurance doc's.</h5>
       </div>
@@ -1276,7 +1276,7 @@ export const approvedData = [
     approvedInfo: <>
       <div className="d-flex align-items-center gap-4">
         <div className="ratio ratio-1x1 rounded-circle queries-profile-box flex-0-auto">
-            <img src={companyTwo} className="img-fluid radius-inherit object-fit-cover bg-ma-white p-1" alt="" />
+          <img src={companyTwo} className="img-fluid radius-inherit object-fit-cover bg-ma-white p-1" alt="" />
         </div>
         <h5 className="mb-0">Verified Rachel's Insurance doc's.</h5>
       </div>
@@ -1289,7 +1289,7 @@ export const approvedData = [
     approvedInfo: <>
       <div className="d-flex align-items-center gap-4">
         <div className="ratio ratio-1x1 rounded-circle queries-profile-box flex-0-auto">
-            <img src={manWorkerFive} className="img-fluid radius-inherit object-fit-cover bg-ma-white p-1" alt="" />
+          <img src={manWorkerFive} className="img-fluid radius-inherit object-fit-cover bg-ma-white p-1" alt="" />
         </div>
         <h5 className="mb-0">Verified Rachel's Insurance doc's.</h5>
       </div>
@@ -1302,7 +1302,7 @@ export const approvedData = [
     approvedInfo: <>
       <div className="d-flex align-items-center gap-4">
         <div className="ratio ratio-1x1 rounded-circle queries-profile-box flex-0-auto">
-            <img src={manWorkerSix} className="img-fluid radius-inherit object-fit-cover bg-ma-white p-1" alt="" />
+          <img src={manWorkerSix} className="img-fluid radius-inherit object-fit-cover bg-ma-white p-1" alt="" />
         </div>
         <h5 className="mb-0">Verified Rachel's Insurance doc's.</h5>
       </div>
@@ -1315,7 +1315,7 @@ export const approvedData = [
     approvedInfo: <>
       <div className="d-flex align-items-center gap-4">
         <div className="ratio ratio-1x1 rounded-circle queries-profile-box flex-0-auto">
-            <img src={manWorkerThree} className="img-fluid radius-inherit object-fit-cover bg-ma-white p-1" alt="" />
+          <img src={manWorkerThree} className="img-fluid radius-inherit object-fit-cover bg-ma-white p-1" alt="" />
         </div>
         <h5 className="mb-0">Verified Rachel's Insurance doc's.</h5>
       </div>
@@ -1330,31 +1330,37 @@ export const managementProjectsHandledColumns = [
     title: 'Project name',
     dataIndex: 'projectName',
     key: 'projectName',
+
   },
   {
     title: 'Client name',
     dataIndex: 'clientName',
     key: 'clientName',
+    render: (_, record) => record?.createdBy[0]?.username || "-",
   },
   {
     title: 'Crew name',
     dataIndex: 'crewName',
     key: 'crewName',
+    render: (_, record) => record?.linkin?.crew?.linkinId?.company_name || "-",
   },
   {
     title: 'Take up date',
     dataIndex: 'takeUpDate',
     key: 'takeUpDate',
+    render: (_, record) => record?.linkin?.management?.linkinId?.date || "-",
   },
   {
     title: 'Status',
     dataIndex: 'status',
     key: 'status',
+    render: (_, record) => record?.linkin?.management?.linkinId?.status || "-",
   },
   {
     title: 'Finished date',
     dataIndex: 'finishedDate',
     key: 'finishedDate',
+    render: (_, record) => record?.date || "-",
   },
 ];
 export const managementProjectsHandledData = [
@@ -1388,26 +1394,31 @@ export const crewProjectsHandledColumns = [
     title: 'Client name',
     dataIndex: 'clientName',
     key: 'clientName',
+    render: (_, record) => record?.createdBy[0]?.username || "-",
   },
   {
-    title: 'Crew name',
+    title: 'Management name',
     dataIndex: 'crewName',
     key: 'crewName',
+    render: (_, record) => record?.linkin?.management?.linkinId?.company_name || "-",
   },
   {
     title: 'Take up date',
     dataIndex: 'takeUpDate',
     key: 'takeUpDate',
+    render: (_, record) => record?.linkin?.crew?.linkinId?.date || "-",
   },
   {
     title: 'Status',
     dataIndex: 'status',
     key: 'status',
+    render: (_, record) => record?.linkin?.crew?.linkinId?.status || "-",
   },
   {
     title: 'Finished date',
     dataIndex: 'finishedDate',
     key: 'finishedDate',
+    render: (_, record) => record?.date || "-",
   },
 ];
 export const crewProjectsHandledData = [

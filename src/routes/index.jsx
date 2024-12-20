@@ -113,16 +113,16 @@ export const router = createBrowserRouter([
         element: <AboutUs />,
       },
       {
-        path: "/projects-handled-management-list",
+        path: "/projects-handled-management-list/:id",
         element: <ProjectsHandledManagementList />,
       },
       {
-        path: "/crew-handled-management-list",
+        path: "/crew-handled-management-list/:id",
         element: <ProjectsHandledCrewList />,
       },
       {
         path: "/transactions-report",
-        element: <TransactionsReport/>
+        element: <TransactionsReport />
       }
     ],
   },

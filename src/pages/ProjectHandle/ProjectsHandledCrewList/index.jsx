@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 import { crewProjectsHandledColumns, crewProjectsHandledData } from "../../../constants/data";
 import { svgIcons } from "../../../constants/icons";
 import { LDTable } from "../../../components";
-const items  = [
+import { useCrewProjectListHook } from "../../../hooks";
+const items = [
   {
     key: '1',
     label: (
@@ -26,18 +27,19 @@ const items  = [
   },
 ]
 const ProjectsHandledCrewList = () => {
+  const { crewData, id } = useCrewProjectListHook();
   return (
     <div className={clsx("admin-content")}>
       <div className="d-flex align-items-center justify-content-between flex-wrap gap-5 gap-xxl-4">
         <div className="d-flex align-items-center flex-wrap gap-4 gap-xl-3">
-          <Link to="/crew-detail/:id" className="back-next-arrow-wrap flex-0-auto d-flex align-items-center justify-content-center rounded-circle cursor-pointer hover-text-white me-2">{svgIcons.backArrowFillIcon}</Link>
+          <Link to={`/crew-detail/${id}`} className="back-next-arrow-wrap flex-0-auto d-flex align-items-center justify-content-center rounded-circle cursor-pointer hover-text-white me-2">{svgIcons.backArrowFillIcon}</Link>
           <h4 className="text-bleu-de-france-one mb-0">List of Crew Project Handle</h4>
           <span>{svgIcons.doubleRightArrowIcon}</span>
-          <h4 className="mb-0">MR.Roof</h4>
+          <h4 className="mb-0">{crewData?.cewDetail?.company_name ? crewData?.cewDetail?.company_name : crewData?.cewDetail?.email}</h4>
           <span>{svgIcons.doubleRightArrowIcon}</span>
           <h4 className="mb-0">Projects</h4>
         </div>
-        <Dropdown
+        {/* <Dropdown
           menu={{
             items,
           }}
@@ -49,13 +51,13 @@ const ProjectsHandledCrewList = () => {
             Sort By
             <span className="down-icon">{svgIcons.downArrowLineIcon}</span>
           </Button>
-        </Dropdown>
+        </Dropdown> */}
       </div>
       <div className="w-100 mt-5">
         <h4>List of Projects :-</h4>
-        <LDTable className="mt-4 mb-5" columns={crewProjectsHandledColumns} data={crewProjectsHandledData}/>
+        <LDTable className="mt-4 mb-5" columns={crewProjectsHandledColumns} data={crewData?.projectList} />
       </div>
-   </div>
+    </div>
   );
 };
 

@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { doFetchCrewDetail } from "../../actions";
+import { doFetchCrewDetail, doFetchCrewProjectList } from "../../actions";
 
-export const useCrewDetailHook = () => {
+export const useCrewProjectListHook = () => {
   // doFetchManagementDetail
-  const navigate = useNavigate();
   const { id } = useParams();
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [crewData, setCrewData] = useState({});
 
   const doGetCrewList = async () => {
-    const crewResponse = await doFetchCrewDetail(id);
+    const crewResponse = await doFetchCrewProjectList(id);
     if (crewResponse?.status == 200) {
       setCrewData(crewResponse?.data);
     }
@@ -22,5 +22,5 @@ export const useCrewDetailHook = () => {
   const crewHandledList = () => {
     navigate(`/crew-handled-management-list/${id}`);
   };
-  return { isLoading, crewData, crewHandledList };
+  return { isLoading, id, crewData, crewHandledList };
 };

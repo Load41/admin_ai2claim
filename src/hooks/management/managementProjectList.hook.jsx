@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { doFetchManagementProjectList } from "../../actions";
 
@@ -18,5 +18,5 @@ export const useManagementProjectListHook = () => {
     doGetManagementDetail();
   }, [id]);
 
-  return { isLoading, managementData };
+  return { isLoading, managementData, id };
 };
