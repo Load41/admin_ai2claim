@@ -90,7 +90,7 @@ export const useManagementPendingListHook = () => {
       toast.error("User rejected other reason required!");
       return false;
     }
-    console.log({ managementData });
+
     const managementListResponse = await doFetchManagementStatusUpdate({
       userId: id,
       is_active: status,

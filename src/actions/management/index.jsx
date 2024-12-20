@@ -97,7 +97,20 @@ export const doFetchManagementStatusUpdate = async (data) => {
     const response = await axiosApi({
       method: "post",
       url: `admin/management/status-update`,
-      data: data
+      data: data,
+    });
+    return response.data;
+  } catch (error) {
+    console.log({ error });
+    return error.response;
+  }
+};
+
+export const doFetchManagementProjectList = async (id) => {
+  try {
+    const response = await axiosApi({
+      method: "get",
+      url: `admin/management/detail/${id}`,
     });
     return response.data;
   } catch (error) {

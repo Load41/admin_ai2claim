@@ -105,3 +105,16 @@ export const doFetchCrewStatusUpdate = async (data) => {
     return error.response;
   }
 };
+
+export const doFetchCrewProjectList = async (id) => {
+  try {
+    const response = await axiosApi({
+      method: "get",
+      url: `admin/crew/project/list/${id}`,
+    });
+    return response.data;
+  } catch (error) {
+    console.log({ error });
+    return error.response;
+  }
+};

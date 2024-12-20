@@ -91,7 +91,7 @@ const ManagementListInfo = () => {
               isNotBottomSpace
               isSearchBarInputWrap="w-100-sm"
             />
-            <Dropdown
+            {/* <Dropdown
               menu={{
                 items,
               }}
@@ -103,7 +103,7 @@ const ManagementListInfo = () => {
                 Sort By
                 <span className="down-icon">{svgIcons.downArrowLineIcon}</span>
               </Button>
-            </Dropdown>
+            </Dropdown> */}
           </div>
         </div>
         <div className="w-100 mt-5">
