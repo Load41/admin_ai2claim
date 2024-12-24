@@ -11,6 +11,7 @@ import styles from "./AboutClient.module.css";
 
 const AboutClient = () => {
   const {
+    navigate,
     sigCanvas,
     isLoading,
     clientData,
@@ -46,7 +47,7 @@ const AboutClient = () => {
             className={clsx()}
             isSmallCustomInput
             isNotBottomSpace
-            // errorMessage={validateMessages?.email}
+          // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -63,7 +64,7 @@ const AboutClient = () => {
             className={clsx()}
             isSmallCustomInput
             isNotBottomSpace
-            // errorMessage={validateMessages?.email}
+          // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -87,7 +88,7 @@ const AboutClient = () => {
             className={clsx()}
             isSmallCustomInput
             isNotBottomSpace
-            // errorMessage={validateMessages?.email}
+          // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -104,7 +105,7 @@ const AboutClient = () => {
             className={clsx()}
             isSmallCustomInput
             isNotBottomSpace
-            // errorMessage={validateMessages?.email}
+          // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -289,74 +290,26 @@ const AboutClient = () => {
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
                               <h6 className="w-45 mb-0 lh-base fw-bold">
-                                Hired management{" "}
-                                <b className="d-none d-sm-inline">:-</b>
+                                Address <b className="d-none d-sm-inline">:-</b>
                               </h6>
                               <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
-                                {projectData?.linkin?.management?.linkinId
-                                  ?.company_name
-                                  ? projectData?.linkin?.management?.linkinId
-                                      ?.company_name
-                                  : "-"}
-                                {"  "}
-                                {projectData?.linkin?.management?.status && (
-                                  <span
-                                    className={
-                                      projectData?.linkin?.management?.status ==
-                                      "accept"
-                                        ? ""
-                                        : ""
-                                    }
-                                  >
-                                    (
-                                    {projectData?.linkin?.management?.status ==
-                                    "accept"
-                                      ? "Hire"
-                                      : projectData?.linkin?.management?.status}
-                                    )
-                                  </span>
-                                )}
+                                {projectData?.address}
                               </h6>
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
                               <h6 className="w-45 mb-0 lh-base fw-bold">
-                                Hired crew{" "}
-                                <b className="d-none d-sm-inline">:-</b>
+                                Insurance Company <b className="d-none d-sm-inline">:-</b>
                               </h6>
                               <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
-                                {projectData?.linkin?.crew?.linkinId
-                                  ?.company_name
-                                  ? projectData?.linkin?.crew?.linkinId
-                                      ?.company_name
-                                  : "-"}{" "}
-                                {projectData?.linkin?.crew?.status && (
-                                  <span
-                                    className={
-                                      projectData?.linkin?.crew?.status ==
-                                      "accept"
-                                        ? ""
-                                        : ""
-                                    }
-                                  >
-                                    (
-                                    {projectData?.linkin?.crew?.status ==
-                                    "accept"
-                                      ? "Hire"
-                                      : projectData?.linkin?.crew?.status}
-                                    )
-                                  </span>
-                                )}
-                              </h6>
-                            </div>
-                            <div className="d-flex flex-column flex-sm-row w-100">
-                              <h6 className="w-45 mb-0 lh-base fw-bold">
-                                Selected Material{" "}
-                                <b className="d-none d-sm-inline">:-</b>
-                              </h6>
-                              <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
-                                {projectData?.linkin?.material?.brand
-                                  ? `${projectData?.linkin?.material?.brand} >> ${projectData?.linkin?.material?.pick_your_singles} >> ${projectData?.linkin?.material?.single_color}`
-                                  : "-"}
+                                <div className="ratio ratio-1x1">
+                                  <img
+                                    src={projectData?.linkin?.insurance_company?.linkinId?.image}
+                                    className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
+                                    alt=""
+
+                                  />
+                                </div>
+                                {projectData?.linkin?.insurance_company?.linkinId?.name}
                               </h6>
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
@@ -367,10 +320,10 @@ const AboutClient = () => {
                               <div className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
                                 {projectData?.linkin?.insurance_company
                                   ?.files &&
-                                typeof projectData?.linkin?.insurance_company
-                                  ?.files !== "string" &&
-                                projectData?.linkin?.insurance_company?.files
-                                  ?.length > 0 ? (
+                                  typeof projectData?.linkin?.insurance_company
+                                    ?.files !== "string" &&
+                                  projectData?.linkin?.insurance_company?.files
+                                    ?.length > 0 ? (
                                   projectData?.linkin?.insurance_company?.files?.map(
                                     (fileItem, index) => {
                                       return (
@@ -401,7 +354,7 @@ const AboutClient = () => {
                                   </Link>
                                 )}
 
-                                {projectData?.linkin?.optimation?.fileName && (
+                                {/* {projectData?.linkin?.optimation?.fileName && (
                                   <Link
                                     to={projectData?.linkin?.optimation?.file}
                                     target={"_blank"}
@@ -449,25 +402,114 @@ const AboutClient = () => {
                                 )}
                                 {projectData?.linkin?.final_estimate
                                   ?.fileName && (
-                                  <Link
-                                    to={
-                                      projectData?.linkin?.final_estimate?.file
-                                    }
-                                    target={"_blank"}
-                                  >
-                                    <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
-                                      {
-                                        projectData?.linkin?.final_estimate
-                                          ?.fileName
+                                    <Link
+                                      to={
+                                        projectData?.linkin?.final_estimate?.file
                                       }
-                                    </label>
-                                  </Link>
-                                )}
+                                      target={"_blank"}
+                                    >
+                                      <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
+                                        {
+                                          projectData?.linkin?.final_estimate
+                                            ?.fileName
+                                        }
+                                      </label>
+                                    </Link>
+                                  )} */}
                                 {/* <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
                                   {"-"}
                                 </label> */}
                               </div>
                             </div>
+                            <div className="d-flex flex-column flex-sm-row w-100">
+                              <h6 className="w-45 mb-0 lh-base fw-bold">
+                                Hired management{" "}
+                                <b className="d-none d-sm-inline">:-</b>
+                              </h6>
+                              <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0" onClick={() => navigate(`/management-detail/${projectData?.linkin?.management?.linkinId?._id}`)}>
+                                <div className="ratio ratio-1x1">
+                                  <img
+                                    src={projectData?.linkin?.management?.linkinId?.image}
+                                    className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
+                                    alt=""
+
+                                  />
+                                </div>
+                                {projectData?.linkin?.management?.linkinId
+                                  ?.company_name
+                                  ? projectData?.linkin?.management?.linkinId
+                                    ?.company_name
+                                  : "-"}
+                                {"  "}
+                                {projectData?.linkin?.management?.status && (
+                                  <span
+                                    className={
+                                      projectData?.linkin?.management?.status ==
+                                        "accept"
+                                        ? ""
+                                        : ""
+                                    }
+                                  >
+                                    (
+                                    {projectData?.linkin?.management?.status ==
+                                      "accept"
+                                      ? "Hire"
+                                      : projectData?.linkin?.management?.status}
+                                    )
+                                  </span>
+                                )}
+                              </h6>
+                            </div>
+                            <div className="d-flex flex-column flex-sm-row w-100">
+                              <h6 className="w-45 mb-0 lh-base fw-bold">
+                                Hired crew{" "}
+                                <b className="d-none d-sm-inline">:-</b>
+                              </h6>
+                              <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
+                                <div className="ratio ratio-1x1" onClick={() => navigate(`/crew-detail/${projectData?.linkin?.crew?.linkinId?._id}`)}>
+                                  <img
+                                    src={projectData?.linkin?.crew?.linkinId?.image}
+                                    className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
+                                    alt=""
+
+                                  />
+                                </div>
+                                {projectData?.linkin?.crew?.linkinId
+                                  ?.company_name
+                                  ? projectData?.linkin?.crew?.linkinId
+                                    ?.company_name
+                                  : "-"}{" "}
+                                {projectData?.linkin?.crew?.status && (
+                                  <span
+                                    className={
+                                      projectData?.linkin?.crew?.status ==
+                                        "accept"
+                                        ? ""
+                                        : ""
+                                    }
+                                  >
+                                    (
+                                    {projectData?.linkin?.crew?.status ==
+                                      "accept"
+                                      ? "Hire"
+                                      : projectData?.linkin?.crew?.status}
+                                    )
+                                  </span>
+                                )}
+                              </h6>
+                            </div>
+                            <div className="d-flex flex-column flex-sm-row w-100">
+                              <h6 className="w-45 mb-0 lh-base fw-bold">
+                                Selected Material{" "}
+                                <b className="d-none d-sm-inline">:-</b>
+                              </h6>
+                              <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
+                                {projectData?.linkin?.material?.brand
+                                  ? `${projectData?.linkin?.material?.brand} >> ${projectData?.linkin?.material?.pick_your_singles} >> ${projectData?.linkin?.material?.single_color}`
+                                  : "-"}
+                              </h6>
+                            </div>
+
                             <div className="d-flex flex-column flex-sm-row w-100">
                               <h6 className="w-45 mb-0 lh-base fw-bold">
                                 Selected (estimate/optimization)
@@ -824,9 +866,9 @@ const AboutClient = () => {
                 ${" "}
                 {optimizationData?.originalEstimatePrice
                   ? optimizationData?.originalEstimatePrice +
-                    optimizationData?.originalEstimateAddOnCost +
-                    optimizationData?.ai2ClaimServiceCostPrice +
-                    optimizationData?.ai2ClaimServiceAddOnCost
+                  optimizationData?.originalEstimateAddOnCost +
+                  optimizationData?.ai2ClaimServiceCostPrice +
+                  optimizationData?.ai2ClaimServiceAddOnCost
                   : 0}
               </h5>
             </div>

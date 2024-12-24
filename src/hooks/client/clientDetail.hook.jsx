@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { doFetchClientProjectLinkInUpdate, doFetchUserDetail } from "../../actions";
 import { toast } from "react-toastify";
 
 export const useClientDetailHook = () => {
   // doFetchManagementDetail
+  const navigate = useNavigate();
   const { id } = useParams();
   const sigCanvas = useRef(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -142,6 +143,7 @@ export const useClientDetailHook = () => {
   ];
 
   return {
+    navigate,
     sigCanvas,
     isLoading,
     clientData,
