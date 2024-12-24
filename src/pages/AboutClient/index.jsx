@@ -140,7 +140,7 @@ const AboutClient = () => {
         <div className="w-100 mt-5">
           <div className="row mt-4">
             <div className="col-xxl-6 order-2 order-xxl-1">
-              <div className="pendingProjectListCard aboutPendingProjectListCard h-100">
+              <div className="pendingProjectListCard aboutPendingProjectListCard h-100 cursor cursor-auto">
                 <div className="pendingProjectLisRow w-100">
                   <div
                     className={
@@ -155,7 +155,7 @@ const AboutClient = () => {
                       />
                     </div>
                     <h6 className="mt-4 mb-0 fw-bold word-break-word">
-                      {" "}
+                      &nbsp;
                       {clientData?.username}
                     </h6>
                   </div>
@@ -254,7 +254,7 @@ const AboutClient = () => {
                 let total = insurance_company + crew + management + material;
                 return (
                   <div className="w-100" key={index}>
-                    <div className="pendingProjectListCard aboutListProjectListCard h-100">
+                    <div className="pendingProjectListCard aboutListProjectListCard h-100 cursor cursor-auto">
                       <div className="pendingProjectLisRow row w-100 mx-0 h-100 align-items-center">
                         <div className="col-xxl-6 h-100 pb-5 pb-xxl-0">
                           <div
@@ -264,7 +264,7 @@ const AboutClient = () => {
                           >
                             <div className="d-flex flex-column flex-sm-row w-100">
                               <h6 className="w-45 mb-0 lh-base fw-bold">
-                                Project {++index}{" "}
+                                Project {++index}&nbsp;
                                 <b className="d-none d-sm-inline">:-</b>
                               </h6>
                               <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
@@ -273,7 +273,15 @@ const AboutClient = () => {
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
                               <h6 className="w-45 mb-0 lh-base fw-bold">
-                                Damage date{" "}
+                                Project address <b className="d-none d-sm-inline">:-</b>
+                              </h6>
+                              <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
+                                {projectData?.address}
+                              </h6>
+                            </div>
+                            <div className="d-flex flex-column flex-sm-row w-100">
+                              <h6 className="w-45 mb-0 lh-base fw-bold">
+                                Damage date&nbsp;
                                 <b className="d-none d-sm-inline">:-</b>
                               </h6>
                               <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
@@ -290,18 +298,11 @@ const AboutClient = () => {
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
                               <h6 className="w-45 mb-0 lh-base fw-bold">
-                                Address <b className="d-none d-sm-inline">:-</b>
+                                Insurance company <b className="d-none d-sm-inline">:-</b>
                               </h6>
                               <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
-                                {projectData?.address}
-                              </h6>
-                            </div>
-                            <div className="d-flex flex-column flex-sm-row w-100">
-                              <h6 className="w-45 mb-0 lh-base fw-bold">
-                                Insurance Company <b className="d-none d-sm-inline">:-</b>
-                              </h6>
-                              <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
-                                <div className="ratio ratio-1x1">
+                                {projectData?.linkin?.insurance_company?.linkinId?.name}
+                                <div className={clsx(styles.clientDetailProjectImgWrap,"ratio ratio-21x9 mt-2")}>
                                   <img
                                     src={projectData?.linkin?.insurance_company?.linkinId?.image}
                                     className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
@@ -309,15 +310,14 @@ const AboutClient = () => {
 
                                   />
                                 </div>
-                                {projectData?.linkin?.insurance_company?.linkinId?.name}
                               </h6>
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
                               <h6 className="w-45 mb-0 lh-base fw-bold">
-                                Uploaded docs{" "}
+                                Uploaded docs&nbsp;
                                 <b className="d-none d-sm-inline">:-</b>
                               </h6>
-                              <div className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
+                              <div className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0 d-flex flex-wrap gap-3">
                                 {projectData?.linkin?.insurance_company
                                   ?.files &&
                                   typeof projectData?.linkin?.insurance_company
@@ -331,10 +331,10 @@ const AboutClient = () => {
                                           to={`${projectData?.linkin?.insurance_company?.filePath}/${fileItem?.file}`}
                                           target={"_blank"}
                                           key={index}
+                                          className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start"
                                         >
-                                          <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
+                                          
                                             {fileItem?.file}
-                                          </label>
                                         </Link>
                                       );
                                     }
@@ -344,13 +344,12 @@ const AboutClient = () => {
                                     to={`${projectData?.linkin?.insurance_company?.filePath}/${projectData?.linkin?.insurance_company?.files}`}
                                     target={"_blank"}
                                     key={index}
+                                    className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start"
                                   >
-                                    <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
                                       {
                                         projectData?.linkin?.insurance_company
                                           ?.files
                                       }
-                                    </label>
                                   </Link>
                                 )}
 
@@ -359,7 +358,7 @@ const AboutClient = () => {
                                     to={projectData?.linkin?.optimation?.file}
                                     target={"_blank"}
                                   >
-                                    <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
+                                    <label className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start">
                                       {
                                         projectData?.linkin?.optimation
                                           ?.fileName
@@ -372,7 +371,7 @@ const AboutClient = () => {
                                     to={projectData?.linkin?.signature?.file}
                                     target={"_blank"}
                                   >
-                                    <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
+                                    <label className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start">
                                       {projectData?.linkin?.signature?.fileName}
                                     </label>
                                   </Link>
@@ -382,7 +381,7 @@ const AboutClient = () => {
                                     to={projectData?.linkin?.payment?.file}
                                     target={"_blank"}
                                   >
-                                    <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
+                                    <label className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start">
                                       {projectData?.linkin?.payment?.fileName}
                                     </label>
                                   </Link>
@@ -392,7 +391,7 @@ const AboutClient = () => {
                                     to={projectData?.linkin?.certificate?.file}
                                     target={"_blank"}
                                   >
-                                    <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
+                                    <label className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start">
                                       {
                                         projectData?.linkin?.certificate
                                           ?.fileName
@@ -408,7 +407,7 @@ const AboutClient = () => {
                                       }
                                       target={"_blank"}
                                     >
-                                      <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
+                                      <label className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start">
                                         {
                                           projectData?.linkin?.final_estimate
                                             ?.fileName
@@ -416,25 +415,18 @@ const AboutClient = () => {
                                       </label>
                                     </Link>
                                   )} */}
-                                {/* <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
+                                {/* <label className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start">
                                   {"-"}
                                 </label> */}
                               </div>
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
                               <h6 className="w-45 mb-0 lh-base fw-bold">
-                                Hired management{" "}
+                                Hired management&nbsp;
                                 <b className="d-none d-sm-inline">:-</b>
                               </h6>
-                              <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0" onClick={() => navigate(`/management-detail/${projectData?.linkin?.management?.linkinId?._id}`)}>
-                                <div className="ratio ratio-1x1">
-                                  <img
-                                    src={projectData?.linkin?.management?.linkinId?.image}
-                                    className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
-                                    alt=""
-
-                                  />
-                                </div>
+                              <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0 hover-text-primary cursor-pointer" onClick={() => navigate(`/management-detail/${projectData?.linkin?.management?.linkinId?._id}`)}>
+                                
                                 {projectData?.linkin?.management?.linkinId
                                   ?.company_name
                                   ? projectData?.linkin?.management?.linkinId
@@ -458,27 +450,57 @@ const AboutClient = () => {
                                     )
                                   </span>
                                 )}
-                              </h6>
-                            </div>
-                            <div className="d-flex flex-column flex-sm-row w-100">
-                              <h6 className="w-45 mb-0 lh-base fw-bold">
-                                Hired crew{" "}
-                                <b className="d-none d-sm-inline">:-</b>
-                              </h6>
-                              <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
-                                <div className="ratio ratio-1x1" onClick={() => navigate(`/crew-detail/${projectData?.linkin?.crew?.linkinId?._id}`)}>
+                                <div className={clsx(styles.clientDetailProjectImgWrap,"ratio ratio-21x9 mt-2")}>
                                   <img
-                                    src={projectData?.linkin?.crew?.linkinId?.image}
+                                    src={projectData?.linkin?.management?.linkinId?.image}
                                     className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
                                     alt=""
 
                                   />
                                 </div>
+                              </h6>
+                            </div>
+                            <div className="d-flex flex-column flex-sm-row w-100">
+                              <h6 className="w-45 mb-0 lh-base fw-bold">
+                                Selected material brand&nbsp;
+                                <b className="d-none d-sm-inline">:-</b>
+                              </h6>
+                              <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
+                                {projectData?.linkin?.material?.brand
+                                  ? `${projectData?.linkin?.material?.brand} >> ${projectData?.linkin?.material?.pick_your_singles} >> ${projectData?.linkin?.material?.single_color}`
+                                  : "-"}
+                              </h6>
+                            </div>
+                            <div className="d-flex flex-column flex-sm-row w-100">
+                              <h6 className="w-45 mb-0 lh-base fw-bold">
+                                Selected shingle type&nbsp;
+                                <b className="d-none d-sm-inline">:-</b>
+                              </h6>
+                              <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
+                                Plain
+                              </h6>
+                            </div>
+                            <div className="d-flex flex-column flex-sm-row w-100">
+                              <h6 className="w-45 mb-0 lh-base fw-bold">
+                                Selected shingle color&nbsp;
+                                <b className="d-none d-sm-inline">:-</b>
+                              </h6>
+                              <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
+                                Brown
+                              </h6>
+                            </div>
+                            <div className="d-flex flex-column flex-sm-row w-100">
+                              <h6 className="w-45 mb-0 lh-base fw-bold">
+                                Hired crew&nbsp;
+                                <b className="d-none d-sm-inline">:-</b>
+                              </h6>
+                              <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0 hover-text-primary cursor-pointer" onClick={() => navigate(`/crew-detail/${projectData?.linkin?.crew?.linkinId?._id}`)}>
+                               
                                 {projectData?.linkin?.crew?.linkinId
                                   ?.company_name
                                   ? projectData?.linkin?.crew?.linkinId
                                     ?.company_name
-                                  : "-"}{" "}
+                                  : "-"}&nbsp;
                                 {projectData?.linkin?.crew?.status && (
                                   <span
                                     className={
@@ -496,17 +518,14 @@ const AboutClient = () => {
                                     )
                                   </span>
                                 )}
-                              </h6>
-                            </div>
-                            <div className="d-flex flex-column flex-sm-row w-100">
-                              <h6 className="w-45 mb-0 lh-base fw-bold">
-                                Selected Material{" "}
-                                <b className="d-none d-sm-inline">:-</b>
-                              </h6>
-                              <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
-                                {projectData?.linkin?.material?.brand
-                                  ? `${projectData?.linkin?.material?.brand} >> ${projectData?.linkin?.material?.pick_your_singles} >> ${projectData?.linkin?.material?.single_color}`
-                                  : "-"}
+                                 <div className={clsx(styles.clientDetailProjectImgWrap,"ratio ratio-21x9 mt-2")}>
+                                  <img
+                                    src={projectData?.linkin?.crew?.linkinId?.image}
+                                    className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
+                                    alt=""
+
+                                  />
+                                </div>
                               </h6>
                             </div>
 
@@ -551,7 +570,7 @@ const AboutClient = () => {
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
                               <h6 className="w-45 mb-0 lh-base fw-bold">
-                                Crew Scheduled date
+                                Crew scheduled date
                                 <b className="d-none d-sm-inline">:-</b>
                               </h6>
                               <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
@@ -594,10 +613,9 @@ const AboutClient = () => {
                                     to={`${projectData?.linkin?.insurance_company?.filePath}/${fileItem?.file}`}
                                     target={"_blank"}
                                     key={index}
+                                    className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start"
                                   >
-                                    <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
                                       {fileItem?.file}
-                                    </label>
                                   </Link>
                                 );
                               }
@@ -688,7 +706,7 @@ const AboutClient = () => {
                       </div>
                       <div className="d-flex flex-column flex-sm-row w-100">
                         <h6 className="w-45 mb-0 lh-base fw-bold">
-                          Hired management{" "}
+                          Hired management&nbsp;
                           <b className="d-none d-sm-inline">:-</b>
                         </h6>
                         <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
@@ -708,10 +726,10 @@ const AboutClient = () => {
                           Uploaded docs <b className="d-none d-sm-inline">:-</b>
                         </h6>
                         <div className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
-                          <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
+                          <label className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start">
                             Insurance 1
                           </label>
-                          <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
+                          <label className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start">
                             Insurance 2
                           </label>
                         </div>
@@ -777,7 +795,7 @@ const AboutClient = () => {
                       </div>
                       <div className="d-flex flex-column flex-sm-row w-100">
                         <h6 className="w-45 mb-0 lh-base fw-bold">
-                          Hired management{" "}
+                          Hired management&nbsp;
                           <b className="d-none d-sm-inline">:-</b>
                         </h6>
                         <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
@@ -797,10 +815,10 @@ const AboutClient = () => {
                           Uploaded docs <b className="d-none d-sm-inline">:-</b>
                         </h6>
                         <div className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
-                          <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
+                          <label className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start">
                             Insurance 1
                           </label>
-                          <label className="py-4 px-4 py-md-1 px-md-2 bg-fortress-grey text-black p sm mb-0 text-center">
+                          <label className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start">
                             Insurance 2
                           </label>
                         </div>
@@ -863,7 +881,7 @@ const AboutClient = () => {
             <div className="d-flex justify-content-center align-items-center pt-5 mt-3 mt-xl-0 pb-3">
               <h5 className="me-3 mb-0 fw-bold">Total :-</h5>
               <h5 className="mb-0 text-bleu-de-france-one">
-                ${" "}
+                $&nbsp;
                 {optimizationData?.originalEstimatePrice
                   ? optimizationData?.originalEstimatePrice +
                   optimizationData?.originalEstimateAddOnCost +
@@ -992,7 +1010,7 @@ const AboutClient = () => {
                 </div>
               </div>
               <h5 className="ms-md-auto mb-0 fw-semibold order-1 order-md-2">
-                Date :-{" "}
+                Date :-&nbsp;
                 <span className="text-bleu-de-france-one">2/12/2024</span>
               </h5>
             </div>

@@ -64,7 +64,7 @@ table thead.ant-table-thead tr th.ant-table-cell {
   border: 1px solid rgba(var(--clr-black), 0.5);
   padding: 15px;
   border-radius: 15px;
-  background-color: rgba(var(--clr-black), 0.03);
+  background-color: rgba(var(--clr-black), 0.02);
   min-height: 200px;
   cursor: pointer;
   transition: all 0.3s;
