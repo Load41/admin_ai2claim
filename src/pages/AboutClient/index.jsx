@@ -300,17 +300,19 @@ const AboutClient = () => {
                               <h6 className="w-45 mb-0 lh-base fw-bold">
                                 Insurance company <b className="d-none d-sm-inline">:-</b>
                               </h6>
-                              <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
-                                {projectData?.linkin?.insurance_company?.linkinId?.name}
-                                <div className={clsx(styles.clientDetailProjectImgWrap,"ratio ratio-21x9 mt-2")}>
-                                  <img
-                                    src={projectData?.linkin?.insurance_company?.linkinId?.image}
-                                    className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
-                                    alt=""
+                              {projectData?.linkin?.insurance_company?.linkinId?.name &&
+                                <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
+                                  {projectData?.linkin?.insurance_company?.linkinId?.name}
+                                  <div className={clsx(styles.clientDetailProjectImgWrap, "ratio ratio-21x9 mt-2")}>
+                                    <img
+                                      src={projectData?.linkin?.insurance_company?.linkinId?.image}
+                                      className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
+                                      alt=""
 
-                                  />
-                                </div>
-                              </h6>
+                                    />
+                                  </div>
+                                </h6>
+                              }
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
                               <h6 className="w-45 mb-0 lh-base fw-bold">
@@ -333,8 +335,8 @@ const AboutClient = () => {
                                           key={index}
                                           className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start"
                                         >
-                                          
-                                            {fileItem?.file}
+
+                                          {fileItem?.file}
                                         </Link>
                                       );
                                     }
@@ -346,10 +348,10 @@ const AboutClient = () => {
                                     key={index}
                                     className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start"
                                   >
-                                      {
-                                        projectData?.linkin?.insurance_company
-                                          ?.files
-                                      }
+                                    {
+                                      projectData?.linkin?.insurance_company
+                                        ?.files
+                                    }
                                   </Link>
                                 )}
 
@@ -426,7 +428,7 @@ const AboutClient = () => {
                                 <b className="d-none d-sm-inline">:-</b>
                               </h6>
                               <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0 hover-text-primary cursor-pointer" onClick={() => navigate(`/management-detail/${projectData?.linkin?.management?.linkinId?._id}`)}>
-                                
+
                                 {projectData?.linkin?.management?.linkinId
                                   ?.company_name
                                   ? projectData?.linkin?.management?.linkinId
@@ -450,14 +452,16 @@ const AboutClient = () => {
                                     )
                                   </span>
                                 )}
-                                <div className={clsx(styles.clientDetailProjectImgWrap,"ratio ratio-21x9 mt-2")}>
-                                  <img
-                                    src={projectData?.linkin?.management?.linkinId?.image}
-                                    className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
-                                    alt=""
+                                {projectData?.linkin?.management?.linkinId?.image &&
+                                  <div className={clsx(styles.clientDetailProjectImgWrap, "ratio ratio-21x9 mt-2")}>
+                                    <img
+                                      src={projectData?.linkin?.management?.linkinId?.image}
+                                      className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
+                                      alt=""
 
-                                  />
-                                </div>
+                                    />
+                                  </div>
+                                }
                               </h6>
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
@@ -467,7 +471,7 @@ const AboutClient = () => {
                               </h6>
                               <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
                                 {projectData?.linkin?.material?.brand
-                                  ? `${projectData?.linkin?.material?.brand} >> ${projectData?.linkin?.material?.pick_your_singles} >> ${projectData?.linkin?.material?.single_color}`
+                                  ? `${projectData?.linkin?.material?.brand} `
                                   : "-"}
                               </h6>
                             </div>
@@ -477,7 +481,7 @@ const AboutClient = () => {
                                 <b className="d-none d-sm-inline">:-</b>
                               </h6>
                               <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
-                                Plain
+                                {projectData?.linkin?.material?.pick_your_singles ? projectData?.linkin?.material?.pick_your_singles : "-"}
                               </h6>
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
@@ -486,7 +490,7 @@ const AboutClient = () => {
                                 <b className="d-none d-sm-inline">:-</b>
                               </h6>
                               <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
-                                Brown
+                                {projectData?.linkin?.material?.single_color ? projectData?.linkin?.material?.single_color : "-"}
                               </h6>
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
@@ -495,7 +499,7 @@ const AboutClient = () => {
                                 <b className="d-none d-sm-inline">:-</b>
                               </h6>
                               <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0 hover-text-primary cursor-pointer" onClick={() => navigate(`/crew-detail/${projectData?.linkin?.crew?.linkinId?._id}`)}>
-                               
+
                                 {projectData?.linkin?.crew?.linkinId
                                   ?.company_name
                                   ? projectData?.linkin?.crew?.linkinId
@@ -518,14 +522,16 @@ const AboutClient = () => {
                                     )
                                   </span>
                                 )}
-                                 <div className={clsx(styles.clientDetailProjectImgWrap,"ratio ratio-21x9 mt-2")}>
-                                  <img
-                                    src={projectData?.linkin?.crew?.linkinId?.image}
-                                    className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
-                                    alt=""
+                                {projectData?.linkin?.crew?.linkinId?.image &&
+                                  <div className={clsx(styles.clientDetailProjectImgWrap, "ratio ratio-21x9 mt-2")}>
+                                    <img
+                                      src={projectData?.linkin?.crew?.linkinId?.image}
+                                      className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
+                                      alt=""
 
-                                  />
-                                </div>
+                                    />
+                                  </div>
+                                }
                               </h6>
                             </div>
 
@@ -615,7 +621,7 @@ const AboutClient = () => {
                                     key={index}
                                     className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start"
                                   >
-                                      {fileItem?.file}
+                                    {fileItem?.file}
                                   </Link>
                                 );
                               }
