@@ -581,7 +581,7 @@ const AboutClient = () => {
                               showOptimizationModal(projectData?._id)
                             }
                           >
-                            {total <= 100
+                            {total < 100
                               ? ` Status ${total}%`
                               : "Send Optimization"}
                           </LDButton>
