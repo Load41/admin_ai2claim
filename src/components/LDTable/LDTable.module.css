@@ -15,7 +15,7 @@
     font-weight: 500;
 }
 :global .ant-table-wrapper table tr td.ant-table-cell{
-    padding: 14px 16px;
+    padding: 12px 16px;
 }
 /* :global table tbody tr:nth-child(even){
     background-color: rgba(var(--clr-party-sponge-cake-rgba), 25%);

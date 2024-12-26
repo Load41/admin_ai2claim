@@ -824,7 +824,7 @@ const AboutClient = () => {
                               isFillBtn
                               // disabled={total >= 100 ? false : true}
                               customClass={clsx("w-50 w-100-sm mx-auto")}
-                              handleClick={showAffidavitSelfGeneralContractor}
+                              handleClick={() => {return false;}}
                             >
                               Send Affidavit
                             </LDButton>
