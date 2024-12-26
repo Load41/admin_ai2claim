@@ -151,6 +151,9 @@ p.xsmall,
 .text-clr-brilliant-pink{
   color: var(--clr-brilliant-pink);
 }
+.text-clr-orange{
+  color: var(--clr-orange);
+}
 /* TEXT-COLORS END */
 
 /* BG-COLORS START */
