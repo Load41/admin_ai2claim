@@ -829,6 +829,17 @@ const AboutClient = () => {
                               Send Affidavit
                             </LDButton>
                           )}
+                          <LDButton
+                            type="fill"
+                            shape={"round"}
+                            iconPosition={"end"}
+                            isFillBtn
+                            // disabled={total >= 100 ? false : true}
+                            customClass={clsx("w-50 w-100-sm mx-auto")}
+                            handleClick={() => {return false;}}
+                          >
+                            Send Payment Request
+                          </LDButton>
                           {total >= 100 && (
                             <LDButton
                               type="fill"
