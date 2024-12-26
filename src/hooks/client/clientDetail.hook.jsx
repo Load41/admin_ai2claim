@@ -20,6 +20,7 @@ export const useClientDetailHook = () => {
 
   const [isAffidavitSelfGeneralContractorOpen, setIsAffidavitSelfGeneralContractorOpen] = useState(false);
   const [isOptimizationModalOpen, setIsOptimizationModalOpen] = useState(false);
+  const [isFinalEstimateModalOpen, setIsFinalEstimateModalOpen] = useState(false);
 
   const doGetClientList = async () => {
     const clientResponse = await doFetchUserDetail(id);
@@ -43,6 +44,15 @@ export const useClientDetailHook = () => {
     setIsOptimizationModalOpen(false);
   };
   // Send Final Estimate (Optimization) modal js end
+  // Send Final Estimate modal js start
+  const showFinalEstimateModal = () => {
+    setIsFinalEstimateModalOpen(true);
+  };
+
+const handleFinalEstimateModalCancel = () => {
+  setIsFinalEstimateModalOpen(false);
+};
+// Send Final Estimate modal js end
   // Affidavit of Self-General Contractor Status modal js start
   const showAffidavitSelfGeneralContractor = () => {
     setIsAffidavitSelfGeneralContractorOpen(true);
@@ -125,15 +135,29 @@ export const useClientDetailHook = () => {
       dataIndex: 'name',
       key: 'name',
     },
+    // {
+    //   title: 'Price',
+    //   dataIndex: 'price',
+    //   key: 'price',
+    // },
+    // {
+    //   title: 'Add on cost',
+    //   dataIndex: 'addOnCost',
+    //   key: 'addOnCost',
+    // },
     {
-      title: 'Price',
-      dataIndex: 'price',
-      key: 'price',
+      title: 'Sub Total',
+      dataIndex: 'subTotal',
+      key: 'subTotal',
     },
+  ];
+
+   // final estimate table start
+   const finalEstimateColumn = [
     {
-      title: 'Add on cost',
-      dataIndex: 'addOnCost',
-      key: 'addOnCost',
+      title: 'Name',
+      dataIndex: 'name',
+      key: 'name',
     },
     {
       title: 'Sub Total',
@@ -148,6 +172,7 @@ export const useClientDetailHook = () => {
     isLoading,
     clientData,
     estimateColumn,
+    finalEstimateColumn,
     optimizationData,
     isOptimizationModalOpen,
     isAffidavitSelfGeneralContractorOpen,
@@ -160,5 +185,8 @@ export const useClientDetailHook = () => {
     handleOptimizationModalCancel,
     showAffidavitSelfGeneralContractor,
     handleAffidavitSelfGeneralContractorCancel,
+    isFinalEstimateModalOpen,
+    showFinalEstimateModal,
+    handleFinalEstimateModalCancel
   };
 };

@@ -17,6 +17,7 @@ const AboutClient = () => {
     clientData,
     optimizationData,
     estimateColumn,
+    finalEstimateColumn,
     isOptimizationModalOpen,
     isAffidavitSelfGeneralContractorOpen,
     handleDownload,
@@ -28,93 +29,267 @@ const AboutClient = () => {
     showAffidavitSelfGeneralContractor,
     handleAffidavitSelfGeneralContractorCancel,
     handleOptimizationSubmit,
+    isFinalEstimateModalOpen,
+    showFinalEstimateModal,
+    handleFinalEstimateModalCancel
   } = useClientDetailHook();
 
+  // Send Final Estimate (Optimization) start
   const estimateData = [
     {
       key: "1",
       name: "Original Estimate",
-      price: (
-        <div className="d-flex align-items-center gap-2">
-          <span>$</span>
-          <LDInput
-            id="originalEstimatePrice"
-            dataTestId="originalEstimatePrice"
-            name="originalEstimatePrice"
-            value={optimizationData?.originalEstimatePrice}
-            type="number"
-            handleChange={handleInputChange}
-            className={clsx()}
-            isSmallCustomInput
-            isNotBottomSpace
-          // errorMessage={validateMessages?.email}
-          />
-        </div>
-      ),
-      addOnCost: (
-        <div className="d-flex align-items-center gap-2">
-          <span>$</span>
-          <LDInput
-            id="originalEstimateAddOnCost"
-            dataTestId="originalEstimateAddOnCost"
-            name="originalEstimateAddOnCost"
-            value={optimizationData?.originalEstimateAddOnCost}
-            type="number"
-            handleChange={handleInputChange}
-            className={clsx()}
-            isSmallCustomInput
-            isNotBottomSpace
-          // errorMessage={validateMessages?.email}
-          />
-        </div>
-      ),
+      // price: (
+      //   <div className="d-flex align-items-center justify-content-sm-end gap-2">
+      //     <span>$</span>
+      //     <LDInput
+      //       id="originalEstimatePrice"
+      //       dataTestId="originalEstimatePrice"
+      //       name="originalEstimatePrice"
+      //       value={optimizationData?.originalEstimatePrice}
+      //       type="number"
+      //       handleChange={handleInputChange}
+      //       className={clsx()}
+      //       isSmallCustomInput
+      //       isNotBottomSpace
+      //     // errorMessage={validateMessages?.email}
+      //     />
+      //   </div>
+      // ),
+      // addOnCost: (
+      //   <div className="d-flex align-items-center justify-content-sm-end gap-2">
+      //     <span>$</span>
+      //     <LDInput
+      //       id="originalEstimateAddOnCost"
+      //       dataTestId="originalEstimateAddOnCost"
+      //       name="originalEstimateAddOnCost"
+      //       value={optimizationData?.originalEstimateAddOnCost}
+      //       type="number"
+      //       handleChange={handleInputChange}
+      //       className={clsx()}
+      //       isSmallCustomInput
+      //       isNotBottomSpace
+      //     // errorMessage={validateMessages?.email}
+      //     />
+      //   </div>
+      // ),
       subTotal:
-        optimizationData?.originalEstimatePrice +
-        optimizationData?.originalEstimateAddOnCost,
+        // optimizationData?.originalEstimatePrice +
+        // optimizationData?.originalEstimateAddOnCost,
+        (
+          <div className="d-flex align-items-center justify-content-sm-end gap-2">
+            <span>$</span>
+            <LDInput
+              id="originalEstimatePrice"
+              dataTestId="originalEstimatePrice"
+              name="originalEstimatePrice"
+              value={optimizationData?.originalEstimatePrice}
+              type="number"
+              handleChange={handleInputChange}
+              className={clsx("w-100")}
+              isSmallCustomInput
+              isNotBottomSpace
+            // errorMessage={validateMessages?.email}
+            />
+          </div>
+        )
     },
     {
       key: "2",
       name: "Ai2 Claim service cost",
-      price: (
-        <div className="d-flex align-items-center gap-2">
-          <span>$</span>
-          <LDInput
-            id="ai2ClaimServiceCostPrice"
-            dataTestId="ai2ClaimServiceCostPrice"
-            name="ai2ClaimServiceCostPrice"
-            value={optimizationData?.ai2ClaimServiceCostPrice}
-            type="number"
-            handleChange={handleInputChange}
-            className={clsx()}
-            isSmallCustomInput
-            isNotBottomSpace
-          // errorMessage={validateMessages?.email}
-          />
-        </div>
-      ),
-      addOnCost: (
-        <div className="d-flex align-items-center gap-2">
-          <span>$</span>
-          <LDInput
-            id="ai2ClaimServiceAddOnCost"
-            dataTestId="ai2ClaimServiceAddOnCost"
-            name="ai2ClaimServiceAddOnCost"
-            value={optimizationData?.ai2ClaimServiceAddOnCost}
-            type="number"
-            handleChange={handleInputChange}
-            className={clsx()}
-            isSmallCustomInput
-            isNotBottomSpace
-          // errorMessage={validateMessages?.email}
-          />
-        </div>
-      ),
+      // price: (
+      //   <div className="d-flex align-items-center justify-content-sm-end gap-2">
+      //     <span>$</span>
+      //     <LDInput
+      //       id="ai2ClaimServiceCostPrice"
+      //       dataTestId="ai2ClaimServiceCostPrice"
+      //       name="ai2ClaimServiceCostPrice"
+      //       value={optimizationData?.ai2ClaimServiceCostPrice}
+      //       type="number"
+      //       handleChange={handleInputChange}
+      //       className={clsx()}
+      //       isSmallCustomInput
+      //       isNotBottomSpace
+      //     // errorMessage={validateMessages?.email}
+      //     />
+      //   </div>
+      // ),
+      // addOnCost: (
+      //   <div className="d-flex align-items-center justify-content-sm-end gap-2">
+      //     <span>$</span>
+      //     <LDInput
+      //       id="ai2ClaimServiceAddOnCost"
+      //       dataTestId="ai2ClaimServiceAddOnCost"
+      //       name="ai2ClaimServiceAddOnCost"
+      //       value={optimizationData?.ai2ClaimServiceAddOnCost}
+      //       type="number"
+      //       handleChange={handleInputChange}
+      //       className={clsx()}
+      //       isSmallCustomInput
+      //       isNotBottomSpace
+      //     // errorMessage={validateMessages?.email}
+      //     />
+      //   </div>
+      // ),
       subTotal:
-        optimizationData?.ai2ClaimServiceCostPrice +
-        optimizationData?.ai2ClaimServiceAddOnCost,
+        // optimizationData?.ai2ClaimServiceCostPrice +
+        // optimizationData?.ai2ClaimServiceAddOnCost,
+        (
+          <div className="d-flex align-items-center justify-content-sm-end gap-2">
+            <span>$</span>
+            <LDInput
+              id="originalEstimatePrice"
+              dataTestId="originalEstimatePrice"
+              name="originalEstimatePrice"
+              value={optimizationData?.originalEstimatePrice}
+              type="number"
+              handleChange={handleInputChange}
+              className={clsx("w-100")}
+              isSmallCustomInput
+              isNotBottomSpace
+            // errorMessage={validateMessages?.email}
+            />
+          </div>
+        )
     },
   ];
-  // estimate table end
+  // Send Final Estimate (Optimization) end
+  // Send Final Estimate  start
+  const finalEstimateData = [
+    {
+      key: "1",
+      name: "Insurance claim",
+      subTotal:
+        (
+          <div className="d-flex align-items-center justify-content-sm-end gap-2">
+            <span>$</span>
+            <LDInput
+              id="insuranceClaim"
+              dataTestId="insuranceClaim"
+              name="insuranceClaim"
+              // value={optimizationData?.insuranceClaim}
+              type="number"
+              handleChange={() => {return false;}}
+              className={clsx("w-100")}
+              isSmallCustomInput
+              isNotBottomSpace
+            // errorMessage={validateMessages?.email}
+            />
+          </div>
+        )
+    },
+    {
+      key: "2",
+      name: "Management Cost",
+      subTotal:
+        (
+          <div className="d-flex align-items-center justify-content-sm-end gap-2">
+            <span>$</span>
+            <LDInput
+              id="managementCost"
+              dataTestId="managementCost"
+              name="managementCost"
+              // value={optimizationData?.managementCost}
+              type="number"
+              handleChange={() => {return false;}}
+              className={clsx("w-100")}
+              isSmallCustomInput
+              isNotBottomSpace
+            // errorMessage={validateMessages?.email}
+            />
+          </div>
+        )
+    },
+    {
+      key: "3",
+      name: "Material Cost",
+      subTotal:
+        (
+          <div className="d-flex align-items-center justify-content-sm-end gap-2">
+            <span>$</span>
+            <LDInput
+              id="materialCost"
+              dataTestId="materialCost"
+              name="materialCost"
+              // value={optimizationData?.materialCost}
+              type="number"
+              handleChange={() => {return false;}}
+              className={clsx("w-100")}
+              isSmallCustomInput
+              isNotBottomSpace
+            // errorMessage={validateMessages?.email}
+            />
+          </div>
+        )
+    },
+    {
+      key: "4",
+      name: "Crew Cost",
+      subTotal:
+        (
+          <div className="d-flex align-items-center justify-content-sm-end gap-2">
+            <span>$</span>
+            <LDInput
+              id="crewCost"
+              dataTestId="crewCost"
+              name="crewCost"
+              // value={optimizationData?.crewCost}
+              type="number"
+              handleChange={() => {return false;}}
+              className={clsx("w-100")}
+              isSmallCustomInput
+              isNotBottomSpace
+            // errorMessage={validateMessages?.email}
+            />
+          </div>
+        )
+    },
+    {
+      key: "5",
+      name: "Service Fees",
+      subTotal:
+        (
+          <div className="d-flex align-items-center justify-content-sm-end gap-2">
+            <span>$</span>
+            <LDInput
+              id="serviceFees"
+              dataTestId="serviceFees"
+              name="serviceFees"
+              // value={optimizationData?.serviceFees}
+              type="number"
+              handleChange={() => {return false;}}
+              className={clsx("w-100")}
+              isSmallCustomInput
+              isNotBottomSpace
+            // errorMessage={validateMessages?.email}
+            />
+          </div>
+        )
+    },
+    {
+      key: "6",
+      name: "Cash back",
+      subTotal:
+        (
+          <div className="d-flex align-items-center justify-content-sm-end gap-2">
+            <span>$</span>
+            <LDInput
+              id="cashBack"
+              dataTestId="cashBack"
+              name="cashBack"
+              // value={optimizationData?.cashBack}
+              type="number"
+              handleChange={() => {return false;}}
+              className={clsx("w-100")}
+              isSmallCustomInput
+              isNotBottomSpace
+            // errorMessage={validateMessages?.email}
+            />
+          </div>
+        )
+    },
+  ];
+  // Send Final Estimate end
   return (
     <>
       <div className={clsx("admin-content")}>
@@ -333,7 +508,7 @@ const AboutClient = () => {
                                           to={`${projectData?.linkin?.insurance_company?.filePath}/${fileItem?.file}`}
                                           target={"_blank"}
                                           key={index}
-                                          className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start"
+                                          className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start text-center"
                                         >
 
                                           {fileItem?.file}
@@ -346,7 +521,7 @@ const AboutClient = () => {
                                     to={`${projectData?.linkin?.insurance_company?.filePath}/${projectData?.linkin?.insurance_company?.files}`}
                                     target={"_blank"}
                                     key={index}
-                                    className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start"
+                                    className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start text-center"
                                   >
                                     {
                                       projectData?.linkin?.insurance_company
@@ -360,7 +535,7 @@ const AboutClient = () => {
                                     to={projectData?.linkin?.optimation?.file}
                                     target={"_blank"}
                                   >
-                                    <label className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start">
+                                    <label className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start text-center">
                                       {
                                         projectData?.linkin?.optimation
                                           ?.fileName
@@ -373,7 +548,7 @@ const AboutClient = () => {
                                     to={projectData?.linkin?.signature?.file}
                                     target={"_blank"}
                                   >
-                                    <label className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start">
+                                    <label className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start text-center">
                                       {projectData?.linkin?.signature?.fileName}
                                     </label>
                                   </Link>
@@ -383,7 +558,7 @@ const AboutClient = () => {
                                     to={projectData?.linkin?.payment?.file}
                                     target={"_blank"}
                                   >
-                                    <label className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start">
+                                    <label className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start text-center">
                                       {projectData?.linkin?.payment?.fileName}
                                     </label>
                                   </Link>
@@ -393,7 +568,7 @@ const AboutClient = () => {
                                     to={projectData?.linkin?.certificate?.file}
                                     target={"_blank"}
                                   >
-                                    <label className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start">
+                                    <label className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start text-center">
                                       {
                                         projectData?.linkin?.certificate
                                           ?.fileName
@@ -409,7 +584,7 @@ const AboutClient = () => {
                                       }
                                       target={"_blank"}
                                     >
-                                      <label className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start">
+                                      <label className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start text-center">
                                         {
                                           projectData?.linkin?.final_estimate
                                             ?.fileName
@@ -417,7 +592,7 @@ const AboutClient = () => {
                                       </label>
                                     </Link>
                                   )} */}
-                                {/* <label className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start">
+                                {/* <label className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start text-center">
                                   {"-"}
                                 </label> */}
                               </div>
@@ -601,7 +776,7 @@ const AboutClient = () => {
                             isOrangeBg={total < 99}
                             // isGreenBg={total >= 100}
                             disabled={total >= 100 ? false : true}
-                            customClass={clsx("w-50 mx-auto")}
+                            customClass={clsx("w-50 w-100-sm mx-auto")}
                             handleClick={() =>
                               showOptimizationModal(projectData?._id)
                             }
@@ -610,22 +785,24 @@ const AboutClient = () => {
                               ? ` Status ${total}%`
                               : "Send Optimization"}
                           </LDButton>
-                          {projectData?.linkin?.optimation?.file &&
-                            projectData?.linkin?.optimation?.file?.length > 0 &&
-                            projectData?.linkin?.optimation?.file?.map(
-                              (fileItem, index) => {
-                                return (
-                                  <Link
-                                    to={`${projectData?.linkin?.insurance_company?.filePath}/${fileItem?.file}`}
-                                    target={"_blank"}
-                                    key={index}
-                                    className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start"
-                                  >
-                                    {fileItem?.file}
-                                  </Link>
-                                );
-                              }
-                            )}
+                          <div className="d-flex flex-wrap justify-content-center gap-4">
+                            {projectData?.linkin?.optimation?.file &&
+                              projectData?.linkin?.optimation?.file?.length > 0 &&
+                              projectData?.linkin?.optimation?.file?.map(
+                                (fileItem, index) => {
+                                  return (
+                                    <Link
+                                      to={`${projectData?.linkin?.insurance_company?.filePath}/${fileItem?.file}`}
+                                      target={"_blank"}
+                                      key={index}
+                                      className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start text-center"
+                                    >
+                                      {fileItem?.file}
+                                    </Link>
+                                  );
+                                }
+                              )}
+                          </div>
                           {total >= 100 && (
                             <LDButton
                               type="fill"
@@ -633,10 +810,8 @@ const AboutClient = () => {
                               iconPosition={"end"}
                               isFillBtn
                               disabled={total >= 100 ? false : true}
-                              customClass={clsx("w-50 mx-auto")}
-                              handleClick={() => {
-                                return false;
-                              }}
+                              customClass={clsx("w-50 w-100-sm mx-auto")}
+                              handleClick={showFinalEstimateModal}
                             >
                               Send Estimate
                             </LDButton>
@@ -648,10 +823,8 @@ const AboutClient = () => {
                               iconPosition={"end"}
                               isFillBtn
                               // disabled={total >= 100 ? false : true}
-                              customClass={clsx("w-50 mx-auto")}
-                              handleClick={() => {
-                                return false;
-                              }}
+                              customClass={clsx("w-50 w-100-sm mx-auto")}
+                              handleClick={showAffidavitSelfGeneralContractor}
                             >
                               Send Affidavit
                             </LDButton>
@@ -662,7 +835,7 @@ const AboutClient = () => {
                               shape={"round"}
                               iconPosition={"end"}
                               isFillBtn
-                              customClass={clsx("w-50 mx-auto")}
+                              customClass={clsx("w-50 w-100-sm mx-auto")}
                               handleClick={() => {
                                 return false;
                               }}
@@ -732,10 +905,10 @@ const AboutClient = () => {
                           Uploaded docs <b className="d-none d-sm-inline">:-</b>
                         </h6>
                         <div className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
-                          <label className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start">
+                          <label className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start text-center">
                             Insurance 1
                           </label>
-                          <label className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start">
+                          <label className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start text-center">
                             Insurance 2
                           </label>
                         </div>
@@ -821,10 +994,10 @@ const AboutClient = () => {
                           Uploaded docs <b className="d-none d-sm-inline">:-</b>
                         </h6>
                         <div className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
-                          <label className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start">
+                          <label className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start text-center">
                             Insurance 1
                           </label>
-                          <label className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start">
+                          <label className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start text-center">
                             Insurance 2
                           </label>
                         </div>
@@ -886,7 +1059,7 @@ const AboutClient = () => {
             />
             <div className="d-flex justify-content-center align-items-center pt-5 mt-3 mt-xl-0 pb-3">
               <h5 className="me-3 mb-0 fw-bold">Total :-</h5>
-              <h5 className="mb-0 text-bleu-de-france-one">
+              <h5 className="mb-0 text-bleu-de-france-one word-break-word">
                 $&nbsp;
                 {optimizationData?.originalEstimatePrice
                   ? optimizationData?.originalEstimatePrice +
@@ -913,6 +1086,50 @@ const AboutClient = () => {
         }
       />
       {/* Send Final Estimate (Optimization) modal end */}
+      {/* Send Final Estimate modal start */}
+      <LDModal
+        title="Send Final Estimate"
+        open={isFinalEstimateModalOpen}
+        onCancel={handleFinalEstimateModalCancel}
+        width={800}
+        modalContent={
+          <div className={clsx(styles.optimizationBox)}>
+            <LDDocUpload
+              accept=".docx, application/pdf"
+              label="Please upload the document"
+              supportLabel="Supported format: PDF or Doc"
+              onFileUpload={handleFileUpload}
+            />
+            <LDTable
+              columns={finalEstimateColumn}
+              data={finalEstimateData}
+              className={clsx(styles.optimizationTable, "mt-5 mt-xl-4")}
+              pagination={false}
+            />
+            <div className="d-flex justify-content-center align-items-center pt-5 mt-3 mt-xl-0 pb-3">
+              <h5 className="me-3 mb-0 fw-bold">Total :-</h5>
+              <h5 className="mb-0 text-bleu-de-france-one word-break-word">
+                $&nbsp;
+                51,233.28
+              </h5>
+            </div>
+            <div className="text-center w-100 mt-5 mt-xl-3">
+              <LDButton
+                type="fill"
+                shape={"round"}
+                iconPosition={"end"}
+                isFillBtn
+                isGreenBg
+                customClass={clsx("")}
+                // handleClick={handleOptimizationSubmit}
+              >
+                Send Final Estimate 
+              </LDButton>
+            </div>
+          </div>
+        }
+      />
+      {/* Send Final Estimate modal end */}
       {/* Affidavit of Self-General Contractor Status modal start */}
       <LDModal
         title="Affidavit of Self-General Contractor Status"
@@ -990,7 +1207,7 @@ const AboutClient = () => {
                     className: "sigCanvas border border-2 mt-4",
                   }}
                 />
-                <div className="mt-5 mt-xl-3 gap-4 d-flex w-100">
+                {/* <div className="mt-5 mt-xl-3 gap-4 d-flex w-100">
                   <LDButton
                     type="fill"
                     shape={"round"}
@@ -1013,7 +1230,7 @@ const AboutClient = () => {
                   >
                     Downalod
                   </LDButton>
-                </div>
+                </div> */}
               </div>
               <h5 className="ms-md-auto mb-0 fw-semibold order-1 order-md-2">
                 Date :-&nbsp;
