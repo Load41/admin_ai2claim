@@ -1106,15 +1106,15 @@ const AboutClient = () => {
             <LDDocUpload
               accept=".docx, application/pdf"
               label="Please upload the document"
-              value={[
-                {
-                  name:
-                    optimizationData?.file && optimizationData?.file[0]?.file,
-                  url:
-                    optimizationData?.file &&
-                    `${appConfig?.IMAGE_URL}/files/${optimizationData?.file[0]?.file}`,
-                },
-              ]}
+              // value={[
+              //   {
+              //     name:
+              //       optimizationData?.file && optimizationData?.file[0]?.file,
+              //     url:
+              //       optimizationData?.file &&
+              //       `${appConfig?.IMAGE_URL}/files/${optimizationData?.file[0]?.file}`,
+              //   },
+              // ]}
               supportLabel="Supported format: PDF or Doc"
               onFileUpload={handleFileUpload}
               value={optimizationData?.file}
