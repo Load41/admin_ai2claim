@@ -89,7 +89,7 @@ const AboutClient = () => {
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-            // errorMessage={validateMessages?.email}
+          // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -134,20 +134,20 @@ const AboutClient = () => {
       subTotal: (
         // optimizationData?.ai2ClaimServiceCostPrice +
         // optimizationData?.ai2ClaimServiceAddOnCost,
-        (
-          <div className="d-flex align-items-center justify-content-sm-end gap-2">
-            <span>$</span>
-            <LDInput
-              id="ai2ClaimServiceCostPrice"
-              dataTestId="ai2ClaimServiceCostPrice"
-              name="ai2ClaimServiceCostPrice"
-              value={optimizationData?.ai2ClaimServiceCostPrice}
-              type="number"
-              handleChange={handleInputChange}
-              className={clsx("w-100")}
-              isSmallCustomInput
-              isNotBottomSpace
-            // errorMessage={validateMessages?.email}
+
+        <div className="d-flex align-items-center justify-content-sm-end gap-2">
+          <span>$</span>
+          <LDInput
+            id="ai2ClaimServiceCostPrice"
+            dataTestId="ai2ClaimServiceCostPrice"
+            name="ai2ClaimServiceCostPrice"
+            value={optimizationData?.ai2ClaimServiceCostPrice}
+            type="number"
+            handleChange={handleInputChange}
+            className={clsx("w-100")}
+            isSmallCustomInput
+            isNotBottomSpace
+          // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -174,9 +174,9 @@ const AboutClient = () => {
               isSmallCustomInput
               isNotBottomSpace
             // errorMessage={validateMessages?.email}
-          />
-        </div>
-      ),
+            />
+          </div>
+        ),
     },
     {
       key: "2",
@@ -196,9 +196,9 @@ const AboutClient = () => {
               isSmallCustomInput
               isNotBottomSpace
             // errorMessage={validateMessages?.email}
-          />
-        </div>
-      ),
+            />
+          </div>
+        ),
     },
     {
       key: "3",
@@ -218,9 +218,9 @@ const AboutClient = () => {
               isSmallCustomInput
               isNotBottomSpace
             // errorMessage={validateMessages?.email}
-          />
-        </div>
-      ),
+            />
+          </div>
+        ),
     },
     {
       key: "4",
@@ -240,9 +240,9 @@ const AboutClient = () => {
               isSmallCustomInput
               isNotBottomSpace
             // errorMessage={validateMessages?.email}
-          />
-        </div>
-      ),
+            />
+          </div>
+        ),
     },
     {
       key: "5",
@@ -262,9 +262,9 @@ const AboutClient = () => {
               isSmallCustomInput
               isNotBottomSpace
             // errorMessage={validateMessages?.email}
-          />
-        </div>
-      ),
+            />
+          </div>
+        ),
     },
     {
       key: "6",
@@ -284,9 +284,9 @@ const AboutClient = () => {
               isSmallCustomInput
               isNotBottomSpace
             // errorMessage={validateMessages?.email}
-          />
-        </div>
-      ),
+            />
+          </div>
+        ),
     },
   ];
   // Send Final Estimate end
@@ -479,28 +479,28 @@ const AboutClient = () => {
                               </h6>
                               {projectData?.linkin?.insurance_company?.linkinId
                                 ?.name && (
-                                <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
-                                  {
-                                    projectData?.linkin?.insurance_company
-                                      ?.linkinId?.name
-                                  }
-                                  <div
-                                    className={clsx(
-                                      styles.clientDetailProjectImgWrap,
-                                      "ratio ratio-21x9 mt-2"
-                                    )}
-                                  >
-                                    <img
-                                      src={
-                                        projectData?.linkin?.insurance_company
-                                          ?.linkinId?.image
-                                      }
-                                      className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
-                                      alt=""
-                                    />
-                                  </div>
-                                </h6>
-                              )}
+                                  <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
+                                    {
+                                      projectData?.linkin?.insurance_company
+                                        ?.linkinId?.name
+                                    }
+                                    <div
+                                      className={clsx(
+                                        styles.clientDetailProjectImgWrap,
+                                        "ratio ratio-21x9 mt-2"
+                                      )}
+                                    >
+                                      <img
+                                        src={
+                                          projectData?.linkin?.insurance_company
+                                            ?.linkinId?.image
+                                        }
+                                        className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
+                                        alt=""
+                                      />
+                                    </div>
+                                  </h6>
+                                )}
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
                               <h6 className="w-45 mb-0 lh-base fw-bold">
@@ -510,10 +510,10 @@ const AboutClient = () => {
                               <div className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0 d-flex flex-wrap gap-3">
                                 {projectData?.linkin?.insurance_company
                                   ?.files &&
-                                typeof projectData?.linkin?.insurance_company
-                                  ?.files !== "string" &&
-                                projectData?.linkin?.insurance_company?.files
-                                  ?.length > 0 ? (
+                                  typeof projectData?.linkin?.insurance_company
+                                    ?.files !== "string" &&
+                                  projectData?.linkin?.insurance_company?.files
+                                    ?.length > 0 ? (
                                   projectData?.linkin?.insurance_company?.files?.map(
                                     (fileItem, index) => {
                                       return (
@@ -625,21 +625,21 @@ const AboutClient = () => {
                                 {projectData?.linkin?.management?.linkinId
                                   ?.company_name
                                   ? projectData?.linkin?.management?.linkinId
-                                      ?.company_name
+                                    ?.company_name
                                   : "-"}
                                 {"  "}
                                 {projectData?.linkin?.management?.status && (
                                   <span
                                     className={
                                       projectData?.linkin?.management?.status ==
-                                      "accept"
+                                        "accept"
                                         ? ""
                                         : ""
                                     }
                                   >
                                     (
                                     {projectData?.linkin?.management?.status ==
-                                    "accept"
+                                      "accept"
                                       ? "Hire"
                                       : projectData?.linkin?.management?.status}
                                     )
@@ -647,22 +647,22 @@ const AboutClient = () => {
                                 )}
                                 {projectData?.linkin?.management?.linkinId
                                   ?.image && (
-                                  <div
-                                    className={clsx(
-                                      styles.clientDetailProjectImgWrap,
-                                      "ratio ratio-21x9 mt-2"
-                                    )}
-                                  >
-                                    <img
-                                      src={
-                                        projectData?.linkin?.management
-                                          ?.linkinId?.image
-                                      }
-                                      className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
-                                      alt=""
-                                    />
-                                  </div>
-                                )}
+                                    <div
+                                      className={clsx(
+                                        styles.clientDetailProjectImgWrap,
+                                        "ratio ratio-21x9 mt-2"
+                                      )}
+                                    >
+                                      <img
+                                        src={
+                                          projectData?.linkin?.management
+                                            ?.linkinId?.image
+                                        }
+                                        className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
+                                        alt=""
+                                      />
+                                    </div>
+                                  )}
                               </h6>
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
@@ -685,7 +685,7 @@ const AboutClient = () => {
                                 {projectData?.linkin?.material
                                   ?.pick_your_singles
                                   ? projectData?.linkin?.material
-                                      ?.pick_your_singles
+                                    ?.pick_your_singles
                                   : "-"}
                               </h6>
                             </div>
@@ -716,21 +716,21 @@ const AboutClient = () => {
                                 {projectData?.linkin?.crew?.linkinId
                                   ?.company_name
                                   ? projectData?.linkin?.crew?.linkinId
-                                      ?.company_name
+                                    ?.company_name
                                   : "-"}
                                 &nbsp;
                                 {projectData?.linkin?.crew?.status && (
                                   <span
                                     className={
                                       projectData?.linkin?.crew?.status ==
-                                      "accept"
+                                        "accept"
                                         ? ""
                                         : ""
                                     }
                                   >
                                     (
                                     {projectData?.linkin?.crew?.status ==
-                                    "accept"
+                                      "accept"
                                       ? "Hire"
                                       : projectData?.linkin?.crew?.status}
                                     )
@@ -834,7 +834,7 @@ const AboutClient = () => {
                           <div className="d-flex flex-wrap justify-content-center gap-4">
                             {projectData?.linkin?.optimation?.file &&
                               projectData?.linkin?.optimation?.file?.length >
-                                0 &&
+                              0 &&
                               projectData?.linkin?.optimation?.file?.map(
                                 (fileItem, index) => {
                                   return (
