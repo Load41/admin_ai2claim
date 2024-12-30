@@ -756,6 +756,16 @@ const AboutClient = () => {
                               </h6>
                             </div>
 
+                            {/* <div className='d-flex flex-column flex-sm-row w-100'>
+                                <h6 className='w-45 mb-0 lh-base fw-bold word-break-word'>Uploaded images by crew :</h6>
+                                <div className="w-55">
+                                  <button className={clsx(styles.uploadImg, "d-flex align-items-center justify-content-center position-relative cursor-pointer h6 fw-medium")}>
+                                    <input type='file' className='opacity-0 position-absolute top-0 start-0 h-100'/>
+                                    Images
+                                  </button>
+                                </div>
+                              </div> */}
+
                             <div className="d-flex flex-column flex-sm-row w-100">
                               <h6 className="w-45 mb-0 lh-base fw-bold">
                                 Selected (estimate/optimization)
