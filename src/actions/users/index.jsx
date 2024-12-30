@@ -106,3 +106,16 @@ export const doFetchClientProjectLinkInUpdate = async (projectId, data) => {
     return error.response;
   }
 };
+export const doFetchClientProjectLinkInTypeUpdate = async (projectId, data) => {
+  try {
+    const response = await axiosApi({
+      method: "post",
+      url: `admin/user/projects/${projectId}/type-update`,
+      data: data,
+    });
+    return response.data;
+  } catch (error) {
+    console.log({ error });
+    return error.response;
+  }
+};

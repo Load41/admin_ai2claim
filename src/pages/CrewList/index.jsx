@@ -67,8 +67,7 @@ const CrewList = () => {
             <h4 className="mb-0">
               Crew
               <span className="ps-2">
-                ({crewDataList?.length ? paginationServerData?.totalRecords : 0}
-                )
+                ({paginationServerData?.totalRecords})
               </span>
             </h4>
           </div>

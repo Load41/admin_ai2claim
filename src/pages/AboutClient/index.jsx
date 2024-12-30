@@ -138,10 +138,10 @@ const AboutClient = () => {
           <div className="d-flex align-items-center justify-content-sm-end gap-2">
             <span>$</span>
             <LDInput
-              id="originalEstimatePrice"
-              dataTestId="originalEstimatePrice"
-              name="originalEstimatePrice"
-              value={optimizationData?.originalEstimatePrice}
+              id="ai2ClaimServiceCostPrice"
+              dataTestId="ai2ClaimServiceCostPrice"
+              name="ai2ClaimServiceCostPrice"
+              value={optimizationData?.ai2ClaimServiceCostPrice}
               type="number"
               handleChange={handleInputChange}
               className={clsx("w-100")}
@@ -169,7 +169,7 @@ const AboutClient = () => {
               name="insuranceClaim"
               // value={optimizationData?.insuranceClaim}
               type="number"
-              handleChange={() => {return false;}}
+              handleChange={() => { return false; }}
               className={clsx("w-100")}
               isSmallCustomInput
               isNotBottomSpace
@@ -191,7 +191,7 @@ const AboutClient = () => {
               name="managementCost"
               // value={optimizationData?.managementCost}
               type="number"
-              handleChange={() => {return false;}}
+              handleChange={() => { return false; }}
               className={clsx("w-100")}
               isSmallCustomInput
               isNotBottomSpace
@@ -213,7 +213,7 @@ const AboutClient = () => {
               name="materialCost"
               // value={optimizationData?.materialCost}
               type="number"
-              handleChange={() => {return false;}}
+              handleChange={() => { return false; }}
               className={clsx("w-100")}
               isSmallCustomInput
               isNotBottomSpace
@@ -235,7 +235,7 @@ const AboutClient = () => {
               name="crewCost"
               // value={optimizationData?.crewCost}
               type="number"
-              handleChange={() => {return false;}}
+              handleChange={() => { return false; }}
               className={clsx("w-100")}
               isSmallCustomInput
               isNotBottomSpace
@@ -257,7 +257,7 @@ const AboutClient = () => {
               name="serviceFees"
               // value={optimizationData?.serviceFees}
               type="number"
-              handleChange={() => {return false;}}
+              handleChange={() => { return false; }}
               className={clsx("w-100")}
               isSmallCustomInput
               isNotBottomSpace
@@ -279,7 +279,7 @@ const AboutClient = () => {
               name="cashBack"
               // value={optimizationData?.cashBack}
               type="number"
-              handleChange={() => {return false;}}
+              handleChange={() => { return false; }}
               className={clsx("w-100")}
               isSmallCustomInput
               isNotBottomSpace
@@ -778,7 +778,7 @@ const AboutClient = () => {
                             disabled={total >= 100 ? false : true}
                             customClass={clsx("w-50 w-100-sm mx-auto")}
                             handleClick={() =>
-                              showOptimizationModal(projectData?._id)
+                              showOptimizationModal(projectData?._id, projectData?.linkin?.optimation)
                             }
                           >
                             {total < 100
@@ -824,7 +824,7 @@ const AboutClient = () => {
                               isFillBtn
                               // disabled={total >= 100 ? false : true}
                               customClass={clsx("w-50 w-100-sm mx-auto")}
-                              handleClick={() => {return false;}}
+                              handleClick={() => { return false; }}
                             >
                               Send Affidavit
                             </LDButton>
@@ -836,7 +836,7 @@ const AboutClient = () => {
                             isFillBtn
                             // disabled={total >= 100 ? false : true}
                             customClass={clsx("w-50 w-100-sm mx-auto")}
-                            handleClick={() => {return false;}}
+                            handleClick={() => { return false; }}
                           >
                             Send Payment Request
                           </LDButton>
@@ -1061,6 +1061,7 @@ const AboutClient = () => {
               label="Please upload the document"
               supportLabel="Supported format: PDF or Doc"
               onFileUpload={handleFileUpload}
+              value={optimizationData?.file}
             />
             <LDTable
               columns={estimateColumn}
@@ -1073,10 +1074,10 @@ const AboutClient = () => {
               <h5 className="mb-0 text-bleu-de-france-one word-break-word">
                 $&nbsp;
                 {optimizationData?.originalEstimatePrice
-                  ? optimizationData?.originalEstimatePrice +
-                  optimizationData?.originalEstimateAddOnCost +
-                  optimizationData?.ai2ClaimServiceCostPrice +
-                  optimizationData?.ai2ClaimServiceAddOnCost
+                  ? parseInt(optimizationData?.originalEstimatePrice) +
+                  parseInt(optimizationData?.originalEstimateAddOnCost) +
+                  parseInt(optimizationData?.ai2ClaimServiceCostPrice) +
+                  parseInt(optimizationData?.ai2ClaimServiceAddOnCost)
                   : 0}
               </h5>
             </div>
@@ -1132,9 +1133,9 @@ const AboutClient = () => {
                 isFillBtn
                 isGreenBg
                 customClass={clsx("")}
-                // handleClick={handleOptimizationSubmit}
+              // handleClick={handleOptimizationSubmit}
               >
-                Send Final Estimate 
+                Send Final Estimate
               </LDButton>
             </div>
           </div>

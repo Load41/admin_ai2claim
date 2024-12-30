@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { doFetchClientProjectLinkInUpdate, doFetchUserDetail } from "../../actions";
+import { doFetchClientProjectLinkInTypeUpdate, doFetchClientProjectLinkInUpdate, doFetchUserDetail } from "../../actions";
 import { toast } from "react-toastify";
+import { appConfig } from "../../config";
 
 export const useClientDetailHook = () => {
   // doFetchManagementDetail
@@ -34,10 +35,12 @@ export const useClientDetailHook = () => {
   }, [id]);
 
   // Send Final Estimate (Optimization) modal js start
-  const showOptimizationModal = (id) => {
-    setOptimizationData((prevState) => ({ ...prevState, projectId: id }));
+  const showOptimizationModal = (id, item) => {
+    console.log({ item })
+    setOptimizationData((prevState) => ({ ...prevState, projectId: id, ...item, file: item?.file[0]?.file ? [{ name: item?.file[0]?.file, url: `${appConfig?.IMAGE_URL}/files/${item?.file[0]?.file}` }] : [] }));
 
     setIsOptimizationModalOpen(true);
+    // setUploadedFile()
   };
 
   const handleOptimizationModalCancel = () => {
@@ -49,10 +52,10 @@ export const useClientDetailHook = () => {
     setIsFinalEstimateModalOpen(true);
   };
 
-const handleFinalEstimateModalCancel = () => {
-  setIsFinalEstimateModalOpen(false);
-};
-// Send Final Estimate modal js end
+  const handleFinalEstimateModalCancel = () => {
+    setIsFinalEstimateModalOpen(false);
+  };
+  // Send Final Estimate modal js end
   // Affidavit of Self-General Contractor Status modal js start
   const showAffidavitSelfGeneralContractor = () => {
     setIsAffidavitSelfGeneralContractorOpen(true);
@@ -78,10 +81,8 @@ const handleFinalEstimateModalCancel = () => {
 
   const handleOptimizationSubmit = async () => {
     setIsLoading(true)
-    if (optimizationData?.originalEstimateAddOnCost != 0 &&
-      optimizationData?.originalEstimatePrice != 0 &&
-      optimizationData?.ai2ClaimServiceCostPrice != 0 &&
-      optimizationData?.ai2ClaimServiceAddOnCost != 0) {
+    if (optimizationData?.originalEstimatePrice != 0 &&
+      optimizationData?.ai2ClaimServiceCostPrice != 0) {
       const formData = new FormData();
       formData.append("type", "optimation");
       formData.append("originalEstimateAddOnCost", optimizationData?.originalEstimateAddOnCost);
@@ -90,11 +91,21 @@ const handleFinalEstimateModalCancel = () => {
       formData.append("ai2ClaimServiceAddOnCost", optimizationData?.ai2ClaimServiceAddOnCost);
       formData.append("linkinId", null);
       formData.append("status", true);
-      uploadedFile.forEach((file) => {
-        formData.append("files", file.originFileObj); // `originFileObj` contains the raw file object
-      });
-      const clientProjectResponse = await doFetchClientProjectLinkInUpdate(optimizationData?.projectId,
-        formData)
+      if (uploadedFile) {
+        uploadedFile.forEach((file) => {
+          formData.append("files", file.originFileObj); // `originFileObj` contains the raw file object
+        });
+      }
+      let clientProjectResponse
+      if (optimizationData?.status) {
+
+        clientProjectResponse = await doFetchClientProjectLinkInTypeUpdate(optimizationData?.projectId,
+          formData)
+      } else {
+
+        clientProjectResponse = await doFetchClientProjectLinkInUpdate(optimizationData?.projectId,
+          formData)
+      }
       if (clientProjectResponse?.status == 200) {
         setOptimizationData({
           originalEstimateAddOnCost: 0,
@@ -152,8 +163,8 @@ const handleFinalEstimateModalCancel = () => {
     },
   ];
 
-   // final estimate table start
-   const finalEstimateColumn = [
+  // final estimate table start
+  const finalEstimateColumn = [
     {
       title: 'Name',
       dataIndex: 'name',

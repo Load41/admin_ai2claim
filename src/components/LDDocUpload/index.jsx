@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { InboxOutlined } from "@ant-design/icons";
 import { Upload } from "antd";
 const { Dragger } = Upload;
@@ -11,7 +11,8 @@ export function LDDocUpload({
   className,
   supportLabel,
   label,
-  onFileUpload
+  onFileUpload,
+  value,
 }) {
   const [stateMain, setStateMain] = useState([]);
 
@@ -26,7 +27,7 @@ export function LDDocUpload({
       onFileUpload(null); // Clear the file if removed
     }
   };
-
+  useEffect(() => { setStateMain(value) }, [value])
   const handleRemove = (file) => {
     setStateMain([]); // Clear the file list on remove
     onFileUpload(null);

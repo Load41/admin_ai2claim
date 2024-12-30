@@ -11,7 +11,7 @@ import styles from "./Dashboard.module.css";
 import { useDashboardHook } from "../../hooks";
 
 const Dashboard = () => {
-  const { clientList, crewList, isLoading, managementList } =
+  const { clientList, crewList, isLoading, managementList, paginationData } =
     useDashboardHook();
   return (
     <div className={clsx(styles.DashboardSection, "admin-content")}>
@@ -19,7 +19,7 @@ const Dashboard = () => {
       <div className="w-100 pt-4 pt-xl-0 mt-5">
         <div className="d-flex align-items-center justify-content-between flex-wrap gap-4 w-100">
           <h4 className="mb-0">
-            Clients<span className="ps-2">({clientList?.length})</span>
+            Clients<span className="ps-2">({paginationData?.clientTotal})</span>
           </h4>
           <Link to="/client-list" className="text-underline">
             View More
@@ -37,7 +37,7 @@ const Dashboard = () => {
       <div className="w-100 pt-4 pt-xl-0 mt-5">
         <div className="d-flex align-items-center justify-content-between flex-wrap gap-4 w-100">
           <h4 className="mb-0">
-            Management<span className="ps-2">({managementList?.length})</span>
+            Management<span className="ps-2">({paginationData?.managementTotal})</span>
           </h4>
           <Link to="/management-list" className="text-underline">
             View More
@@ -55,7 +55,7 @@ const Dashboard = () => {
       <div className="w-100 pt-4 pt-xl-0 mt-5">
         <div className="d-flex align-items-center justify-content-between flex-wrap gap-4 w-100">
           <h4 className="mb-0">
-            Crew<span className="ps-2">({crewList?.length})</span>
+            Crew<span className="ps-2">({paginationData?.crewTotal})</span>
           </h4>
           <Link to="/crew-list" className="text-underline">
             View More

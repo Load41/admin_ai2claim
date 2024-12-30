@@ -22,6 +22,7 @@ export const useDashboardHook = () => {
     });
     if (clientListResponse?.status == 200) {
       setClientList(clientListResponse?.data);
+      setPaginationData((prevState) => ({ ...prevState, clientTotal: clientListResponse?.pagination?.totalRecords }))
     }
     setIsLoading(false);
   };
@@ -32,6 +33,7 @@ export const useDashboardHook = () => {
     });
     if (crewListResponse?.status == 200) {
       setCrewList(crewListResponse?.data);
+      setPaginationData((prevState) => ({ ...prevState, crewTotal: crewListResponse?.pagination?.totalRecords }))
     }
     setIsLoading(false);
   };
@@ -42,6 +44,7 @@ export const useDashboardHook = () => {
     });
     if (managementListResponse?.status == 200) {
       setManagementList(managementListResponse?.data);
+      setPaginationData((prevState) => ({ ...prevState, managementTotal: managementListResponse?.pagination?.totalRecords }))
     }
     setIsLoading(false);
   };
@@ -52,5 +55,5 @@ export const useDashboardHook = () => {
     doGetManagementList();
   }, []);
 
-  return { isLoading, managementList, crewList, clientList };
+  return { isLoading, managementList, crewList, clientList, paginationData };
 };

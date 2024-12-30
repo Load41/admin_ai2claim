@@ -63,7 +63,7 @@ const ClientList = () => {
             <h4 className="text-bleu-de-france-one mb-0">Client List</h4>
             <span>{svgIcons.doubleRightArrowIcon}</span>
             <h4 className="mb-0">
-              Client's<span className="ps-2">({clientDataList?.length})</span>
+              Client's<span className="ps-2">({paginationServerData?.totalRecords})</span>
             </h4>
           </div>
           <div className="d-flex align-items-center gap-4 flex-wrap">
