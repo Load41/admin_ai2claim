@@ -630,11 +630,13 @@ const AboutClient = () => {
                                 {"  "}
                                 {projectData?.linkin?.management?.status && (
                                   <span
+
                                     className={
                                       projectData?.linkin?.management?.status ==
                                         "accept"
-                                        ? ""
-                                        : ""
+                                        ? "text-matt-green "
+                                        : projectData?.linkin?.management?.status ==
+                                          "reject" ? "text-arcade-fire " : "text-bright-red"
                                     }
                                   >
                                     (
@@ -724,8 +726,9 @@ const AboutClient = () => {
                                     className={
                                       projectData?.linkin?.crew?.status ==
                                         "accept"
-                                        ? ""
-                                        : ""
+                                        ? "text-matt-green "
+                                        : projectData?.linkin?.crew?.status ==
+                                          "reject" ? "text-arcade-fire " : "text-bright-red"
                                     }
                                   >
                                     (
@@ -784,7 +787,7 @@ const AboutClient = () => {
                                 <b className="d-none d-sm-inline">:-</b>
                               </h6>
                               <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
-                                -
+                                {projectData?.linkin?.signature?.status ? "Signature" : "-"}
                               </h6>
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
@@ -793,7 +796,7 @@ const AboutClient = () => {
                                 <b className="d-none d-sm-inline">:-</b>
                               </h6>
                               <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
-                                -
+                                {projectData?.linkin?.affidavit?.status ? "Affidavit" : "-"}
                               </h6>
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
