@@ -11,8 +11,8 @@ export function LDDocUpload({
   className,
   supportLabel,
   label,
-  onFileUpload,
   value,
+  onFileUpload,
 }) {
   const [stateMain, setStateMain] = useState([]);
 
@@ -27,11 +27,15 @@ export function LDDocUpload({
       onFileUpload(null); // Clear the file if removed
     }
   };
-  useEffect(() => { setStateMain(value) }, [value])
+
   const handleRemove = (file) => {
     setStateMain([]); // Clear the file list on remove
     onFileUpload(null);
   };
+
+  useEffect(() => {
+    setStateMain(value);
+  }, [value]);
 
   return (
     <>

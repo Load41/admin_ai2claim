@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { LDInput } from "../../components/LDInput";
 import styles from "./AboutClient.module.css";
+import { appConfig } from "../../config";
 
 const AboutClient = () => {
   const {
@@ -31,7 +32,7 @@ const AboutClient = () => {
     handleOptimizationSubmit,
     isFinalEstimateModalOpen,
     showFinalEstimateModal,
-    handleFinalEstimateModalCancel
+    handleFinalEstimateModalCancel,
   } = useClientDetailHook();
 
   // Send Final Estimate (Optimization) start
@@ -73,26 +74,25 @@ const AboutClient = () => {
       //     />
       //   </div>
       // ),
-      subTotal:
+      subTotal: (
         // optimizationData?.originalEstimatePrice +
         // optimizationData?.originalEstimateAddOnCost,
-        (
-          <div className="d-flex align-items-center justify-content-sm-end gap-2">
-            <span>$</span>
-            <LDInput
-              id="originalEstimatePrice"
-              dataTestId="originalEstimatePrice"
-              name="originalEstimatePrice"
-              value={optimizationData?.originalEstimatePrice}
-              type="number"
-              handleChange={handleInputChange}
-              className={clsx("w-100")}
-              isSmallCustomInput
-              isNotBottomSpace
+        <div className="d-flex align-items-center justify-content-sm-end gap-2">
+          <span>$</span>
+          <LDInput
+            id="originalEstimatePrice"
+            dataTestId="originalEstimatePrice"
+            name="originalEstimatePrice"
+            value={optimizationData?.originalEstimatePrice}
+            type="number"
+            handleChange={handleInputChange}
+            className={clsx("w-100")}
+            isSmallCustomInput
+            isNotBottomSpace
             // errorMessage={validateMessages?.email}
-            />
-          </div>
-        )
+          />
+        </div>
+      ),
     },
     {
       key: "2",
@@ -131,7 +131,7 @@ const AboutClient = () => {
       //     />
       //   </div>
       // ),
-      subTotal:
+      subTotal: (
         // optimizationData?.ai2ClaimServiceCostPrice +
         // optimizationData?.ai2ClaimServiceAddOnCost,
         (
@@ -148,9 +148,9 @@ const AboutClient = () => {
               isSmallCustomInput
               isNotBottomSpace
             // errorMessage={validateMessages?.email}
-            />
-          </div>
-        )
+          />
+        </div>
+      ),
     },
   ];
   // Send Final Estimate (Optimization) end
@@ -174,9 +174,9 @@ const AboutClient = () => {
               isSmallCustomInput
               isNotBottomSpace
             // errorMessage={validateMessages?.email}
-            />
-          </div>
-        )
+          />
+        </div>
+      ),
     },
     {
       key: "2",
@@ -196,9 +196,9 @@ const AboutClient = () => {
               isSmallCustomInput
               isNotBottomSpace
             // errorMessage={validateMessages?.email}
-            />
-          </div>
-        )
+          />
+        </div>
+      ),
     },
     {
       key: "3",
@@ -218,9 +218,9 @@ const AboutClient = () => {
               isSmallCustomInput
               isNotBottomSpace
             // errorMessage={validateMessages?.email}
-            />
-          </div>
-        )
+          />
+        </div>
+      ),
     },
     {
       key: "4",
@@ -240,9 +240,9 @@ const AboutClient = () => {
               isSmallCustomInput
               isNotBottomSpace
             // errorMessage={validateMessages?.email}
-            />
-          </div>
-        )
+          />
+        </div>
+      ),
     },
     {
       key: "5",
@@ -262,9 +262,9 @@ const AboutClient = () => {
               isSmallCustomInput
               isNotBottomSpace
             // errorMessage={validateMessages?.email}
-            />
-          </div>
-        )
+          />
+        </div>
+      ),
     },
     {
       key: "6",
@@ -284,9 +284,9 @@ const AboutClient = () => {
               isSmallCustomInput
               isNotBottomSpace
             // errorMessage={validateMessages?.email}
-            />
-          </div>
-        )
+          />
+        </div>
+      ),
     },
   ];
   // Send Final Estimate end
@@ -448,7 +448,8 @@ const AboutClient = () => {
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
                               <h6 className="w-45 mb-0 lh-base fw-bold">
-                                Project address <b className="d-none d-sm-inline">:-</b>
+                                Project address{" "}
+                                <b className="d-none d-sm-inline">:-</b>
                               </h6>
                               <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
                                 {projectData?.address}
@@ -473,21 +474,33 @@ const AboutClient = () => {
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
                               <h6 className="w-45 mb-0 lh-base fw-bold">
-                                Insurance company <b className="d-none d-sm-inline">:-</b>
+                                Insurance company{" "}
+                                <b className="d-none d-sm-inline">:-</b>
                               </h6>
-                              {projectData?.linkin?.insurance_company?.linkinId?.name &&
+                              {projectData?.linkin?.insurance_company?.linkinId
+                                ?.name && (
                                 <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
-                                  {projectData?.linkin?.insurance_company?.linkinId?.name}
-                                  <div className={clsx(styles.clientDetailProjectImgWrap, "ratio ratio-21x9 mt-2")}>
+                                  {
+                                    projectData?.linkin?.insurance_company
+                                      ?.linkinId?.name
+                                  }
+                                  <div
+                                    className={clsx(
+                                      styles.clientDetailProjectImgWrap,
+                                      "ratio ratio-21x9 mt-2"
+                                    )}
+                                  >
                                     <img
-                                      src={projectData?.linkin?.insurance_company?.linkinId?.image}
+                                      src={
+                                        projectData?.linkin?.insurance_company
+                                          ?.linkinId?.image
+                                      }
                                       className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
                                       alt=""
-
                                     />
                                   </div>
                                 </h6>
-                              }
+                              )}
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
                               <h6 className="w-45 mb-0 lh-base fw-bold">
@@ -497,10 +510,10 @@ const AboutClient = () => {
                               <div className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0 d-flex flex-wrap gap-3">
                                 {projectData?.linkin?.insurance_company
                                   ?.files &&
-                                  typeof projectData?.linkin?.insurance_company
-                                    ?.files !== "string" &&
-                                  projectData?.linkin?.insurance_company?.files
-                                    ?.length > 0 ? (
+                                typeof projectData?.linkin?.insurance_company
+                                  ?.files !== "string" &&
+                                projectData?.linkin?.insurance_company?.files
+                                  ?.length > 0 ? (
                                   projectData?.linkin?.insurance_company?.files?.map(
                                     (fileItem, index) => {
                                       return (
@@ -510,7 +523,6 @@ const AboutClient = () => {
                                           key={index}
                                           className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start text-center"
                                         >
-
                                           {fileItem?.file}
                                         </Link>
                                       );
@@ -602,41 +614,55 @@ const AboutClient = () => {
                                 Hired management&nbsp;
                                 <b className="d-none d-sm-inline">:-</b>
                               </h6>
-                              <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0 hover-text-primary cursor-pointer" onClick={() => navigate(`/management-detail/${projectData?.linkin?.management?.linkinId?._id}`)}>
-
+                              <h6
+                                className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0 hover-text-primary cursor-pointer"
+                                onClick={() =>
+                                  navigate(
+                                    `/management-detail/${projectData?.linkin?.management?.linkinId?._id}`
+                                  )
+                                }
+                              >
                                 {projectData?.linkin?.management?.linkinId
                                   ?.company_name
                                   ? projectData?.linkin?.management?.linkinId
-                                    ?.company_name
+                                      ?.company_name
                                   : "-"}
                                 {"  "}
                                 {projectData?.linkin?.management?.status && (
                                   <span
                                     className={
                                       projectData?.linkin?.management?.status ==
-                                        "accept"
+                                      "accept"
                                         ? ""
                                         : ""
                                     }
                                   >
                                     (
                                     {projectData?.linkin?.management?.status ==
-                                      "accept"
+                                    "accept"
                                       ? "Hire"
                                       : projectData?.linkin?.management?.status}
                                     )
                                   </span>
                                 )}
-                                {projectData?.linkin?.management?.linkinId?.image &&
-                                  <div className={clsx(styles.clientDetailProjectImgWrap, "ratio ratio-21x9 mt-2")}>
+                                {projectData?.linkin?.management?.linkinId
+                                  ?.image && (
+                                  <div
+                                    className={clsx(
+                                      styles.clientDetailProjectImgWrap,
+                                      "ratio ratio-21x9 mt-2"
+                                    )}
+                                  >
                                     <img
-                                      src={projectData?.linkin?.management?.linkinId?.image}
+                                      src={
+                                        projectData?.linkin?.management
+                                          ?.linkinId?.image
+                                      }
                                       className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
                                       alt=""
-
                                     />
                                   </div>
-                                }
+                                )}
                               </h6>
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
@@ -656,7 +682,11 @@ const AboutClient = () => {
                                 <b className="d-none d-sm-inline">:-</b>
                               </h6>
                               <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
-                                {projectData?.linkin?.material?.pick_your_singles ? projectData?.linkin?.material?.pick_your_singles : "-"}
+                                {projectData?.linkin?.material
+                                  ?.pick_your_singles
+                                  ? projectData?.linkin?.material
+                                      ?.pick_your_singles
+                                  : "-"}
                               </h6>
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
@@ -665,7 +695,9 @@ const AboutClient = () => {
                                 <b className="d-none d-sm-inline">:-</b>
                               </h6>
                               <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
-                                {projectData?.linkin?.material?.single_color ? projectData?.linkin?.material?.single_color : "-"}
+                                {projectData?.linkin?.material?.single_color
+                                  ? projectData?.linkin?.material?.single_color
+                                  : "-"}
                               </h6>
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
@@ -673,40 +705,54 @@ const AboutClient = () => {
                                 Hired crew&nbsp;
                                 <b className="d-none d-sm-inline">:-</b>
                               </h6>
-                              <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0 hover-text-primary cursor-pointer" onClick={() => navigate(`/crew-detail/${projectData?.linkin?.crew?.linkinId?._id}`)}>
-
+                              <h6
+                                className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0 hover-text-primary cursor-pointer"
+                                onClick={() =>
+                                  navigate(
+                                    `/crew-detail/${projectData?.linkin?.crew?.linkinId?._id}`
+                                  )
+                                }
+                              >
                                 {projectData?.linkin?.crew?.linkinId
                                   ?.company_name
                                   ? projectData?.linkin?.crew?.linkinId
-                                    ?.company_name
-                                  : "-"}&nbsp;
+                                      ?.company_name
+                                  : "-"}
+                                &nbsp;
                                 {projectData?.linkin?.crew?.status && (
                                   <span
                                     className={
                                       projectData?.linkin?.crew?.status ==
-                                        "accept"
+                                      "accept"
                                         ? ""
                                         : ""
                                     }
                                   >
                                     (
                                     {projectData?.linkin?.crew?.status ==
-                                      "accept"
+                                    "accept"
                                       ? "Hire"
                                       : projectData?.linkin?.crew?.status}
                                     )
                                   </span>
                                 )}
-                                {projectData?.linkin?.crew?.linkinId?.image &&
-                                  <div className={clsx(styles.clientDetailProjectImgWrap, "ratio ratio-21x9 mt-2")}>
+                                {projectData?.linkin?.crew?.linkinId?.image && (
+                                  <div
+                                    className={clsx(
+                                      styles.clientDetailProjectImgWrap,
+                                      "ratio ratio-21x9 mt-2"
+                                    )}
+                                  >
                                     <img
-                                      src={projectData?.linkin?.crew?.linkinId?.image}
+                                      src={
+                                        projectData?.linkin?.crew?.linkinId
+                                          ?.image
+                                      }
                                       className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
                                       alt=""
-
                                     />
                                   </div>
-                                }
+                                )}
                               </h6>
                             </div>
 
@@ -787,7 +833,8 @@ const AboutClient = () => {
                           </LDButton>
                           <div className="d-flex flex-wrap justify-content-center gap-4">
                             {projectData?.linkin?.optimation?.file &&
-                              projectData?.linkin?.optimation?.file?.length > 0 &&
+                              projectData?.linkin?.optimation?.file?.length >
+                                0 &&
                               projectData?.linkin?.optimation?.file?.map(
                                 (fileItem, index) => {
                                   return (
@@ -1059,6 +1106,15 @@ const AboutClient = () => {
             <LDDocUpload
               accept=".docx, application/pdf"
               label="Please upload the document"
+              value={[
+                {
+                  name:
+                    optimizationData?.file && optimizationData?.file[0]?.file,
+                  url:
+                    optimizationData?.file &&
+                    `${appConfig?.IMAGE_URL}/files/${optimizationData?.file[0]?.file}`,
+                },
+              ]}
               supportLabel="Supported format: PDF or Doc"
               onFileUpload={handleFileUpload}
               value={optimizationData?.file}
@@ -1121,8 +1177,7 @@ const AboutClient = () => {
             <div className="d-flex justify-content-center align-items-center pt-5 mt-3 mt-xl-0 pb-3">
               <h5 className="me-3 mb-0 fw-bold">Total :-</h5>
               <h5 className="mb-0 text-bleu-de-france-one word-break-word">
-                $&nbsp;
-                51,233.28
+                $&nbsp; 51,233.28
               </h5>
             </div>
             <div className="text-center w-100 mt-5 mt-xl-3">

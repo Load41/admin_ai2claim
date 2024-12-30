@@ -15,13 +15,17 @@ export const useClientDetailHook = () => {
     originalEstimateAddOnCost: 0,
     originalEstimatePrice: 0,
     ai2ClaimServiceCostPrice: 0,
-    ai2ClaimServiceAddOnCost: 0
+    ai2ClaimServiceAddOnCost: 0,
   });
   const [uploadedFile, setUploadedFile] = useState(null);
 
-  const [isAffidavitSelfGeneralContractorOpen, setIsAffidavitSelfGeneralContractorOpen] = useState(false);
+  const [
+    isAffidavitSelfGeneralContractorOpen,
+    setIsAffidavitSelfGeneralContractorOpen,
+  ] = useState(false);
   const [isOptimizationModalOpen, setIsOptimizationModalOpen] = useState(false);
-  const [isFinalEstimateModalOpen, setIsFinalEstimateModalOpen] = useState(false);
+  const [isFinalEstimateModalOpen, setIsFinalEstimateModalOpen] =
+    useState(false);
 
   const doGetClientList = async () => {
     const clientResponse = await doFetchUserDetail(id);
@@ -36,7 +40,7 @@ export const useClientDetailHook = () => {
 
   // Send Final Estimate (Optimization) modal js start
   const showOptimizationModal = (id, item) => {
-    console.log({ item })
+
     setOptimizationData((prevState) => ({ ...prevState, projectId: id, ...item, file: item?.file[0]?.file ? [{ name: item?.file[0]?.file, url: `${appConfig?.IMAGE_URL}/files/${item?.file[0]?.file}` }] : [] }));
 
     setIsOptimizationModalOpen(true);
@@ -71,7 +75,10 @@ export const useClientDetailHook = () => {
     // setErrorMessage("");
     // setIsLoginSubmit(false);
     // setValidateMessages(errors);
-    setOptimizationData((prevState) => ({ ...prevState, [name]: parseInt(value) }));
+    setOptimizationData((prevState) => ({
+      ...prevState,
+      [name]: parseInt(value),
+    }));
   };
   const handleFileUpload = async (file) => {
     // const files = file?.map((item) => item?.originFileObj);
@@ -85,10 +92,22 @@ export const useClientDetailHook = () => {
       optimizationData?.ai2ClaimServiceCostPrice != 0) {
       const formData = new FormData();
       formData.append("type", "optimation");
-      formData.append("originalEstimateAddOnCost", optimizationData?.originalEstimateAddOnCost);
-      formData.append("originalEstimatePrice", optimizationData?.originalEstimatePrice);
-      formData.append("ai2ClaimServiceCostPrice", optimizationData?.ai2ClaimServiceCostPrice);
-      formData.append("ai2ClaimServiceAddOnCost", optimizationData?.ai2ClaimServiceAddOnCost);
+      formData.append(
+        "originalEstimateAddOnCost",
+        optimizationData?.originalEstimateAddOnCost
+      );
+      formData.append(
+        "originalEstimatePrice",
+        optimizationData?.originalEstimatePrice
+      );
+      formData.append(
+        "ai2ClaimServiceCostPrice",
+        optimizationData?.ai2ClaimServiceCostPrice
+      );
+      formData.append(
+        "ai2ClaimServiceAddOnCost",
+        optimizationData?.ai2ClaimServiceAddOnCost
+      );
       formData.append("linkinId", null);
       formData.append("status", true);
       if (uploadedFile) {
@@ -111,19 +130,19 @@ export const useClientDetailHook = () => {
           originalEstimateAddOnCost: 0,
           originalEstimatePrice: 0,
           ai2ClaimServiceCostPrice: 0,
-          ai2ClaimServiceAddOnCost: 0
-        })
+          ai2ClaimServiceAddOnCost: 0,
+        });
         doGetClientList();
-        setIsLoading(false)
-        toast.success("Optimization added success!")
-        handleOptimizationModalCancel()
+        setIsLoading(false);
+        toast.success("Optimization added success!");
+        handleOptimizationModalCancel();
       } else {
         // toast.error("")
 
-        setIsLoading(false)
+        setIsLoading(false);
       }
     }
-  }
+  };
 
   // Function to clear the signature
   const handleReset = () => {
@@ -133,18 +152,18 @@ export const useClientDetailHook = () => {
   // Function to download the signature as an image
   const handleDownload = () => {
     const dataURL = sigCanvas.current.toDataURL("image/png");
-    const link = document.createElement('a');
+    const link = document.createElement("a");
     link.href = dataURL;
-    link.download = 'signature.png';
+    link.download = "signature.png";
     link.click();
   };
   // signature js end
   // estimate table start
   const estimateColumn = [
     {
-      title: 'Name',
-      dataIndex: 'name',
-      key: 'name',
+      title: "Name",
+      dataIndex: "name",
+      key: "name",
     },
     // {
     //   title: 'Price',
@@ -157,23 +176,23 @@ export const useClientDetailHook = () => {
     //   key: 'addOnCost',
     // },
     {
-      title: 'Sub Total',
-      dataIndex: 'subTotal',
-      key: 'subTotal',
+      title: "Sub Total",
+      dataIndex: "subTotal",
+      key: "subTotal",
     },
   ];
 
   // final estimate table start
   const finalEstimateColumn = [
     {
-      title: 'Name',
-      dataIndex: 'name',
-      key: 'name',
+      title: "Name",
+      dataIndex: "name",
+      key: "name",
     },
     {
-      title: 'Sub Total',
-      dataIndex: 'subTotal',
-      key: 'subTotal',
+      title: "Sub Total",
+      dataIndex: "subTotal",
+      key: "subTotal",
     },
   ];
 
@@ -198,6 +217,6 @@ export const useClientDetailHook = () => {
     handleAffidavitSelfGeneralContractorCancel,
     isFinalEstimateModalOpen,
     showFinalEstimateModal,
-    handleFinalEstimateModalCancel
+    handleFinalEstimateModalCancel,
   };
 };
