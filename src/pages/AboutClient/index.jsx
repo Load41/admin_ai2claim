@@ -33,7 +33,10 @@ const AboutClient = () => {
     isFinalEstimateModalOpen,
     showFinalEstimateModal,
     handleFinalEstimateModalCancel,
-    handleProjectDelete
+    handleProjectDelete,
+    handleInputEstimateChange,
+    handleFinalEstimateSubmit,
+    finalEstimateData,
   } = useClientDetailHook();
 
   // Send Final Estimate (Optimization) start
@@ -90,7 +93,7 @@ const AboutClient = () => {
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-          // errorMessage={validateMessages?.email}
+            // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -148,7 +151,7 @@ const AboutClient = () => {
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-          // errorMessage={validateMessages?.email}
+            // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -156,138 +159,156 @@ const AboutClient = () => {
   ];
   // Send Final Estimate (Optimization) end
   // Send Final Estimate  start
-  const finalEstimateData = [
+  const finalEstimateTableData = [
+    {
+      key: "1",
+      name: "Original Estimate",
+      subTotal: (
+        // finalEstimateData?.originalEstimatePrice +
+        // finalEstimateData?.originalEstimateAddOnCost,
+        <div className="d-flex align-items-center justify-content-sm-end gap-2">
+          <span>$</span>
+          <LDInput
+            id="originalEstimatePrice"
+            dataTestId="originalEstimatePrice"
+            name="originalEstimatePrice"
+            value={finalEstimateData?.originalEstimatePrice}
+            type="number"
+            disabled={true}
+            handleChange={handleInputEstimateChange}
+            className={clsx("w-100")}
+            isSmallCustomInput
+            isNotBottomSpace
+            // errorMessage={validateMessages?.email}
+          />
+        </div>
+      ),
+    },
     {
       key: "1",
       name: "Insurance claim",
-      subTotal:
-        (
-          <div className="d-flex align-items-center justify-content-sm-end gap-2">
-            <span>$</span>
-            <LDInput
-              id="insuranceClaim"
-              dataTestId="insuranceClaim"
-              name="insuranceClaim"
-              // value={optimizationData?.insuranceClaim}
-              type="number"
-              handleChange={() => { return false; }}
-              className={clsx("w-100")}
-              isSmallCustomInput
-              isNotBottomSpace
+      subTotal: (
+        <div className="d-flex align-items-center justify-content-sm-end gap-2">
+          <span>$</span>
+          <LDInput
+            id="insuranceClaim"
+            dataTestId="insuranceClaim"
+            name="insuranceClaim"
+            value={finalEstimateData?.insuranceClaim}
+            type="number"
+            handleChange={handleInputEstimateChange}
+            className={clsx("w-100")}
+            isSmallCustomInput
+            isNotBottomSpace
             // errorMessage={validateMessages?.email}
-            />
-          </div>
-        ),
+          />
+        </div>
+      ),
     },
     {
       key: "2",
       name: "Management Cost",
-      subTotal:
-        (
-          <div className="d-flex align-items-center justify-content-sm-end gap-2">
-            <span>$</span>
-            <LDInput
-              id="managementCost"
-              dataTestId="managementCost"
-              name="managementCost"
-              // value={optimizationData?.managementCost}
-              type="number"
-              handleChange={() => { return false; }}
-              className={clsx("w-100")}
-              isSmallCustomInput
-              isNotBottomSpace
+      subTotal: (
+        <div className="d-flex align-items-center justify-content-sm-end gap-2">
+          <span>$</span>
+          <LDInput
+            id="managementCost"
+            dataTestId="managementCost"
+            name="managementCost"
+            value={finalEstimateData?.managementCost}
+            type="number"
+            handleChange={handleInputEstimateChange}
+            className={clsx("w-100")}
+            isSmallCustomInput
+            isNotBottomSpace
             // errorMessage={validateMessages?.email}
-            />
-          </div>
-        ),
+          />
+        </div>
+      ),
     },
     {
       key: "3",
       name: "Material Cost",
-      subTotal:
-        (
-          <div className="d-flex align-items-center justify-content-sm-end gap-2">
-            <span>$</span>
-            <LDInput
-              id="materialCost"
-              dataTestId="materialCost"
-              name="materialCost"
-              // value={optimizationData?.materialCost}
-              type="number"
-              handleChange={() => { return false; }}
-              className={clsx("w-100")}
-              isSmallCustomInput
-              isNotBottomSpace
+      subTotal: (
+        <div className="d-flex align-items-center justify-content-sm-end gap-2">
+          <span>$</span>
+          <LDInput
+            id="materialCost"
+            dataTestId="materialCost"
+            name="materialCost"
+            value={finalEstimateData?.materialCost}
+            type="number"
+            handleChange={handleInputEstimateChange}
+            className={clsx("w-100")}
+            isSmallCustomInput
+            isNotBottomSpace
             // errorMessage={validateMessages?.email}
-            />
-          </div>
-        ),
+          />
+        </div>
+      ),
     },
     {
       key: "4",
       name: "Crew Cost",
-      subTotal:
-        (
-          <div className="d-flex align-items-center justify-content-sm-end gap-2">
-            <span>$</span>
-            <LDInput
-              id="crewCost"
-              dataTestId="crewCost"
-              name="crewCost"
-              // value={optimizationData?.crewCost}
-              type="number"
-              handleChange={() => { return false; }}
-              className={clsx("w-100")}
-              isSmallCustomInput
-              isNotBottomSpace
+      subTotal: (
+        <div className="d-flex align-items-center justify-content-sm-end gap-2">
+          <span>$</span>
+          <LDInput
+            id="crewCost"
+            dataTestId="crewCost"
+            name="crewCost"
+            value={finalEstimateData?.crewCost}
+            type="number"
+            handleChange={handleInputEstimateChange}
+            className={clsx("w-100")}
+            isSmallCustomInput
+            isNotBottomSpace
             // errorMessage={validateMessages?.email}
-            />
-          </div>
-        ),
+          />
+        </div>
+      ),
     },
     {
       key: "5",
       name: "Service Fees",
-      subTotal:
-        (
-          <div className="d-flex align-items-center justify-content-sm-end gap-2">
-            <span>$</span>
-            <LDInput
-              id="serviceFees"
-              dataTestId="serviceFees"
-              name="serviceFees"
-              // value={optimizationData?.serviceFees}
-              type="number"
-              handleChange={() => { return false; }}
-              className={clsx("w-100")}
-              isSmallCustomInput
-              isNotBottomSpace
+      subTotal: (
+        <div className="d-flex align-items-center justify-content-sm-end gap-2">
+          <span>$</span>
+          <LDInput
+            id="serviceFees"
+            dataTestId="serviceFees"
+            name="serviceFees"
+            value={finalEstimateData?.serviceFees}
+            type="number"
+            handleChange={handleInputEstimateChange}
+            className={clsx("w-100")}
+            isSmallCustomInput
+            isNotBottomSpace
             // errorMessage={validateMessages?.email}
-            />
-          </div>
-        ),
+          />
+        </div>
+      ),
     },
     {
       key: "6",
       name: "Cash back",
-      subTotal:
-        (
-          <div className="d-flex align-items-center justify-content-sm-end gap-2">
-            <span>$</span>
-            <LDInput
-              id="cashBack"
-              dataTestId="cashBack"
-              name="cashBack"
-              // value={optimizationData?.cashBack}
-              type="number"
-              handleChange={() => { return false; }}
-              className={clsx("w-100")}
-              isSmallCustomInput
-              isNotBottomSpace
+      subTotal: (
+        <div className="d-flex align-items-center justify-content-sm-end gap-2">
+          <span>$</span>
+          <LDInput
+            id="cashBack"
+            dataTestId="cashBack"
+            name="cashBack"
+            value={finalEstimateData?.cashBack}
+            type="number"
+            handleChange={handleInputEstimateChange}
+            className={clsx("w-100")}
+            isSmallCustomInput
+            isNotBottomSpace
             // errorMessage={validateMessages?.email}
-            />
-          </div>
-        ),
+          />
+        </div>
+      ),
     },
   ];
   // Send Final Estimate end
@@ -483,28 +504,28 @@ const AboutClient = () => {
                               </h6>
                               {projectData?.linkin?.insurance_company?.linkinId
                                 ?.name && (
-                                  <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
-                                    {
-                                      projectData?.linkin?.insurance_company
-                                        ?.linkinId?.name
-                                    }
-                                    <div
-                                      className={clsx(
-                                        styles.clientDetailProjectImgWrap,
-                                        "ratio ratio-21x9 mt-2"
-                                      )}
-                                    >
-                                      <img
-                                        src={
-                                          projectData?.linkin?.insurance_company
-                                            ?.linkinId?.image
-                                        }
-                                        className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
-                                        alt=""
-                                      />
-                                    </div>
-                                  </h6>
-                                )}
+                                <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
+                                  {
+                                    projectData?.linkin?.insurance_company
+                                      ?.linkinId?.name
+                                  }
+                                  <div
+                                    className={clsx(
+                                      styles.clientDetailProjectImgWrap,
+                                      "ratio ratio-21x9 mt-2"
+                                    )}
+                                  >
+                                    <img
+                                      src={
+                                        projectData?.linkin?.insurance_company
+                                          ?.linkinId?.image
+                                      }
+                                      className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
+                                      alt=""
+                                    />
+                                  </div>
+                                </h6>
+                              )}
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
                               <h6 className="w-45 mb-0 lh-base fw-bold">
@@ -514,10 +535,10 @@ const AboutClient = () => {
                               <div className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0 d-flex flex-wrap gap-3">
                                 {projectData?.linkin?.insurance_company
                                   ?.files &&
-                                  typeof projectData?.linkin?.insurance_company
-                                    ?.files !== "string" &&
-                                  projectData?.linkin?.insurance_company?.files
-                                    ?.length > 0 ? (
+                                typeof projectData?.linkin?.insurance_company
+                                  ?.files !== "string" &&
+                                projectData?.linkin?.insurance_company?.files
+                                  ?.length > 0 ? (
                                   projectData?.linkin?.insurance_company?.files?.map(
                                     (fileItem, index) => {
                                       return (
@@ -629,23 +650,24 @@ const AboutClient = () => {
                                 {projectData?.linkin?.management?.linkinId
                                   ?.company_name
                                   ? projectData?.linkin?.management?.linkinId
-                                    ?.company_name
+                                      ?.company_name
                                   : "-"}
                                 {"  "}
                                 {projectData?.linkin?.management?.status && (
                                   <span
-
                                     className={
                                       projectData?.linkin?.management?.status ==
-                                        "accept"
+                                      "accept"
                                         ? "text-matt-green "
-                                        : projectData?.linkin?.management?.status ==
-                                          "reject" ? "text-arcade-fire " : "text-bright-red"
+                                        : projectData?.linkin?.management
+                                            ?.status == "reject"
+                                        ? "text-arcade-fire "
+                                        : "text-bright-red"
                                     }
                                   >
                                     (
                                     {projectData?.linkin?.management?.status ==
-                                      "accept"
+                                    "accept"
                                       ? "Hire"
                                       : projectData?.linkin?.management?.status}
                                     )
@@ -653,22 +675,22 @@ const AboutClient = () => {
                                 )}
                                 {projectData?.linkin?.management?.linkinId
                                   ?.image && (
-                                    <div
-                                      className={clsx(
-                                        styles.clientDetailProjectImgWrap,
-                                        "ratio ratio-21x9 mt-2"
-                                      )}
-                                    >
-                                      <img
-                                        src={
-                                          projectData?.linkin?.management
-                                            ?.linkinId?.image
-                                        }
-                                        className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
-                                        alt=""
-                                      />
-                                    </div>
-                                  )}
+                                  <div
+                                    className={clsx(
+                                      styles.clientDetailProjectImgWrap,
+                                      "ratio ratio-21x9 mt-2"
+                                    )}
+                                  >
+                                    <img
+                                      src={
+                                        projectData?.linkin?.management
+                                          ?.linkinId?.image
+                                      }
+                                      className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
+                                      alt=""
+                                    />
+                                  </div>
+                                )}
                               </h6>
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
@@ -691,7 +713,7 @@ const AboutClient = () => {
                                 {projectData?.linkin?.material
                                   ?.pick_your_singles
                                   ? projectData?.linkin?.material
-                                    ?.pick_your_singles
+                                      ?.pick_your_singles
                                   : "-"}
                               </h6>
                             </div>
@@ -722,22 +744,24 @@ const AboutClient = () => {
                                 {projectData?.linkin?.crew?.linkinId
                                   ?.company_name
                                   ? projectData?.linkin?.crew?.linkinId
-                                    ?.company_name
+                                      ?.company_name
                                   : "-"}
                                 &nbsp;
                                 {projectData?.linkin?.crew?.status && (
                                   <span
                                     className={
                                       projectData?.linkin?.crew?.status ==
-                                        "accept"
+                                      "accept"
                                         ? "text-matt-green "
                                         : projectData?.linkin?.crew?.status ==
-                                          "reject" ? "text-arcade-fire " : "text-bright-red"
+                                          "reject"
+                                        ? "text-arcade-fire "
+                                        : "text-bright-red"
                                     }
                                   >
                                     (
                                     {projectData?.linkin?.crew?.status ==
-                                      "accept"
+                                    "accept"
                                       ? "Hire"
                                       : projectData?.linkin?.crew?.status}
                                     )
@@ -781,8 +805,12 @@ const AboutClient = () => {
                               <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
                                 {projectData?.linkin?.optimation
                                   ?.originalEstimatePrice
-                                  ? "optimization"
-                                  : "-"}
+                                  ? "optimization "
+                                  : ""}
+                                {projectData?.linkin?.final_estimate
+                                  ?.insuranceClaim
+                                  ? "/ estimate"
+                                  : ""}
                               </h6>
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
@@ -791,7 +819,9 @@ const AboutClient = () => {
                                 <b className="d-none d-sm-inline">:-</b>
                               </h6>
                               <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
-                                {projectData?.linkin?.signature?.status ? "Signature" : "-"}
+                                {projectData?.linkin?.signature?.status
+                                  ? "Signature"
+                                  : "-"}
                               </h6>
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
@@ -800,7 +830,9 @@ const AboutClient = () => {
                                 <b className="d-none d-sm-inline">:-</b>
                               </h6>
                               <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
-                                {projectData?.linkin?.affidavit?.status ? "Affidavit" : "-"}
+                                {projectData?.linkin?.affidavit?.status
+                                  ? "Affidavit"
+                                  : "-"}
                               </h6>
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
@@ -842,7 +874,10 @@ const AboutClient = () => {
                             disabled={total >= 100 ? false : true}
                             customClass={clsx("w-50 w-100-sm mx-auto")}
                             handleClick={() =>
-                              showOptimizationModal(projectData?._id, projectData?.linkin?.optimation)
+                              showOptimizationModal(
+                                projectData?._id,
+                                projectData?.linkin?.optimation
+                              )
                             }
                           >
                             {total < 100
@@ -852,7 +887,7 @@ const AboutClient = () => {
                           <div className="d-flex flex-wrap justify-content-center gap-4">
                             {projectData?.linkin?.optimation?.file &&
                               projectData?.linkin?.optimation?.file?.length >
-                              0 &&
+                                0 &&
                               projectData?.linkin?.optimation?.file?.map(
                                 (fileItem, index) => {
                                   return (
@@ -876,12 +911,37 @@ const AboutClient = () => {
                               isFillBtn
                               disabled={total >= 100 ? false : true}
                               customClass={clsx("w-50 w-100-sm mx-auto")}
-                              handleClick={showFinalEstimateModal}
+                              handleClick={() =>
+                                showFinalEstimateModal(
+                                  projectData?._id,
+                                  projectData?.linkin?.optimation,
+                                  projectData?.linkin?.final_estimate
+                                )
+                              }
                             >
                               Send Estimate
                             </LDButton>
                           )}
-                          {total >= 100 && (
+                          <div className="d-flex flex-wrap justify-content-center gap-4">
+                            {projectData?.linkin?.final_estimate?.file &&
+                              projectData?.linkin?.final_estimate?.file
+                                ?.length > 0 &&
+                              projectData?.linkin?.final_estimate?.file?.map(
+                                (fileItem, index) => {
+                                  return (
+                                    <Link
+                                      to={`${projectData?.linkin?.insurance_company?.filePath}/${fileItem?.file}`}
+                                      target={"_blank"}
+                                      key={index}
+                                      className="py-4 px-4 py-md-2 rounded-2 bg-orochimaru text-black p small mb-0 text-start text-center"
+                                    >
+                                      {fileItem?.file}
+                                    </Link>
+                                  );
+                                }
+                              )}
+                          </div>
+                          {/* {total >= 100 && (
                             <LDButton
                               type="fill"
                               shape={"round"}
@@ -889,11 +949,13 @@ const AboutClient = () => {
                               isFillBtn
                               // disabled={total >= 100 ? false : true}
                               customClass={clsx("w-50 w-100-sm mx-auto")}
-                              handleClick={() => { return false; }}
+                              handleClick={() => {
+                                return false;
+                              }}
                             >
-                              Send Affidavit
+                               Affidavit
                             </LDButton>
-                          )}
+                          )} */}
                           <LDButton
                             type="fill"
                             shape={"round"}
@@ -901,7 +963,9 @@ const AboutClient = () => {
                             isFillBtn
                             // disabled={total >= 100 ? false : true}
                             customClass={clsx("w-50 w-100-sm mx-auto")}
-                            handleClick={() => { return false; }}
+                            handleClick={() => {
+                              return false;
+                            }}
                           >
                             Send Payment Request
                           </LDButton>
@@ -1149,9 +1213,9 @@ const AboutClient = () => {
                 $&nbsp;
                 {optimizationData?.originalEstimatePrice
                   ? parseInt(optimizationData?.originalEstimatePrice) +
-                  parseInt(optimizationData?.originalEstimateAddOnCost) +
-                  parseInt(optimizationData?.ai2ClaimServiceCostPrice) +
-                  parseInt(optimizationData?.ai2ClaimServiceAddOnCost)
+                    parseInt(optimizationData?.originalEstimateAddOnCost) -
+                    parseInt(optimizationData?.ai2ClaimServiceCostPrice) +
+                    parseInt(optimizationData?.ai2ClaimServiceAddOnCost)
                   : 0}
               </h5>
             </div>
@@ -1185,17 +1249,26 @@ const AboutClient = () => {
               label="Please upload the document"
               supportLabel="Supported format: PDF or Doc"
               onFileUpload={handleFileUpload}
+              value={finalEstimateData?.file}
             />
             <LDTable
               columns={finalEstimateColumn}
-              data={finalEstimateData}
+              data={finalEstimateTableData}
               className={clsx(styles.optimizationTable, "mt-5 mt-xl-4")}
               pagination={false}
             />
             <div className="d-flex justify-content-center align-items-center pt-5 mt-3 mt-xl-0 pb-3">
               <h5 className="me-3 mb-0 fw-bold">Total :-</h5>
               <h5 className="mb-0 text-bleu-de-france-one word-break-word">
-                $&nbsp; 51,233.28
+                $&nbsp;{" "}
+                {finalEstimateData?.originalEstimatePrice
+                  ? parseInt(finalEstimateData?.originalEstimatePrice) -
+                    parseInt(finalEstimateData?.insuranceClaim) +
+                    parseInt(finalEstimateData?.managementCost) +
+                    parseInt(finalEstimateData?.crewCost) +
+                    parseInt(finalEstimateData?.materialCost) +
+                    parseInt(finalEstimateData?.serviceFees)
+                  : 0}
               </h5>
             </div>
             <div className="text-center w-100 mt-5 mt-xl-3">
@@ -1206,7 +1279,7 @@ const AboutClient = () => {
                 isFillBtn
                 isGreenBg
                 customClass={clsx("")}
-              // handleClick={handleOptimizationSubmit}
+                handleClick={handleFinalEstimateSubmit}
               >
                 Send Final Estimate
               </LDButton>

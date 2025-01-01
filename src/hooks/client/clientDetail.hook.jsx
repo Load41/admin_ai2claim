@@ -1,6 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { doFetchClientProjectDelete, doFetchClientProjectLinkInTypeUpdate, doFetchClientProjectLinkInUpdate, doFetchUserDetail } from "../../actions";
+import {
+  doFetchClientProjectDelete,
+  doFetchClientProjectLinkInTypeUpdate,
+  doFetchClientProjectLinkInUpdate,
+  doFetchUserDetail
+} from "../../actions";
 import { toast } from "react-toastify";
 import { appConfig } from "../../config";
 
@@ -16,6 +21,16 @@ export const useClientDetailHook = () => {
     originalEstimatePrice: 0,
     ai2ClaimServiceCostPrice: 0,
     ai2ClaimServiceAddOnCost: 0,
+  });
+  const [finalEstimateData, setFinalEstimateData] = useState({
+    originalEstimatePrice: 0,
+    ai2ClaimServiceCostPrice: 0,
+    insuranceClaim: 0,
+    managementCost: 0,
+    crewCost: 0,
+    materialCost: 0,
+    serviceFees: 0,
+    cashBack: 0,
   });
   const [uploadedFile, setUploadedFile] = useState(null);
 
@@ -40,8 +55,20 @@ export const useClientDetailHook = () => {
 
   // Send Final Estimate (Optimization) modal js start
   const showOptimizationModal = (id, item) => {
-
-    setOptimizationData((prevState) => ({ ...prevState, projectId: id, ...item, file: item?.file && item?.file?.length > 0 && item?.file[0]?.file ? [{ name: item?.file[0]?.file, url: `${appConfig?.IMAGE_URL}/files/${item?.file[0]?.file}` }] : [] }));
+    setOptimizationData((prevState) => ({
+      ...prevState,
+      projectId: id,
+      ...item,
+      file:
+        item?.file && item?.file[0]?.file
+          ? [
+              {
+                name: item?.file[0]?.file,
+                url: `${appConfig?.IMAGE_URL}/files/${item?.file[0]?.file}`,
+              },
+            ]
+          : [],
+    }));
 
     setIsOptimizationModalOpen(true);
     // setUploadedFile()
@@ -52,7 +79,24 @@ export const useClientDetailHook = () => {
   };
   // Send Final Estimate (Optimization) modal js end
   // Send Final Estimate modal js start
-  const showFinalEstimateModal = () => {
+  const showFinalEstimateModal = (id, optimizationItem, item) => {
+    console.log({ id, optimizationItem, item });
+    setFinalEstimateData((prevState) => ({
+      ...prevState,
+      projectId: id,
+      originalEstimatePrice: optimizationItem?.originalEstimatePrice,
+      ai2ClaimServiceCostPrice: optimizationItem?.ai2ClaimServiceCostPrice,
+      ...item,
+      file:
+        item?.file && item?.file[0]?.file
+          ? [
+            {
+              name: item?.file[0]?.file,
+              url: `${appConfig?.IMAGE_URL}/files/${item?.file[0]?.file}`,
+            },
+          ]
+          : [],
+    }));
     setIsFinalEstimateModalOpen(true);
   };
 
@@ -87,9 +131,11 @@ export const useClientDetailHook = () => {
   };
 
   const handleOptimizationSubmit = async () => {
-    setIsLoading(true)
-    if (optimizationData?.originalEstimatePrice != 0 &&
-      optimizationData?.ai2ClaimServiceCostPrice != 0) {
+    setIsLoading(true);
+    if (
+      optimizationData?.originalEstimatePrice != 0 &&
+      optimizationData?.ai2ClaimServiceCostPrice != 0
+    ) {
       const formData = new FormData();
       formData.append("type", "optimation");
       formData.append(
@@ -115,15 +161,17 @@ export const useClientDetailHook = () => {
           formData.append("files", file.originFileObj); // `originFileObj` contains the raw file object
         });
       }
-      let clientProjectResponse
+      let clientProjectResponse;
       if (optimizationData?.status) {
-
-        clientProjectResponse = await doFetchClientProjectLinkInTypeUpdate(optimizationData?.projectId,
-          formData)
+        clientProjectResponse = await doFetchClientProjectLinkInTypeUpdate(
+          optimizationData?.projectId,
+          formData
+        );
       } else {
-
-        clientProjectResponse = await doFetchClientProjectLinkInUpdate(optimizationData?.projectId,
-          formData)
+        clientProjectResponse = await doFetchClientProjectLinkInUpdate(
+          optimizationData?.projectId,
+          formData
+        );
       }
       if (clientProjectResponse?.status == 200) {
         setOptimizationData({
@@ -144,6 +192,88 @@ export const useClientDetailHook = () => {
     }
   };
 
+  const handleInputEstimateChange = (event) => {
+    const { name, value } = event?.target;
+    // const { errors } = validateLogin(name, value);
+    // setErrorMessage("");
+    // setIsLoginSubmit(false);
+    // setValidateMessages(errors);
+    setFinalEstimateData((prevState) => ({
+      ...prevState,
+      [name]: parseInt(value),
+      cashBack: finalEstimateData?.insuranceClaim
+        ? parseInt(finalEstimateData?.originalEstimatePrice) -
+        parseInt(finalEstimateData?.insuranceClaim) +
+        parseInt(finalEstimateData?.managementCost) +
+        parseInt(finalEstimateData?.crewCost) +
+        parseInt(finalEstimateData?.materialCost) +
+        parseInt(finalEstimateData?.serviceFees)
+        : 0,
+    }));
+  };
+
+  const handleFinalEstimateSubmit = async () => {
+    setIsLoading(true);
+    if (finalEstimateData?.originalEstimatePrice != 0) {
+      const formData = new FormData();
+      formData.append("type", "final_estimate");
+
+      formData.append(
+        "originalEstimatePrice",
+        finalEstimateData?.originalEstimatePrice
+      );
+      formData.append(
+        "ai2ClaimServiceAddOnCost",
+        finalEstimateData?.ai2ClaimServiceCostPrice
+      );
+      formData.append("insuranceClaim", finalEstimateData?.insuranceClaim);
+      formData.append("managementCost", finalEstimateData?.managementCost);
+      formData.append("crewCost", finalEstimateData?.crewCost);
+      formData.append("materialCost", finalEstimateData?.materialCost);
+      formData.append("serviceFees", finalEstimateData?.serviceFees);
+      formData.append("cashBack", finalEstimateData?.cashBack);
+
+      formData.append("linkinId", null);
+      formData.append("status", true);
+      if (uploadedFile) {
+        uploadedFile.forEach((file) => {
+          formData.append("files", file.originFileObj); // `originFileObj` contains the raw file object
+        });
+      }
+      let clientProjectResponse;
+      if (finalEstimateData?.status) {
+        clientProjectResponse = await doFetchClientProjectLinkInTypeUpdate(
+          finalEstimateData?.projectId,
+          formData
+        );
+      } else {
+        clientProjectResponse = await doFetchClientProjectLinkInUpdate(
+          finalEstimateData?.projectId,
+          formData
+        );
+      }
+      if (clientProjectResponse?.status == 200) {
+        setFinalEstimateData({
+          originalEstimatePrice: 0,
+          ai2ClaimServiceCostPrice: 0,
+          insuranceClaim: 0,
+          managementCost: 0,
+          crewCost: 0,
+          materialCost: 0,
+          serviceFees: 0,
+          cashBack: 0,
+        });
+        doGetClientList();
+        setIsLoading(false);
+        toast.success("Final Estimate added success!");
+        handleFinalEstimateModalCancel();
+      } else {
+        // toast.error("")
+
+        setIsLoading(false);
+      }
+    }
+  };
   // Function to clear the signature
   const handleReset = () => {
     sigCanvas.current.clear();
@@ -233,6 +363,9 @@ export const useClientDetailHook = () => {
     isFinalEstimateModalOpen,
     showFinalEstimateModal,
     handleFinalEstimateModalCancel,
-    handleProjectDelete
+    handleProjectDelete,
+    handleInputEstimateChange,
+    handleFinalEstimateSubmit,
+    finalEstimateData,
   };
 };
