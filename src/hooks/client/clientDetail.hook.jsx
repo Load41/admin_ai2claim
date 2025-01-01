@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { doFetchClientProjectLinkInTypeUpdate, doFetchClientProjectLinkInUpdate, doFetchUserDetail } from "../../actions";
+import { doFetchClientProjectDelete, doFetchClientProjectLinkInTypeUpdate, doFetchClientProjectLinkInUpdate, doFetchUserDetail } from "../../actions";
 import { toast } from "react-toastify";
 import { appConfig } from "../../config";
 
@@ -41,7 +41,7 @@ export const useClientDetailHook = () => {
   // Send Final Estimate (Optimization) modal js start
   const showOptimizationModal = (id, item) => {
 
-    setOptimizationData((prevState) => ({ ...prevState, projectId: id, ...item, file: item?.file[0]?.file ? [{ name: item?.file[0]?.file, url: `${appConfig?.IMAGE_URL}/files/${item?.file[0]?.file}` }] : [] }));
+    setOptimizationData((prevState) => ({ ...prevState, projectId: id, ...item, file: item?.file && item?.file?.length > 0 && item?.file[0]?.file ? [{ name: item?.file[0]?.file, url: `${appConfig?.IMAGE_URL}/files/${item?.file[0]?.file}` }] : [] }));
 
     setIsOptimizationModalOpen(true);
     // setUploadedFile()
@@ -196,6 +196,21 @@ export const useClientDetailHook = () => {
     },
   ];
 
+  const handleProjectDelete = async (id) => {
+
+    const clientProjectResponse = await doFetchClientProjectDelete(id)
+
+    if (clientProjectResponse?.status == 200) {
+      doGetClientList();
+      setIsLoading(false);
+      toast.success("Project delete success!");
+
+    } else {
+      // toast.error("")
+
+      setIsLoading(false);
+    }
+  }
   return {
     navigate,
     sigCanvas,
@@ -218,5 +233,6 @@ export const useClientDetailHook = () => {
     isFinalEstimateModalOpen,
     showFinalEstimateModal,
     handleFinalEstimateModalCancel,
+    handleProjectDelete
   };
 };

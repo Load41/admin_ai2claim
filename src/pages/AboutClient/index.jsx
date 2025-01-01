@@ -33,6 +33,7 @@ const AboutClient = () => {
     isFinalEstimateModalOpen,
     showFinalEstimateModal,
     handleFinalEstimateModalCancel,
+    handleProjectDelete
   } = useClientDetailHook();
 
   // Send Final Estimate (Optimization) start
@@ -429,6 +430,9 @@ const AboutClient = () => {
                 let total = insurance_company + crew + management + material;
                 return (
                   <div className="w-100" key={index}>
+                    <div className="d-flex align-items-left z-9">
+                      <span className="" onClick={() => handleProjectDelete(projectData?._id)}>Delete</span>
+                    </div>
                     <div className="pendingProjectListCard aboutListProjectListCard h-100 cursor cursor-auto">
                       <div className="pendingProjectLisRow row w-100 mx-0 h-100 align-items-center">
                         <div className="col-xxl-6 h-100 pb-5 pb-xxl-0">
@@ -820,6 +824,7 @@ const AboutClient = () => {
                           </div>
                         </div>
                         <div className="col-xxl-6 text-center d-flex flex-column gap-4 align-items-xxl-center h-100 pt-5 pt-xxl-0">
+
                           <h4 className="lh-base fw-medium mb-0">
                             Project was In progress.
                           </h4>
