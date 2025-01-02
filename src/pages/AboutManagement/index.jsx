@@ -1,16 +1,10 @@
 import React from "react";
 import { clsx } from "clsx";
 import { svgIcons } from "../../constants/icons";
-import {
-  companyOne,
-  manWorkerFive,
-  manWorkerSix,
-  manWorkerThree,
-} from "../../constants/imageData";
 import { LDButton } from "../../components";
-import styles from "./AboutManagement.module.css";
 import { useManagementDetailHook } from "../../hooks";
 import { Link, useNavigate } from "react-router-dom";
+import styles from "./AboutManagement.module.css";
 
 const AboutManagement = () => {
   const { isLoading, managementData, managementHandledList } = useManagementDetailHook();

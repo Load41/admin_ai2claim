@@ -1,13 +1,11 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { clsx } from "clsx";
 import { LDPagination, LDProjectsCard } from "../../components";
-import { managementListData } from "../../constants/data";
-import styles from "./ManagementListInfo.module.css";
-import { Button, Dropdown } from "antd";
 import { useManagementListHook } from "../../hooks";
 import { LDInput } from "../../components/LDInput";
 import { svgIcons } from "../../constants/icons";
+import styles from "./ManagementListInfo.module.css";
 const handleButtonClick = (e) => {
   message.info("Click on left button.");
   console.log("click left button", e);

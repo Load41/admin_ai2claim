@@ -1,8 +1,6 @@
 import React from "react";
 import { clsx } from "clsx";
-import { Button, Dropdown } from "antd";
 import { Link } from "react-router-dom";
-
 import { svgIcons } from "../../../constants/icons";
 import { LDTable } from "../../../components";
 import { useManagementProjectListHook } from "../../../hooks";

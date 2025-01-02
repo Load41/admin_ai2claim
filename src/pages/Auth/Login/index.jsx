@@ -3,7 +3,7 @@ import { logo } from "../../../constants/imageData";
 import { svgIcons } from "../../../constants/icons";
 import { LDInput } from "../../../components/LDInput";
 import { LDButton } from "../../../components";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useLoginHook } from "../../../hooks";
 import styles from "./../../Auth/Auth.module.css";
 const Login = () => {

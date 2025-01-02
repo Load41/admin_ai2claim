@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { clsx } from "clsx";
 import {
   LDButton,
@@ -7,15 +7,11 @@ import {
   LDPagination,
   LDProjectsCard,
 } from "../../components";
-import {
-  managementListData,
-  managementListPendingData,
-} from "../../constants/data";
-import styles from "./ManagementListPending.module.css";
-import { Button, Dropdown, Modal, Radio } from "antd";
+import {Modal, Radio } from "antd";
 import { useManagementPendingListHook } from "../../hooks";
 import { LDInput } from "../../components/LDInput";
 import { svgIcons } from "../../constants/icons";
+import styles from "./ManagementListPending.module.css";
 const handleButtonClick = (e) => {
   message.info("Click on left button.");
   console.log("click left button", e);

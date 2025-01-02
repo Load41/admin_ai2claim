@@ -1,14 +1,9 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { clsx } from "clsx";
 import { LDProjectsCard } from "../../components";
-import {
-  clientsCardData,
-  crewCardData,
-  managementCardData,
-} from "../../constants/data";
-import styles from "./Dashboard.module.css";
 import { useDashboardHook } from "../../hooks";
+import styles from "./Dashboard.module.css";
 
 const Dashboard = () => {
   const { clientList, crewList, isLoading, managementList, paginationData } =

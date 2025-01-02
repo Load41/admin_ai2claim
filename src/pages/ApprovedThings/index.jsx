@@ -2,10 +2,10 @@ import React from "react";
 import { clsx } from "clsx";
 import { Button, Dropdown } from "antd";
 import { svgIcons } from "../../constants/icons";
-import { approvedColumns, approvedData, checkFilesData, complaintsQueriesData } from "../../constants/data";
-import { LDPagination, LDTable } from "../../components";
-import styles from "./ApprovedThings.module.css";
+import { approvedColumns, approvedData } from "../../constants/data";
+import { LDTable } from "../../components";
 import { Link } from "react-router-dom";
+import styles from "./ApprovedThings.module.css";
 const items  = [
   {
     key: '1',

@@ -5,10 +5,9 @@ import { svgIcons } from "../../constants/icons";
 import { LDButton, LDDocUpload, LDModal, LDTable } from "../../components";
 import { useClientDetailHook } from "../../hooks";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import { LDInput } from "../../components/LDInput";
-import styles from "./AboutClient.module.css";
 import { appConfig } from "../../config";
+import styles from "./AboutClient.module.css";
 
 const AboutClient = () => {
   const {

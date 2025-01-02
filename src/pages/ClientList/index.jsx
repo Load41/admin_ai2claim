@@ -1,13 +1,11 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { clsx } from "clsx";
 import { LDPagination, LDProjectsCard } from "../../components";
-import { clientListData } from "../../constants/data";
-import { Button, Dropdown } from "antd";
-import styles from "./ClientList.module.css";
 import { useClientHook } from "../../hooks";
 import { LDInput } from "../../components/LDInput";
 import { svgIcons } from "../../constants/icons";
+import styles from "./ClientList.module.css";
 
 const handleMenuClick = (e) => {
   message.info("Click on menu item.");
