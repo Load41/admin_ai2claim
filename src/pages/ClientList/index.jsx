@@ -102,6 +102,7 @@ const ClientList = () => {
                 projectCardData={clientDataList}
                 isNotSwiper
                 redirectPath={"/client-detail"}
+                // isShowInfoMsg
               />
             )}
             <div className="w-100 d-flex justify-content-center mt-4 pt-3">

@@ -551,6 +551,14 @@ ul li {
   transform: translateY(1px);
 }
 
+.svg-icon-translateY--1 {
+  transform: translateY(-1px);
+}
+
+.svg-icon-translateY--2 {
+  transform: translateY(-2px);
+}
+
 .box-shadow-unset {
   box-shadow: unset !important;
 }

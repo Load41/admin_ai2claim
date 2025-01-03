@@ -18,6 +18,7 @@ export const LDProjectsCard = ({
   handleClickRejected,
   redirectPath,
   isFullDetails,
+  isShowInfoMsg
 }) => {
   const navigate = useNavigate();
   console.log({ projectCardData });
@@ -271,6 +272,12 @@ export const LDProjectsCard = ({
                         <LDApproveModal /> */}
                       </div>
                     )}
+                    {isShowInfoMsg &&
+                      <h6 className="d-flex gap-3 gap-xl-2 text-arcade-fire">
+                        <span className="svg-icon-translateY--1">{svgIcons.infoIcon}</span>
+                        Waiting for management and crew approval.
+                      </h6>
+                    }
                   </div>
                 </div>
               );
