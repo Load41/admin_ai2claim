@@ -3,11 +3,10 @@ import { clsx } from "clsx";
 import { Button, Dropdown } from "antd";
 import { svgIcons } from "../../constants/icons";
 import { complaintsQueriesData } from "../../constants/data";
-import { LDButton, LDModal, LDPagination } from "../../components";
+import { LDButton, LDModal } from "../../components";
 import { Link } from "react-router-dom";
-import { manWorkerSix } from "../../constants/imageData";
-import styles from "./ComplaintsQueries.module.css";
 import { LDInput } from "../../components/LDInput";
+import styles from "./ComplaintsQueries.module.css";
 const items  = [
   {
     key: '1',
@@ -173,7 +172,7 @@ const ComplaintsQueries = () => {
                         iconPosition={"end"}
                         isGreenBg
                         isSmallBtn
-                        customClass={clsx("w-35 w-100-md mt-auto")}
+                        customClass={clsx("w-max-content")}
                         handleClick={showResponseModal}
                       >
                         Message back

@@ -3,9 +3,8 @@ import { Link } from "react-router-dom";
 import { clsx } from "clsx";
 import { svgIcons } from "../../../constants/icons";
 import { LDPagination, LDRejectedProjectCard } from "../../../components";
-import { crewRejectedListData } from "../../../constants/data";
-import styles from "./../RejectedFiles.module.css";
 import { useCrewRejectListHook } from "../../../hooks";
+import styles from "./../RejectedFiles.module.css";
 
 const RejectedCrew = () => {
   const {

@@ -1,17 +1,10 @@
 import React from "react";
 import { clsx } from "clsx";
 import { svgIcons } from "../../constants/icons";
-import {
-  companyOne,
-  companyTwo,
-  manWorkerFive,
-  manWorkerSix,
-  manWorkerThree,
-} from "../../constants/imageData";
 import { LDButton } from "../../components";
-import styles from "./AboutCrew.module.css";
 import { useCrewDetailHook } from "../../hooks";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import styles from "./AboutCrew.module.css";
 
 const AboutCrew = () => {
   const { crewData,crewHandledList } = useCrewDetailHook();

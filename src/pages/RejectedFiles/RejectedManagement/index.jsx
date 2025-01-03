@@ -2,10 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { clsx } from "clsx";
 import { svgIcons } from "../../../constants/icons";
-import { managementRejectedListData } from "../../../constants/data";
 import { LDPagination, LDRejectedProjectCard } from "../../../components";
-import styles from "./../RejectedFiles.module.css";
 import { useManagementRejectListHook } from "../../../hooks";
+import styles from "./../RejectedFiles.module.css";
 
 const RejectedManagement = () => {
   const {

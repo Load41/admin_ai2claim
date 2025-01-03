@@ -3,8 +3,8 @@ import { logo } from "../../../constants/imageData";
 import { svgIcons } from "../../../constants/icons";
 import { LDInput } from "../../../components/LDInput";
 import { LDButton } from "../../../components";
-import styles from "./../../Auth/Auth.module.css";
 import { Link } from "react-router-dom";
+import styles from "./../../Auth/Auth.module.css";
 const ResetPassword = () => {
     return (
         <>

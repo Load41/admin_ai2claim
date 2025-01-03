@@ -140,6 +140,9 @@ table thead.ant-table-thead tr th.ant-table-cell {
 .w-65 {
   width: 65%;
 }
+.min-w-35{
+  min-width: 35%;
+}
 /* about and crew management css */
 .about-crew-management-img-grid {
   grid-template-columns: repeat(3, 1fr);
