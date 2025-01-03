@@ -16,6 +16,7 @@ export const useClientDetailHook = () => {
   const sigCanvas = useRef(null);
   const [isLoading, setIsLoading] = useState(false);
   const [clientData, setClientData] = useState({});
+  const [projectId, setProjectId] = useState();
   // confirm modal js start
   const [isApproveRejectedModalOpen, setIsApproveRejectedModalOpen] = useState(false);
   // confirm modal js end
@@ -65,11 +66,11 @@ export const useClientDetailHook = () => {
       file:
         item?.file && item?.file[0]?.file
           ? [
-              {
-                name: item?.file[0]?.file,
-                url: `${appConfig?.IMAGE_URL}/files/${item?.file[0]?.file}`,
-              },
-            ]
+            {
+              name: item?.file[0]?.file,
+              url: `${appConfig?.IMAGE_URL}/files/${item?.file[0]?.file}`,
+            },
+          ]
           : [],
     }));
 
@@ -329,31 +330,33 @@ export const useClientDetailHook = () => {
     },
   ];
 
-  const handleProjectDelete = async (id) => {
+  const handleProjectDelete = async () => {
+    if (projectId) {
+      const clientProjectResponse = await doFetchClientProjectDelete(projectId)
 
-    const clientProjectResponse = await doFetchClientProjectDelete(id)
+      if (clientProjectResponse?.status == 200) {
+        doGetClientList();
+        setIsLoading(false);
+        toast.success("Project delete success!");
 
-    if (clientProjectResponse?.status == 200) {
-      doGetClientList();
-      setIsLoading(false);
-      toast.success("Project delete success!");
+      } else {
+        // toast.error("")
 
-    } else {
-      // toast.error("")
-
-      setIsLoading(false);
+        setIsLoading(false);
+      }
     }
   }
 
-   // confirm modal js start
-   const showApproveRejectedModal = () => {
-       setIsApproveRejectedModalOpen(true);
-   };
- 
-   const approveRejectedModalCancel = () => {
-       setIsApproveRejectedModalOpen(false);
-   };
- // confirm modal js end
+  // confirm modal js start
+  const showApproveRejectedModal = (id) => {
+    setProjectId(id)
+    setIsApproveRejectedModalOpen(true);
+  };
+
+  const approveRejectedModalCancel = () => {
+    setIsApproveRejectedModalOpen(false);
+  };
+  // confirm modal js end
   return {
     navigate,
     sigCanvas,
