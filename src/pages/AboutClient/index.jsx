@@ -36,6 +36,9 @@ const AboutClient = () => {
     handleInputEstimateChange,
     handleFinalEstimateSubmit,
     finalEstimateData,
+    isApproveRejectedModalOpen,
+    showApproveRejectedModal,
+    approveRejectedModalCancel
   } = useClientDetailHook();
 
   // Send Final Estimate (Optimization) start
@@ -472,9 +475,12 @@ const AboutClient = () => {
                 return (
                   <div className="w-100" key={index}>
                     <div className="pendingProjectListCard aboutListProjectListCard h-100 cursor cursor-auto">
-                      <div className="text-end cursor-pointer mb-4 hover-text-secondary" onClick={() => handleProjectDelete(projectData?._id)}>
+                      <div className="text-end cursor-pointer mb-4 hover-text-secondary" onClick={showApproveRejectedModal}>
                         {svgIcons.deleteIcon2}
                       </div>
+                      {/* <div className="text-end cursor-pointer mb-4 hover-text-secondary" onClick={() => handleProjectDelete(projectData?._id)}>
+                        {svgIcons.deleteIcon2}
+                      </div> */}
                       <div className="pendingProjectLisRow row w-100 mx-0 h-100 align-items-center">
                         <div className="col-xxl-6 h-100 pb-5 pb-xxl-0">
                           <div
@@ -1419,6 +1425,48 @@ const AboutClient = () => {
         }
       />
       {/* Affidavit of Self-General Contractor Status modal end */}
+      {/* confirm modal js start */}
+      <LDModal 
+        title=""
+        open={isApproveRejectedModalOpen} 
+        onCancel={approveRejectedModalCancel}
+        modalContent={
+            <>
+             <div className="text-center d-flex flex-column gap-5 gap-xxl-4">
+                  <h2>Confirm</h2>
+                  <h4 className="lh-base mb-0">
+                      Are you sure you want to&nbsp;
+                      <span className="text-bleu-de-france-one">"Delete"</span>&nbsp;?
+                  </h4>
+                  <div className="d-flex align-items-centr gap-5 justify-content-center mt-5 mt-xxl-3">
+                      <LDButton
+                      type="fill"
+                      shape={"round"}
+                      iconPosition={"end"}
+                      isGreenBg
+                      isSmallBtn
+                      customClass={clsx("w-50")}
+                      handleClick={() => handleProjectDelete(projectData?._id)}
+                      >
+                      Yes
+                      </LDButton>
+                      <LDButton
+                      type="fill"
+                      shape={"round"}
+                      iconPosition={"end"}
+                      isRedBg
+                      isSmallBtn
+                      customClass={clsx("w-50")}
+                      handleClick={approveRejectedModalCancel}
+                      >
+                      No
+                      </LDButton>
+                  </div>
+              </div>
+            </>
+        }
+      />
+      {/* confirm modal js end */}
     </>
   );
 };

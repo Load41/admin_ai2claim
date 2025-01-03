@@ -16,6 +16,9 @@ export const useClientDetailHook = () => {
   const sigCanvas = useRef(null);
   const [isLoading, setIsLoading] = useState(false);
   const [clientData, setClientData] = useState({});
+  // confirm modal js start
+  const [isApproveRejectedModalOpen, setIsApproveRejectedModalOpen] = useState(false);
+  // confirm modal js end
   const [optimizationData, setOptimizationData] = useState({
     originalEstimateAddOnCost: 0,
     originalEstimatePrice: 0,
@@ -341,6 +344,16 @@ export const useClientDetailHook = () => {
       setIsLoading(false);
     }
   }
+
+   // confirm modal js start
+   const showApproveRejectedModal = () => {
+       setIsApproveRejectedModalOpen(true);
+   };
+ 
+   const approveRejectedModalCancel = () => {
+       setIsApproveRejectedModalOpen(false);
+   };
+ // confirm modal js end
   return {
     navigate,
     sigCanvas,
@@ -367,5 +380,8 @@ export const useClientDetailHook = () => {
     handleInputEstimateChange,
     handleFinalEstimateSubmit,
     finalEstimateData,
+    isApproveRejectedModalOpen,
+    showApproveRejectedModal,
+    approveRejectedModalCancel
   };
 };
