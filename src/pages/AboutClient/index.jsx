@@ -450,10 +450,10 @@ const AboutClient = () => {
                 let total = insurance_company + crew + management + material;
                 return (
                   <div className="w-100" key={index}>
-                    <div className="d-flex align-items-left z-9">
-                      <span className="" onClick={() => handleProjectDelete(projectData?._id)}>Delete</span>
-                    </div>
                     <div className="pendingProjectListCard aboutListProjectListCard h-100 cursor cursor-auto">
+                      <div className="text-end cursor-pointer mb-4 hover-text-secondary" onClick={() => handleProjectDelete(projectData?._id)}>
+                        {svgIcons.deleteIcon2}
+                      </div>
                       <div className="pendingProjectLisRow row w-100 mx-0 h-100 align-items-center">
                         <div className="col-xxl-6 h-100 pb-5 pb-xxl-0">
                           <div
