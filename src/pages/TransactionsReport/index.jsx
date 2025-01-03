@@ -6,6 +6,8 @@ import { ThisMonth } from "./TransactionsAmount/ThisMonth";
 import { LastWeek } from "./TransactionsAmount/LastWeek";
 import { FifthMonth } from "./TransactionsAmount/FifthMonth";
 import styles from "./TransactionsReport.module.css";
+import React, { useState } from "react";
+import { AgCharts } from "ag-charts-react";
 // Transaction amount
 export const transactionAmountData = [
   {
@@ -94,7 +96,48 @@ export const highestTransactionPlaceData = [
     children: <FifthMonth/>,
   },
 ];
+// graph js start
+function getData() {
+  return [
+    { month: "New York", min: 2 },
+    { month: "Los Angeles", min: 4 },
+    { month: "Chicago", min: 5.5 },
+    { month: "Houstan", min: 3 },
+    { month: "Phoenix", min:  7 },
+    { month: "Philadelphia", min: 1 },
+    { month: "San Antonio", min: 8 },
+  ];
+}
+// graph js end
 const TransactionsReport = () => {
+  // graph js start
+  const [options, setOptions] = useState({
+    title: {
+      text: "Transactions",
+    },
+    subtitle: {
+      text: "Place",
+    },
+    data: getData(),
+    series: [
+      {
+        type: "line",
+        xKey: "month",
+        xName: "Month",
+        yKey: "min",
+        yName: "Transactions",
+        interpolation: { type: "smooth" },
+        marker: {
+          fill: '#3dbb42',
+          size: 17,
+          stroke: '#000000',
+          strokeWidth: 1,
+          shape: 'diamond',
+      },
+      },
+    ],
+  });
+  // graph js end
   return (
     <div className={clsx("admin-content")}>
       <div className="d-flex align-items-center justify-content-between flex-wrap gap-5 gap-xxl-4">
@@ -104,6 +147,9 @@ const TransactionsReport = () => {
         </div>
       </div>
       <div className="row">
+        <div className="col-12 mt-5 overflow-x-auto">
+        <AgCharts options={options} />
+        </div>
         <div className="col-lg-6 col-xxl-8 mt-5">
           <div className={clsx(styles.transactionsReportBoxWrap, "h-100")}>
               <h4>Transaction amount :-</h4>

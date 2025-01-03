@@ -1,19 +1,14 @@
 import React, { useState } from "react";
-import {
-  DesktopOutlined,
-  FileOutlined,
-  PieChartOutlined,
-  TeamOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
-import { Breadcrumb, Layout, Menu, Modal, theme } from "antd";
-import { Link, useNavigate } from "react-router-dom";
+import { Layout, Menu, Modal, theme } from "antd";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { svgIcons } from "../../constants/icons";
 import { logo } from "../../constants/imageData";
 import { clsx } from "clsx";
-import styles from "./LDSidebar.module.css";
 import { LDButton } from "../LDButton";
-const { Header, Content, Footer, Sider } = Layout;
+import styles from "./LDSidebar.module.css";
+
+const { Sider } = Layout;
+
 function getItem(label, key, icon, children) {
   return {
     key,
@@ -22,133 +17,129 @@ function getItem(label, key, icon, children) {
     label,
   };
 }
+
 const items = [
   getItem(
     <>
       <Link to="/">Dashboard</Link>
     </>,
-    "1",
+    "/",
     svgIcons.trackingDashbaord
   ),
-  // getItem(<><Link to="/coming-soon">Pending files</Link></>, '2', svgIcons.pendingListIcon),
   getItem(
     <>
       <h6 className="mb-0">Pending files</h6>
     </>,
-    "2",
+    "pending",
     svgIcons.pendingListIcon,
     [
       getItem(
         <>
           <Link to="/management-list-pending">Management file</Link>
         </>,
-        "20",
+        "/management-list-pending",
         svgIcons.directFreight
       ),
       getItem(
         <>
           <Link to="/crew-list-pending">Crew file</Link>
         </>,
-        "21",
+        "/crew-list-pending",
         svgIcons.viewTruckPath
       ),
-      // getItem(<><Link to="/client-list-pending">Client list</Link></>, '22', svgIcons.viewTruckStop),
     ]
   ),
-  //   getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
   getItem(
     <>
       <Link to="/check-files">Check Files(50+)</Link>
     </>,
-    "3",
+    "/check-files",
     svgIcons.dat
   ),
   getItem(
     <>
       <Link to="/client-list">Client list</Link>
     </>,
-    "4",
+    "/client-list",
     svgIcons.viewTruckStop
   ),
   getItem(
     <>
       <Link to="/crew-list">Crew list</Link>
     </>,
-    "5",
+    "/crew-list",
     svgIcons.viewTruckPath
   ),
   getItem(
     <>
       <Link to="/management-list">Management list</Link>
     </>,
-    "6",
+    "/management-list",
     svgIcons.directFreight
   ),
   getItem(
     <>
       <h6 className="mb-0">Rejected files</h6>
     </>,
-    "7",
+    "rejected",
     svgIcons.fileFillIcon,
     [
       getItem(
         <>
           <Link to="/management-rejected">Management</Link>
         </>,
-        "71",
+        "/management-rejected",
         svgIcons.crosshairFillIcon
       ),
       getItem(
         <>
           <Link to="/crew-rejected">Crew</Link>
         </>,
-        "72",
+        "/crew-rejected",
         svgIcons.focusFillIcon
       ),
     ]
   ),
-
   getItem(
     <>
       <Link to="/transactions-report">Transactions</Link>
     </>,
-    "8",
+    "/transactions-report",
     svgIcons.bulkPost
   ),
   getItem(
     <>
       <Link to="/complaints-queries">Complaints(70+)</Link>
     </>,
-    "9",
+    "/complaints-queries",
     svgIcons.singlePost
   ),
   getItem(
     <>
       <Link to="/approved-things">Approved things</Link>
     </>,
-    "10",
+    "/approved-things",
     svgIcons.shippersList
   ),
-  // getItem(<><Link to="/coming-soon">Account</Link></>, '10', svgIcons.consigneeList),
   getItem(
     <>
       <h6 className="mb-0">Account</h6>
     </>,
-    "11",
+    "account",
     svgIcons.consigneeList,
     [
       getItem(
         <>
           <Link to="/edit-profile">Edit</Link>
         </>,
-        "111",
+        "/edit-profile",
         svgIcons.editIcon
       ),
       getItem(
         <>
           <Link to="/change-password">Change password</Link>
         </>,
-        "112",
+        "/change-password",
         svgIcons.changePasswordIcon
       ),
     ]
@@ -157,16 +148,21 @@ const items = [
     <>
       <Link to="/about-us">About</Link>
     </>,
-    "12",
+    "/about-us",
     svgIcons.history
   ),
-  // getItem(<><Link to="/coming-soon">Logout</Link></>, '12', svgIcons.history),
-  // getItem(<><Link to="/coming-soon">Trucks</Link></>, '13', svgIcons.trucks),
-  getItem(<>Logout</>, "13", svgIcons.logOut),
+  getItem(<>Logout</>, "logout", svgIcons.logOut),
 ];
 
 export const LDSidebar = ({ mainContentWrap }) => {
   const navigate = useNavigate();
+  const location = useLocation(); // Get the current route
+  const [collapsed, setCollapsed] = useState(false);
+  const {
+    token: { colorBgContainer, borderRadiusLG },
+  } = theme.useToken();
+
+  // logout modal js start
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
@@ -189,11 +185,8 @@ export const LDSidebar = ({ mainContentWrap }) => {
     localStorage.clear();
     navigate("/login");
   };
+  // logout modal js end
 
-  const [collapsed, setCollapsed] = useState(false);
-  const {
-    token: { colorBgContainer, borderRadiusLG },
-  } = theme.useToken();
   return (
     <Layout
       style={{
@@ -228,37 +221,12 @@ export const LDSidebar = ({ mainContentWrap }) => {
             AI2
           </i>
         </div>
-        <div className="demo-logo-vertical" />
         <Menu
-          onClick={handleClickMenu}
-          defaultSelectedKeys={["1"]}
+          selectedKeys={[location.pathname]} // Dynamically set active key
           mode="inline"
           items={items}
         />
       </Sider>
-      {/* <Layout>
-        <Header
-          style={{
-            padding: 0,
-            background: colorBgContainer,
-          }}
-        />
-        <Content
-          style={{
-            margin: '0 16px',
-          }}
-        >
-            asdas
-        </Content>
-        <Footer
-          style={{
-            textAlign: 'center',
-          }}
-        >
-          Ant Design ©{new Date().getFullYear()} Created by Ant UED
-        </Footer>
-        
-      </Layout> */}
       <Modal
         title=""
         open={isModalOpen}

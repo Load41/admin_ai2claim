@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.4.0",
+    "ag-charts-react": "^11.0.3",
     "ajax": "^0.0.4",
     "antd": "^5.21.6",
     "axios": "^1.7.8",
