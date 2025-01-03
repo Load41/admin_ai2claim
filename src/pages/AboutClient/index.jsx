@@ -99,7 +99,7 @@ const AboutClient = () => {
     },
     {
       key: "2",
-      name: "Ai2 Claim service cost",
+      name: "Ai2 Claim Optimized Estimate",
       // price: (
       //   <div className="d-flex align-items-center justify-content-sm-end gap-2">
       //     <span>$</span>
@@ -161,7 +161,7 @@ const AboutClient = () => {
   const finalEstimateTableData = [
     {
       key: "1",
-      name: "Original Estimate",
+      name: "Insurance claim estimate with optimization",
       subTotal: (
         // finalEstimateData?.originalEstimatePrice +
         // finalEstimateData?.originalEstimateAddOnCost,
@@ -183,29 +183,29 @@ const AboutClient = () => {
         </div>
       ),
     },
+    // {
+    //   key: "2",
+    //   name: "Insurance claim",
+    //   subTotal: (
+    //     <div className="d-flex align-items-center justify-content-sm-end gap-2">
+    //       <span>$</span>
+    //       <LDInput
+    //         id="insuranceClaim"
+    //         dataTestId="insuranceClaim"
+    //         name="insuranceClaim"
+    //         value={finalEstimateData?.insuranceClaim}
+    //         type="number"
+    //         handleChange={handleInputEstimateChange}
+    //         className={clsx("w-100")}
+    //         isSmallCustomInput
+    //         isNotBottomSpace
+    //         // errorMessage={validateMessages?.email}
+    //       />
+    //     </div>
+    //   ),
+    // },
     {
-      key: "1",
-      name: "Insurance claim",
-      subTotal: (
-        <div className="d-flex align-items-center justify-content-sm-end gap-2">
-          <span>$</span>
-          <LDInput
-            id="insuranceClaim"
-            dataTestId="insuranceClaim"
-            name="insuranceClaim"
-            value={finalEstimateData?.insuranceClaim}
-            type="number"
-            handleChange={handleInputEstimateChange}
-            className={clsx("w-100")}
-            isSmallCustomInput
-            isNotBottomSpace
-            // errorMessage={validateMessages?.email}
-          />
-        </div>
-      ),
-    },
-    {
-      key: "2",
+      key: "3",
       name: "Management Cost",
       subTotal: (
         <div className="d-flex align-items-center justify-content-sm-end gap-2">
@@ -226,7 +226,7 @@ const AboutClient = () => {
       ),
     },
     {
-      key: "3",
+      key: "4",
       name: "Material Cost",
       subTotal: (
         <div className="d-flex align-items-center justify-content-sm-end gap-2">
@@ -247,7 +247,7 @@ const AboutClient = () => {
       ),
     },
     {
-      key: "4",
+      key: "5",
       name: "Crew Cost",
       subTotal: (
         <div className="d-flex align-items-center justify-content-sm-end gap-2">
@@ -268,7 +268,7 @@ const AboutClient = () => {
       ),
     },
     {
-      key: "5",
+      key: "6",
       name: "Service Fees",
       subTotal: (
         <div className="d-flex align-items-center justify-content-sm-end gap-2">
@@ -289,7 +289,28 @@ const AboutClient = () => {
       ),
     },
     {
-      key: "6",
+      key: "7",
+      name: "Deductible",
+      subTotal: (
+        <div className="d-flex align-items-center justify-content-sm-end gap-2">
+          <span>$</span>
+          <LDInput
+            id="deductible"
+            dataTestId="deductible"
+            name="deductible"
+            // value={finalEstimateData?.deductible}
+            type="number"
+            // handleChange={handleInputEstimateChange}
+            className={clsx("w-100")}
+            isSmallCustomInput
+            isNotBottomSpace
+            // errorMessage={validateMessages?.email}
+          />
+        </div>
+      ),
+    },
+    {
+      key: "8",
       name: "Cash back",
       subTotal: (
         <div className="d-flex align-items-center justify-content-sm-end gap-2">
@@ -1207,7 +1228,7 @@ const AboutClient = () => {
               pagination={false}
             />
             <div className="d-flex justify-content-center align-items-center pt-5 mt-3 mt-xl-0 pb-3">
-              <h5 className="me-3 mb-0 fw-bold">Total :-</h5>
+              <h5 className="me-3 mb-0 fw-bold">Estimated extra money with optimization :-</h5>
               <h5 className="mb-0 text-bleu-de-france-one word-break-word">
                 $&nbsp;
                 {optimizationData?.originalEstimatePrice
