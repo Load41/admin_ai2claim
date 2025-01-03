@@ -16,6 +16,7 @@
 }
 :global .ant-table-wrapper table tr td.ant-table-cell{
     padding: 12px 16px;
+    text-transform: capitalize;
 }
 /* :global table tbody tr:nth-child(even){
     background-color: rgba(var(--clr-party-sponge-cake-rgba), 25%);

@@ -46,6 +46,10 @@
   /* padding: 0 45px; */
 }
 
+:global .ant-select-item-option-content{
+  text-transform: capitalize;
+}
+
 .select:global.ant-select-outlined.ant-select
   .ant-select-selection-placeholder {
   color: var(--clr-fortress-grey) !important;

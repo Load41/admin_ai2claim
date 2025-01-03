@@ -631,4 +631,7 @@ hr {
 .letter-space-1{
   letter-spacing: 1px;
 }
+.inline-start.inset-inline-start-0 .ant-select-single .ant-select-selector .ant-select-selection-search{
+  inset-inline-start: 0;
+}
 /* DEFAULT CSS END */

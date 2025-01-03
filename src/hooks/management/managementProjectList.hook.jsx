@@ -8,6 +8,9 @@ export const useManagementProjectListHook = () => {
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(false);
   const [managementData, setManagementData] = useState({});
+  // confirm modal js start
+  const [isApproveRejectedModalOpen, setIsApproveRejectedModalOpen] = useState(false);
+  // confirm modal js end
 
   const doGetManagementDetail = async () => {
     const managementResponse = await doFetchManagementProjectList(id);
@@ -89,7 +92,10 @@ export const useManagementProjectListHook = () => {
             onChange={(value) =>
               handleSelectChange("status", value, record?._id)
             }
-            isFlipInput={true}
+            // isFlipInput={true}
+            
+            className="mb-0 box-shadow-unset inline-start inset-inline-start-0"
+            
           />
         ),
       },
@@ -102,5 +108,19 @@ export const useManagementProjectListHook = () => {
     ];
   }, [managementData]);
 
-  return { isLoading, managementData, id, managementProjectsHandledColumns };
+  // confirm modal js start
+  const showApproveRejectedModal = () => {
+      setIsApproveRejectedModalOpen(true);
+  };
+
+  const approveRejectedModalCancel = () => {
+      setIsApproveRejectedModalOpen(false);
+  };
+  // confirm modal js end
+
+  return { isLoading, managementData, id, managementProjectsHandledColumns, 
+    isApproveRejectedModalOpen,
+    showApproveRejectedModal,
+    approveRejectedModalCancel
+   };
 };
