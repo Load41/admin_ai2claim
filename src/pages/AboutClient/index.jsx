@@ -95,7 +95,7 @@ const AboutClient = () => {
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-            // errorMessage={validateMessages?.email}
+          // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -153,7 +153,7 @@ const AboutClient = () => {
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-            // errorMessage={validateMessages?.email}
+          // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -181,7 +181,7 @@ const AboutClient = () => {
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-            // errorMessage={validateMessages?.email}
+          // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -223,7 +223,7 @@ const AboutClient = () => {
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-            // errorMessage={validateMessages?.email}
+          // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -244,7 +244,7 @@ const AboutClient = () => {
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-            // errorMessage={validateMessages?.email}
+          // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -265,7 +265,7 @@ const AboutClient = () => {
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-            // errorMessage={validateMessages?.email}
+          // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -286,7 +286,7 @@ const AboutClient = () => {
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-            // errorMessage={validateMessages?.email}
+          // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -307,7 +307,7 @@ const AboutClient = () => {
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-            // errorMessage={validateMessages?.email}
+          // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -328,7 +328,7 @@ const AboutClient = () => {
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-            // errorMessage={validateMessages?.email}
+          // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -475,7 +475,7 @@ const AboutClient = () => {
                 return (
                   <div className="w-100" key={index}>
                     <div className="pendingProjectListCard aboutListProjectListCard h-100 cursor cursor-auto">
-                      <div className="text-end cursor-pointer mb-4 hover-text-secondary" onClick={showApproveRejectedModal}>
+                      <div className="text-end cursor-pointer mb-4 hover-text-secondary" onClick={() => showApproveRejectedModal(projectData?._id)}>
                         {svgIcons.deleteIcon2}
                       </div>
                       {/* <div className="text-end cursor-pointer mb-4 hover-text-secondary" onClick={() => handleProjectDelete(projectData?._id)}>
@@ -530,28 +530,28 @@ const AboutClient = () => {
                               </h6>
                               {projectData?.linkin?.insurance_company?.linkinId
                                 ?.name && (
-                                <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
-                                  {
-                                    projectData?.linkin?.insurance_company
-                                      ?.linkinId?.name
-                                  }
-                                  <div
-                                    className={clsx(
-                                      styles.clientDetailProjectImgWrap,
-                                      "ratio ratio-21x9 mt-2"
-                                    )}
-                                  >
-                                    <img
-                                      src={
-                                        projectData?.linkin?.insurance_company
-                                          ?.linkinId?.image
-                                      }
-                                      className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
-                                      alt=""
-                                    />
-                                  </div>
-                                </h6>
-                              )}
+                                  <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
+                                    {
+                                      projectData?.linkin?.insurance_company
+                                        ?.linkinId?.name
+                                    }
+                                    <div
+                                      className={clsx(
+                                        styles.clientDetailProjectImgWrap,
+                                        "ratio ratio-21x9 mt-2"
+                                      )}
+                                    >
+                                      <img
+                                        src={
+                                          projectData?.linkin?.insurance_company
+                                            ?.linkinId?.image
+                                        }
+                                        className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
+                                        alt=""
+                                      />
+                                    </div>
+                                  </h6>
+                                )}
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
                               <h6 className="w-45 mb-0 lh-base fw-bold">
@@ -561,10 +561,10 @@ const AboutClient = () => {
                               <div className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0 d-flex flex-wrap gap-3">
                                 {projectData?.linkin?.insurance_company
                                   ?.files &&
-                                typeof projectData?.linkin?.insurance_company
-                                  ?.files !== "string" &&
-                                projectData?.linkin?.insurance_company?.files
-                                  ?.length > 0 ? (
+                                  typeof projectData?.linkin?.insurance_company
+                                    ?.files !== "string" &&
+                                  projectData?.linkin?.insurance_company?.files
+                                    ?.length > 0 ? (
                                   projectData?.linkin?.insurance_company?.files?.map(
                                     (fileItem, index) => {
                                       return (
@@ -676,24 +676,24 @@ const AboutClient = () => {
                                 {projectData?.linkin?.management?.linkinId
                                   ?.company_name
                                   ? projectData?.linkin?.management?.linkinId
-                                      ?.company_name
+                                    ?.company_name
                                   : "-"}
                                 {"  "}
                                 {projectData?.linkin?.management?.status && (
                                   <span
                                     className={
                                       projectData?.linkin?.management?.status ==
-                                      "accept"
+                                        "accept"
                                         ? "text-matt-green "
                                         : projectData?.linkin?.management
-                                            ?.status == "reject"
-                                        ? "text-arcade-fire "
-                                        : "text-bright-red"
+                                          ?.status == "reject"
+                                          ? "text-arcade-fire "
+                                          : "text-bright-red"
                                     }
                                   >
                                     (
                                     {projectData?.linkin?.management?.status ==
-                                    "accept"
+                                      "accept"
                                       ? "Hire"
                                       : projectData?.linkin?.management?.status}
                                     )
@@ -701,22 +701,22 @@ const AboutClient = () => {
                                 )}
                                 {projectData?.linkin?.management?.linkinId
                                   ?.image && (
-                                  <div
-                                    className={clsx(
-                                      styles.clientDetailProjectImgWrap,
-                                      "ratio ratio-21x9 mt-2"
-                                    )}
-                                  >
-                                    <img
-                                      src={
-                                        projectData?.linkin?.management
-                                          ?.linkinId?.image
-                                      }
-                                      className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
-                                      alt=""
-                                    />
-                                  </div>
-                                )}
+                                    <div
+                                      className={clsx(
+                                        styles.clientDetailProjectImgWrap,
+                                        "ratio ratio-21x9 mt-2"
+                                      )}
+                                    >
+                                      <img
+                                        src={
+                                          projectData?.linkin?.management
+                                            ?.linkinId?.image
+                                        }
+                                        className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
+                                        alt=""
+                                      />
+                                    </div>
+                                  )}
                               </h6>
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
@@ -739,7 +739,7 @@ const AboutClient = () => {
                                 {projectData?.linkin?.material
                                   ?.pick_your_singles
                                   ? projectData?.linkin?.material
-                                      ?.pick_your_singles
+                                    ?.pick_your_singles
                                   : "-"}
                               </h6>
                             </div>
@@ -770,24 +770,24 @@ const AboutClient = () => {
                                 {projectData?.linkin?.crew?.linkinId
                                   ?.company_name
                                   ? projectData?.linkin?.crew?.linkinId
-                                      ?.company_name
+                                    ?.company_name
                                   : "-"}
                                 &nbsp;
                                 {projectData?.linkin?.crew?.status && (
                                   <span
                                     className={
                                       projectData?.linkin?.crew?.status ==
-                                      "accept"
+                                        "accept"
                                         ? "text-matt-green "
                                         : projectData?.linkin?.crew?.status ==
                                           "reject"
-                                        ? "text-arcade-fire "
-                                        : "text-bright-red"
+                                          ? "text-arcade-fire "
+                                          : "text-bright-red"
                                     }
                                   >
                                     (
                                     {projectData?.linkin?.crew?.status ==
-                                    "accept"
+                                      "accept"
                                       ? "Hire"
                                       : projectData?.linkin?.crew?.status}
                                     )
@@ -913,7 +913,7 @@ const AboutClient = () => {
                           <div className="d-flex flex-wrap justify-content-center gap-4">
                             {projectData?.linkin?.optimation?.file &&
                               projectData?.linkin?.optimation?.file?.length >
-                                0 &&
+                              0 &&
                               projectData?.linkin?.optimation?.file?.map(
                                 (fileItem, index) => {
                                   return (
@@ -1239,9 +1239,9 @@ const AboutClient = () => {
                 $&nbsp;
                 {optimizationData?.originalEstimatePrice
                   ? parseInt(optimizationData?.originalEstimatePrice) +
-                    parseInt(optimizationData?.originalEstimateAddOnCost) -
-                    parseInt(optimizationData?.ai2ClaimServiceCostPrice) +
-                    parseInt(optimizationData?.ai2ClaimServiceAddOnCost)
+                  parseInt(optimizationData?.originalEstimateAddOnCost) -
+                  parseInt(optimizationData?.ai2ClaimServiceCostPrice) +
+                  parseInt(optimizationData?.ai2ClaimServiceAddOnCost)
                   : 0}
               </h5>
             </div>
@@ -1289,11 +1289,11 @@ const AboutClient = () => {
                 $&nbsp;{" "}
                 {finalEstimateData?.originalEstimatePrice
                   ? parseInt(finalEstimateData?.originalEstimatePrice) -
-                    parseInt(finalEstimateData?.insuranceClaim) +
-                    parseInt(finalEstimateData?.managementCost) +
-                    parseInt(finalEstimateData?.crewCost) +
-                    parseInt(finalEstimateData?.materialCost) +
-                    parseInt(finalEstimateData?.serviceFees)
+                  parseInt(finalEstimateData?.insuranceClaim) +
+                  parseInt(finalEstimateData?.managementCost) +
+                  parseInt(finalEstimateData?.crewCost) +
+                  parseInt(finalEstimateData?.materialCost) +
+                  parseInt(finalEstimateData?.serviceFees)
                   : 0}
               </h5>
             </div>
@@ -1426,44 +1426,44 @@ const AboutClient = () => {
       />
       {/* Affidavit of Self-General Contractor Status modal end */}
       {/* confirm modal js start */}
-      <LDModal 
+      <LDModal
         title=""
-        open={isApproveRejectedModalOpen} 
+        open={isApproveRejectedModalOpen}
         onCancel={approveRejectedModalCancel}
         modalContent={
-            <>
-             <div className="text-center d-flex flex-column gap-5 gap-xxl-4">
-                  <h2>Confirm</h2>
-                  <h4 className="lh-base mb-0">
-                      Are you sure you want to&nbsp;
-                      <span className="text-bleu-de-france-one">"Delete"</span>&nbsp;?
-                  </h4>
-                  <div className="d-flex align-items-centr gap-5 justify-content-center mt-5 mt-xxl-3">
-                      <LDButton
-                      type="fill"
-                      shape={"round"}
-                      iconPosition={"end"}
-                      isGreenBg
-                      isSmallBtn
-                      customClass={clsx("w-50")}
-                      handleClick={() => handleProjectDelete(projectData?._id)}
-                      >
-                      Yes
-                      </LDButton>
-                      <LDButton
-                      type="fill"
-                      shape={"round"}
-                      iconPosition={"end"}
-                      isRedBg
-                      isSmallBtn
-                      customClass={clsx("w-50")}
-                      handleClick={approveRejectedModalCancel}
-                      >
-                      No
-                      </LDButton>
-                  </div>
+          <>
+            <div className="text-center d-flex flex-column gap-5 gap-xxl-4">
+              <h2>Confirm</h2>
+              <h4 className="lh-base mb-0">
+                Are you sure you want to&nbsp;
+                <span className="text-bleu-de-france-one">"Delete"</span>&nbsp;?
+              </h4>
+              <div className="d-flex align-items-centr gap-5 justify-content-center mt-5 mt-xxl-3">
+                <LDButton
+                  type="fill"
+                  shape={"round"}
+                  iconPosition={"end"}
+                  isGreenBg
+                  isSmallBtn
+                  customClass={clsx("w-50")}
+                  handleClick={() => handleProjectDelete()}
+                >
+                  Yes
+                </LDButton>
+                <LDButton
+                  type="fill"
+                  shape={"round"}
+                  iconPosition={"end"}
+                  isRedBg
+                  isSmallBtn
+                  customClass={clsx("w-50")}
+                  handleClick={approveRejectedModalCancel}
+                >
+                  No
+                </LDButton>
               </div>
-            </>
+            </div>
+          </>
         }
       />
       {/* confirm modal js end */}
