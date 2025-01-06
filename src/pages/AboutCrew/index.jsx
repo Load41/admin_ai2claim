@@ -7,16 +7,16 @@ import { Link } from "react-router-dom";
 import styles from "./AboutCrew.module.css";
 
 const AboutCrew = () => {
-  const { crewData,crewHandledList } = useCrewDetailHook();
+  const { crewData, crewHandledList } = useCrewDetailHook();
   // projects-handled-management-list open page start
-   
+
   return (
     <>
       <div className={clsx("admin-content")}>
         <div className="d-flex align-items-center justify-content-between flex-wrap gap-5 gap-xxl-4">
           <div className="d-flex align-items-center flex-wrap gap-4 gap-xl-3">
             <Link
-              to="/crew-list"
+              to={localStorage.getItem("backUrl") ? localStorage.getItem("backUrl") : "/crew-list"}
               className="back-next-arrow-wrap flex-0-auto d-flex align-items-center justify-content-center rounded-circle cursor-pointer hover-text-white me-2"
             >
               {svgIcons.backArrowFillIcon}

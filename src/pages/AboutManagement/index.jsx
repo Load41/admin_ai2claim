@@ -20,7 +20,7 @@ const AboutManagement = () => {
         <div className="d-flex align-items-center justify-content-between flex-wrap gap-5 gap-xxl-4">
           <div className="d-flex align-items-center flex-wrap gap-4 gap-xl-3">
             <Link
-              to="/management-list"
+              to={localStorage.getItem("backUrl") ? localStorage.getItem("backUrl") : "/management-list"}
               className="back-next-arrow-wrap flex-0-auto d-flex align-items-center justify-content-center rounded-circle cursor-pointer hover-text-white me-2"
             >
               {svgIcons.backArrowFillIcon}
