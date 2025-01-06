@@ -18,6 +18,7 @@ export const LDProjectsCard = ({
   handleClickRejected,
   redirectPath,
   isFullDetails,
+  showApproveRejectedModal,
   isShowInfoMsg
 }) => {
   const navigate = useNavigate();
@@ -36,6 +37,9 @@ export const LDProjectsCard = ({
               return (
                 <div className="mt-4" key={index}>
                   <div className="pendingProjectListCard h-100 d-flex flex-column">
+                    <div className="text-end cursor-pointer mb-4 hover-text-secondary" onClick={() => showApproveRejectedModal(item?.id)}>
+                      {svgIcons.deleteIcon2}
+                    </div>
                     <div
                       className="pendingProjectLisRow w-100"
                       onClick={() => navigate(`${redirectPath}/${item?.id}`)}
@@ -60,8 +64,8 @@ export const LDProjectsCard = ({
                           {item?.username
                             ? item?.username
                             : item?.createdBy?.username
-                            ? item?.createdBy?.username
-                            : item?.company_name}
+                              ? item?.createdBy?.username
+                              : item?.company_name}
                         </h6>
                       </div>
 
@@ -101,8 +105,8 @@ export const LDProjectsCard = ({
                               {item?.username
                                 ? item?.username
                                 : item?.createdBy?.username
-                                ? item?.createdBy?.username
-                                : item?.company_name}
+                                  ? item?.createdBy?.username
+                                  : item?.company_name}
                             </h6>
                           </div>
                           {/* <div className="d-flex flex-column flex-sm-row w-100 mb-4">
@@ -234,8 +238,8 @@ export const LDProjectsCard = ({
                               item?.username
                                 ? item?.username
                                 : item?.createdBy?.username
-                                ? item?.createdBy?.username
-                                : item?.company_name
+                                  ? item?.createdBy?.username
+                                  : item?.company_name
                             )
                           }
                         >
@@ -258,8 +262,8 @@ export const LDProjectsCard = ({
                               item?.username
                                 ? item?.username
                                 : item?.createdBy?.username
-                                ? item?.createdBy?.username
-                                : item?.company_name
+                                  ? item?.createdBy?.username
+                                  : item?.company_name
                             )
                           }
                         >
@@ -298,14 +302,18 @@ export const LDProjectsCard = ({
                       projectCardData?.map((item, index) => {
                         return (
                           <SwiperSlide key={index}>
+
                             <div
                               className="pendingProjectListCard h-100"
                               key={index}
-                              onClick={() =>
-                                navigate(`${redirectPath}/${item?.id}`)
-                              }
+
                             >
-                              <div className="pendingProjectLisRow w-100">
+                              <div className="text-end cursor-pointer mb-4 hover-text-secondary" onClick={() => showApproveRejectedModal(item?.id)}>
+                                {svgIcons.deleteIcon2}
+                              </div>
+                              <div className="pendingProjectLisRow w-100" onClick={() =>
+                                navigate(`${redirectPath}/${item?.id}`)
+                              }>
                                 <div
                                   className={
                                     "pendingProjectListLeftCol text-center flex-0-auto"
@@ -326,8 +334,8 @@ export const LDProjectsCard = ({
                                     {item?.username
                                       ? item?.username
                                       : item?.createdBy?.username
-                                      ? item?.createdBy?.username
-                                      : item?.company_name}
+                                        ? item?.createdBy?.username
+                                        : item?.company_name}
                                   </h6>
                                 </div>
                                 <div

@@ -10,6 +10,10 @@ export const useDashboardHook = () => {
   const [managementList, setManagementList] = useState({});
   const [crewList, setCrewList] = useState({});
   const [clientList, setClientList] = useState({});
+  const [userId, setUserId] = useState({});
+
+  const [isApproveRejectedModalOpen, setIsApproveRejectedModalOpen] = useState(false);
+
   const [paginationData, setPaginationData] = useState({
     currentPage: 1,
     pageSize: 5,
@@ -55,5 +59,43 @@ export const useDashboardHook = () => {
     doGetManagementList();
   }, []);
 
-  return { isLoading, managementList, crewList, clientList, paginationData };
+  const handleUserDelete = async () => {
+    if (userId) {
+      const clientProjectResponse = await doFetchClientDelete(userId)
+
+      if (clientProjectResponse?.status == 200) {
+        doGetClientList();
+        setIsLoading(false);
+        toast.success("Project delete success!");
+
+      } else {
+        // toast.error("")
+
+        setIsLoading(false);
+      }
+    }
+  }
+
+
+  // confirm modal js start
+  const showApproveRejectedModal = (id, type) => {
+    setUserId({ id, type })
+    setIsApproveRejectedModalOpen(true);
+  };
+
+  const approveRejectedModalCancel = () => {
+    setIsApproveRejectedModalOpen(false);
+  };
+
+  return {
+    isLoading,
+    managementList,
+    crewList,
+    clientList,
+    paginationData,
+    isApproveRejectedModalOpen,
+    showApproveRejectedModal,
+    approveRejectedModalCancel,
+    handleUserDelete
+  };
 };
