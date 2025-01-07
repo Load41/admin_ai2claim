@@ -315,9 +315,9 @@ export const useClientDetailHook = () => {
       key: "subTotal",
     },
   ];
-
-  // final estimate table start
-  const finalEstimateColumn = [
+// estimate table end
+  // Send Final Estimate modal (table) start
+  const estimateWithOptimizationColumn = [
     {
       title: "Name",
       dataIndex: "name",
@@ -329,7 +329,19 @@ export const useClientDetailHook = () => {
       key: "subTotal",
     },
   ];
-
+  const estimateWithoutOptimizationColumn = [
+    {
+      title: "Name",
+      dataIndex: "name",
+      key: "name",
+    },
+    {
+      title: "Sub Total",
+      dataIndex: "subTotal",
+      key: "subTotal",
+    },
+  ];
+// Send Final Estimate modal (table) end
   const handleProjectDelete = async () => {
     if (projectId) {
       const clientProjectResponse = await doFetchClientProjectDelete(projectId)
@@ -363,7 +375,8 @@ export const useClientDetailHook = () => {
     isLoading,
     clientData,
     estimateColumn,
-    finalEstimateColumn,
+    estimateWithOptimizationColumn,
+    estimateWithoutOptimizationColumn,
     optimizationData,
     isOptimizationModalOpen,
     isAffidavitSelfGeneralContractorOpen,
@@ -385,6 +398,6 @@ export const useClientDetailHook = () => {
     finalEstimateData,
     isApproveRejectedModalOpen,
     showApproveRejectedModal,
-    approveRejectedModalCancel
+    approveRejectedModalCancel,
   };
 };

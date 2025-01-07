@@ -28,21 +28,21 @@ const items = [
   ),
   getItem(
     <>
-      <h6 className="mb-0">Pending files</h6>
+      <h6 className="mb-0"> Panding Approval</h6>
     </>,
     "pending",
     svgIcons.pendingListIcon,
     [
       getItem(
         <>
-          <Link to="/management-list-pending">Management file</Link>
+          <Link to="/management-list-pending">Management</Link>
         </>,
         "/management-list-pending",
         svgIcons.directFreight
       ),
       getItem(
         <>
-          <Link to="/crew-list-pending">Crew file</Link>
+          <Link to="/crew-list-pending">Crew</Link>
         </>,
         "/crew-list-pending",
         svgIcons.viewTruckPath

@@ -147,7 +147,7 @@ const AboutManagement = () => {
                 </ul> */}
               </div>
               <div className="d-flex align-items-center flex-wrap gap-4 mt-xxl-4">
-                {/* <LDButton
+                <LDButton
                   type="fill"
                   shape={"round"}
                   iconPosition={"end"}
@@ -158,7 +158,7 @@ const AboutManagement = () => {
                   }}
                 >
                   Enable/Disable Services
-                </LDButton> */}
+                </LDButton>
                 <LDButton
                   type="fill"
                   shape={"round"}
@@ -177,7 +177,7 @@ const AboutManagement = () => {
                   customClass={clsx("")}
                   handleClick={managementHandledList}
                 >
-                  List of projects ({managementData?.projectPending})
+                  List of Pending projects ({managementData?.projectPending})
                 </LDButton>
               </div>
             </div>
