@@ -1,13 +1,19 @@
 import React from "react";
 import { clsx } from "clsx";
 import { svgIcons } from "../../constants/icons";
-import { LDButton } from "../../components";
+import { LDButton, LDModal } from "../../components";
 import { useManagementDetailHook } from "../../hooks";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./AboutManagement.module.css";
 
 const AboutManagement = () => {
-  const { isLoading, managementData, managementHandledList } = useManagementDetailHook();
+  const { isLoading,
+    managementData,
+    managementHandledList,
+    isApproveRejectedModalOpen,
+    showApproveRejectedModal,
+    approveRejectedModalCancel,
+    handleUserServiceStatusUpdate } = useManagementDetailHook();
 
   // management list pending open page start
   const managementPendingFile = () => {
@@ -153,13 +159,11 @@ const AboutManagement = () => {
                   iconPosition={"end"}
                   isFillBtn
                   customClass={clsx("")}
-                  handleClick={() => {
-                    return false;
-                  }}
+                  handleClick={() => showApproveRejectedModal(managementData?.managementDetail?.createdBy?.id)}
                 >
-                  Enable/Disable Services
+                  {managementData?.managementDetail?.createdBy?.is_service ? "Enable" : "Disable"} Services
                 </LDButton>
-                <LDButton
+                {/* <LDButton
                   type="fill"
                   shape={"round"}
                   iconPosition={"end"}
@@ -168,7 +172,7 @@ const AboutManagement = () => {
                   handleClick={managementHandledList}
                 >
                   List of Projects Handled({managementData?.projectAccept})
-                </LDButton>
+                </LDButton> */}
                 <LDButton
                   type="fill"
                   shape={"round"}
@@ -177,7 +181,7 @@ const AboutManagement = () => {
                   customClass={clsx("")}
                   handleClick={managementHandledList}
                 >
-                  List of Pending projects ({managementData?.projectPending})
+                  List of projects ({managementData?.projectAccept + managementData?.projectPending})
                 </LDButton>
               </div>
             </div>
@@ -209,6 +213,48 @@ const AboutManagement = () => {
           </div>
         </div>
       </div>
+      {/* confirm modal js start */}
+      <LDModal
+        title=""
+        open={isApproveRejectedModalOpen}
+        onCancel={approveRejectedModalCancel}
+        modalContent={
+          <>
+            <div className="text-center d-flex flex-column gap-5 gap-xxl-4">
+              <h2>Confirm</h2>
+              <h4 className="lh-base mb-0">
+                Are you sure you want to&nbsp;
+                <span className="text-bleu-de-france-one">   {managementData?.managementDetail?.createdBy?.is_service ? "Enable" : "Disable"}</span>&nbsp; Services?
+              </h4>
+              <div className="d-flex align-items-centr gap-5 justify-content-center mt-5 mt-xxl-3">
+                <LDButton
+                  type="fill"
+                  shape={"round"}
+                  iconPosition={"end"}
+                  isGreenBg
+                  isSmallBtn
+                  customClass={clsx("w-50")}
+                  handleClick={() => handleUserServiceStatusUpdate()}
+                >
+                  Yes
+                </LDButton>
+                <LDButton
+                  type="fill"
+                  shape={"round"}
+                  iconPosition={"end"}
+                  isRedBg
+                  isSmallBtn
+                  customClass={clsx("w-50")}
+                  handleClick={approveRejectedModalCancel}
+                >
+                  No
+                </LDButton>
+              </div>
+            </div>
+          </>
+        }
+      />
+      {/* confirm modal js end */}
     </>
   );
 };

@@ -1,14 +1,16 @@
 import moment from "moment";
 import { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
-import { doFetchManagementProjectList } from "../../actions";
+import { doFetchClientProjectLinkInTypeUpdate, doFetchManagementProjectList, doFetchManagementStatusServiceUpdate } from "../../actions";
 import { AISelect } from "../../components/AISelect";
+import { toast } from "react-toastify";
 
 export const useManagementProjectListHook = () => {
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(false);
   const [managementData, setManagementData] = useState({});
   // confirm modal js start
+  const [managementStatusData, setManagementStatusData] = useState({});
   const [isApproveRejectedModalOpen, setIsApproveRejectedModalOpen] = useState(false);
   // confirm modal js end
 
@@ -23,7 +25,10 @@ export const useManagementProjectListHook = () => {
     doGetManagementDetail();
   }, [id]);
 
-  const handleSelectChange = (name, value, projectId) => {};
+  const handleSelectChange = (name, value, projectId) => {
+    setManagementStatusData({ [name]: value, projectId })
+    showApproveRejectedModal()
+  };
 
   const statusOptions = [
     {
@@ -70,8 +75,8 @@ export const useManagementProjectListHook = () => {
         render: (_, record) =>
           record?.linkin?.management?.createdAt
             ? moment(record?.linkin?.management?.createdAt).format(
-                `YYYY-MM-DD hh:mm`
-              )
+              `YYYY-MM-DD hh:mm`
+            )
             : "-",
       },
       {
@@ -93,9 +98,9 @@ export const useManagementProjectListHook = () => {
               handleSelectChange("status", value, record?._id)
             }
             // isFlipInput={true}
-            
+
             className="mb-0 box-shadow-unset inline-start inset-inline-start-0"
-            
+
           />
         ),
       },
@@ -108,19 +113,49 @@ export const useManagementProjectListHook = () => {
     ];
   }, [managementData]);
 
+  const handleUserProjectStatusUpdate = async () => {
+    if (managementStatusData?.projectId) {
+
+      const formData = new FormData();
+      formData.append("type", "management");
+
+      formData.append("status", managementStatusData?.status);
+      const clientProjectResponse = await doFetchClientProjectLinkInTypeUpdate(
+        managementStatusData?.projectId,
+        formData
+      );
+
+      if (clientProjectResponse?.status == 200) {
+        setIsLoading(false);
+        doGetManagementDetail()
+        toast.success("Management project status update success!");
+        approveRejectedModalCancel()
+      } else {
+        // toast.error("")
+
+        setIsLoading(false);
+      }
+    }
+  }
   // confirm modal js start
   const showApproveRejectedModal = () => {
-      setIsApproveRejectedModalOpen(true);
+    setIsApproveRejectedModalOpen(true);
   };
 
   const approveRejectedModalCancel = () => {
-      setIsApproveRejectedModalOpen(false);
+    setIsApproveRejectedModalOpen(false);
   };
   // confirm modal js end
 
-  return { isLoading, managementData, id, managementProjectsHandledColumns, 
+  return {
+    isLoading,
+    managementData,
+    id,
+    managementProjectsHandledColumns,
     isApproveRejectedModalOpen,
+    managementStatusData,
     showApproveRejectedModal,
-    approveRejectedModalCancel
-   };
+    approveRejectedModalCancel,
+    handleUserProjectStatusUpdate,
+  };
 };

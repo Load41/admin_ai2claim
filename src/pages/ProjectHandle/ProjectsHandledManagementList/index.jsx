@@ -6,13 +6,18 @@ import { LDButton, LDModal, LDTable } from "../../../components";
 import { useManagementProjectListHook } from "../../../hooks";
 
 const ProjectsHandledManagementList = ({
-  
+
 }) => {
-  const { isLoading, managementData, id, managementProjectsHandledColumns,
+  const {
+    isLoading,
+    managementData,
+    id,
+    managementProjectsHandledColumns,
     isApproveRejectedModalOpen,
-    showApproveRejectedModal,
-    approveRejectedModalCancel
-   } =
+    managementStatusData,
+    approveRejectedModalCancel,
+    handleUserProjectStatusUpdate
+  } =
     useManagementProjectListHook();
   return (
     <>
@@ -60,44 +65,44 @@ const ProjectsHandledManagementList = ({
       </div>
       {/* confirm modal js start */}
       {/* <div onClick={showApproveRejectedModal}>Confirm delete modal</div> */}
-      <LDModal 
+      <LDModal
         title=""
-        open={isApproveRejectedModalOpen} 
+        open={isApproveRejectedModalOpen}
         onCancel={approveRejectedModalCancel}
         modalContent={
-            <>
-              <div className="text-center d-flex flex-column gap-5 gap-xxl-4">
-                  <h2>Confirm</h2>
-                  <h4 className="lh-base mb-0">
-                      Are you sure you want to&nbsp;
-                      <span className="text-bleu-de-france-one">"Delete"</span>&nbsp;?
-                  </h4>
-                  <div className="d-flex align-items-centr gap-5 justify-content-center mt-5 mt-xxl-3">
-                      <LDButton
-                      type="fill"
-                      shape={"round"}
-                      iconPosition={"end"}
-                      isGreenBg
-                      isSmallBtn
-                      customClass={clsx("w-50")}
-                      handleClick={approveRejectedModalCancel}
-                      >
-                      Yes
-                      </LDButton>
-                      <LDButton
-                      type="fill"
-                      shape={"round"}
-                      iconPosition={"end"}
-                      isRedBg
-                      isSmallBtn
-                      customClass={clsx("w-50")}
-                      handleClick={approveRejectedModalCancel}
-                      >
-                      No
-                      </LDButton>
-                  </div>
+          <>
+            <div className="text-center d-flex flex-column gap-5 gap-xxl-4">
+              <h2>Confirm</h2>
+              <h4 className="lh-base mb-0">
+                Are you sure you want to&nbsp;
+                <span className="text-bleu-de-france-one">"{managementStatusData?.status}"</span>&nbsp; Status Update?
+              </h4>
+              <div className="d-flex align-items-centr gap-5 justify-content-center mt-5 mt-xxl-3">
+                <LDButton
+                  type="fill"
+                  shape={"round"}
+                  iconPosition={"end"}
+                  isGreenBg
+                  isSmallBtn
+                  customClass={clsx("w-50")}
+                  handleClick={handleUserProjectStatusUpdate}
+                >
+                  Yes
+                </LDButton>
+                <LDButton
+                  type="fill"
+                  shape={"round"}
+                  iconPosition={"end"}
+                  isRedBg
+                  isSmallBtn
+                  customClass={clsx("w-50")}
+                  handleClick={approveRejectedModalCancel}
+                >
+                  No
+                </LDButton>
               </div>
-            </>
+            </div>
+          </>
         }
       />
       {/* confirm modal js end */}

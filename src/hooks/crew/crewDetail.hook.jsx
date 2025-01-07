@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { doFetchCrewDetail } from "../../actions";
+import { doFetchCrewDetail, doFetchCrewStatusServiceUpdate, doFetchCrewStatusUpdate } from "../../actions";
+import { toast } from "react-toastify";
 
 export const useCrewDetailHook = () => {
   // doFetchManagementDetail
@@ -8,6 +9,10 @@ export const useCrewDetailHook = () => {
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(false);
   const [crewData, setCrewData] = useState({});
+
+  const [userId, setUserId] = useState();
+
+  const [isApproveRejectedModalOpen, setIsApproveRejectedModalOpen] = useState(false);
 
   const doGetCrewList = async () => {
     const crewResponse = await doFetchCrewDetail(id);
@@ -22,5 +27,46 @@ export const useCrewDetailHook = () => {
   const crewHandledList = () => {
     navigate(`/crew-handled-management-list/${id}`);
   };
-  return { isLoading, crewData, crewHandledList };
+
+  const handleUserServiceStatusUpdate = async () => {
+    if (userId) {
+      const paramsData = {
+        userId: crewData?.cewDetail?.createdBy?.id,
+        is_service: crewData?.cewDetail?.createdBy?.is_service ? false : true
+      }
+      const clientProjectResponse = await doFetchCrewStatusServiceUpdate(paramsData)
+
+      if (clientProjectResponse?.status == 200) {
+        setIsLoading(false);
+        doGetCrewList()
+        toast.success("Crew service status update success!");
+        approveRejectedModalCancel()
+      } else {
+        // toast.error("")
+
+        setIsLoading(false);
+      }
+    }
+  }
+
+
+  // confirm modal js start
+  const showApproveRejectedModal = (id) => {
+    setUserId(id)
+    setIsApproveRejectedModalOpen(true);
+  };
+
+  const approveRejectedModalCancel = () => {
+    setIsApproveRejectedModalOpen(false);
+  };
+
+  return {
+    isLoading,
+    crewData,
+    isApproveRejectedModalOpen,
+    crewHandledList,
+    showApproveRejectedModal,
+    approveRejectedModalCancel,
+    handleUserServiceStatusUpdate
+  };
 };

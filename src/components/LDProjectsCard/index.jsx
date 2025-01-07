@@ -14,6 +14,7 @@ export const LDProjectsCard = ({
   projectCardData,
   isNotSwiper,
   isBtn,
+  type,
   handleClickStatusUpdate,
   handleClickRejected,
   redirectPath,
@@ -308,7 +309,7 @@ export const LDProjectsCard = ({
                               key={index}
 
                             >
-                              <div className="text-end cursor-pointer mb-4 hover-text-secondary" onClick={() => showApproveRejectedModal(item?.id)}>
+                              <div className="text-end cursor-pointer mb-4 hover-text-secondary" onClick={() => showApproveRejectedModal(item?.id, type)}>
                                 {svgIcons.deleteIcon2}
                               </div>
                               <div className="pendingProjectLisRow w-100" onClick={() =>

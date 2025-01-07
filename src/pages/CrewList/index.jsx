@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { clsx } from "clsx";
-import { LDPagination, LDProjectsCard } from "../../components";
+import { LDButton, LDModal, LDPagination, LDProjectsCard } from "../../components";
 import { useCrewListHook } from "../../hooks";
 import { LDInput } from "../../components/LDInput";
 import { svgIcons } from "../../constants/icons";
@@ -48,6 +48,10 @@ const CrewList = () => {
     paginationServerData,
     handleKeyDownSearch,
     handleOrderTableChange,
+    approveRejectedModalCancel,
+    handleUserDelete,
+    isApproveRejectedModalOpen,
+    showApproveRejectedModal
   } = useCrewListHook();
   return (
     <>
@@ -107,6 +111,7 @@ const CrewList = () => {
                 projectCardData={crewDataList}
                 isNotSwiper
                 redirectPath={"/crew-detail"}
+                showApproveRejectedModal={showApproveRejectedModal}
               />
             )}
             <div className="w-100 d-flex justify-content-center mt-4 pt-3">
@@ -122,6 +127,48 @@ const CrewList = () => {
           </div>
         </div>
       </div>
+      {/* confirm modal js start */}
+      <LDModal
+        title=""
+        open={isApproveRejectedModalOpen}
+        onCancel={approveRejectedModalCancel}
+        modalContent={
+          <>
+            <div className="text-center d-flex flex-column gap-5 gap-xxl-4">
+              <h2>Confirm</h2>
+              <h4 className="lh-base mb-0">
+                Are you sure you want to&nbsp;
+                <span className="text-bleu-de-france-one">"Delete"</span>&nbsp;?
+              </h4>
+              <div className="d-flex align-items-centr gap-5 justify-content-center mt-5 mt-xxl-3">
+                <LDButton
+                  type="fill"
+                  shape={"round"}
+                  iconPosition={"end"}
+                  isGreenBg
+                  isSmallBtn
+                  customClass={clsx("w-50")}
+                  handleClick={() => handleUserDelete()}
+                >
+                  Yes
+                </LDButton>
+                <LDButton
+                  type="fill"
+                  shape={"round"}
+                  iconPosition={"end"}
+                  isRedBg
+                  isSmallBtn
+                  customClass={clsx("w-50")}
+                  handleClick={approveRejectedModalCancel}
+                >
+                  No
+                </LDButton>
+              </div>
+            </div>
+          </>
+        }
+      />
+      {/* confirm modal js end */}
     </>
   );
 };

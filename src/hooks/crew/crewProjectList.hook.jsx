@@ -1,8 +1,9 @@
 import moment from "moment";
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { doFetchCrewDetail, doFetchCrewProjectList } from "../../actions";
+import { doFetchClientProjectLinkInTypeUpdate, doFetchCrewDetail, doFetchCrewProjectList } from "../../actions";
 import { AISelect } from "../../components/AISelect";
+import { toast } from "react-toastify";
 
 export const useCrewProjectListHook = () => {
   // doFetchManagementDetail
@@ -10,6 +11,8 @@ export const useCrewProjectListHook = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [crewData, setCrewData] = useState({});
+  const [crewStatusData, setCrewStatusData] = useState({});
+  const [isApproveRejectedModalOpen, setIsApproveRejectedModalOpen] = useState(false);
 
   const doGetCrewList = async () => {
     const crewResponse = await doFetchCrewProjectList(id);
@@ -25,7 +28,10 @@ export const useCrewProjectListHook = () => {
     navigate(`/crew-handled-management-list/${id}`);
   };
 
-  const handleSelectChange = (name, value, projectId) => {};
+  const handleSelectChange = (name, value, projectId) => {
+    setCrewStatusData({ [name]: value, projectId })
+    showApproveRejectedModal()
+  };
 
   const statusOptions = [
     {
@@ -104,11 +110,51 @@ export const useCrewProjectListHook = () => {
     ];
   }, [crewData]);
 
+  const handleUserProjectStatusUpdate = async () => {
+    if (crewStatusData?.projectId) {
+      const formData = new FormData();
+      formData.append("type", "crew");
+
+      formData.append("status", crewStatusData?.status);
+      const clientProjectResponse = await doFetchClientProjectLinkInTypeUpdate(
+        crewStatusData?.projectId,
+        formData
+      );
+
+      if (clientProjectResponse?.status == 200) {
+        setIsLoading(false);
+        doGetCrewList()
+        toast.success("Crew project status update success!");
+        approveRejectedModalCancel()
+      } else {
+        // toast.error("")
+
+        setIsLoading(false);
+      }
+    }
+  }
+
+
+  // confirm modal js start
+  const showApproveRejectedModal = () => {
+
+    setIsApproveRejectedModalOpen(true);
+  };
+
+  const approveRejectedModalCancel = () => {
+    setIsApproveRejectedModalOpen(false);
+  };
+
   return {
     isLoading,
     id,
     crewData,
     crewHandledList,
     crewProjectsHandledColumns,
+    isApproveRejectedModalOpen,
+    crewStatusData,
+    showApproveRejectedModal,
+    approveRejectedModalCancel,
+    handleUserProjectStatusUpdate
   };
 };

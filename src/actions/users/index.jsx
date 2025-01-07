@@ -123,7 +123,20 @@ export const doFetchClientProjectDelete = async (projectId) => {
   try {
     const response = await axiosApi({
       method: "get",
-      url: `admin/user/projects/${projectId}/delete`, 
+      url: `admin/user/projects/${projectId}/delete`,
+    });
+    return response.data;
+  } catch (error) {
+    console.log({ error });
+    return error.response;
+  }
+};
+
+export const doFetchClientDelete = async (id) => {
+  try {
+    const response = await axiosApi({
+      method: "get",
+      url: `admin/user/delete/${id}`,
     });
     return response.data;
   } catch (error) {

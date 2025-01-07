@@ -1,13 +1,19 @@
 import React from "react";
 import { clsx } from "clsx";
 import { svgIcons } from "../../constants/icons";
-import { LDButton } from "../../components";
+import { LDButton, LDModal } from "../../components";
 import { useCrewDetailHook } from "../../hooks";
 import { Link } from "react-router-dom";
 import styles from "./AboutCrew.module.css";
 
 const AboutCrew = () => {
-  const { crewData, crewHandledList } = useCrewDetailHook();
+  const { crewData,
+    crewHandledList,
+    approveRejectedModalCancel,
+    isApproveRejectedModalOpen,
+    showApproveRejectedModal,
+    handleUserServiceStatusUpdate
+  } = useCrewDetailHook();
   // projects-handled-management-list open page start
 
   return (
@@ -145,13 +151,11 @@ const AboutCrew = () => {
                   iconPosition={"end"}
                   isFillBtn
                   customClass={clsx("")}
-                  handleClick={() => {
-                    return false;
-                  }}
+                  handleClick={() => showApproveRejectedModal(crewData?.cewDetail?.createdBy?.id)}
                 >
-                  Enable/Disable Services
+                  {crewData?.cewDetail?.createdBy?.is_service ? "Enable" : "Disable"}  Services
                 </LDButton>
-                <LDButton
+                {/* <LDButton
                   type="fill"
                   shape={"round"}
                   iconPosition={"end"}
@@ -160,7 +164,7 @@ const AboutCrew = () => {
                   handleClick={crewHandledList}
                 >
                   List of Projects Handled({crewData?.projectAccept})
-                </LDButton>
+                </LDButton> */}
                 <LDButton
                   type="fill"
                   shape={"round"}
@@ -169,7 +173,7 @@ const AboutCrew = () => {
                   customClass={clsx("")}
                   handleClick={crewHandledList}
                 >
-                  List of Pending Projects({crewData?.projectPending})
+                  List of Projects({crewData?.projectAccept + crewData?.projectPending})
                 </LDButton>
               </div>
             </div>
@@ -198,6 +202,48 @@ const AboutCrew = () => {
           </div>
         </div>
       </div>
+      {/* confirm modal js start */}
+      <LDModal
+        title=""
+        open={isApproveRejectedModalOpen}
+        onCancel={approveRejectedModalCancel}
+        modalContent={
+          <>
+            <div className="text-center d-flex flex-column gap-5 gap-xxl-4">
+              <h2>Confirm</h2>
+              <h4 className="lh-base mb-0">
+                Are you sure you want to&nbsp;
+                <span className="text-bleu-de-france-one"> {crewData?.cewDetail?.createdBy?.is_service ? "Disable" : "Enable"}</span>&nbsp; Services?
+              </h4>
+              <div className="d-flex align-items-centr gap-5 justify-content-center mt-5 mt-xxl-3">
+                <LDButton
+                  type="fill"
+                  shape={"round"}
+                  iconPosition={"end"}
+                  isGreenBg
+                  isSmallBtn
+                  customClass={clsx("w-50")}
+                  handleClick={() => handleUserServiceStatusUpdate()}
+                >
+                  Yes
+                </LDButton>
+                <LDButton
+                  type="fill"
+                  shape={"round"}
+                  iconPosition={"end"}
+                  isRedBg
+                  isSmallBtn
+                  customClass={clsx("w-50")}
+                  handleClick={approveRejectedModalCancel}
+                >
+                  No
+                </LDButton>
+              </div>
+            </div>
+          </>
+        }
+      />
+      {/* confirm modal js end */}
     </>
   );
 };

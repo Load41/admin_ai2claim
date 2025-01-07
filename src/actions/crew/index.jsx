@@ -105,6 +105,19 @@ export const doFetchCrewStatusUpdate = async (data) => {
     return error.response;
   }
 };
+export const doFetchCrewStatusServiceUpdate = async (data) => {
+  try {
+    const response = await axiosApi({
+      method: "post",
+      url: `admin/crew/status-service-update`,
+      data: data,
+    });
+    return response.data;
+  } catch (error) {
+    console.log({ error });
+    return error.response;
+  }
+};
 
 export const doFetchCrewProjectList = async (id) => {
   try {
@@ -118,3 +131,5 @@ export const doFetchCrewProjectList = async (id) => {
     return error.response;
   }
 };
+
+ 
