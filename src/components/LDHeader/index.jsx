@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { clsx } from "clsx";
 import {
   companyOne,
@@ -7,7 +7,7 @@ import {
   manWorkerFive,
   manWorkerSix,
 } from "../../constants/imageData";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { svgIcons } from "../../constants/icons";
 import { LDInput } from "../LDInput";
 import { Modal, Popover } from "antd";
@@ -15,9 +15,10 @@ import styles from "./LDHeader.module.css";
 import { LDButton } from "../LDButton";
 import { useNavigate } from "react-router-dom";
 
-export const LDHeader = ({}) => {
+export const LDHeader = ({ }) => {
   // logout modal js start
   const navigate = useNavigate();
+  const location = useLocation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
@@ -33,6 +34,14 @@ export const LDHeader = ({}) => {
     navigate("/login");
   };
 
+  useEffect(() => {
+
+    return () => {
+      if (location?.pathname?.includes("client-detail")) {
+        localStorage.setItem("backUrl", location?.pathname)
+      }
+    }
+  }, [location])
   // logout modal js end
 
   const notificationPopoverData = (

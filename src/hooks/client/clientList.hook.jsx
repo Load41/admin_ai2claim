@@ -11,6 +11,10 @@ export const useClientHook = () => {
     search: "",
   });
 
+  const [userId, setUserId] = useState();
+
+  const [isApproveRejectedModalOpen, setIsApproveRejectedModalOpen] = useState(false);
+  
   const doGetUserList = async () => {
     const clientListResponse = await doFetchAllUserList({
       ...paginationData,
@@ -45,12 +49,44 @@ export const useClientHook = () => {
     }
   };
 
+  const handleUserDelete = async () => {
+    if (userId) {
+      const clientProjectResponse = await doFetchClientDelete(userId)
+
+      if (clientProjectResponse?.status == 200) {
+        doGetClientList();
+        setIsLoading(false);
+        toast.success("Project delete success!");
+
+      } else {
+        // toast.error("")
+
+        setIsLoading(false);
+      }
+    }
+  }
+
+
+  // confirm modal js start
+  const showApproveRejectedModal = (id) => {
+    setUserId(id)
+    setIsApproveRejectedModalOpen(true);
+  };
+
+  const approveRejectedModalCancel = () => {
+    setIsApproveRejectedModalOpen(false);
+  };
+
   return {
     isLoading,
     paginationServerData,
     clientDataList,
     paginationData,
+    isApproveRejectedModalOpen,
     handleOrderTableChange,
     handleKeyDownSearch,
+    showApproveRejectedModal,
+    approveRejectedModalCancel,
+    handleUserDelete
   };
 };
