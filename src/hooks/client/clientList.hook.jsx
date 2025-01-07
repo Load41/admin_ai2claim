@@ -14,7 +14,7 @@ export const useClientHook = () => {
   const [userId, setUserId] = useState();
 
   const [isApproveRejectedModalOpen, setIsApproveRejectedModalOpen] = useState(false);
-  
+
   const doGetUserList = async () => {
     const clientListResponse = await doFetchAllUserList({
       ...paginationData,
@@ -56,7 +56,7 @@ export const useClientHook = () => {
       if (clientProjectResponse?.status == 200) {
         doGetClientList();
         setIsLoading(false);
-        toast.success("Project delete success!");
+        toast.success("client delete success!");
 
       } else {
         // toast.error("")
