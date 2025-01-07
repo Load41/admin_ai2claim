@@ -23,6 +23,7 @@
 table thead.ant-table-thead tr th.ant-table-cell {
   background-color: #efefef;
   border-bottom: 1px solid #d6d4d4;
+  padding: 8px 16px;
 }
 .ant-table-wrapper
   .ant-table-container
