@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { doFetchAllManagementList } from "../../actions";
+import { doFetchAllManagementList, doFetchManagementDelete } from "../../actions";
 
 export const useManagementListHook = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -10,6 +10,10 @@ export const useManagementListHook = () => {
     pageSize: 10,
     search: "",
   });
+  const [userId, setUserId] = useState();
+
+  const [isApproveRejectedModalOpen, setIsApproveRejectedModalOpen] = useState(false);
+
 
   const doGetManagementList = async () => {
     const managementListResponse = await doFetchAllManagementList({
@@ -44,12 +48,45 @@ export const useManagementListHook = () => {
     }
   };
 
+  const handleUserDelete = async () => {
+    if (userId) {
+      const clientProjectResponse = await doFetchManagementDelete(userId)
+
+      if (clientProjectResponse?.status == 200) {
+        doGetManagementList();
+        setIsLoading(false);
+        toast.success("Management delete success!");
+
+      } else {
+        // toast.error("")
+
+        setIsLoading(false);
+      }
+    }
+  }
+
+
+  // confirm modal js start
+  const showApproveRejectedModal = (id) => {
+    setUserId(id)
+    setIsApproveRejectedModalOpen(true);
+  };
+
+  const approveRejectedModalCancel = () => {
+    setIsApproveRejectedModalOpen(false);
+  };
+
+
   return {
     isLoading,
     managementList,
     paginationData,
     paginationServerData,
+    isApproveRejectedModalOpen,
     handleKeyDownSearch,
     handleOrderTableChange,
+    showApproveRejectedModal,
+    approveRejectedModalCancel,
+    handleUserDelete,
   };
 };

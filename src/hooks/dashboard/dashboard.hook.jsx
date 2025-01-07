@@ -3,7 +3,11 @@ import {
   doFetchAllCrewList,
   doFetchAllManagementList,
   doFetchAllUserList,
+  doFetchClientDelete,
+  doFetchCrewDelete,
+  doFetchManagementDelete,
 } from "../../actions";
+import { toast } from "react-toastify";
 
 export const useDashboardHook = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -60,13 +64,40 @@ export const useDashboardHook = () => {
   }, []);
 
   const handleUserDelete = async () => {
-    if (userId) {
-      const clientProjectResponse = await doFetchClientDelete(userId)
+    if (userId?.type == "client") {
+      const clientProjectResponse = await doFetchClientDelete(userId?.id)
 
       if (clientProjectResponse?.status == 200) {
-        doGetClientList();
+
+        doGetUserList();
         setIsLoading(false);
         toast.success("Project delete success!");
+
+      } else {
+        // toast.error("")
+
+        setIsLoading(false);
+      }
+    } else if (userId?.type == "management") {
+      const clientProjectResponse = await doFetchManagementDelete(userId?.id)
+
+      if (clientProjectResponse?.status == 200) {
+        doGetManagementList();
+        setIsLoading(false);
+        toast.success("Management delete success!");
+
+      } else {
+        // toast.error("")
+
+        setIsLoading(false);
+      }
+    } else if (userId?.type == "crew") {
+      const clientProjectResponse = await doFetchCrewDelete(userId?.id)
+
+      if (clientProjectResponse?.status == 200) {
+        doGetCrewList();
+        setIsLoading(false);
+        toast.success("Management delete success!");
 
       } else {
         // toast.error("")

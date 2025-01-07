@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { doFetchAllUserList } from "../../actions";
+import { doFetchAllUserList, doFetchClientDelete } from "../../actions";
+import { toast } from "react-toastify";
 
 export const useClientHook = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -54,7 +55,7 @@ export const useClientHook = () => {
       const clientProjectResponse = await doFetchClientDelete(userId)
 
       if (clientProjectResponse?.status == 200) {
-        doGetClientList();
+        doGetUserList();
         setIsLoading(false);
         toast.success("client delete success!");
 
