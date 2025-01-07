@@ -1347,7 +1347,7 @@ const AboutClient = () => {
         width={800}
         modalContent={
           <div className="row mx-0">
-            <div className="col-lg-6">
+            <div className="col-12">
               <div className={clsx(styles.optimizationBox)}>
                 <h5 className="mb-5 mb-xl-4">Optimization :-</h5>
                 <LDDocUpload
