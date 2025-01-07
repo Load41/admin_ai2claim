@@ -177,7 +177,7 @@ const AboutManagement = () => {
                   customClass={clsx("")}
                   handleClick={managementHandledList}
                 >
-                  List of Pending Projects({managementData?.projectPending})
+                  List of projects ({managementData?.projectPending})
                 </LDButton>
               </div>
             </div>

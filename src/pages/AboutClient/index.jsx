@@ -45,7 +45,9 @@ const AboutClient = () => {
   const estimateData = [
     {
       key: "1",
-      name: "Original Estimate",
+      name: <>
+      Insurance claim with <br/>estimated optimization
+      </>,
       // price: (
       //   <div className="d-flex align-items-center justify-content-sm-end gap-2">
       //     <span>$</span>
@@ -102,7 +104,7 @@ const AboutClient = () => {
     },
     {
       key: "2",
-      name: "Ai2 Claim Optimized Estimate",
+      name: "Management Cost",
       // price: (
       //   <div className="d-flex align-items-center justify-content-sm-end gap-2">
       //     <span>$</span>
@@ -158,13 +160,99 @@ const AboutClient = () => {
         </div>
       ),
     },
+    {
+      key: "3",
+      name: "Material Cost",
+      subTotal: (
+        <div className="d-flex align-items-center justify-content-sm-end gap-2">
+          <span>$</span>
+          <LDInput
+            id="materialCost"
+            dataTestId="materialCost"
+            name="materialCost"
+            // value={optimizationData?.materialCost}
+            type="number"
+            handleChange={() => {return false}}
+            className={clsx("w-100")}
+            isSmallCustomInput
+            isNotBottomSpace
+          // errorMessage={validateMessages?.email}
+          />
+        </div>
+      ),
+    },
+    {
+      key: "4",
+      name: "Crew Cost",
+      subTotal: (
+        <div className="d-flex align-items-center justify-content-sm-end gap-2">
+          <span>$</span>
+          <LDInput
+            id="crewCost"
+            dataTestId="crewCost"
+            name="crewCost"
+            // value={optimizationData?.crewCost}
+            type="number"
+            handleChange={() => {return false}}
+            className={clsx("w-100")}
+            isSmallCustomInput
+            isNotBottomSpace
+          // errorMessage={validateMessages?.email}
+          />
+        </div>
+      ),
+    },
+    {
+      key: "5",
+      name: "Service Fees",
+      subTotal: (
+        <div className="d-flex align-items-center justify-content-sm-end gap-2">
+          <span>$</span>
+          <LDInput
+            id="serviceFees"
+            dataTestId="serviceFees"
+            name="serviceFees"
+            // value={optimizationData?.serviceFees}
+            type="number"
+            handleChange={() => {return false}}
+            className={clsx("w-100")}
+            isSmallCustomInput
+            isNotBottomSpace
+          // errorMessage={validateMessages?.email}
+          />
+        </div>
+      ),
+    },
+    {
+      key: "6",
+      name: "Deductible",
+      subTotal: (
+        <div className="d-flex align-items-center justify-content-sm-end gap-2">
+          <span>$</span>
+          <LDInput
+            id="deductible"
+            dataTestId="deductible"
+            name="deductible"
+            // value={optimizationData?.deductible}
+            type="number"
+            handleChange={() => {return false}}
+            className={clsx("w-100")}
+            isSmallCustomInput
+            isNotBottomSpace
+          // errorMessage={validateMessages?.email}
+          />
+        </div>
+      ),
+    },
   ];
   // Send Final Estimate (Optimization) end
   // Send Final Estimate  start
   const finalEstimateTableData = [
     {
       key: "1",
-      name: "Insurance claim estimate with optimization",
+      name: <>
+      Insurance claim with <br/>out optimization
+      </>,
       subTotal: (
         // finalEstimateData?.originalEstimatePrice +
         // finalEstimateData?.originalEstimateAddOnCost,
@@ -312,27 +400,27 @@ const AboutClient = () => {
         </div>
       ),
     },
-    {
-      key: "8",
-      name: "Cash back",
-      subTotal: (
-        <div className="d-flex align-items-center justify-content-sm-end gap-2">
-          <span>$</span>
-          <LDInput
-            id="cashBack"
-            dataTestId="cashBack"
-            name="cashBack"
-            value={finalEstimateData?.cashBack}
-            type="number"
-            handleChange={handleInputEstimateChange}
-            className={clsx("w-100")}
-            isSmallCustomInput
-            isNotBottomSpace
-          // errorMessage={validateMessages?.email}
-          />
-        </div>
-      ),
-    },
+    // {
+    //   key: "8",
+    //   name: "Cash back",
+    //   subTotal: (
+    //     <div className="d-flex align-items-center justify-content-sm-end gap-2">
+    //       <span>$</span>
+    //       <LDInput
+    //         id="cashBack"
+    //         dataTestId="cashBack"
+    //         name="cashBack"
+    //         value={finalEstimateData?.cashBack}
+    //         type="number"
+    //         handleChange={handleInputEstimateChange}
+    //         className={clsx("w-100")}
+    //         isSmallCustomInput
+    //         isNotBottomSpace
+    //       // errorMessage={validateMessages?.email}
+    //       />
+    //     </div>
+    //   ),
+    // },
   ];
   // Send Final Estimate end
   return (
@@ -938,10 +1026,14 @@ const AboutClient = () => {
                               disabled={total >= 100 ? false : true}
                               customClass={clsx("w-50 w-100-sm mx-auto")}
                               handleClick={() =>
-                                showFinalEstimateModal(
+                                // showFinalEstimateModal(
+                                //   projectData?._id,
+                                //   projectData?.linkin?.optimation,
+                                //   projectData?.linkin?.final_estimate
+                                // )
+                                showOptimizationModal(
                                   projectData?._id,
-                                  projectData?.linkin?.optimation,
-                                  projectData?.linkin?.final_estimate
+                                  projectData?.linkin?.optimation
                                 )
                               }
                             >
@@ -1204,48 +1296,97 @@ const AboutClient = () => {
       </div>
       {/* Send Final Estimate (Optimization) modal start */}
       <LDModal
-        title="Send Final Estimate (Optimization)"
+        title="Optimization"
         open={isOptimizationModalOpen}
         onCancel={handleOptimizationModalCancel}
-        width={800}
+        width={1400}
         modalContent={
-          <div className={clsx(styles.optimizationBox)}>
-            <h5 className="mb-5 mb-xl-4">Optimization :- </h5>
-            <LDDocUpload
-              accept=".docx, application/pdf"
-              label="Please upload the document"
-              // value={[
-              //   {
-              //     name:
-              //       optimizationData?.file && optimizationData?.file[0]?.file,
-              //     url:
-              //       optimizationData?.file &&
-              //       `${appConfig?.IMAGE_URL}/files/${optimizationData?.file[0]?.file}`,
-              //   },
-              // ]}
-              supportLabel="Supported format: PDF or Doc"
-              onFileUpload={handleFileUpload}
-              value={optimizationData?.file}
-            />
-            <LDTable
-              columns={estimateColumn}
-              data={estimateData}
-              className={clsx(styles.optimizationTable, "mt-5 mt-xl-4")}
-              pagination={false}
-            />
-            <div className="d-flex justify-content-center align-items-center pt-5 mt-3 mt-xl-0 pb-3">
-              <h5 className="me-3 mb-0 fw-bold">Estimated extra money with optimization :-</h5>
-              <h5 className="mb-0 text-bleu-de-france-one word-break-word">
-                $&nbsp;
-                {optimizationData?.originalEstimatePrice
-                  ? parseInt(optimizationData?.originalEstimatePrice) +
-                  parseInt(optimizationData?.originalEstimateAddOnCost) -
-                  parseInt(optimizationData?.ai2ClaimServiceCostPrice) +
-                  parseInt(optimizationData?.ai2ClaimServiceAddOnCost)
-                  : 0}
-              </h5>
+          <div className="row mx-0">
+            <div className="col-lg-6">
+              <div className={clsx(styles.optimizationBox)}>
+                <h5 className="mb-5 mb-xl-4">Estimate with optimization :-</h5>
+                <LDDocUpload
+                  accept=".docx, application/pdf"
+                  label="Please upload the document"
+                  // value={[
+                  //   {
+                  //     name:
+                  //       optimizationData?.file && optimizationData?.file[0]?.file,
+                  //     url:
+                  //       optimizationData?.file &&
+                  //       `${appConfig?.IMAGE_URL}/files/${optimizationData?.file[0]?.file}`,
+                  //   },
+                  // ]}
+                  supportLabel="Supported format: PDF or Doc"
+                  onFileUpload={handleFileUpload}
+                  value={optimizationData?.file}
+                />
+                <LDTable
+                  columns={estimateColumn}
+                  data={estimateData}
+                  className={clsx(styles.optimizationTable, "mt-5 mt-xl-4")}
+                  pagination={false}
+                />
+                <div className="d-flex justify-content-center align-items-center pt-5 mt-3 mt-xl-0 pb-3">
+                  <h5 className="me-3 mb-0 fw-bold">Total Estimated Cash back :-</h5>
+                  <h5 className="mb-0 text-bleu-de-france-one word-break-word">
+                    $&nbsp;
+                    {optimizationData?.originalEstimatePrice
+                      ? parseInt(optimizationData?.originalEstimatePrice) +
+                      parseInt(optimizationData?.originalEstimateAddOnCost) -
+                      parseInt(optimizationData?.ai2ClaimServiceCostPrice) +
+                      parseInt(optimizationData?.ai2ClaimServiceAddOnCost)
+                      : 0}
+                  </h5>
+                </div>
+              </div>
             </div>
-            <div className="text-center w-100 mt-5 mt-xl-3">
+            <div className="col-lg-6 mt-5 pt-5 mt-lg-0 pt-lg-0">
+                <div className={clsx(styles.optimizationBox)}>
+                  <h5 className="mb-5 mb-xl-4">Estimate Without optimization :-</h5>
+                  <LDDocUpload
+                    accept=".docx, application/pdf"
+                    label="Please upload the document"
+                    supportLabel="Supported format: PDF or Doc"
+                    onFileUpload={handleFileUpload}
+                    value={finalEstimateData?.file}
+                  />
+                  <LDTable
+                    columns={finalEstimateColumn}
+                    data={finalEstimateTableData}
+                    className={clsx(styles.optimizationTable, "mt-5 mt-xl-4")}
+                    pagination={false}
+                  />
+                  <div className="d-flex justify-content-center align-items-center pt-5 mt-3 mt-xl-0 pb-3">
+                    <h5 className="me-3 mb-0 fw-bold">Total Estimated Cash back :-</h5>
+                    <h5 className="mb-0 text-bleu-de-france-one word-break-word">
+                      $&nbsp;{" "}
+                      {finalEstimateData?.originalEstimatePrice
+                        ? parseInt(finalEstimateData?.originalEstimatePrice) -
+                        parseInt(finalEstimateData?.insuranceClaim) +
+                        parseInt(finalEstimateData?.managementCost) +
+                        parseInt(finalEstimateData?.crewCost) +
+                        parseInt(finalEstimateData?.materialCost) +
+                        parseInt(finalEstimateData?.serviceFees)
+                        : 0}
+                    </h5>
+                  </div>
+                  {/* <div className="text-center w-100 mt-5 mt-xl-3">
+                    <LDButton
+                      type="fill"
+                      shape={"round"}
+                      iconPosition={"end"}
+                      isFillBtn
+                      isGreenBg
+                      customClass={clsx("")}
+                      handleClick={handleFinalEstimateSubmit}
+                    >
+                      Send Final Estimate
+                    </LDButton>
+                  </div> */}
+                </div>
+            </div>
+            <div className="text-center w-100 mt-5">
               <LDButton
                 type="fill"
                 shape={"round"}
@@ -1255,7 +1396,7 @@ const AboutClient = () => {
                 customClass={clsx("")}
                 handleClick={handleOptimizationSubmit}
               >
-                Send Final Estimate (with Optimization)
+                Send optimization & Estimate
               </LDButton>
             </div>
           </div>
