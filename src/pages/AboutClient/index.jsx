@@ -17,7 +17,7 @@ const AboutClient = () => {
     clientData,
     optimizationData,
     estimateColumn,
-    finalEstimateColumn,
+    estimateWithoutOptimizationColumn,
     isOptimizationModalOpen,
     isAffidavitSelfGeneralContractorOpen,
     handleDownload,
@@ -38,16 +38,15 @@ const AboutClient = () => {
     finalEstimateData,
     isApproveRejectedModalOpen,
     showApproveRejectedModal,
-    approveRejectedModalCancel
+    approveRejectedModalCancel,
+    estimateWithOptimizationColumn
   } = useClientDetailHook();
 
-  // Send Final Estimate (Optimization) start
+  // Send Final Estimate (Optimization) (table) start
   const estimateData = [
     {
       key: "1",
-      name: <>
-      Insurance claim with <br/>estimated optimization
-      </>,
+      name: "Original estimate",
       // price: (
       //   <div className="d-flex align-items-center justify-content-sm-end gap-2">
       //     <span>$</span>
@@ -104,7 +103,7 @@ const AboutClient = () => {
     },
     {
       key: "2",
-      name: "Management Cost",
+      name: "Ai2 Claim Optimized estimate",
       // price: (
       //   <div className="d-flex align-items-center justify-content-sm-end gap-2">
       //     <span>$</span>
@@ -160,6 +159,54 @@ const AboutClient = () => {
         </div>
       ),
     },
+  ];
+  // Send Final Estimate (Optimization) (table) end
+  // Send Final Estimate modal (table) start
+  const estimateWithOptimizationData = [
+    {
+      key: "1",
+      name: <>
+     Insurance claim with <br/>estimated optimization
+      </>,
+      subTotal: (
+        <div className="d-flex align-items-center justify-content-sm-end gap-2">
+          <span>$</span>
+          <LDInput
+            id="insuranceEstimatedOptimization"
+            dataTestId="insuranceEstimatedOptimization"
+            name="insuranceEstimatedOptimization"
+            // value={optimizationData?.insuranceEstimatedOptimization}
+            type="number"
+            handleChange={() => {return false}}
+            className={clsx("w-100")}
+            isSmallCustomInput
+            isNotBottomSpace
+          // errorMessage={validateMessages?.email}
+          />
+        </div>
+      ),
+    },
+    {
+      key: "2",
+      name: "Management Cost",
+      subTotal: (
+        <div className="d-flex align-items-center justify-content-sm-end gap-2">
+          <span>$</span>
+          <LDInput
+            id="EOManagementCost"
+            dataTestId="EOManagementCost"
+            name="EOManagementCost"
+            // value={optimizationData?.EOManagementCost}
+            type="number"
+            handleChange={() => {return false}}
+            className={clsx("w-100")}
+            isSmallCustomInput
+            isNotBottomSpace
+          // errorMessage={validateMessages?.email}
+          />
+        </div>
+      ),
+    },
     {
       key: "3",
       name: "Material Cost",
@@ -167,10 +214,10 @@ const AboutClient = () => {
         <div className="d-flex align-items-center justify-content-sm-end gap-2">
           <span>$</span>
           <LDInput
-            id="materialCost"
-            dataTestId="materialCost"
-            name="materialCost"
-            // value={optimizationData?.materialCost}
+            id="EOMaterialCost"
+            dataTestId="EOMaterialCost"
+            name="EOMaterialCost"
+            // value={optimizationData?.EOMaterialCost}
             type="number"
             handleChange={() => {return false}}
             className={clsx("w-100")}
@@ -188,10 +235,10 @@ const AboutClient = () => {
         <div className="d-flex align-items-center justify-content-sm-end gap-2">
           <span>$</span>
           <LDInput
-            id="crewCost"
-            dataTestId="crewCost"
-            name="crewCost"
-            // value={optimizationData?.crewCost}
+            id="EOCrewCost"
+            dataTestId="EOCrewCost"
+            name="EOCrewCost"
+            // value={optimizationData?.EOCrewCost}
             type="number"
             handleChange={() => {return false}}
             className={clsx("w-100")}
@@ -209,10 +256,10 @@ const AboutClient = () => {
         <div className="d-flex align-items-center justify-content-sm-end gap-2">
           <span>$</span>
           <LDInput
-            id="serviceFees"
-            dataTestId="serviceFees"
-            name="serviceFees"
-            // value={optimizationData?.serviceFees}
+            id="EOServiceFees"
+            dataTestId="EOServiceFees"
+            name="EOServiceFees"
+            // value={optimizationData?.EOServiceFees}
             type="number"
             handleChange={() => {return false}}
             className={clsx("w-100")}
@@ -230,10 +277,10 @@ const AboutClient = () => {
         <div className="d-flex align-items-center justify-content-sm-end gap-2">
           <span>$</span>
           <LDInput
-            id="deductible"
-            dataTestId="deductible"
-            name="deductible"
-            // value={optimizationData?.deductible}
+            id="EODeductible"
+            dataTestId="EODeductible"
+            name="EODeductible"
+            // value={optimizationData?.EODeductible}
             type="number"
             handleChange={() => {return false}}
             className={clsx("w-100")}
@@ -244,10 +291,8 @@ const AboutClient = () => {
         </div>
       ),
     },
-  ];
-  // Send Final Estimate (Optimization) end
-  // Send Final Estimate  start
-  const finalEstimateTableData = [
+  ]
+  const estimateWithoutOptimizationData = [
     {
       key: "1",
       name: <>
@@ -422,7 +467,7 @@ const AboutClient = () => {
     //   ),
     // },
   ];
-  // Send Final Estimate end
+  // Send Final Estimate modal (table) end
   return (
     <>
       <div className={clsx("admin-content")}>
@@ -1026,15 +1071,15 @@ const AboutClient = () => {
                               disabled={total >= 100 ? false : true}
                               customClass={clsx("w-50 w-100-sm mx-auto")}
                               handleClick={() =>
-                                // showFinalEstimateModal(
-                                //   projectData?._id,
-                                //   projectData?.linkin?.optimation,
-                                //   projectData?.linkin?.final_estimate
-                                // )
-                                showOptimizationModal(
+                                showFinalEstimateModal(
                                   projectData?._id,
-                                  projectData?.linkin?.optimation
+                                  projectData?.linkin?.optimation,
+                                  projectData?.linkin?.final_estimate
                                 )
+                                // showOptimizationModal(
+                                //   projectData?._id,
+                                //   projectData?.linkin?.optimation
+                                // )
                               }
                             >
                               Send Estimate
@@ -1296,15 +1341,15 @@ const AboutClient = () => {
       </div>
       {/* Send Final Estimate (Optimization) modal start */}
       <LDModal
-        title="Optimization"
+        title="Send Optimization"
         open={isOptimizationModalOpen}
         onCancel={handleOptimizationModalCancel}
-        width={1400}
+        width={800}
         modalContent={
           <div className="row mx-0">
-            <div className="col-lg-6">
+            <div className="col-12">
               <div className={clsx(styles.optimizationBox)}>
-                <h5 className="mb-5 mb-xl-4">Estimate with optimization :-</h5>
+                <h5 className="mb-5 mb-xl-4">Optimization :-</h5>
                 <LDDocUpload
                   accept=".docx, application/pdf"
                   label="Please upload the document"
@@ -1328,7 +1373,7 @@ const AboutClient = () => {
                   pagination={false}
                 />
                 <div className="d-flex justify-content-center align-items-center pt-5 mt-3 mt-xl-0 pb-3">
-                  <h5 className="me-3 mb-0 fw-bold">Total Estimated Cash back :-</h5>
+                  <h5 className="me-3 mb-0 fw-bold">Additional money :-</h5>
                   <h5 className="mb-0 text-bleu-de-france-one word-break-word">
                     $&nbsp;
                     {optimizationData?.originalEstimatePrice
@@ -1341,51 +1386,6 @@ const AboutClient = () => {
                 </div>
               </div>
             </div>
-            <div className="col-lg-6 mt-5 pt-5 mt-lg-0 pt-lg-0">
-                <div className={clsx(styles.optimizationBox)}>
-                  <h5 className="mb-5 mb-xl-4">Estimate Without optimization :-</h5>
-                  <LDDocUpload
-                    accept=".docx, application/pdf"
-                    label="Please upload the document"
-                    supportLabel="Supported format: PDF or Doc"
-                    onFileUpload={handleFileUpload}
-                    value={finalEstimateData?.file}
-                  />
-                  <LDTable
-                    columns={finalEstimateColumn}
-                    data={finalEstimateTableData}
-                    className={clsx(styles.optimizationTable, "mt-5 mt-xl-4")}
-                    pagination={false}
-                  />
-                  <div className="d-flex justify-content-center align-items-center pt-5 mt-3 mt-xl-0 pb-3">
-                    <h5 className="me-3 mb-0 fw-bold">Total Estimated Cash back :-</h5>
-                    <h5 className="mb-0 text-bleu-de-france-one word-break-word">
-                      $&nbsp;{" "}
-                      {finalEstimateData?.originalEstimatePrice
-                        ? parseInt(finalEstimateData?.originalEstimatePrice) -
-                        parseInt(finalEstimateData?.insuranceClaim) +
-                        parseInt(finalEstimateData?.managementCost) +
-                        parseInt(finalEstimateData?.crewCost) +
-                        parseInt(finalEstimateData?.materialCost) +
-                        parseInt(finalEstimateData?.serviceFees)
-                        : 0}
-                    </h5>
-                  </div>
-                  {/* <div className="text-center w-100 mt-5 mt-xl-3">
-                    <LDButton
-                      type="fill"
-                      shape={"round"}
-                      iconPosition={"end"}
-                      isFillBtn
-                      isGreenBg
-                      customClass={clsx("")}
-                      handleClick={handleFinalEstimateSubmit}
-                    >
-                      Send Final Estimate
-                    </LDButton>
-                  </div> */}
-                </div>
-            </div>
             <div className="text-center w-100 mt-5">
               <LDButton
                 type="fill"
@@ -1396,7 +1396,7 @@ const AboutClient = () => {
                 customClass={clsx("")}
                 handleClick={handleOptimizationSubmit}
               >
-                Send optimization & Estimate
+                Send Optimization
               </LDButton>
             </div>
           </div>
@@ -1405,40 +1405,91 @@ const AboutClient = () => {
       {/* Send Final Estimate (Optimization) modal end */}
       {/* Send Final Estimate modal start */}
       <LDModal
-        title="Send Final Estimate"
+        title="Send Estimate"
         open={isFinalEstimateModalOpen}
         onCancel={handleFinalEstimateModalCancel}
-        width={800}
+        width={1400}
         modalContent={
-          <div className={clsx(styles.optimizationBox)}>
-            <LDDocUpload
-              accept=".docx, application/pdf"
-              label="Please upload the document"
-              supportLabel="Supported format: PDF or Doc"
-              onFileUpload={handleFileUpload}
-              value={finalEstimateData?.file}
-            />
-            <LDTable
-              columns={finalEstimateColumn}
-              data={finalEstimateTableData}
-              className={clsx(styles.optimizationTable, "mt-5 mt-xl-4")}
-              pagination={false}
-            />
-            <div className="d-flex justify-content-center align-items-center pt-5 mt-3 mt-xl-0 pb-3">
-              <h5 className="me-3 mb-0 fw-bold">Total :-</h5>
-              <h5 className="mb-0 text-bleu-de-france-one word-break-word">
-                $&nbsp;{" "}
-                {finalEstimateData?.originalEstimatePrice
-                  ? parseInt(finalEstimateData?.originalEstimatePrice) -
-                  parseInt(finalEstimateData?.insuranceClaim) +
-                  parseInt(finalEstimateData?.managementCost) +
-                  parseInt(finalEstimateData?.crewCost) +
-                  parseInt(finalEstimateData?.materialCost) +
-                  parseInt(finalEstimateData?.serviceFees)
-                  : 0}
-              </h5>
+          <div className="row mx-0">
+             <div className="col-lg-6">
+              <div className={clsx(styles.optimizationBox)}>
+                <h5 className="mb-5 mb-xl-4">Estimate with optimization :-</h5>
+                <LDDocUpload
+                  accept=".docx, application/pdf"
+                  label="Please upload the document"
+                  // value={[
+                  //   {
+                  //     name:
+                  //       optimizationData?.file && optimizationData?.file[0]?.file,
+                  //     url:
+                  //       optimizationData?.file &&
+                  //       `${appConfig?.IMAGE_URL}/files/${optimizationData?.file[0]?.file}`,
+                  //   },
+                  // ]}
+                  supportLabel="Supported format: PDF or Doc"
+                  onFileUpload={handleFileUpload}
+                  // value={optimizationData?.file}
+                />
+                <LDTable
+                  columns={estimateWithOptimizationColumn}
+                  data={estimateWithOptimizationData}
+                  className={clsx(styles.optimizationTable, "mt-5 mt-xl-4")}
+                  pagination={false}
+                />
+                <div className="d-flex justify-content-center align-items-center pt-5 mt-3 mt-xl-0 pb-3">
+                  <h5 className="me-3 mb-0 fw-bold">Total Estimated Cash back :-</h5>
+                  <h5 className="mb-0 text-bleu-de-france-one word-break-word">
+                    $54,000.00
+                  </h5>
+                </div>
+              </div>
             </div>
-            <div className="text-center w-100 mt-5 mt-xl-3">
+            <div className="col-lg-6 mt-5 pt-5 mt-lg-0 pt-lg-0">
+              <div className={clsx(styles.optimizationBox)}>
+                <h5 className="mb-5 mb-xl-4">Estimate Without optimization :-</h5>
+                <LDDocUpload
+                  accept=".docx, application/pdf"
+                  label="Please upload the document"
+                  supportLabel="Supported format: PDF or Doc"
+                  onFileUpload={handleFileUpload}
+                  value={finalEstimateData?.file}
+                />
+                <LDTable
+                  columns={estimateWithoutOptimizationColumn}
+                  data={estimateWithoutOptimizationData}
+                  className={clsx(styles.optimizationTable, "mt-5 mt-xl-4")}
+                  pagination={false}
+                />
+                <div className="d-flex justify-content-center align-items-center pt-5 mt-3 mt-xl-0 pb-3">
+                  <h5 className="me-3 mb-0 fw-bold">Total Estimated Cash back :-</h5>
+                  <h5 className="mb-0 text-bleu-de-france-one word-break-word">
+                    $&nbsp;{" "}
+                    {finalEstimateData?.originalEstimatePrice
+                      ? parseInt(finalEstimateData?.originalEstimatePrice) -
+                      parseInt(finalEstimateData?.insuranceClaim) +
+                      parseInt(finalEstimateData?.managementCost) +
+                      parseInt(finalEstimateData?.crewCost) +
+                      parseInt(finalEstimateData?.materialCost) +
+                      parseInt(finalEstimateData?.serviceFees)
+                      : 0}
+                  </h5>
+                </div>
+                {/* <div className="text-center w-100 mt-5 mt-xl-3">
+                  <LDButton
+                    type="fill"
+                    shape={"round"}
+                    iconPosition={"end"}
+                    isFillBtn
+                    isGreenBg
+                    customClass={clsx("")}
+                    handleClick={handleFinalEstimateSubmit}
+                  >
+                    Send Final Estimate
+                  </LDButton>
+                </div> */}
+              </div>
+            </div>
+            <div className="text-center w-100 mt-5">
               <LDButton
                 type="fill"
                 shape={"round"}
@@ -1446,9 +1497,9 @@ const AboutClient = () => {
                 isFillBtn
                 isGreenBg
                 customClass={clsx("")}
-                handleClick={handleFinalEstimateSubmit}
+                handleClick={() => {return false}}
               >
-                Send Final Estimate
+                Send optimization & Estimate
               </LDButton>
             </div>
           </div>

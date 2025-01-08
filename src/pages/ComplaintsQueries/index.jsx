@@ -202,6 +202,7 @@ const ComplaintsQueries = () => {
                 handleChange={() => {return false}}
                 className={clsx()}
                 isNotBottomSpace
+                disabled
                 // errorMessage={validateMessages?.email}
             />
             <LDInput
@@ -214,6 +215,7 @@ const ComplaintsQueries = () => {
                 handleChange={() => {return false}}
                 className={clsx()}
                 isNotBottomSpace
+                disabled
                 // errorMessage={validateMessages?.email}
             />
             <LDInput
@@ -226,6 +228,7 @@ const ComplaintsQueries = () => {
                 handleChange={() => {return false}}
                 className={clsx()}
                 isNotBottomSpace
+                disabled
                 // errorMessage={validateMessages?.email}
             />
             <LDInput isTextarea placeholder="Enter your message here...."/>
