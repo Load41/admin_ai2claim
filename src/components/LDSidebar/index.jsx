@@ -173,8 +173,8 @@ export const LDSidebar = ({ mainContentWrap }) => {
   };
 
   const handleClickMenu = (data) => {
-    // console.log({ data });
-    if (data?.key == "14") {
+    console.log({ data });
+    if (data?.key == "logout") {
       showModal();
     }
   };
@@ -224,6 +224,7 @@ export const LDSidebar = ({ mainContentWrap }) => {
         <Menu
           selectedKeys={[location.pathname]} // Dynamically set active key
           mode="inline"
+          onClick={handleClickMenu}
           items={items}
         />
       </Sider>
