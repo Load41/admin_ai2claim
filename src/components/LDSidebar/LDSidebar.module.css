@@ -23,9 +23,9 @@
     height: 30px;
     transform: translateY(3px);
 }
-:global .ant-layout.ant-layout-has-sider{
+/* :global .ant-layout.ant-layout-has-sider{
     z-index: 9999;
-}
+} */
 /* resposnive css */
 @media (max-width: 1199px){
     :global .ant-layout{
