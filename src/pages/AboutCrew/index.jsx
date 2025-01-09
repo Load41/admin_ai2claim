@@ -5,6 +5,7 @@ import { LDButton, LDModal } from "../../components";
 import { useCrewDetailHook } from "../../hooks";
 import { Link } from "react-router-dom";
 import styles from "./AboutCrew.module.css";
+import { formatPhoneNumber } from "../../constants/imageData";
 
 const AboutCrew = () => {
   const { crewData,
@@ -102,7 +103,8 @@ const AboutCrew = () => {
                         Mobile <b className="d-none d-sm-inline">:-</b>
                       </h6>
                       <h6 className="w-65 mb-0 lh-base word-break-word ps-3">
-                        {crewData?.cewDetail?.createdBy?.mobile}
+
+                        {crewData?.cewDetail?.createdBy?.mobile ? formatPhoneNumber(crewData?.cewDetail?.createdBy?.mobile) : ""}
                       </h6>
                     </div>
                     <div className="d-flex w-100">

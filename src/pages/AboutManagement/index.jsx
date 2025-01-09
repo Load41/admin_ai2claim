@@ -5,6 +5,7 @@ import { LDButton, LDModal } from "../../components";
 import { useManagementDetailHook } from "../../hooks";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./AboutManagement.module.css";
+import { formatPhoneNumber } from "../../constants/imageData";
 
 const AboutManagement = () => {
   const { isLoading,
@@ -110,7 +111,7 @@ const AboutManagement = () => {
                         Mobile <b className="d-none d-sm-inline">:-</b>
                       </h6>
                       <h6 className="w-65 mb-0 lh-base word-break-word ps-3">
-                        {managementData?.managementDetail?.createdBy?.mobile}
+                        {managementData?.managementDetail?.createdBy?.mobile ? formatPhoneNumber(managementData?.managementDetail?.createdBy?.mobile) : ""}
                       </h6>
                     </div>
                     <div className="d-flex w-100">

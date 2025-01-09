@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { LDInput } from "../../components/LDInput";
 import { appConfig } from "../../config";
 import styles from "./AboutClient.module.css";
+import { formatPhoneNumber } from "../../constants/imageData";
 
 const AboutClient = () => {
   const {
@@ -166,7 +167,7 @@ const AboutClient = () => {
     {
       key: "1",
       name: <>
-     Insurance claim with <br/>estimated optimization
+        Insurance claim with <br />estimated optimization
       </>,
       subTotal: (
         <div className="d-flex align-items-center justify-content-sm-end gap-2">
@@ -177,7 +178,7 @@ const AboutClient = () => {
             name="insuranceEstimatedOptimization"
             // value={optimizationData?.insuranceEstimatedOptimization}
             type="number"
-            handleChange={() => {return false}}
+            handleChange={() => { return false }}
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
@@ -198,7 +199,7 @@ const AboutClient = () => {
             name="EOManagementCost"
             // value={optimizationData?.EOManagementCost}
             type="number"
-            handleChange={() => {return false}}
+            handleChange={() => { return false }}
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
@@ -219,7 +220,7 @@ const AboutClient = () => {
             name="EOMaterialCost"
             // value={optimizationData?.EOMaterialCost}
             type="number"
-            handleChange={() => {return false}}
+            handleChange={() => { return false }}
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
@@ -240,7 +241,7 @@ const AboutClient = () => {
             name="EOCrewCost"
             // value={optimizationData?.EOCrewCost}
             type="number"
-            handleChange={() => {return false}}
+            handleChange={() => { return false }}
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
@@ -261,7 +262,7 @@ const AboutClient = () => {
             name="EOServiceFees"
             // value={optimizationData?.EOServiceFees}
             type="number"
-            handleChange={() => {return false}}
+            handleChange={() => { return false }}
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
@@ -282,7 +283,7 @@ const AboutClient = () => {
             name="EODeductible"
             // value={optimizationData?.EODeductible}
             type="number"
-            handleChange={() => {return false}}
+            handleChange={() => { return false }}
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
@@ -296,7 +297,7 @@ const AboutClient = () => {
     {
       key: "1",
       name: <>
-      Insurance claim with <br/>out optimization
+        Insurance claim with <br />out optimization
       </>,
       subTotal: (
         // finalEstimateData?.originalEstimatePrice +
@@ -546,7 +547,7 @@ const AboutClient = () => {
                         Mobile <b className="d-none d-sm-inline">:-</b>
                       </h6>
                       <h6 className="w-65 w-100-md mb-0 lh-base word-break-word ps-3">
-                        {clientData?.mobile}
+                        {clientData?.mobile ? formatPhoneNumber(clientData?.mobile) : ""}
                       </h6>
                     </div>
                     <div className="d-flex w-100">
@@ -1377,10 +1378,9 @@ const AboutClient = () => {
                   <h5 className="mb-0 text-bleu-de-france-one word-break-word">
                     $&nbsp;
                     {optimizationData?.originalEstimatePrice
-                      ? parseInt(optimizationData?.originalEstimatePrice) +
-                      parseInt(optimizationData?.originalEstimateAddOnCost) -
-                      parseInt(optimizationData?.ai2ClaimServiceCostPrice) +
-                      parseInt(optimizationData?.ai2ClaimServiceAddOnCost)
+                      ? parseInt(optimizationData?.ai2ClaimServiceCostPrice) +
+                      parseInt(optimizationData?.ai2ClaimServiceAddOnCost) - parseInt(optimizationData?.originalEstimatePrice) +
+                      parseInt(optimizationData?.originalEstimateAddOnCost)
                       : 0}
                   </h5>
                 </div>
@@ -1411,7 +1411,7 @@ const AboutClient = () => {
         width={1400}
         modalContent={
           <div className="row mx-0">
-             <div className="col-lg-6">
+            <div className="col-lg-6">
               <div className={clsx(styles.optimizationBox)}>
                 <h5 className="mb-5 mb-xl-4">Estimate with optimization :-</h5>
                 <LDDocUpload
@@ -1428,7 +1428,7 @@ const AboutClient = () => {
                   // ]}
                   supportLabel="Supported format: PDF or Doc"
                   onFileUpload={handleFileUpload}
-                  // value={optimizationData?.file}
+                // value={optimizationData?.file}
                 />
                 <LDTable
                   columns={estimateWithOptimizationColumn}
@@ -1497,7 +1497,7 @@ const AboutClient = () => {
                 isFillBtn
                 isGreenBg
                 customClass={clsx("")}
-                handleClick={() => {return false}}
+                handleClick={() => { return false }}
               >
                 Send optimization & Estimate
               </LDButton>

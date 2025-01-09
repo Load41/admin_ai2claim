@@ -9,6 +9,7 @@ import {
 import { clsx } from "clsx";
 import { useNavigate } from "react-router-dom";
 import { svgIcons } from "../../constants/icons";
+import { formatPhoneNumber } from "../../constants/imageData";
 
 export const LDProjectsCard = ({
   projectCardData,
@@ -195,8 +196,8 @@ export const LDProjectsCard = ({
                             </h6>
                             <h6 className="w-25-xs w-50 mb-0 lh-base p small word-break-word p small">
                               {item?.mobile
-                                ? item.mobile
-                                : item?.createdBy?.mobile}
+                                ? formatPhoneNumber(item.mobile)
+                                : formatPhoneNumber(item?.createdBy?.mobile)}
                             </h6>
                           </div>
                           <div className="d-flex w-100 mb-4">
@@ -382,8 +383,8 @@ export const LDProjectsCard = ({
                                     </h6>
                                     <h6 className="w-25-xs w-50 mb-0 lh-base p small word-break-word p small">
                                       {item?.mobile
-                                        ? item.mobile
-                                        : item?.createdBy?.mobile}
+                                        ? formatPhoneNumber(item.mobile)
+                                        : formatPhoneNumber(item?.createdBy?.mobile)}
                                     </h6>
                                   </div>
                                   <div className="d-flex w-100 mb-4">
