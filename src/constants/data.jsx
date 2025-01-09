@@ -1263,7 +1263,7 @@ export const approvedData = [
     approvedInfo: <>
       <div className="d-flex align-items-center gap-4">
         <div className="ratio ratio-1x1 rounded-circle queries-profile-box flex-0-auto">
-          <img src={companyOne} className="img-fluid radius-inherit object-fit-cover bg-ma-white p-1" alt="" />
+          <img src={companyOne} className="img-fluid radius-inherit object-fit-cover bg-ma-white p-1" alt="Ai2claim inc" />
         </div>
         <h5 className="mb-0">Verified Rachel's Insurance doc's.</h5>
       </div>
@@ -1276,7 +1276,7 @@ export const approvedData = [
     approvedInfo: <>
       <div className="d-flex align-items-center gap-4">
         <div className="ratio ratio-1x1 rounded-circle queries-profile-box flex-0-auto">
-          <img src={companyTwo} className="img-fluid radius-inherit object-fit-cover bg-ma-white p-1" alt="" />
+          <img src={companyTwo} className="img-fluid radius-inherit object-fit-cover bg-ma-white p-1" alt="Ai2claim inc" />
         </div>
         <h5 className="mb-0">Verified Rachel's Insurance doc's.</h5>
       </div>
@@ -1289,7 +1289,7 @@ export const approvedData = [
     approvedInfo: <>
       <div className="d-flex align-items-center gap-4">
         <div className="ratio ratio-1x1 rounded-circle queries-profile-box flex-0-auto">
-          <img src={manWorkerFive} className="img-fluid radius-inherit object-fit-cover bg-ma-white p-1" alt="" />
+          <img src={manWorkerFive} className="img-fluid radius-inherit object-fit-cover bg-ma-white p-1" alt="Ai2claim inc" />
         </div>
         <h5 className="mb-0">Verified Rachel's Insurance doc's.</h5>
       </div>
@@ -1302,7 +1302,7 @@ export const approvedData = [
     approvedInfo: <>
       <div className="d-flex align-items-center gap-4">
         <div className="ratio ratio-1x1 rounded-circle queries-profile-box flex-0-auto">
-          <img src={manWorkerSix} className="img-fluid radius-inherit object-fit-cover bg-ma-white p-1" alt="" />
+          <img src={manWorkerSix} className="img-fluid radius-inherit object-fit-cover bg-ma-white p-1" alt="Ai2claim inc" />
         </div>
         <h5 className="mb-0">Verified Rachel's Insurance doc's.</h5>
       </div>
@@ -1315,7 +1315,7 @@ export const approvedData = [
     approvedInfo: <>
       <div className="d-flex align-items-center gap-4">
         <div className="ratio ratio-1x1 rounded-circle queries-profile-box flex-0-auto">
-          <img src={manWorkerThree} className="img-fluid radius-inherit object-fit-cover bg-ma-white p-1" alt="" />
+          <img src={manWorkerThree} className="img-fluid radius-inherit object-fit-cover bg-ma-white p-1" alt="Ai2claim inc" />
         </div>
         <h5 className="mb-0">Verified Rachel's Insurance doc's.</h5>
       </div>

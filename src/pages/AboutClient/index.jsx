@@ -504,7 +504,7 @@ const AboutClient = () => {
                       <img
                         src={clientData?.profileimage}
                         className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
-                        alt=""
+                        alt="Ai2claim inc"
                       />
                     </div>
                     <h6 className="mt-4 mb-0 fw-bold word-break-word">
@@ -680,7 +680,7 @@ const AboutClient = () => {
                                             ?.linkinId?.image
                                         }
                                         className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
-                                        alt=""
+                                        alt="Ai2claim inc"
                                       />
                                     </div>
                                   </h6>
@@ -846,7 +846,7 @@ const AboutClient = () => {
                                             ?.linkinId?.image
                                         }
                                         className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
-                                        alt=""
+                                        alt="Ai2claim inc"
                                       />
                                     </div>
                                   )}
@@ -939,7 +939,7 @@ const AboutClient = () => {
                                           ?.image
                                       }
                                       className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
-                                      alt=""
+                                      alt="Ai2claim inc"
                                     />
                                   </div>
                                 )}

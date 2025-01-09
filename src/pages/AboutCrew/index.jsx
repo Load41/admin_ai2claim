@@ -51,7 +51,7 @@ const AboutCrew = () => {
                       <img
                         src={crewData?.cewDetail?.createdBy?.profileimage}
                         className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
-                        alt=""
+                        alt="Ai2claim inc"
                       />
                     </div>
                     <h6 className="mt-4 mb-0 fw-bold word-break-word">
@@ -194,7 +194,7 @@ const AboutCrew = () => {
                     <img
                       src={imageItem}
                       className="w-100 h-100 object-fit-cover"
-                      alt=""
+                      alt="Ai2claim inc"
                     />
                   </div>
                 ))}

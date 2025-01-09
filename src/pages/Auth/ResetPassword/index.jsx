@@ -10,7 +10,7 @@ const ResetPassword = () => {
         <>
             <div className={clsx(styles.authCardWrap, "w-100")}>
                 <div className={clsx(styles.authHead, "d-flex align-items-center justify-content-center")}>
-                    <img src={logo} className={clsx(styles.logo, "img-fluid sidebar-logo")} alt="" />
+                    <img src={logo} className={clsx(styles.logo, "img-fluid sidebar-logo")} alt="Ai2claim inc" />
                 </div>
                 <h3 className="text-center mb-0 pt-5">Reset Password</h3>
                 <div className={clsx(styles.authBox)}>

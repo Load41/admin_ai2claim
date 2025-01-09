@@ -59,7 +59,7 @@ export const LDHeader = ({ }) => {
           <img
             src={manWorkerFive}
             className="w-100 h-100 radius-inherit object-fit-cover"
-            alt=""
+            alt="Ai2claim inc"
           />
         </div>
         <div>
@@ -85,7 +85,7 @@ export const LDHeader = ({ }) => {
           <img
             src={companyOne}
             className="w-100 h-100 radius-inherit object-fit-cover"
-            alt=""
+            alt="Ai2claim inc"
           />
         </div>
         <div>
@@ -111,7 +111,7 @@ export const LDHeader = ({ }) => {
           <img
             src={manWorkerSix}
             className="w-100 h-100 radius-inherit object-fit-cover"
-            alt=""
+            alt="Ai2claim inc"
           />
         </div>
         <div>
@@ -166,7 +166,7 @@ export const LDHeader = ({ }) => {
           "w-100 d-flex align-items-center justify-content-between position-sticky top-0"
         )}
       >
-        {/* <img src={logo} className={clsx(styles.logo, "img-fluid")} alt="" /> */}
+        {/* <img src={logo} className={clsx(styles.logo, "img-fluid")} alt="Ai2claim inc" /> */}
         {/* <h4 className='mb-0'>Christo Jr.</h4> */}
         <LDInput
           id="searchData"
