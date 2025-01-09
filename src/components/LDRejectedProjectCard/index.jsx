@@ -42,7 +42,7 @@ export const LDRejectedProjectCard = ({
                               : item?.createdBy?.profileimage
                           }
                           className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
-                          alt=""
+                          alt="Ai2claim inc"
                         />
                       </div>
                       <h6 className="mt-4 pt-4 pt-xs-2 mb-0 fw-bold word-break-word p small pe-3">

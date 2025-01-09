@@ -210,7 +210,7 @@ export const LDSidebar = ({ mainContentWrap }) => {
           <img
             src={logo}
             className={clsx(styles.logo, "img-fluid sidebar-logo")}
-            alt=""
+            alt="Ai2claim inc"
           />
           <i
             className={clsx(

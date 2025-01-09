@@ -12,7 +12,7 @@ export const LDFooter = ({}) => {
       label: (
         <div className="d-flex align-items-center gap-4">
           <h5 className="h5 mb-0">USA</h5>
-          <img src={USFlag} className="" alt="" />
+          <img src={USFlag} className="" alt="Ai2claim inc" />
         </div>
       ),
       key: "0",
@@ -57,7 +57,7 @@ export const LDFooter = ({}) => {
               onClick={(e) => e.preventDefault()}
               className="text-black h5 mb-0 d-flex align-items-center gap-3"
             >
-              <img src={USFlag} className="" alt="" />
+              <img src={USFlag} className="" alt="Ai2claim inc" />
               US
               <span className={clsx(styles.dropDownIcon)}>
                 {svgIcons.downArrowIcon}
