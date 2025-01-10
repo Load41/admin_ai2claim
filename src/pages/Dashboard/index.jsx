@@ -57,6 +57,7 @@ const Dashboard = () => {
                 projectCardData={managementList}
                 redirectPath={"/management-detail"}
                 showApproveRejectedModal={showApproveRejectedModal}
+                isNotShowDeleteIcon
               />
             )}
           </div>
@@ -77,6 +78,7 @@ const Dashboard = () => {
                 projectCardData={crewList}
                 redirectPath={"/crew-detail"}
                 showApproveRejectedModal={showApproveRejectedModal}
+                isNotShowDeleteIcon
               />
             )}
           </div>
