@@ -59,7 +59,7 @@ export const useClientDetailHook = () => {
   }, [id]);
 
   // Send Final Estimate (Optimization) modal js start
-  const showOptimizationModal = (id, item) => {
+  const showOptimizationModal = (id, item, finalEstimateItem) => {
     setOptimizationData((prevState) => ({
       ...prevState,
       projectId: id,
@@ -74,7 +74,22 @@ export const useClientDetailHook = () => {
             ]
           : [],
     }));
-
+    setFinalEstimateData((prevState) => ({
+      ...prevState,
+      projectId: id,
+      originalEstimatePrice: item?.originalEstimatePrice,
+      ai2ClaimServiceCostPrice: item?.ai2ClaimServiceCostPrice,
+      ...finalEstimateItem,
+      file:
+        finalEstimateItem?.file && finalEstimateItem?.file[0]?.file
+          ? [
+              {
+                name: finalEstimateItem?.file[0]?.file,
+                url: `${appConfig?.IMAGE_URL}/files/${finalEstimateItem?.file[0]?.file}`,
+              },
+            ]
+          : [],
+    }));
     setIsOptimizationModalOpen(true);
     // setUploadedFile()
   };

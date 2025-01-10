@@ -1060,7 +1060,8 @@ const AboutClient = () => {
                             handleClick={() =>
                               showOptimizationModal(
                                 projectData?._id,
-                                projectData?.linkin?.optimation
+                                projectData?.linkin?.optimation,
+                                projectData?.linkin?.final_estimate
                               )
                             }
                           >
