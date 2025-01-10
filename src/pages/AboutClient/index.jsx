@@ -39,7 +39,7 @@ const AboutClient = () => {
     isApproveRejectedModalOpen,
     showApproveRejectedModal,
     approveRejectedModalCancel,
-    estimateWithOptimizationColumn
+    estimateWithOptimizationColumn,
   } = useClientDetailHook();
 
   // Send Final Estimate (Optimization) (table) start
@@ -96,7 +96,7 @@ const AboutClient = () => {
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-          // errorMessage={validateMessages?.email}
+            // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -154,7 +154,7 @@ const AboutClient = () => {
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-          // errorMessage={validateMessages?.email}
+            // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -165,9 +165,12 @@ const AboutClient = () => {
   const estimateWithOptimizationData = [
     {
       key: "1",
-      name: <>
-     Insurance claim with <br/>estimated optimization
-      </>,
+      name: (
+        <>
+          Insurance claim with <br />
+          estimated optimization
+        </>
+      ),
       subTotal: (
         <div className="d-flex align-items-center justify-content-sm-end gap-2">
           <span>$</span>
@@ -177,11 +180,13 @@ const AboutClient = () => {
             name="insuranceEstimatedOptimization"
             // value={optimizationData?.insuranceEstimatedOptimization}
             type="number"
-            handleChange={() => {return false}}
+            handleChange={() => {
+              return false;
+            }}
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-          // errorMessage={validateMessages?.email}
+            // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -198,11 +203,13 @@ const AboutClient = () => {
             name="EOManagementCost"
             // value={optimizationData?.EOManagementCost}
             type="number"
-            handleChange={() => {return false}}
+            handleChange={() => {
+              return false;
+            }}
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-          // errorMessage={validateMessages?.email}
+            // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -219,11 +226,13 @@ const AboutClient = () => {
             name="EOMaterialCost"
             // value={optimizationData?.EOMaterialCost}
             type="number"
-            handleChange={() => {return false}}
+            handleChange={() => {
+              return false;
+            }}
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-          // errorMessage={validateMessages?.email}
+            // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -240,11 +249,13 @@ const AboutClient = () => {
             name="EOCrewCost"
             // value={optimizationData?.EOCrewCost}
             type="number"
-            handleChange={() => {return false}}
+            handleChange={() => {
+              return false;
+            }}
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-          // errorMessage={validateMessages?.email}
+            // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -261,11 +272,13 @@ const AboutClient = () => {
             name="EOServiceFees"
             // value={optimizationData?.EOServiceFees}
             type="number"
-            handleChange={() => {return false}}
+            handleChange={() => {
+              return false;
+            }}
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-          // errorMessage={validateMessages?.email}
+            // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -282,22 +295,27 @@ const AboutClient = () => {
             name="EODeductible"
             // value={optimizationData?.EODeductible}
             type="number"
-            handleChange={() => {return false}}
+            handleChange={() => {
+              return false;
+            }}
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-          // errorMessage={validateMessages?.email}
+            // errorMessage={validateMessages?.email}
           />
         </div>
       ),
     },
-  ]
+  ];
   const estimateWithoutOptimizationData = [
     {
       key: "1",
-      name: <>
-      Insurance claim with <br/>out optimization
-      </>,
+      name: (
+        <>
+          Insurance claim with <br />
+          out optimization
+        </>
+      ),
       subTotal: (
         // finalEstimateData?.originalEstimatePrice +
         // finalEstimateData?.originalEstimateAddOnCost,
@@ -314,7 +332,7 @@ const AboutClient = () => {
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-          // errorMessage={validateMessages?.email}
+            // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -356,7 +374,7 @@ const AboutClient = () => {
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-          // errorMessage={validateMessages?.email}
+            // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -377,7 +395,7 @@ const AboutClient = () => {
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-          // errorMessage={validateMessages?.email}
+            // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -398,7 +416,7 @@ const AboutClient = () => {
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-          // errorMessage={validateMessages?.email}
+            // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -419,7 +437,7 @@ const AboutClient = () => {
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-          // errorMessage={validateMessages?.email}
+            // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -440,7 +458,7 @@ const AboutClient = () => {
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-          // errorMessage={validateMessages?.email}
+            // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -608,7 +626,12 @@ const AboutClient = () => {
                 return (
                   <div className="w-100" key={index}>
                     <div className="pendingProjectListCard aboutListProjectListCard h-100 cursor cursor-auto">
-                      <div className="text-end cursor-pointer mb-4 hover-text-secondary" onClick={() => showApproveRejectedModal(projectData?._id)}>
+                      <div
+                        className="text-end cursor-pointer mb-4 hover-text-secondary"
+                        onClick={() =>
+                          showApproveRejectedModal(projectData?._id)
+                        }
+                      >
                         {svgIcons.deleteIcon2}
                       </div>
                       {/* <div className="text-end cursor-pointer mb-4 hover-text-secondary" onClick={() => handleProjectDelete(projectData?._id)}>
@@ -663,28 +686,28 @@ const AboutClient = () => {
                               </h6>
                               {projectData?.linkin?.insurance_company?.linkinId
                                 ?.name && (
-                                  <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
-                                    {
-                                      projectData?.linkin?.insurance_company
-                                        ?.linkinId?.name
-                                    }
-                                    <div
-                                      className={clsx(
-                                        styles.clientDetailProjectImgWrap,
-                                        "ratio ratio-21x9 mt-2"
-                                      )}
-                                    >
-                                      <img
-                                        src={
-                                          projectData?.linkin?.insurance_company
-                                            ?.linkinId?.image
-                                        }
-                                        className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
-                                        alt=""
-                                      />
-                                    </div>
-                                  </h6>
-                                )}
+                                <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
+                                  {
+                                    projectData?.linkin?.insurance_company
+                                      ?.linkinId?.name
+                                  }
+                                  <div
+                                    className={clsx(
+                                      styles.clientDetailProjectImgWrap,
+                                      "ratio ratio-21x9 mt-2"
+                                    )}
+                                  >
+                                    <img
+                                      src={
+                                        projectData?.linkin?.insurance_company
+                                          ?.linkinId?.image
+                                      }
+                                      className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
+                                      alt=""
+                                    />
+                                  </div>
+                                </h6>
+                              )}
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
                               <h6 className="w-45 mb-0 lh-base fw-bold">
@@ -694,10 +717,10 @@ const AboutClient = () => {
                               <div className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0 d-flex flex-wrap gap-3">
                                 {projectData?.linkin?.insurance_company
                                   ?.files &&
-                                  typeof projectData?.linkin?.insurance_company
-                                    ?.files !== "string" &&
-                                  projectData?.linkin?.insurance_company?.files
-                                    ?.length > 0 ? (
+                                typeof projectData?.linkin?.insurance_company
+                                  ?.files !== "string" &&
+                                projectData?.linkin?.insurance_company?.files
+                                  ?.length > 0 ? (
                                   projectData?.linkin?.insurance_company?.files?.map(
                                     (fileItem, index) => {
                                       return (
@@ -809,24 +832,24 @@ const AboutClient = () => {
                                 {projectData?.linkin?.management?.linkinId
                                   ?.company_name
                                   ? projectData?.linkin?.management?.linkinId
-                                    ?.company_name
+                                      ?.company_name
                                   : "-"}
                                 {"  "}
                                 {projectData?.linkin?.management?.status && (
                                   <span
                                     className={
                                       projectData?.linkin?.management?.status ==
-                                        "accept"
+                                      "accept"
                                         ? "text-matt-green "
                                         : projectData?.linkin?.management
-                                          ?.status == "reject"
-                                          ? "text-arcade-fire "
-                                          : "text-bright-red"
+                                            ?.status == "reject"
+                                        ? "text-arcade-fire "
+                                        : "text-bright-red"
                                     }
                                   >
                                     (
                                     {projectData?.linkin?.management?.status ==
-                                      "accept"
+                                    "accept"
                                       ? "Hire"
                                       : projectData?.linkin?.management?.status}
                                     )
@@ -834,22 +857,22 @@ const AboutClient = () => {
                                 )}
                                 {projectData?.linkin?.management?.linkinId
                                   ?.image && (
-                                    <div
-                                      className={clsx(
-                                        styles.clientDetailProjectImgWrap,
-                                        "ratio ratio-21x9 mt-2"
-                                      )}
-                                    >
-                                      <img
-                                        src={
-                                          projectData?.linkin?.management
-                                            ?.linkinId?.image
-                                        }
-                                        className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
-                                        alt=""
-                                      />
-                                    </div>
-                                  )}
+                                  <div
+                                    className={clsx(
+                                      styles.clientDetailProjectImgWrap,
+                                      "ratio ratio-21x9 mt-2"
+                                    )}
+                                  >
+                                    <img
+                                      src={
+                                        projectData?.linkin?.management
+                                          ?.linkinId?.image
+                                      }
+                                      className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
+                                      alt=""
+                                    />
+                                  </div>
+                                )}
                               </h6>
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
@@ -872,7 +895,7 @@ const AboutClient = () => {
                                 {projectData?.linkin?.material
                                   ?.pick_your_singles
                                   ? projectData?.linkin?.material
-                                    ?.pick_your_singles
+                                      ?.pick_your_singles
                                   : "-"}
                               </h6>
                             </div>
@@ -903,24 +926,24 @@ const AboutClient = () => {
                                 {projectData?.linkin?.crew?.linkinId
                                   ?.company_name
                                   ? projectData?.linkin?.crew?.linkinId
-                                    ?.company_name
+                                      ?.company_name
                                   : "-"}
                                 &nbsp;
                                 {projectData?.linkin?.crew?.status && (
                                   <span
                                     className={
                                       projectData?.linkin?.crew?.status ==
-                                        "accept"
+                                      "accept"
                                         ? "text-matt-green "
                                         : projectData?.linkin?.crew?.status ==
                                           "reject"
-                                          ? "text-arcade-fire "
-                                          : "text-bright-red"
+                                        ? "text-arcade-fire "
+                                        : "text-bright-red"
                                     }
                                   >
                                     (
                                     {projectData?.linkin?.crew?.status ==
-                                      "accept"
+                                    "accept"
                                       ? "Hire"
                                       : projectData?.linkin?.crew?.status}
                                     )
@@ -1015,7 +1038,6 @@ const AboutClient = () => {
                           </div>
                         </div>
                         <div className="col-xxl-6 text-center d-flex flex-column gap-4 align-items-xxl-center h-100 pt-5 pt-xxl-0">
-
                           <h4 className="lh-base fw-medium mb-0">
                             Project was In progress.
                           </h4>
@@ -1046,7 +1068,7 @@ const AboutClient = () => {
                           <div className="d-flex flex-wrap justify-content-center gap-4">
                             {projectData?.linkin?.optimation?.file &&
                               projectData?.linkin?.optimation?.file?.length >
-                              0 &&
+                                0 &&
                               projectData?.linkin?.optimation?.file?.map(
                                 (fileItem, index) => {
                                   return (
@@ -1070,12 +1092,13 @@ const AboutClient = () => {
                               isFillBtn
                               disabled={total >= 100 ? false : true}
                               customClass={clsx("w-50 w-100-sm mx-auto")}
-                              handleClick={() =>
-                                showFinalEstimateModal(
-                                  projectData?._id,
-                                  projectData?.linkin?.optimation,
-                                  projectData?.linkin?.final_estimate
-                                )
+                              handleClick={
+                                () =>
+                                  showFinalEstimateModal(
+                                    projectData?._id,
+                                    projectData?.linkin?.optimation,
+                                    projectData?.linkin?.final_estimate
+                                  )
                                 // showOptimizationModal(
                                 //   projectData?._id,
                                 //   projectData?.linkin?.optimation
@@ -1377,10 +1400,10 @@ const AboutClient = () => {
                   <h5 className="mb-0 text-bleu-de-france-one word-break-word">
                     $&nbsp;
                     {optimizationData?.originalEstimatePrice
-                      ? parseInt(optimizationData?.originalEstimatePrice) +
-                      parseInt(optimizationData?.originalEstimateAddOnCost) -
-                      parseInt(optimizationData?.ai2ClaimServiceCostPrice) +
-                      parseInt(optimizationData?.ai2ClaimServiceAddOnCost)
+                      ? parseInt(optimizationData?.ai2ClaimServiceCostPrice) +
+                        parseInt(optimizationData?.ai2ClaimServiceAddOnCost) -
+                        parseInt(optimizationData?.originalEstimatePrice) +
+                        parseInt(optimizationData?.originalEstimateAddOnCost)
                       : 0}
                   </h5>
                 </div>
@@ -1411,7 +1434,7 @@ const AboutClient = () => {
         width={1400}
         modalContent={
           <div className="row mx-0">
-             <div className="col-lg-6">
+            <div className="col-lg-6">
               <div className={clsx(styles.optimizationBox)}>
                 <h5 className="mb-5 mb-xl-4">Estimate with optimization :-</h5>
                 <LDDocUpload
@@ -1437,7 +1460,9 @@ const AboutClient = () => {
                   pagination={false}
                 />
                 <div className="d-flex justify-content-center align-items-center pt-5 mt-3 mt-xl-0 pb-3">
-                  <h5 className="me-3 mb-0 fw-bold">Total Estimated Cash back :-</h5>
+                  <h5 className="me-3 mb-0 fw-bold">
+                    Total Estimated Cash back :-
+                  </h5>
                   <h5 className="mb-0 text-bleu-de-france-one word-break-word">
                     $54,000.00
                   </h5>
@@ -1446,7 +1471,9 @@ const AboutClient = () => {
             </div>
             <div className="col-lg-6 mt-5 pt-5 mt-lg-0 pt-lg-0">
               <div className={clsx(styles.optimizationBox)}>
-                <h5 className="mb-5 mb-xl-4">Estimate Without optimization :-</h5>
+                <h5 className="mb-5 mb-xl-4">
+                  Estimate Without optimization :-
+                </h5>
                 <LDDocUpload
                   accept=".docx, application/pdf"
                   label="Please upload the document"
@@ -1461,16 +1488,18 @@ const AboutClient = () => {
                   pagination={false}
                 />
                 <div className="d-flex justify-content-center align-items-center pt-5 mt-3 mt-xl-0 pb-3">
-                  <h5 className="me-3 mb-0 fw-bold">Total Estimated Cash back :-</h5>
+                  <h5 className="me-3 mb-0 fw-bold">
+                    Total Estimated Cash back :-
+                  </h5>
                   <h5 className="mb-0 text-bleu-de-france-one word-break-word">
                     $&nbsp;{" "}
                     {finalEstimateData?.originalEstimatePrice
                       ? parseInt(finalEstimateData?.originalEstimatePrice) -
-                      parseInt(finalEstimateData?.insuranceClaim) +
-                      parseInt(finalEstimateData?.managementCost) +
-                      parseInt(finalEstimateData?.crewCost) +
-                      parseInt(finalEstimateData?.materialCost) +
-                      parseInt(finalEstimateData?.serviceFees)
+                        parseInt(finalEstimateData?.insuranceClaim) +
+                        parseInt(finalEstimateData?.managementCost) +
+                        parseInt(finalEstimateData?.crewCost) +
+                        parseInt(finalEstimateData?.materialCost) +
+                        parseInt(finalEstimateData?.serviceFees)
                       : 0}
                   </h5>
                 </div>
@@ -1497,7 +1526,9 @@ const AboutClient = () => {
                 isFillBtn
                 isGreenBg
                 customClass={clsx("")}
-                handleClick={() => {return false}}
+                handleClick={() => {
+                  return false;
+                }}
               >
                 Send optimization & Estimate
               </LDButton>

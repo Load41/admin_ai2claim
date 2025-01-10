@@ -4,7 +4,7 @@ import {
   doFetchClientProjectDelete,
   doFetchClientProjectLinkInTypeUpdate,
   doFetchClientProjectLinkInUpdate,
-  doFetchUserDetail
+  doFetchUserDetail,
 } from "../../actions";
 import { toast } from "react-toastify";
 import { appConfig } from "../../config";
@@ -18,7 +18,8 @@ export const useClientDetailHook = () => {
   const [clientData, setClientData] = useState({});
   const [projectId, setProjectId] = useState();
   // confirm modal js start
-  const [isApproveRejectedModalOpen, setIsApproveRejectedModalOpen] = useState(false);
+  const [isApproveRejectedModalOpen, setIsApproveRejectedModalOpen] =
+    useState(false);
   // confirm modal js end
   const [optimizationData, setOptimizationData] = useState({
     originalEstimateAddOnCost: 0,
@@ -66,11 +67,11 @@ export const useClientDetailHook = () => {
       file:
         item?.file && item?.file[0]?.file
           ? [
-            {
-              name: item?.file[0]?.file,
-              url: `${appConfig?.IMAGE_URL}/files/${item?.file[0]?.file}`,
-            },
-          ]
+              {
+                name: item?.file[0]?.file,
+                url: `${appConfig?.IMAGE_URL}/files/${item?.file[0]?.file}`,
+              },
+            ]
           : [],
     }));
 
@@ -94,11 +95,11 @@ export const useClientDetailHook = () => {
       file:
         item?.file && item?.file[0]?.file
           ? [
-            {
-              name: item?.file[0]?.file,
-              url: `${appConfig?.IMAGE_URL}/files/${item?.file[0]?.file}`,
-            },
-          ]
+              {
+                name: item?.file[0]?.file,
+                url: `${appConfig?.IMAGE_URL}/files/${item?.file[0]?.file}`,
+              },
+            ]
           : [],
     }));
     setIsFinalEstimateModalOpen(true);
@@ -188,6 +189,7 @@ export const useClientDetailHook = () => {
         setIsLoading(false);
         toast.success("Optimization added success!");
         handleOptimizationModalCancel();
+        showFinalEstimateModal();
       } else {
         // toast.error("")
 
@@ -207,11 +209,11 @@ export const useClientDetailHook = () => {
       [name]: parseInt(value),
       cashBack: finalEstimateData?.insuranceClaim
         ? parseInt(finalEstimateData?.originalEstimatePrice) -
-        parseInt(finalEstimateData?.insuranceClaim) +
-        parseInt(finalEstimateData?.managementCost) +
-        parseInt(finalEstimateData?.crewCost) +
-        parseInt(finalEstimateData?.materialCost) +
-        parseInt(finalEstimateData?.serviceFees)
+          parseInt(finalEstimateData?.insuranceClaim) +
+          parseInt(finalEstimateData?.managementCost) +
+          parseInt(finalEstimateData?.crewCost) +
+          parseInt(finalEstimateData?.materialCost) +
+          parseInt(finalEstimateData?.serviceFees)
         : 0,
     }));
   };
@@ -315,7 +317,7 @@ export const useClientDetailHook = () => {
       key: "subTotal",
     },
   ];
-// estimate table end
+  // estimate table end
   // Send Final Estimate modal (table) start
   const estimateWithOptimizationColumn = [
     {
@@ -341,27 +343,26 @@ export const useClientDetailHook = () => {
       key: "subTotal",
     },
   ];
-// Send Final Estimate modal (table) end
+  // Send Final Estimate modal (table) end
   const handleProjectDelete = async () => {
     if (projectId) {
-      const clientProjectResponse = await doFetchClientProjectDelete(projectId)
+      const clientProjectResponse = await doFetchClientProjectDelete(projectId);
 
       if (clientProjectResponse?.status == 200) {
         doGetClientList();
         setIsLoading(false);
         toast.success("Project delete success!");
-
       } else {
         // toast.error("")
 
         setIsLoading(false);
       }
     }
-  }
+  };
 
   // confirm modal js start
   const showApproveRejectedModal = (id) => {
-    setProjectId(id)
+    setProjectId(id);
     setIsApproveRejectedModalOpen(true);
   };
 
