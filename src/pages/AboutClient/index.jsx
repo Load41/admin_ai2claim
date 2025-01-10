@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { LDInput } from "../../components/LDInput";
 import { appConfig } from "../../config";
 import styles from "./AboutClient.module.css";
+import { formatPhoneNumber } from "../../constants/imageData";
 
 const AboutClient = () => {
   const {
@@ -522,7 +523,7 @@ const AboutClient = () => {
                       <img
                         src={clientData?.profileimage}
                         className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
-                        alt=""
+                        alt="Ai2claim inc"
                       />
                     </div>
                     <h6 className="mt-4 mb-0 fw-bold word-break-word">
@@ -564,7 +565,9 @@ const AboutClient = () => {
                         Mobile <b className="d-none d-sm-inline">:-</b>
                       </h6>
                       <h6 className="w-65 w-100-md mb-0 lh-base word-break-word ps-3">
-                        {clientData?.mobile}
+                        {clientData?.mobile
+                          ? formatPhoneNumber(clientData?.mobile)
+                          : ""}
                       </h6>
                     </div>
                     <div className="d-flex w-100">
@@ -703,7 +706,7 @@ const AboutClient = () => {
                                           ?.linkinId?.image
                                       }
                                       className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
-                                      alt=""
+                                      alt="Ai2claim inc"
                                     />
                                   </div>
                                 </h6>
@@ -869,7 +872,7 @@ const AboutClient = () => {
                                           ?.linkinId?.image
                                       }
                                       className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
-                                      alt=""
+                                      alt="Ai2claim inc"
                                     />
                                   </div>
                                 )}
@@ -962,7 +965,7 @@ const AboutClient = () => {
                                           ?.image
                                       }
                                       className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
-                                      alt=""
+                                      alt="Ai2claim inc"
                                     />
                                   </div>
                                 )}

@@ -34,7 +34,7 @@ const AboutUs = () => {
         </div>
       </div>
       <div className="text-center w-100 mt-5">
-        <img src={aboutUs} className="img-fluid" alt="" />
+        <img src={aboutUs} className="img-fluid" alt="Ai2claim inc" />
       </div>
     </div>
   );

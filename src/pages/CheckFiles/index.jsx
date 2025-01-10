@@ -60,7 +60,7 @@ const CheckFiles = () => {
           <div className="queries-list-box w-100 d-flex flex-column flex-md-row justify-content-between gap-5 gap-md-4" key={cqIndex}>
             <div className="d-flex align-items-center gap-5">
               <div className="ratio ratio-1x1 rounded-circle queries-profile-box flex-0-auto">
-                  <img src={cqItem.img} className="img-fluid radius-inherit object-fit-cover bg-ma-white p-1" alt="" />
+                  <img src={cqItem.img} className="img-fluid radius-inherit object-fit-cover bg-ma-white p-1" alt="Ai2claim inc" />
               </div>
               <h5 className="mb-0">{cqItem.queries}</h5>
             </div>

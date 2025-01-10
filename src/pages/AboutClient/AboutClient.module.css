@@ -7,6 +7,7 @@
 }
 .clientDetailProjectImgWrap{
     max-width: 150px;
+    background-color: rgba(var(--clr-black), 0.04);
 }
 .uploadImg{
     border: 1px solid var(--clr-bleu-de-france-one);

@@ -5,6 +5,7 @@ import { LDButton, LDModal } from "../../components";
 import { useCrewDetailHook } from "../../hooks";
 import { Link } from "react-router-dom";
 import styles from "./AboutCrew.module.css";
+import { formatPhoneNumber } from "../../constants/imageData";
 
 const AboutCrew = () => {
   const { crewData,
@@ -51,7 +52,7 @@ const AboutCrew = () => {
                       <img
                         src={crewData?.cewDetail?.createdBy?.profileimage}
                         className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
-                        alt=""
+                        alt="Ai2claim inc"
                       />
                     </div>
                     <h6 className="mt-4 mb-0 fw-bold word-break-word">
@@ -102,7 +103,8 @@ const AboutCrew = () => {
                         Mobile <b className="d-none d-sm-inline">:-</b>
                       </h6>
                       <h6 className="w-65 mb-0 lh-base word-break-word ps-3">
-                        {crewData?.cewDetail?.createdBy?.mobile}
+
+                        {crewData?.cewDetail?.createdBy?.mobile ? formatPhoneNumber(crewData?.cewDetail?.createdBy?.mobile) : ""}
                       </h6>
                     </div>
                     <div className="d-flex w-100">
@@ -194,7 +196,7 @@ const AboutCrew = () => {
                     <img
                       src={imageItem}
                       className="w-100 h-100 object-fit-cover"
-                      alt=""
+                      alt="Ai2claim inc"
                     />
                   </div>
                 ))}

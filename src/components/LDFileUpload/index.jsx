@@ -7,7 +7,7 @@ export function LDFileUpload({ handleFileChange, profile, className }) {
     <>
       <div className={clsx(styles.uploadBtnWrapper, className)}>
         <button className={clsx(styles.btn)}>
-          <img src={profile} className="img-fluid object-fit-cover w-100 h-100 radius-inherit" alt="" />
+          <img src={profile} className="img-fluid object-fit-cover w-100 h-100 radius-inherit" alt="Ai2claim inc" />
           <div className={clsx(styles.pencilIcon, "d-flex align-items-center justify-content-center rounded-circle position-absolute text-white cursor-pointer")}>
             {svgIcons.pencilIcon}
           </div>

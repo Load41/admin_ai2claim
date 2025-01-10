@@ -7,7 +7,8 @@ import { LDButton, LDModal } from "../../components";
 import { Link } from "react-router-dom";
 import { LDInput } from "../../components/LDInput";
 import styles from "./ComplaintsQueries.module.css";
-const items  = [
+import { formatPhoneNumber } from "../../constants/imageData";
+const items = [
   {
     key: '1',
     label: (
@@ -71,7 +72,7 @@ const ComplaintsQueries = () => {
           <div className="queries-list-box w-100 d-flex flex-column flex-md-row align-items-center justify-content-between gap-5 gap-md-4" key={cqIndex}>
             <div className="d-flex align-items-center gap-5">
               <div className="ratio ratio-1x1 rounded-circle queries-profile-box flex-0-auto">
-                  <img src={cqItem.img} className="img-fluid radius-inherit object-fit-cover bg-ma-white p-1" alt="" />
+                  <img src={cqItem.img} className="img-fluid radius-inherit object-fit-cover bg-ma-white p-1" alt="Ai2claim inc" />
               </div>
               <h5 className="mb-0">{cqItem.queries}</h5>
             </div>
@@ -82,8 +83,8 @@ const ComplaintsQueries = () => {
       </div> */}
       <div className="row w-100">
         {complaintsQueriesData.map((cqItem, cqIndex) => {
-          return(
-          <div className="col-lg-6 col-xl-12 col-xxl-6 mt-5">
+          return (
+            <div className="col-lg-6 col-xl-12 col-xxl-6 mt-5">
               <div className={clsx("pendingProjectListCard pendingProjectListCardBig  h-100 d-flex flex-column cursor cursor-auto")}>
                 <div
                   className="pendingProjectLisRow w-100 h-100"
@@ -97,7 +98,7 @@ const ComplaintsQueries = () => {
                       <img
                         src={cqItem.img}
                         className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
-                        alt=""
+                        alt="Ai2claim inc"
                       />
                     </div>
                     <h6 className="mt-4 pt-4 pt-xs-2 mb-0 fw-bold word-break-word p small pe-3">
@@ -154,7 +155,8 @@ const ComplaintsQueries = () => {
                           Mobile&nbsp;<b className="d-none d-lg-inline">:-</b>
                         </h6>
                         <h6 className="w-65 w-100-xs mb-0 lh-base p small word-break-word p small ps-2 mt-3 mt-xxl-0">
-                          {cqItem.mobile}
+
+                          {cqItem.mobile ? formatPhoneNumber(cqItem.mobile) : ""}
                         </h6>
                       </div>
                       <div className="d-flex flex-column flex-sm-row w-100 mb-5 mb-sm-4">
@@ -166,31 +168,31 @@ const ComplaintsQueries = () => {
                         </h6>
                       </div>
                     </div>
-                      <LDButton
-                        type="fill"
-                        shape={"round"}
-                        iconPosition={"end"}
-                        isGreenBg
-                        isSmallBtn
-                        customClass={clsx("w-max-content")}
-                        handleClick={showResponseModal}
-                      >
-                        Message back
-                      </LDButton>
+                    <LDButton
+                      type="fill"
+                      shape={"round"}
+                      iconPosition={"end"}
+                      isGreenBg
+                      isSmallBtn
+                      customClass={clsx("w-max-content")}
+                      handleClick={showResponseModal}
+                    >
+                      Message back
+                    </LDButton>
                   </div>
                 </div>
               </div>
-          </div>
+            </div>
           )
         })}
       </div>
       {/* <LDPagination className="justify-content-center pt-4 px-xxl-2" total="15" defaultPageSize="5"/> */}
       <LDModal
         title="Response"
-        open={isResponseModalOpen} 
+        open={isResponseModalOpen}
         onCancel={handleResponseModalCancel}
         modalContent={
-            <>
+          <>
             <div className="d-flex flex-column gap-5 gap-xl-4">
               <LDInput
                 id="User name"
@@ -199,42 +201,42 @@ const ComplaintsQueries = () => {
                 // value={loginData?.userName}
                 type="text"
                 placeholder="Enter user name"
-                handleChange={() => {return false}}
+                handleChange={() => { return false }}
                 className={clsx()}
                 isNotBottomSpace
                 disabled
-                // errorMessage={validateMessages?.email}
-            />
-            <LDInput
+              // errorMessage={validateMessages?.email}
+              />
+              <LDInput
                 id="Mobile number"
                 dataTestId="mobileNumber"
                 name="mobileNumber"
                 // value={loginData?.mobileNumber}
                 type="number"
                 placeholder="Enter mobile number"
-                handleChange={() => {return false}}
+                handleChange={() => { return false }}
                 className={clsx()}
                 isNotBottomSpace
                 disabled
-                // errorMessage={validateMessages?.email}
-            />
-            <LDInput
+              // errorMessage={validateMessages?.email}
+              />
+              <LDInput
                 id="Email"
                 dataTestId="email"
                 name="email"
                 // value={loginData?.email}
                 type="email"
                 placeholder="Enter email address"
-                handleChange={() => {return false}}
+                handleChange={() => { return false }}
                 className={clsx()}
                 isNotBottomSpace
                 disabled
-                // errorMessage={validateMessages?.email}
-            />
-            <LDInput isTextarea placeholder="Enter your message here...."/>
+              // errorMessage={validateMessages?.email}
+              />
+              <LDInput isTextarea placeholder="Enter your message here...." />
             </div>
             <div className="d-flex align-items-centr gap-5 justify-content-center mt-5 mt-xxl-3">
-                <LDButton
+              <LDButton
                 type="fill"
                 shape={"round"}
                 iconPosition={"start"}
@@ -243,10 +245,10 @@ const ComplaintsQueries = () => {
                 icon={svgIcons.approveIcon}
                 customClass={clsx("w-50")}
                 handleClick={handleResponseModalCancel}
-                >
+              >
                 Send mail
-                </LDButton>
-                <LDButton
+              </LDButton>
+              <LDButton
                 type="fill"
                 shape={"round"}
                 iconPosition={"start"}
@@ -255,11 +257,11 @@ const ComplaintsQueries = () => {
                 icon={svgIcons.declineIcon}
                 customClass={clsx("w-50")}
                 handleClick={handleResponseModalCancel}
-                >
+              >
                 Cancel
-                </LDButton>
+              </LDButton>
             </div>
-            </>
+          </>
         }
       />
     </div>

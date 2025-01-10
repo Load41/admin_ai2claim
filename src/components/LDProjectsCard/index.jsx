@@ -9,6 +9,7 @@ import {
 import { clsx } from "clsx";
 import { useNavigate } from "react-router-dom";
 import { svgIcons } from "../../constants/icons";
+import { formatPhoneNumber } from "../../constants/imageData";
 
 export const LDProjectsCard = ({
   projectCardData,
@@ -58,7 +59,7 @@ export const LDProjectsCard = ({
                                 : item?.createdBy?.profileimage
                             }
                             className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
-                            alt=""
+                            alt="Ai2claim inc"
                           />
                         </div>
                         <h6 className="mt-4 mb-0 fw-bold word-break-word p small pe-3">
@@ -172,38 +173,38 @@ export const LDProjectsCard = ({
                                                 })} */}
                           </ul>
                           {/* <div className="d-flex w-100 mb-4">
-                            <h6 className="w-75-xs w-50 mb-0 lh-base p small fw-bold">
+                            <h6 className="w-50 mb-0 lh-base p small fw-bold">
                               Projects Done{" "}
                               <b className="d-none d-lg-inline">:-</b>
                             </h6>
-                            <h6 className="w-25-xs w-50 mb-0 lh-base p small word-break-word p small">
+                            <h6 className="w-50 mb-0 lh-base p small word-break-word p small">
                               {item?.projectsDone ? item?.projectsDone : 0}
                             </h6>
                           </div> */}
                           <div className="d-flex w-100 mb-4">
-                            <h6 className="w-75-xs w-50 mb-0 lh-base p small fw-bold">
+                            <h6 className="w-50 mb-0 lh-base p small fw-bold">
                               Projects Pending{" "}
                               <b className="d-none d-lg-inline">:-</b>
                             </h6>
-                            <h6 className="w-25-xs w-50 mb-0 lh-base p small word-break-word p small">
+                            <h6 className="w-50 mb-0 lh-base p small word-break-word p small">
                               {item?.projectCount ? item?.projectCount : 0}
                             </h6>
                           </div>
                           <div className="d-flex w-100 mb-4">
-                            <h6 className="w-75-xs w-50 mb-0 lh-base p small fw-bold">
+                            <h6 className="w-50 mb-0 lh-base p small fw-bold">
                               Mobile <b className="d-none d-lg-inline">:-</b>
                             </h6>
-                            <h6 className="w-25-xs w-50 mb-0 lh-base p small word-break-word p small">
+                            <h6 className="w-50 mb-0 lh-base p small word-break-word p small">
                               {item?.mobile
-                                ? item.mobile
-                                : item?.createdBy?.mobile}
+                                ? formatPhoneNumber(item.mobile)
+                                : formatPhoneNumber(item?.createdBy?.mobile)}
                             </h6>
                           </div>
                           <div className="d-flex w-100 mb-4">
-                            <h6 className="w-75-xs w-50 mb-0 lh-base p small fw-bold">
+                            <h6 className="w-50 mb-0 lh-base p small fw-bold">
                               Email <b className="d-none d-lg-inline">:-</b>
                             </h6>
-                            <h6 className="w-25-xs w-50 mb-0 lh-base p small word-break-word p small">
+                            <h6 className="w-50 mb-0 lh-base p small word-break-word p small">
                               {item?.email
                                 ? item.email
                                 : item?.createdBy?.email}
@@ -328,7 +329,7 @@ export const LDProjectsCard = ({
                                           : item?.createdBy?.profileimage
                                       }
                                       className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
-                                      alt=""
+                                      alt="Ai2claim inc"
                                     />
                                   </div>
                                   <h6 className="mt-4 mb-0 fw-bold word-break-word p small pe-3">
@@ -354,44 +355,44 @@ export const LDProjectsCard = ({
                                                                 })} */}
                                   </ul>
                                   {/* <div className="d-flex w-100 mb-4">
-                                    <h6 className="w-75-xs w-50 mb-0 lh-base p small fw-bold">
+                                    <h6 className="w-50 mb-0 lh-base p small fw-bold">
                                       Projects Done{" "}
                                       <b className="d-inline">:-</b>
                                     </h6>
-                                    <h6 className="w-25-xs w-50 mb-0 lh-base p small word-break-word p small">
+                                    <h6 className="w-50 mb-0 lh-base p small word-break-word p small">
                                       {item?.projectsDone
                                         ? item?.projectsDone
                                         : 0}
                                     </h6>
                                   </div> */}
                                   <div className="d-flex w-100 mb-4">
-                                    <h6 className="w-75-xs w-50 mb-0 lh-base p small fw-bold">
+                                    <h6 className="w-50 mb-0 lh-base p small fw-bold">
                                       Projects Pending{" "}
                                       <b className="d-inline">:-</b>
                                     </h6>
-                                    <h6 className="w-25-xs w-50 mb-0 lh-base p small word-break-word p small">
+                                    <h6 className="w-50 mb-0 lh-base p small word-break-word p small">
                                       {item?.projectCount
                                         ? item?.projectCount
                                         : 0}
                                     </h6>
                                   </div>
                                   <div className="d-flex w-100 mb-4">
-                                    <h6 className="w-75-xs w-50 mb-0 lh-base p small fw-bold">
+                                    <h6 className="w-50 mb-0 lh-base p small fw-bold">
                                       Mobile{" "}
                                       <b className="d-none d-lg-inline">:-</b>
                                     </h6>
-                                    <h6 className="w-25-xs w-50 mb-0 lh-base p small word-break-word p small">
+                                    <h6 className="w-50 mb-0 lh-base p small word-break-word p small">
                                       {item?.mobile
-                                        ? item.mobile
-                                        : item?.createdBy?.mobile}
+                                        ? formatPhoneNumber(item.mobile)
+                                        : formatPhoneNumber(item?.createdBy?.mobile)}
                                     </h6>
                                   </div>
                                   <div className="d-flex w-100 mb-4">
-                                    <h6 className="w-75-xs w-50 mb-0 lh-base p small fw-bold">
+                                    <h6 className="w-50 mb-0 lh-base p small fw-bold">
                                       Email{" "}
                                       <b className="d-none d-lg-inline">:-</b>
                                     </h6>
-                                    <h6 className="w-25-xs w-50 mb-0 lh-base p small word-break-word p small">
+                                    <h6 className="w-50 mb-0 lh-base p small word-break-word p small">
                                       {item?.email
                                         ? item.email
                                         : item?.createdBy?.email}
