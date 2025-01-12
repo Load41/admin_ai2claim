@@ -28,16 +28,26 @@ export const useClientDetailHook = () => {
     ai2ClaimServiceAddOnCost: 0,
   });
   const [finalEstimateData, setFinalEstimateData] = useState({
-    originalEstimatePrice: 0,
-    ai2ClaimServiceCostPrice: 0,
-    insuranceClaim: 0,
-    managementCost: 0,
-    crewCost: 0,
-    materialCost: 0,
-    serviceFees: 0,
-    cashBack: 0,
+    optimizationWith: {
+      insuranceEstimatedOptimization: 0,
+      managementCost: 0,
+      crewCost: 0,
+      materialCost: 0,
+      serviceFees: 0,
+      deductible: 0,
+    },
+    optimizationWithout: {
+      insuranceEstimatedOptimization: 0,
+      managementCost: 0,
+      crewCost: 0,
+      materialCost: 0,
+      serviceFees: 0,
+      deductible: 0,
+    },
   });
   const [uploadedFile, setUploadedFile] = useState(null);
+  const [uploadedWithFile, setUploadedWithFile] = useState(null);
+  const [uploadedWithoutFile, setUploadedWithoutFile] = useState(null);
 
   const [
     isAffidavitSelfGeneralContractorOpen,
@@ -67,28 +77,53 @@ export const useClientDetailHook = () => {
       file:
         item?.file && item?.file[0]?.file
           ? [
-              {
-                name: item?.file[0]?.file,
-                url: `${appConfig?.IMAGE_URL}/files/${item?.file[0]?.file}`,
-              },
-            ]
+            {
+              name: item?.file[0]?.file,
+              url: `${appConfig?.IMAGE_URL}/files/${item?.file[0]?.file}`,
+            },
+          ]
           : [],
     }));
     setFinalEstimateData((prevState) => ({
       ...prevState,
       projectId: id,
-      originalEstimatePrice: item?.originalEstimatePrice,
-      ai2ClaimServiceCostPrice: item?.ai2ClaimServiceCostPrice,
-      ...finalEstimateItem,
-      file:
-        finalEstimateItem?.file && finalEstimateItem?.file[0]?.file
+      // ...item,
+      optimizationWith: finalEstimateItem?.optimizationWith ? {
+        ...finalEstimateItem?.optimizationWith,
+        file: finalEstimateItem?.optimizationWith?.file && finalEstimateItem?.optimizationWith?.file[0]?.file
           ? [
-              {
-                name: finalEstimateItem?.file[0]?.file,
-                url: `${appConfig?.IMAGE_URL}/files/${finalEstimateItem?.file[0]?.file}`,
-              },
-            ]
+            {
+              name: finalEstimateItem?.optimizationWith?.file[0]?.file,
+              url: `${appConfig?.IMAGE_URL}/files/${finalEstimateItem?.optimizationWith?.file[0]?.file}`,
+            },
+          ]
           : [],
+      } : {
+        insuranceEstimatedOptimization: 0,
+        managementCost: 0,
+        crewCost: 0,
+        materialCost: 0,
+        serviceFees: 0,
+        deductible: 0,
+      },
+      optimizationWithout: finalEstimateItem?.optimizationWith ? {
+        ...finalEstimateItem?.optimizationWithout,
+        file: finalEstimateItem?.optimizationWithout?.file && finalEstimateItem?.optimizationWithout?.file[0]?.file
+          ? [
+            {
+              name: finalEstimateItem?.optimizationWithout?.file[0]?.file,
+              url: `${appConfig?.IMAGE_URL}/files/${finalEstimateItem?.optimizationWithout?.file[0]?.file}`,
+            },
+          ]
+          : [],
+      } : {
+        insuranceEstimatedOptimization: 0,
+        managementCost: 0,
+        crewCost: 0,
+        materialCost: 0,
+        serviceFees: 0,
+        deductible: 0,
+      }
     }));
     setIsOptimizationModalOpen(true);
     // setUploadedFile()
@@ -100,22 +135,33 @@ export const useClientDetailHook = () => {
   // Send Final Estimate (Optimization) modal js end
   // Send Final Estimate modal js start
   const showFinalEstimateModal = (id, optimizationItem, item) => {
-    console.log({ id, optimizationItem, item });
+    // console.log({ id, optimizationItem, item });
     setFinalEstimateData((prevState) => ({
       ...prevState,
       projectId: id,
-      originalEstimatePrice: optimizationItem?.originalEstimatePrice,
-      ai2ClaimServiceCostPrice: optimizationItem?.ai2ClaimServiceCostPrice,
-      ...item,
-      file:
-        item?.file && item?.file[0]?.file
+      // ...item,
+      optimizationWith: {
+        ...item?.optimizationWith,
+        file: item?.optimizationWith?.file && item?.optimizationWith?.file[0]?.file
           ? [
-              {
-                name: item?.file[0]?.file,
-                url: `${appConfig?.IMAGE_URL}/files/${item?.file[0]?.file}`,
-              },
-            ]
+            {
+              name: item?.optimizationWith?.file[0]?.file,
+              url: `${appConfig?.IMAGE_URL}/files/${item?.optimizationWith?.file[0]?.file}`,
+            },
+          ]
           : [],
+      },
+      optimizationWithout: {
+        ...item?.optimizationWithout,
+        file: item?.optimizationWithout?.file && item?.optimizationWithout?.file[0]?.file
+          ? [
+            {
+              name: item?.optimizationWithout?.file[0]?.file,
+              url: `${appConfig?.IMAGE_URL}/files/${item?.optimizationWithout?.file[0]?.file}`,
+            },
+          ]
+          : [],
+      }
     }));
     setIsFinalEstimateModalOpen(true);
   };
@@ -148,6 +194,16 @@ export const useClientDetailHook = () => {
     // const files = file?.map((item) => item?.originFileObj);
     console.log(file);
     setUploadedFile(file); // Store the uploaded file in state
+  };
+  const handleFileWithUpload = async (file) => {
+    // const files = file?.map((item) => item?.originFileObj);
+    console.log(file);
+    setUploadedWithFile(file); // Store the uploaded file in state
+  };
+  const handleFileWithoutUpload = async (file) => {
+    // const files = file?.map((item) => item?.originFileObj);
+    console.log(file);
+    setUploadedWithoutFile(file); // Store the uploaded file in state
   };
 
   const handleOptimizationSubmit = async () => {
@@ -213,7 +269,7 @@ export const useClientDetailHook = () => {
     }
   };
 
-  const handleInputEstimateChange = (event) => {
+  const handleInputEstimateChange = (event, key) => {
     const { name, value } = event?.target;
     // const { errors } = validateLogin(name, value);
     // setErrorMessage("");
@@ -221,15 +277,15 @@ export const useClientDetailHook = () => {
     // setValidateMessages(errors);
     setFinalEstimateData((prevState) => ({
       ...prevState,
-      [name]: parseInt(value),
-      cashBack: finalEstimateData?.insuranceClaim
-        ? parseInt(finalEstimateData?.originalEstimatePrice) -
-          parseInt(finalEstimateData?.insuranceClaim) +
-          parseInt(finalEstimateData?.managementCost) +
-          parseInt(finalEstimateData?.crewCost) +
-          parseInt(finalEstimateData?.materialCost) +
-          parseInt(finalEstimateData?.serviceFees)
-        : 0,
+      [key]: { ...prevState[key], [name]: parseInt(value) },
+      // cashBack: finalEstimateData?.insuranceClaim
+      //   ? parseInt(finalEstimateData?.originalEstimatePrice) -
+      //     parseInt(finalEstimateData?.insuranceClaim) +
+      //     parseInt(finalEstimateData?.managementCost) +
+      //     parseInt(finalEstimateData?.crewCost) +
+      //     parseInt(finalEstimateData?.materialCost) +
+      //     parseInt(finalEstimateData?.serviceFees)
+      //   : 0,
     }));
   };
 
@@ -239,28 +295,24 @@ export const useClientDetailHook = () => {
       const formData = new FormData();
       formData.append("type", "final_estimate");
 
-      formData.append(
-        "originalEstimatePrice",
-        finalEstimateData?.originalEstimatePrice
-      );
-      formData.append(
-        "ai2ClaimServiceAddOnCost",
-        finalEstimateData?.ai2ClaimServiceCostPrice
-      );
-      formData.append("insuranceClaim", finalEstimateData?.insuranceClaim);
-      formData.append("managementCost", finalEstimateData?.managementCost);
-      formData.append("crewCost", finalEstimateData?.crewCost);
-      formData.append("materialCost", finalEstimateData?.materialCost);
-      formData.append("serviceFees", finalEstimateData?.serviceFees);
-      formData.append("cashBack", finalEstimateData?.cashBack);
-
+      formData.append("optimizationWithout", JSON.stringify(finalEstimateData?.optimizationWithout));
+      formData.append("optimizationWith", JSON.stringify(finalEstimateData?.optimizationWith));
       formData.append("linkinId", null);
       formData.append("status", true);
-      if (uploadedFile) {
-        uploadedFile.forEach((file) => {
-          formData.append("files", file.originFileObj); // `originFileObj` contains the raw file object
+      formData.append("files", null);
+      console.log({ uploadedWithFile })
+      if (uploadedWithFile) {
+        await uploadedWithFile.forEach((file) => {
+          // console.log(file)
+          formData.append("withFiles", file.originFileObj); // `originFileObj` contains the raw file object
         });
       }
+      if (uploadedWithoutFile) {
+        await uploadedWithoutFile.forEach((file) => {
+          formData.append("withoutFiles", file.originFileObj); // `originFileObj` contains the raw file object
+        });
+      }
+      // console.log({ formData })
       let clientProjectResponse;
       if (finalEstimateData?.status) {
         clientProjectResponse = await doFetchClientProjectLinkInTypeUpdate(
@@ -275,14 +327,22 @@ export const useClientDetailHook = () => {
       }
       if (clientProjectResponse?.status == 200) {
         setFinalEstimateData({
-          originalEstimatePrice: 0,
-          ai2ClaimServiceCostPrice: 0,
-          insuranceClaim: 0,
-          managementCost: 0,
-          crewCost: 0,
-          materialCost: 0,
-          serviceFees: 0,
-          cashBack: 0,
+          optimizationWith: {
+            insuranceEstimatedOptimization: 0,
+            managementCost: 0,
+            crewCost: 0,
+            materialCost: 0,
+            serviceFees: 0,
+            deductible: 0,
+          },
+          optimizationWithout: {
+            insuranceEstimatedOptimization: 0,
+            managementCost: 0,
+            crewCost: 0,
+            materialCost: 0,
+            serviceFees: 0,
+            deductible: 0,
+          },
         });
         doGetClientList();
         setIsLoading(false);
@@ -415,5 +475,7 @@ export const useClientDetailHook = () => {
     isApproveRejectedModalOpen,
     showApproveRejectedModal,
     approveRejectedModalCancel,
+    handleFileWithUpload,
+    handleFileWithoutUpload,
   };
 };

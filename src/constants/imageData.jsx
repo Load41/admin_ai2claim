@@ -18,11 +18,11 @@ export {
 };
 
 export const formatPhoneNumber = (phoneNumber) => {
-  const phoneString = phoneNumber.toString();
+  const phoneString = phoneNumber.toString().replace(/-/g, '');
 
-  if (phoneString.length === 10) {
-    // Format the phone number to +1 123-456-7890
-    return `+1 ${phoneString.slice(0, 3)}-${phoneString.slice(3, 6)}-${phoneString.slice(6)}`;
+  if (phoneString.length >= 10) {
+      // Format the phone number to +1 123-456-7890
+      return `+1 ${phoneString.slice(0, 3)}-${phoneString.slice(3, 6)}-${phoneString.slice(6)}`;
   }
 
   return phoneString;
