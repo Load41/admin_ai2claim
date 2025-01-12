@@ -112,6 +112,7 @@ const CrewList = () => {
                 isNotSwiper
                 redirectPath={"/crew-detail"}
                 showApproveRejectedModal={showApproveRejectedModal}
+                isNotShowDeleteIcon
               />
             )}
             <div className="w-100 d-flex justify-content-center mt-4 pt-3">

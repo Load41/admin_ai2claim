@@ -21,7 +21,8 @@ export const LDProjectsCard = ({
   redirectPath,
   isFullDetails,
   showApproveRejectedModal,
-  isShowInfoMsg
+  isShowInfoMsg,
+  isNotShowDeleteIcon
 }) => {
   const navigate = useNavigate();
   console.log({ projectCardData });
@@ -39,9 +40,12 @@ export const LDProjectsCard = ({
               return (
                 <div className="mt-4" key={index}>
                   <div className="pendingProjectListCard h-100 d-flex flex-column">
+                    {isNotShowDeleteIcon ? ""
+                    :
                     <div className="text-end cursor-pointer mb-4 hover-text-secondary" onClick={() => showApproveRejectedModal(item?.id)}>
                       {svgIcons.deleteIcon2}
                     </div>
+                  }
                     <div
                       className="pendingProjectLisRow w-100"
                       onClick={() => navigate(`${redirectPath}/${item?.id}`)}
@@ -310,9 +314,12 @@ export const LDProjectsCard = ({
                               key={index}
 
                             >
+                              {isNotShowDeleteIcon ? ""
+                              :
                               <div className="text-end cursor-pointer mb-4 hover-text-secondary" onClick={() => showApproveRejectedModal(item?.id, type)}>
                                 {svgIcons.deleteIcon2}
                               </div>
+                            }
                               <div className="pendingProjectLisRow w-100" onClick={() =>
                                 navigate(`${redirectPath}/${item?.id}`)
                               }>

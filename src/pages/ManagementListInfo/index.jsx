@@ -116,6 +116,7 @@ const ManagementListInfo = () => {
                 isNotSwiper
                 redirectPath={"/management-detail"}
                 showApproveRejectedModal={showApproveRejectedModal}
+                isNotShowDeleteIcon
               />
             )}
             <div className="w-100 d-flex justify-content-center mt-4 pt-3">
