@@ -6,14 +6,16 @@ import { useCrewDetailHook } from "../../hooks";
 import { Link } from "react-router-dom";
 import styles from "./AboutCrew.module.css";
 import { formatPhoneNumber } from "../../constants/imageData";
+import AIImage from "../../components/AIImage";
 
 const AboutCrew = () => {
-  const { crewData,
+  const {
+    crewData,
     crewHandledList,
     approveRejectedModalCancel,
     isApproveRejectedModalOpen,
     showApproveRejectedModal,
-    handleUserServiceStatusUpdate
+    handleUserServiceStatusUpdate,
   } = useCrewDetailHook();
   // projects-handled-management-list open page start
 
@@ -23,7 +25,11 @@ const AboutCrew = () => {
         <div className="d-flex align-items-center justify-content-between flex-wrap gap-5 gap-xxl-4">
           <div className="d-flex align-items-center flex-wrap gap-4 gap-xl-3">
             <Link
-              to={localStorage.getItem("backUrl") ? localStorage.getItem("backUrl") : "/crew-list"}
+              to={
+                localStorage.getItem("backUrl")
+                  ? localStorage.getItem("backUrl")
+                  : "/crew-list"
+              }
               className="back-next-arrow-wrap flex-0-auto d-flex align-items-center justify-content-center rounded-circle cursor-pointer hover-text-white me-2"
             >
               {svgIcons.backArrowFillIcon}
@@ -49,7 +55,12 @@ const AboutCrew = () => {
                     }
                   >
                     <div className="ratio ratio-1x1">
-                      <img
+                      {/* <img
+                        src={crewData?.cewDetail?.createdBy?.profileimage}
+                        alt="Ai2claim inc"
+                      /> */}
+                      <AIImage
+                        placeholderImg={`${appConfig?.IMAGE_URL}/files/default_user.png`}
                         src={crewData?.cewDetail?.createdBy?.profileimage}
                         className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
                         alt="Ai2claim inc"
@@ -103,8 +114,11 @@ const AboutCrew = () => {
                         Mobile <b className="d-none d-sm-inline">:-</b>
                       </h6>
                       <h6 className="w-65 mb-0 lh-base word-break-word ps-3">
-
-                        {crewData?.cewDetail?.createdBy?.mobile ? formatPhoneNumber(crewData?.cewDetail?.createdBy?.mobile) : ""}
+                        {crewData?.cewDetail?.createdBy?.mobile
+                          ? formatPhoneNumber(
+                              crewData?.cewDetail?.createdBy?.mobile
+                            )
+                          : ""}
                       </h6>
                     </div>
                     <div className="d-flex w-100">
@@ -153,9 +167,14 @@ const AboutCrew = () => {
                   iconPosition={"end"}
                   isFillBtn
                   customClass={clsx("")}
-                  handleClick={() => showApproveRejectedModal(crewData?.cewDetail?.createdBy?.id)}
+                  handleClick={() =>
+                    showApproveRejectedModal(crewData?.cewDetail?.createdBy?.id)
+                  }
                 >
-                  {crewData?.cewDetail?.createdBy?.is_service ? "Enable" : "Disable"}  Services
+                  {crewData?.cewDetail?.createdBy?.is_service
+                    ? "Enable"
+                    : "Disable"}{" "}
+                  Services
                 </LDButton>
                 {/* <LDButton
                   type="fill"
@@ -175,7 +194,8 @@ const AboutCrew = () => {
                   customClass={clsx("")}
                   handleClick={crewHandledList}
                 >
-                  List of Projects({crewData?.projectAccept + crewData?.projectPending})
+                  List of Projects(
+                  {crewData?.projectAccept + crewData?.projectPending})
                 </LDButton>
               </div>
             </div>
@@ -215,7 +235,13 @@ const AboutCrew = () => {
               <h2>Confirm</h2>
               <h4 className="lh-base mb-0">
                 Are you sure you want to&nbsp;
-                <span className="text-bleu-de-france-one"> {crewData?.cewDetail?.createdBy?.is_service ? "Disable" : "Enable"}</span>&nbsp; Services?
+                <span className="text-bleu-de-france-one">
+                  {" "}
+                  {crewData?.cewDetail?.createdBy?.is_service
+                    ? "Disable"
+                    : "Enable"}
+                </span>
+                &nbsp; Services?
               </h4>
               <div className="d-flex align-items-centr gap-5 justify-content-center mt-5 mt-xxl-3">
                 <LDButton

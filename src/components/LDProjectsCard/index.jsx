@@ -10,6 +10,8 @@ import { clsx } from "clsx";
 import { useNavigate } from "react-router-dom";
 import { svgIcons } from "../../constants/icons";
 import { formatPhoneNumber } from "../../constants/imageData";
+import AIImage from "../AIImage";
+import { appConfig } from "../../config";
 
 export const LDProjectsCard = ({
   projectCardData,
@@ -22,7 +24,7 @@ export const LDProjectsCard = ({
   isFullDetails,
   showApproveRejectedModal,
   isShowInfoMsg,
-  isNotShowDeleteIcon
+  isNotShowDeleteIcon,
 }) => {
   const navigate = useNavigate();
   console.log({ projectCardData });
@@ -40,12 +42,16 @@ export const LDProjectsCard = ({
               return (
                 <div className="mt-4" key={index}>
                   <div className="pendingProjectListCard h-100 d-flex flex-column">
-                    {isNotShowDeleteIcon ? ""
-                    :
-                    <div className="text-end cursor-pointer mb-4 hover-text-secondary" onClick={() => showApproveRejectedModal(item?.id)}>
-                      {svgIcons.deleteIcon2}
-                    </div>
-                  }
+                    {isNotShowDeleteIcon ? (
+                      ""
+                    ) : (
+                      <div
+                        className="text-end cursor-pointer mb-4 hover-text-secondary"
+                        onClick={() => showApproveRejectedModal(item?.id)}
+                      >
+                        {svgIcons.deleteIcon2}
+                      </div>
+                    )}
                     <div
                       className="pendingProjectLisRow w-100"
                       onClick={() => navigate(`${redirectPath}/${item?.id}`)}
@@ -56,7 +62,17 @@ export const LDProjectsCard = ({
                         }
                       >
                         <div className="ratio ratio-1x1">
-                          <img
+                          {/* <img
+                            src={
+                              item?.profileimage
+                                ? item?.profileimage
+                                : item?.createdBy?.profileimage
+                            }
+                            className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
+                            alt="Ai2claim inc"
+                          /> */}
+                          <AIImage
+                            placeholderImg={`${appConfig?.IMAGE_URL}/files/default_user.png`}
                             src={
                               item?.profileimage
                                 ? item?.profileimage
@@ -70,8 +86,8 @@ export const LDProjectsCard = ({
                           {item?.username
                             ? item?.username
                             : item?.createdBy?.username
-                              ? item?.createdBy?.username
-                              : item?.company_name}
+                            ? item?.createdBy?.username
+                            : item?.company_name}
                         </h6>
                       </div>
 
@@ -111,8 +127,8 @@ export const LDProjectsCard = ({
                               {item?.username
                                 ? item?.username
                                 : item?.createdBy?.username
-                                  ? item?.createdBy?.username
-                                  : item?.company_name}
+                                ? item?.createdBy?.username
+                                : item?.company_name}
                             </h6>
                           </div>
                           {/* <div className="d-flex flex-column flex-sm-row w-100 mb-4">
@@ -244,8 +260,8 @@ export const LDProjectsCard = ({
                               item?.username
                                 ? item?.username
                                 : item?.createdBy?.username
-                                  ? item?.createdBy?.username
-                                  : item?.company_name
+                                ? item?.createdBy?.username
+                                : item?.company_name
                             )
                           }
                         >
@@ -268,8 +284,8 @@ export const LDProjectsCard = ({
                               item?.username
                                 ? item?.username
                                 : item?.createdBy?.username
-                                  ? item?.createdBy?.username
-                                  : item?.company_name
+                                ? item?.createdBy?.username
+                                : item?.company_name
                             )
                           }
                         >
@@ -282,12 +298,14 @@ export const LDProjectsCard = ({
                         <LDApproveModal /> */}
                       </div>
                     )}
-                    {isShowInfoMsg &&
+                    {isShowInfoMsg && (
                       <h6 className="d-flex gap-3 gap-xl-2 text-arcade-fire">
-                        <span className="svg-icon-translateY--1">{svgIcons.infoIcon}</span>
+                        <span className="svg-icon-translateY--1">
+                          {svgIcons.infoIcon}
+                        </span>
                         Waiting for management and crew approval.
                       </h6>
-                    }
+                    )}
                   </div>
                 </div>
               );
@@ -308,28 +326,45 @@ export const LDProjectsCard = ({
                       projectCardData?.map((item, index) => {
                         return (
                           <SwiperSlide key={index}>
-
                             <div
                               className="pendingProjectListCard h-100"
                               key={index}
-
                             >
-                              {isNotShowDeleteIcon ? ""
-                              :
-                              <div className="text-end cursor-pointer mb-4 hover-text-secondary" onClick={() => showApproveRejectedModal(item?.id, type)}>
-                                {svgIcons.deleteIcon2}
-                              </div>
-                            }
-                              <div className="pendingProjectLisRow w-100" onClick={() =>
-                                navigate(`${redirectPath}/${item?.id}`)
-                              }>
+                              {isNotShowDeleteIcon ? (
+                                ""
+                              ) : (
+                                <div
+                                  className="text-end cursor-pointer mb-4 hover-text-secondary"
+                                  onClick={() =>
+                                    showApproveRejectedModal(item?.id, type)
+                                  }
+                                >
+                                  {svgIcons.deleteIcon2}
+                                </div>
+                              )}
+                              <div
+                                className="pendingProjectLisRow w-100"
+                                onClick={() =>
+                                  navigate(`${redirectPath}/${item?.id}`)
+                                }
+                              >
                                 <div
                                   className={
                                     "pendingProjectListLeftCol text-center flex-0-auto"
                                   }
                                 >
                                   <div className="ratio ratio-1x1">
-                                    <img
+                                    {/* <img
+                                      src={
+                                        item?.profileimage
+                                          ? item?.profileimage
+                                          : item?.createdBy?.profileimage
+                                      }
+                                      className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
+                                      alt="Ai2claim inc"
+                                    /> */}
+                                    <AIImage
+                                      placeholderImg={`${appConfig?.IMAGE_URL}/files/default_user.png`}
                                       src={
                                         item?.profileimage
                                           ? item?.profileimage
@@ -343,8 +378,8 @@ export const LDProjectsCard = ({
                                     {item?.username
                                       ? item?.username
                                       : item?.createdBy?.username
-                                        ? item?.createdBy?.username
-                                        : item?.company_name}
+                                      ? item?.createdBy?.username
+                                      : item?.company_name}
                                   </h6>
                                 </div>
                                 <div
@@ -391,7 +426,9 @@ export const LDProjectsCard = ({
                                     <h6 className="w-50 mb-0 lh-base p small word-break-word p small">
                                       {item?.mobile
                                         ? formatPhoneNumber(item.mobile)
-                                        : formatPhoneNumber(item?.createdBy?.mobile)}
+                                        : formatPhoneNumber(
+                                            item?.createdBy?.mobile
+                                          )}
                                     </h6>
                                   </div>
                                   <div className="d-flex w-100 mb-4">

@@ -6,15 +6,18 @@ import { useManagementDetailHook } from "../../hooks";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./AboutManagement.module.css";
 import { formatPhoneNumber } from "../../constants/imageData";
+import AIImage from "../../components/AIImage";
 
 const AboutManagement = () => {
-  const { isLoading,
+  const {
+    isLoading,
     managementData,
     managementHandledList,
     isApproveRejectedModalOpen,
     showApproveRejectedModal,
     approveRejectedModalCancel,
-    handleUserServiceStatusUpdate } = useManagementDetailHook();
+    handleUserServiceStatusUpdate,
+  } = useManagementDetailHook();
 
   // management list pending open page start
   const managementPendingFile = () => {
@@ -27,7 +30,11 @@ const AboutManagement = () => {
         <div className="d-flex align-items-center justify-content-between flex-wrap gap-5 gap-xxl-4">
           <div className="d-flex align-items-center flex-wrap gap-4 gap-xl-3">
             <Link
-              to={localStorage.getItem("backUrl") ? localStorage.getItem("backUrl") : "/management-list"}
+              to={
+                localStorage.getItem("backUrl")
+                  ? localStorage.getItem("backUrl")
+                  : "/management-list"
+              }
               className="back-next-arrow-wrap flex-0-auto d-flex align-items-center justify-content-center rounded-circle cursor-pointer hover-text-white me-2"
             >
               {svgIcons.backArrowFillIcon}
@@ -54,7 +61,16 @@ const AboutManagement = () => {
                     }
                   >
                     <div className="ratio ratio-1x1">
-                      <img
+                      {/* <img
+                        src={
+                          managementData?.managementDetail?.createdBy
+                            ?.profileimage
+                        }
+                        className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
+                        alt="Ai2claim inc"
+                      /> */}
+                      <AIImage
+                        placeholderImg={`${appConfig?.IMAGE_URL}/files/default_user.png`}
                         src={
                           managementData?.managementDetail?.createdBy
                             ?.profileimage
@@ -111,7 +127,12 @@ const AboutManagement = () => {
                         Mobile <b className="d-none d-sm-inline">:-</b>
                       </h6>
                       <h6 className="w-65 mb-0 lh-base word-break-word ps-3">
-                        {managementData?.managementDetail?.createdBy?.mobile ? formatPhoneNumber(managementData?.managementDetail?.createdBy?.mobile) : ""}
+                        {managementData?.managementDetail?.createdBy?.mobile
+                          ? formatPhoneNumber(
+                              managementData?.managementDetail?.createdBy
+                                ?.mobile
+                            )
+                          : ""}
                       </h6>
                     </div>
                     <div className="d-flex w-100">
@@ -160,9 +181,16 @@ const AboutManagement = () => {
                   iconPosition={"end"}
                   isFillBtn
                   customClass={clsx("")}
-                  handleClick={() => showApproveRejectedModal(managementData?.managementDetail?.createdBy?.id)}
+                  handleClick={() =>
+                    showApproveRejectedModal(
+                      managementData?.managementDetail?.createdBy?.id
+                    )
+                  }
                 >
-                  {managementData?.managementDetail?.createdBy?.is_service ? "Enable" : "Disable"} Services
+                  {managementData?.managementDetail?.createdBy?.is_service
+                    ? "Enable"
+                    : "Disable"}{" "}
+                  Services
                 </LDButton>
                 {/* <LDButton
                   type="fill"
@@ -182,7 +210,10 @@ const AboutManagement = () => {
                   customClass={clsx("")}
                   handleClick={managementHandledList}
                 >
-                  List of projects ({managementData?.projectAccept + managementData?.projectPending})
+                  List of projects (
+                  {managementData?.projectAccept +
+                    managementData?.projectPending}
+                  )
                 </LDButton>
               </div>
             </div>
@@ -225,7 +256,13 @@ const AboutManagement = () => {
               <h2>Confirm</h2>
               <h4 className="lh-base mb-0">
                 Are you sure you want to&nbsp;
-                <span className="text-bleu-de-france-one">   {managementData?.managementDetail?.createdBy?.is_service ? "Enable" : "Disable"}</span>&nbsp; Services?
+                <span className="text-bleu-de-france-one">
+                  {" "}
+                  {managementData?.managementDetail?.createdBy?.is_service
+                    ? "Enable"
+                    : "Disable"}
+                </span>
+                &nbsp; Services?
               </h4>
               <div className="d-flex align-items-centr gap-5 justify-content-center mt-5 mt-xxl-3">
                 <LDButton

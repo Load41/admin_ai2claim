@@ -9,6 +9,7 @@ import { LDInput } from "../../components/LDInput";
 import { appConfig } from "../../config";
 import styles from "./AboutClient.module.css";
 import { formatPhoneNumber } from "../../constants/imageData";
+import AIImage from "../../components/AIImage";
 
 const AboutClient = () => {
   const {
@@ -99,7 +100,7 @@ const AboutClient = () => {
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-          // errorMessage={validateMessages?.email}
+            // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -157,7 +158,7 @@ const AboutClient = () => {
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-          // errorMessage={validateMessages?.email}
+            // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -182,12 +183,17 @@ const AboutClient = () => {
             id="insuranceEstimatedOptimization"
             dataTestId="insuranceEstimatedOptimization"
             name="insuranceEstimatedOptimization"
-            value={finalEstimateData?.optimizationWith?.insuranceEstimatedOptimization}
-            handleChange={(event) => handleInputEstimateChange(event, "optimizationWith")}
+            value={
+              finalEstimateData?.optimizationWith
+                ?.insuranceEstimatedOptimization
+            }
+            handleChange={(event) =>
+              handleInputEstimateChange(event, "optimizationWith")
+            }
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-          // errorMessage={validateMessages?.email}
+            // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -204,11 +210,13 @@ const AboutClient = () => {
             dataTestId="managementCost"
             name="managementCost"
             value={finalEstimateData?.optimizationWith?.managementCost}
-            handleChange={(event) => handleInputEstimateChange(event, "optimizationWith")}
+            handleChange={(event) =>
+              handleInputEstimateChange(event, "optimizationWith")
+            }
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-          // errorMessage={validateMessages?.email}
+            // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -225,12 +233,13 @@ const AboutClient = () => {
             dataTestId="materialCost"
             name="materialCost"
             value={finalEstimateData?.optimizationWith?.materialCost}
-            handleChange={(event) => handleInputEstimateChange(event, "optimizationWith")}
-
+            handleChange={(event) =>
+              handleInputEstimateChange(event, "optimizationWith")
+            }
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-          // errorMessage={validateMessages?.email}
+            // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -247,11 +256,13 @@ const AboutClient = () => {
             dataTestId="crewCost"
             name="crewCost"
             value={finalEstimateData?.optimizationWith?.crewCost}
-            handleChange={(event) => handleInputEstimateChange(event, "optimizationWith")}
+            handleChange={(event) =>
+              handleInputEstimateChange(event, "optimizationWith")
+            }
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-          // errorMessage={validateMessages?.email}
+            // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -268,11 +279,13 @@ const AboutClient = () => {
             name="serviceFees"
             type="number"
             value={finalEstimateData?.optimizationWith?.serviceFees}
-            handleChange={(event) => handleInputEstimateChange(event, "optimizationWith")}
+            handleChange={(event) =>
+              handleInputEstimateChange(event, "optimizationWith")
+            }
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-          // errorMessage={validateMessages?.email}
+            // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -290,11 +303,13 @@ const AboutClient = () => {
             // value={optimizationData?.deductible}
             type="number"
             value={finalEstimateData?.optimizationWith?.deductible}
-            handleChange={(event) => handleInputEstimateChange(event, "optimizationWith")}
+            handleChange={(event) =>
+              handleInputEstimateChange(event, "optimizationWith")
+            }
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-          // errorMessage={validateMessages?.email}
+            // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -320,12 +335,17 @@ const AboutClient = () => {
             dataTestId="insuranceEstimatedOptimization"
             name="insuranceEstimatedOptimization"
             // disabled={true}
-            value={finalEstimateData?.optimizationWithout?.insuranceEstimatedOptimization}
-            handleChange={(event) => handleInputEstimateChange(event, "optimizationWithout")}
+            value={
+              finalEstimateData?.optimizationWithout
+                ?.insuranceEstimatedOptimization
+            }
+            handleChange={(event) =>
+              handleInputEstimateChange(event, "optimizationWithout")
+            }
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-          // errorMessage={validateMessages?.email}
+            // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -363,11 +383,13 @@ const AboutClient = () => {
             dataTestId="managementCost"
             name="managementCost"
             value={finalEstimateData?.optimizationWithout?.managementCost}
-            handleChange={(event) => handleInputEstimateChange(event, "optimizationWithout")}
+            handleChange={(event) =>
+              handleInputEstimateChange(event, "optimizationWithout")
+            }
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-          // errorMessage={validateMessages?.email}
+            // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -384,11 +406,13 @@ const AboutClient = () => {
             dataTestId="materialCost"
             name="materialCost"
             value={finalEstimateData?.optimizationWithout?.materialCost}
-            handleChange={(event) => handleInputEstimateChange(event, "optimizationWithout")}
+            handleChange={(event) =>
+              handleInputEstimateChange(event, "optimizationWithout")
+            }
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-          // errorMessage={validateMessages?.email}
+            // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -405,11 +429,13 @@ const AboutClient = () => {
             dataTestId="crewCost"
             name="crewCost"
             value={finalEstimateData?.optimizationWithout?.crewCost}
-            handleChange={(event) => handleInputEstimateChange(event, "optimizationWithout")}
+            handleChange={(event) =>
+              handleInputEstimateChange(event, "optimizationWithout")
+            }
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-          // errorMessage={validateMessages?.email}
+            // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -426,11 +452,13 @@ const AboutClient = () => {
             dataTestId="serviceFees"
             name="serviceFees"
             value={finalEstimateData?.optimizationWithout?.serviceFees}
-            handleChange={(event) => handleInputEstimateChange(event, "optimizationWithout")}
+            handleChange={(event) =>
+              handleInputEstimateChange(event, "optimizationWithout")
+            }
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-          // errorMessage={validateMessages?.email}
+            // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -448,11 +476,13 @@ const AboutClient = () => {
             name="deductible"
             // value={finalEstimateData?.deductible}
             value={finalEstimateData?.optimizationWithout?.deductible}
-            handleChange={(event) => handleInputEstimateChange(event, "optimizationWithout")}
+            handleChange={(event) =>
+              handleInputEstimateChange(event, "optimizationWithout")
+            }
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-          // errorMessage={validateMessages?.email}
+            // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -513,7 +543,13 @@ const AboutClient = () => {
                     }
                   >
                     <div className="ratio ratio-1x1">
-                      <img
+                      {/* <img
+                        src={clientData?.profileimage}
+                        className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
+                        alt="Ai2claim inc"
+                      /> */}
+                      <AIImage
+                        placeholderImg={`${appConfig?.IMAGE_URL}/files/default_user.png`}
                         src={clientData?.profileimage}
                         className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
                         alt="Ai2claim inc"
@@ -682,28 +718,28 @@ const AboutClient = () => {
                               </h6>
                               {projectData?.linkin?.insurance_company?.linkinId
                                 ?.name && (
-                                  <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
-                                    {
-                                      projectData?.linkin?.insurance_company
-                                        ?.linkinId?.name
-                                    }
-                                    <div
-                                      className={clsx(
-                                        styles.clientDetailProjectImgWrap,
-                                        "ratio ratio-21x9 mt-2"
-                                      )}
-                                    >
-                                      <img
-                                        src={
-                                          projectData?.linkin?.insurance_company
-                                            ?.linkinId?.image
-                                        }
-                                        className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
-                                        alt="Ai2claim inc"
-                                      />
-                                    </div>
-                                  </h6>
-                                )}
+                                <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
+                                  {
+                                    projectData?.linkin?.insurance_company
+                                      ?.linkinId?.name
+                                  }
+                                  <div
+                                    className={clsx(
+                                      styles.clientDetailProjectImgWrap,
+                                      "ratio ratio-21x9 mt-2"
+                                    )}
+                                  >
+                                    <img
+                                      src={
+                                        projectData?.linkin?.insurance_company
+                                          ?.linkinId?.image
+                                      }
+                                      className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
+                                      alt="Ai2claim inc"
+                                    />
+                                  </div>
+                                </h6>
+                              )}
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
                               <h6 className="w-45 mb-0 lh-base fw-bold">
@@ -713,10 +749,10 @@ const AboutClient = () => {
                               <div className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0 d-flex flex-wrap gap-3">
                                 {projectData?.linkin?.insurance_company
                                   ?.files &&
-                                  typeof projectData?.linkin?.insurance_company
-                                    ?.files !== "string" &&
-                                  projectData?.linkin?.insurance_company?.files
-                                    ?.length > 0 ? (
+                                typeof projectData?.linkin?.insurance_company
+                                  ?.files !== "string" &&
+                                projectData?.linkin?.insurance_company?.files
+                                  ?.length > 0 ? (
                                   projectData?.linkin?.insurance_company?.files?.map(
                                     (fileItem, index) => {
                                       return (
@@ -828,24 +864,24 @@ const AboutClient = () => {
                                 {projectData?.linkin?.management?.linkinId
                                   ?.company_name
                                   ? projectData?.linkin?.management?.linkinId
-                                    ?.company_name
+                                      ?.company_name
                                   : "-"}
                                 {"  "}
                                 {projectData?.linkin?.management?.status && (
                                   <span
                                     className={
                                       projectData?.linkin?.management?.status ==
-                                        "accept"
+                                      "accept"
                                         ? "text-matt-green "
                                         : projectData?.linkin?.management
-                                          ?.status == "reject"
-                                          ? "text-arcade-fire "
-                                          : "text-bright-red"
+                                            ?.status == "reject"
+                                        ? "text-arcade-fire "
+                                        : "text-bright-red"
                                     }
                                   >
                                     (
                                     {projectData?.linkin?.management?.status ==
-                                      "accept"
+                                    "accept"
                                       ? "Hire"
                                       : projectData?.linkin?.management?.status}
                                     )
@@ -853,22 +889,22 @@ const AboutClient = () => {
                                 )}
                                 {projectData?.linkin?.management?.linkinId
                                   ?.image && (
-                                    <div
-                                      className={clsx(
-                                        styles.clientDetailProjectImgWrap,
-                                        "ratio ratio-21x9 mt-2"
-                                      )}
-                                    >
-                                      <img
-                                        src={
-                                          projectData?.linkin?.management
-                                            ?.linkinId?.image
-                                        }
-                                        className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
-                                        alt="Ai2claim inc"
-                                      />
-                                    </div>
-                                  )}
+                                  <div
+                                    className={clsx(
+                                      styles.clientDetailProjectImgWrap,
+                                      "ratio ratio-21x9 mt-2"
+                                    )}
+                                  >
+                                    <img
+                                      src={
+                                        projectData?.linkin?.management
+                                          ?.linkinId?.image
+                                      }
+                                      className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
+                                      alt="Ai2claim inc"
+                                    />
+                                  </div>
+                                )}
                               </h6>
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
@@ -891,7 +927,7 @@ const AboutClient = () => {
                                 {projectData?.linkin?.material
                                   ?.pick_your_singles
                                   ? projectData?.linkin?.material
-                                    ?.pick_your_singles
+                                      ?.pick_your_singles
                                   : "-"}
                               </h6>
                             </div>
@@ -922,24 +958,24 @@ const AboutClient = () => {
                                 {projectData?.linkin?.crew?.linkinId
                                   ?.company_name
                                   ? projectData?.linkin?.crew?.linkinId
-                                    ?.company_name
+                                      ?.company_name
                                   : "-"}
                                 &nbsp;
                                 {projectData?.linkin?.crew?.status && (
                                   <span
                                     className={
                                       projectData?.linkin?.crew?.status ==
-                                        "accept"
+                                      "accept"
                                         ? "text-matt-green "
                                         : projectData?.linkin?.crew?.status ==
                                           "reject"
-                                          ? "text-arcade-fire "
-                                          : "text-bright-red"
+                                        ? "text-arcade-fire "
+                                        : "text-bright-red"
                                     }
                                   >
                                     (
                                     {projectData?.linkin?.crew?.status ==
-                                      "accept"
+                                    "accept"
                                       ? "Hire"
                                       : projectData?.linkin?.crew?.status}
                                     )
@@ -1065,7 +1101,7 @@ const AboutClient = () => {
                           <div className="d-flex flex-wrap justify-content-center gap-4">
                             {projectData?.linkin?.optimation?.file &&
                               projectData?.linkin?.optimation?.file?.length >
-                              0 &&
+                                0 &&
                               projectData?.linkin?.optimation?.file?.map(
                                 (fileItem, index) => {
                                   return (
@@ -1106,9 +1142,10 @@ const AboutClient = () => {
                             </LDButton>
                           )}
                           <div className="d-flex flex-wrap justify-content-center gap-4">
-                            {projectData?.linkin?.final_estimate?.optimizationWith?.file &&
-                              projectData?.linkin?.final_estimate?.optimizationWith?.file
-                                ?.length > 0 &&
+                            {projectData?.linkin?.final_estimate
+                              ?.optimizationWith?.file &&
+                              projectData?.linkin?.final_estimate
+                                ?.optimizationWith?.file?.length > 0 &&
                               projectData?.linkin?.final_estimate?.optimizationWith?.file?.map(
                                 (fileItem, index) => {
                                   return (
@@ -1123,9 +1160,10 @@ const AboutClient = () => {
                                   );
                                 }
                               )}
-                            {projectData?.linkin?.final_estimate?.optimizationWithout?.file &&
-                              projectData?.linkin?.final_estimate?.optimizationWithout?.file
-                                ?.length > 0 &&
+                            {projectData?.linkin?.final_estimate
+                              ?.optimizationWithout?.file &&
+                              projectData?.linkin?.final_estimate
+                                ?.optimizationWithout?.file?.length > 0 &&
                               projectData?.linkin?.final_estimate?.optimizationWithout?.file?.map(
                                 (fileItem, index) => {
                                   return (
@@ -1415,9 +1453,9 @@ const AboutClient = () => {
                     $&nbsp;
                     {optimizationData?.originalEstimatePrice
                       ? parseInt(optimizationData?.ai2ClaimServiceCostPrice) +
-                      parseInt(optimizationData?.ai2ClaimServiceAddOnCost) -
-                      parseInt(optimizationData?.originalEstimatePrice) +
-                      parseInt(optimizationData?.originalEstimateAddOnCost)
+                        parseInt(optimizationData?.ai2ClaimServiceAddOnCost) -
+                        parseInt(optimizationData?.originalEstimatePrice) +
+                        parseInt(optimizationData?.originalEstimateAddOnCost)
                       : 0}
                   </h5>
                 </div>
@@ -1478,13 +1516,28 @@ const AboutClient = () => {
                     Total Estimated Cash back :-
                   </h5>
                   <h5 className="mb-0 text-bleu-de-france-one word-break-word">
-                    ${finalEstimateData?.optimizationWith?.insuranceEstimatedOptimization
-                      ? parseInt(finalEstimateData?.optimizationWith?.insuranceEstimatedOptimization) +
-                      parseInt(finalEstimateData?.optimizationWith?.managementCost) +
-                      parseInt(finalEstimateData?.optimizationWith?.crewCost) +
-                      parseInt(finalEstimateData?.optimizationWith?.materialCost) +
-                      parseInt(finalEstimateData?.optimizationWith?.serviceFees) -
-                      parseInt(finalEstimateData?.optimizationWith?.deductible)
+                    $
+                    {finalEstimateData?.optimizationWith
+                      ?.insuranceEstimatedOptimization
+                      ? parseInt(
+                          finalEstimateData?.optimizationWith
+                            ?.insuranceEstimatedOptimization
+                        ) +
+                        parseInt(
+                          finalEstimateData?.optimizationWith?.managementCost
+                        ) +
+                        parseInt(
+                          finalEstimateData?.optimizationWith?.crewCost
+                        ) +
+                        parseInt(
+                          finalEstimateData?.optimizationWith?.materialCost
+                        ) +
+                        parseInt(
+                          finalEstimateData?.optimizationWith?.serviceFees
+                        ) -
+                        parseInt(
+                          finalEstimateData?.optimizationWith?.deductible
+                        )
                       : 0}
                   </h5>
                 </div>
@@ -1515,12 +1568,27 @@ const AboutClient = () => {
                   </h5>
                   <h5 className="mb-0 text-bleu-de-france-one word-break-word">
                     $&nbsp;{" "}
-                    {finalEstimateData?.optimizationWithout?.insuranceEstimatedOptimization
-                      ? parseInt(finalEstimateData?.optimizationWithout?.insuranceEstimatedOptimization) +
-                      parseInt(finalEstimateData?.optimizationWithout?.managementCost) +
-                      parseInt(finalEstimateData?.optimizationWithout?.crewCost) +
-                      parseInt(finalEstimateData?.optimizationWithout?.materialCost) +
-                      parseInt(finalEstimateData?.optimizationWithout?.serviceFees) - parseInt(finalEstimateData?.optimizationWithout?.deductible)
+                    {finalEstimateData?.optimizationWithout
+                      ?.insuranceEstimatedOptimization
+                      ? parseInt(
+                          finalEstimateData?.optimizationWithout
+                            ?.insuranceEstimatedOptimization
+                        ) +
+                        parseInt(
+                          finalEstimateData?.optimizationWithout?.managementCost
+                        ) +
+                        parseInt(
+                          finalEstimateData?.optimizationWithout?.crewCost
+                        ) +
+                        parseInt(
+                          finalEstimateData?.optimizationWithout?.materialCost
+                        ) +
+                        parseInt(
+                          finalEstimateData?.optimizationWithout?.serviceFees
+                        ) -
+                        parseInt(
+                          finalEstimateData?.optimizationWithout?.deductible
+                        )
                       : 0}
                   </h5>
                 </div>
