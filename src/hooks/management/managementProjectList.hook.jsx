@@ -33,7 +33,7 @@ export const useManagementProjectListHook = () => {
   const statusOptions = [
     {
       key: 1,
-      label: "Pending",
+      label: "Pending Approval",
       value: "pending",
     },
     {
