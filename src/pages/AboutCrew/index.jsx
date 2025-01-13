@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import styles from "./AboutCrew.module.css";
 import { formatPhoneNumber } from "../../constants/imageData";
 import AIImage from "../../components/AIImage";
+import { appConfig } from "../../config";
 
 const AboutCrew = () => {
   const {

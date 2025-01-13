@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from "./AboutManagement.module.css";
 import { formatPhoneNumber } from "../../constants/imageData";
 import AIImage from "../../components/AIImage";
+import { appConfig } from "../../config";
 
 const AboutManagement = () => {
   const {
