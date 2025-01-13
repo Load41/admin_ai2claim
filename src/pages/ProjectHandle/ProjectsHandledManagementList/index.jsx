@@ -31,7 +31,7 @@ const ProjectsHandledManagementList = ({
               {svgIcons.backArrowFillIcon}
             </Link>
             <h4 className="text-bleu-de-france-one mb-0">
-              List of Management Project Handle
+              Management List
             </h4>
             <span>{svgIcons.doubleRightArrowIcon}</span>
             <h4 className="mb-0">

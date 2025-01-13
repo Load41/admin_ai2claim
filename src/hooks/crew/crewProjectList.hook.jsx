@@ -36,18 +36,18 @@ export const useCrewProjectListHook = () => {
   const statusOptions = [
     {
       key: 1,
-      label: "pending",
+      label: "Pending Approval",
       value: "pending",
     },
     {
       key: 2,
-      label: "accept",
-      value: "accept",
+      label: "Completed",
+      value: "completed",
     },
     {
       key: 1,
-      label: "reject",
-      value: "reject",
+      label: "In process",
+      value: "in-process",
     },
   ];
   const crewProjectsHandledColumns = useMemo(() => {
@@ -64,7 +64,7 @@ export const useCrewProjectListHook = () => {
         render: (_, record) => record?.createdBy[0]?.username || "-",
       },
       {
-        title: "Management name",
+        title: "Crew name",
         dataIndex: "crewName",
         key: "crewName",
         render: (_, record) =>

@@ -28,7 +28,7 @@ const ProjectsHandledCrewList = () => {
               {svgIcons.backArrowFillIcon}
             </Link>
             <h4 className="text-bleu-de-france-one mb-0">
-              List of Crew Project Handle
+              Crew List
             </h4>
             <span>{svgIcons.doubleRightArrowIcon}</span>
             <h4 className="mb-0">

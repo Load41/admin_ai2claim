@@ -33,18 +33,18 @@ export const useManagementProjectListHook = () => {
   const statusOptions = [
     {
       key: 1,
-      label: "pending",
+      label: "Pending",
       value: "pending",
     },
     {
       key: 2,
-      label: "accept",
-      value: "accept",
+      label: "Completed",
+      value: "completed",
     },
     {
-      key: 1,
-      label: "reject",
-      value: "reject",
+      key: 3,
+      label: "In process",
+      value: "in-process",
     },
   ];
 
