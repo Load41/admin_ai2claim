@@ -31,7 +31,7 @@
     :global .ant-layout{
         position: fixed;
         top: 0;
-        z-index: 9;
+        z-index: 100;
     }
     :global .ant-layout-sider-collapsed{
         width: var(--sidebar-size) !important;
