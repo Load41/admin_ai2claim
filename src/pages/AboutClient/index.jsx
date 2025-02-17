@@ -1448,7 +1448,7 @@ const AboutClient = () => {
                   pagination={false}
                 />
                 <div className="d-flex justify-content-center align-items-center pt-5 mt-3 mt-xl-0 pb-3">
-                  <h5 className="me-3 mb-0 fw-bold">Additional money :-</h5>
+                  <h5 className="me-3 mb-0 fw-bold">Additional money :</h5>
                   <h5 className="mb-0 text-bleu-de-france-one word-break-word">
                     $&nbsp;
                     {optimizationData?.originalEstimatePrice
@@ -1513,7 +1513,7 @@ const AboutClient = () => {
                 />
                 <div className="d-flex justify-content-center align-items-center pt-5 mt-3 mt-xl-0 pb-3">
                   <h5 className="me-3 mb-0 fw-bold">
-                    Total Estimated Cash back :-
+                    Total Estimated Cash back :
                   </h5>
                   <h5 className="mb-0 text-bleu-de-france-one word-break-word">
                     $
@@ -1564,7 +1564,7 @@ const AboutClient = () => {
                 {console.log({ finalEstimateData })}
                 <div className="d-flex justify-content-center align-items-center pt-5 mt-3 mt-xl-0 pb-3">
                   <h5 className="me-3 mb-0 fw-bold">
-                    Total Estimated Cash back :-
+                    Total Estimated Cash back :
                   </h5>
                   <h5 className="mb-0 text-bleu-de-france-one word-break-word">
                     $&nbsp;{" "}
