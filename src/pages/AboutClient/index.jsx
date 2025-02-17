@@ -1522,16 +1522,16 @@ const AboutClient = () => {
                       ? parseInt(
                           finalEstimateData?.optimizationWith
                             ?.insuranceEstimatedOptimization
-                        ) +
+                        ) -
                         parseInt(
                           finalEstimateData?.optimizationWith?.managementCost
-                        ) +
+                        ) -
                         parseInt(
                           finalEstimateData?.optimizationWith?.crewCost
-                        ) +
+                        ) -
                         parseInt(
                           finalEstimateData?.optimizationWith?.materialCost
-                        ) +
+                        ) -
                         parseInt(
                           finalEstimateData?.optimizationWith?.serviceFees
                         ) -
@@ -1573,16 +1573,16 @@ const AboutClient = () => {
                       ? parseInt(
                           finalEstimateData?.optimizationWithout
                             ?.insuranceEstimatedOptimization
-                        ) +
+                        ) -
                         parseInt(
                           finalEstimateData?.optimizationWithout?.managementCost
-                        ) +
+                        ) -
                         parseInt(
                           finalEstimateData?.optimizationWithout?.crewCost
-                        ) +
+                        ) -
                         parseInt(
                           finalEstimateData?.optimizationWithout?.materialCost
-                        ) +
+                        ) -
                         parseInt(
                           finalEstimateData?.optimizationWithout?.serviceFees
                         ) -
