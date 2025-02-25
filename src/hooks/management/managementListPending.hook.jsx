@@ -98,8 +98,8 @@ export const useManagementPendingListHook = () => {
       other_reason: managementData?.other_reason,
     });
     if (managementListResponse?.status == 200) {
-      doGetManagementList();
       handleCloseModal();
+      doGetManagementList();
       toast.success(managementListResponse?.message);
     } else {
       toast.error(managementListResponse?.data?.message);

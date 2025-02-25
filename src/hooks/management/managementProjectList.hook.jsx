@@ -37,6 +37,16 @@ export const useManagementProjectListHook = () => {
       value: "pending",
     },
     {
+      key: 4,
+      label: "Approval",
+      value: "accept",
+    },
+    {
+      key: 5,
+      label: "Reject",
+      value: "reject",
+    },
+    {
       key: 2,
       label: "Completed",
       value: "completed",
@@ -127,9 +137,9 @@ export const useManagementProjectListHook = () => {
 
       if (clientProjectResponse?.status == 200) {
         setIsLoading(false);
+        approveRejectedModalCancel()
         doGetManagementDetail()
         toast.success("Management project status update success!");
-        approveRejectedModalCancel()
       } else {
         // toast.error("")
 
