@@ -27,7 +27,7 @@ export const LDProjectsCard = ({
   isNotShowDeleteIcon,
 }) => {
   const navigate = useNavigate();
-  console.log({ projectCardData });
+  // console.log({ projectCardData });
   return (
     <>
       {isNotSwiper ? (

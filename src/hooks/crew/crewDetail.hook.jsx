@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { doFetchCrewDetail, doFetchCrewStatusServiceUpdate, doFetchCrewStatusUpdate } from "../../actions";
+import {
+  doFetchCrewDetail,
+  doFetchCrewStatusServiceUpdate,
+  doFetchCrewStatusUpdate,
+} from "../../actions";
 import { toast } from "react-toastify";
 
 export const useCrewDetailHook = () => {
@@ -12,7 +16,8 @@ export const useCrewDetailHook = () => {
 
   const [userId, setUserId] = useState();
 
-  const [isApproveRejectedModalOpen, setIsApproveRejectedModalOpen] = useState(false);
+  const [isApproveRejectedModalOpen, setIsApproveRejectedModalOpen] =
+    useState(false);
 
   const doGetCrewList = async () => {
     const crewResponse = await doFetchCrewDetail(id);
@@ -32,32 +37,33 @@ export const useCrewDetailHook = () => {
     if (userId) {
       const paramsData = {
         userId: crewData?.cewDetail?.createdBy?.id,
-        is_service: crewData?.cewDetail?.createdBy?.is_service ? false : true
-      }
-      const clientProjectResponse = await doFetchCrewStatusServiceUpdate(paramsData)
+        is_service: crewData?.cewDetail?.createdBy?.is_service ? false : true,
+      };
+      const clientProjectResponse = await doFetchCrewStatusServiceUpdate(
+        paramsData
+      );
 
       if (clientProjectResponse?.status == 200) {
         setIsLoading(false);
-        doGetCrewList()
+        approveRejectedModalCancel();
+        doGetCrewList();
         toast.success("Crew service status update success!");
-        approveRejectedModalCancel()
       } else {
         // toast.error("")
 
         setIsLoading(false);
       }
     }
-  }
-
+  };
 
   // confirm modal js start
   const showApproveRejectedModal = (id) => {
-    setUserId(id)
-    setIsApproveRejectedModalOpen(true);
+    setUserId(id);
+    setIsApproveRejectedModalOpen((prev) => true);
   };
 
   const approveRejectedModalCancel = () => {
-    setIsApproveRejectedModalOpen(false);
+    setIsApproveRejectedModalOpen((prev) => false);
   };
 
   return {
@@ -67,6 +73,6 @@ export const useCrewDetailHook = () => {
     crewHandledList,
     showApproveRejectedModal,
     approveRejectedModalCancel,
-    handleUserServiceStatusUpdate
+    handleUserServiceStatusUpdate,
   };
 };

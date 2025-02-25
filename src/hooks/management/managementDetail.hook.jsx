@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { doFetchCrewStatusUpdate, doFetchManagementDetail, doFetchManagementStatusServiceUpdate } from "../../actions";
+import {
+  doFetchCrewStatusUpdate,
+  doFetchManagementDetail,
+  doFetchManagementStatusServiceUpdate,
+} from "../../actions";
 import { toast } from "react-toastify";
 
 export const useManagementDetailHook = () => {
@@ -12,8 +16,8 @@ export const useManagementDetailHook = () => {
 
   const [userId, setUserId] = useState();
 
-  const [isApproveRejectedModalOpen, setIsApproveRejectedModalOpen] = useState(false);
-
+  const [isApproveRejectedModalOpen, setIsApproveRejectedModalOpen] =
+    useState(false);
 
   const doGetManagementDetail = async () => {
     const managementResponse = await doFetchManagementDetail(id);
@@ -34,31 +38,35 @@ export const useManagementDetailHook = () => {
     if (userId) {
       const paramsData = {
         userId: managementData?.managementDetail?.createdBy?.id,
-        is_service: managementData?.managementDetail?.createdBy?.is_service ? false : true
-      }
-      const clientProjectResponse = await doFetchManagementStatusServiceUpdate(paramsData)
+        is_service: managementData?.managementDetail?.createdBy?.is_service
+          ? false
+          : true,
+      };
+      const clientProjectResponse = await doFetchManagementStatusServiceUpdate(
+        paramsData
+      );
 
       if (clientProjectResponse?.status == 200) {
         setIsLoading(false);
-        doGetManagementDetail()
+        approveRejectedModalCancel();
         toast.success("Management service status update success!");
-        approveRejectedModalCancel()
+        doGetManagementDetail();
       } else {
         // toast.error("")
 
         setIsLoading(false);
       }
     }
-  }
+  };
 
   // confirm modal js start
   const showApproveRejectedModal = (id) => {
-    setUserId(id)
-    setIsApproveRejectedModalOpen(true);
+    setUserId(id);
+    setIsApproveRejectedModalOpen((prev) => true);
   };
 
   const approveRejectedModalCancel = () => {
-    setIsApproveRejectedModalOpen(false);
+    setIsApproveRejectedModalOpen((prev) => false);
   };
 
   return {
@@ -68,6 +76,6 @@ export const useManagementDetailHook = () => {
     isApproveRejectedModalOpen,
     showApproveRejectedModal,
     approveRejectedModalCancel,
-    handleUserServiceStatusUpdate
+    handleUserServiceStatusUpdate,
   };
 };

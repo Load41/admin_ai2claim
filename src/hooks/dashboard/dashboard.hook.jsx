@@ -16,7 +16,8 @@ export const useDashboardHook = () => {
   const [clientList, setClientList] = useState({});
   const [userId, setUserId] = useState({});
 
-  const [isApproveRejectedModalOpen, setIsApproveRejectedModalOpen] = useState(false);
+  const [isApproveRejectedModalOpen, setIsApproveRejectedModalOpen] =
+    useState(false);
 
   const [paginationData, setPaginationData] = useState({
     currentPage: 1,
@@ -30,7 +31,10 @@ export const useDashboardHook = () => {
     });
     if (clientListResponse?.status == 200) {
       setClientList(clientListResponse?.data);
-      setPaginationData((prevState) => ({ ...prevState, clientTotal: clientListResponse?.pagination?.totalRecords }))
+      setPaginationData((prevState) => ({
+        ...prevState,
+        clientTotal: clientListResponse?.pagination?.totalRecords,
+      }));
     }
     setIsLoading(false);
   };
@@ -41,7 +45,10 @@ export const useDashboardHook = () => {
     });
     if (crewListResponse?.status == 200) {
       setCrewList(crewListResponse?.data);
-      setPaginationData((prevState) => ({ ...prevState, crewTotal: crewListResponse?.pagination?.totalRecords }))
+      setPaginationData((prevState) => ({
+        ...prevState,
+        crewTotal: crewListResponse?.pagination?.totalRecords,
+      }));
     }
     setIsLoading(false);
   };
@@ -52,7 +59,10 @@ export const useDashboardHook = () => {
     });
     if (managementListResponse?.status == 200) {
       setManagementList(managementListResponse?.data);
-      setPaginationData((prevState) => ({ ...prevState, managementTotal: managementListResponse?.pagination?.totalRecords }))
+      setPaginationData((prevState) => ({
+        ...prevState,
+        managementTotal: managementListResponse?.pagination?.totalRecords,
+      }));
     }
     setIsLoading(false);
   };
@@ -65,52 +75,50 @@ export const useDashboardHook = () => {
 
   const handleUserDelete = async () => {
     if (userId?.type == "client") {
-      const clientProjectResponse = await doFetchClientDelete(userId?.id)
+      const clientProjectResponse = await doFetchClientDelete(userId?.id);
 
       if (clientProjectResponse?.status == 200) {
-
         doGetUserList();
         setIsLoading(false);
         toast.success("Project delete success!");
-
       } else {
         // toast.error("")
 
         setIsLoading(false);
       }
+      approveRejectedModalCancel();
     } else if (userId?.type == "management") {
-      const clientProjectResponse = await doFetchManagementDelete(userId?.id)
+      const clientProjectResponse = await doFetchManagementDelete(userId?.id);
 
       if (clientProjectResponse?.status == 200) {
         doGetManagementList();
         setIsLoading(false);
         toast.success("Management delete success!");
-
       } else {
         // toast.error("")
 
         setIsLoading(false);
       }
+      approveRejectedModalCancel();
     } else if (userId?.type == "crew") {
-      const clientProjectResponse = await doFetchCrewDelete(userId?.id)
+      const clientProjectResponse = await doFetchCrewDelete(userId?.id);
 
       if (clientProjectResponse?.status == 200) {
         doGetCrewList();
         setIsLoading(false);
         toast.success("Management delete success!");
-
       } else {
         // toast.error("")
 
         setIsLoading(false);
       }
+      approveRejectedModalCancel();
     }
-  }
-
+  };
 
   // confirm modal js start
   const showApproveRejectedModal = (id, type) => {
-    setUserId({ id, type })
+    setUserId({ id, type });
     setIsApproveRejectedModalOpen(true);
   };
 
@@ -127,6 +135,6 @@ export const useDashboardHook = () => {
     isApproveRejectedModalOpen,
     showApproveRejectedModal,
     approveRejectedModalCancel,
-    handleUserDelete
+    handleUserDelete,
   };
 };
