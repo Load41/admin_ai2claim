@@ -26,9 +26,11 @@ export const useCrewDetailHook = () => {
     }
     setIsLoading(false);
   };
+  
   useEffect(() => {
     doGetCrewList();
   }, [id]);
+
   const crewHandledList = () => {
     navigate(`/crew-handled-management-list/${id}`);
   };

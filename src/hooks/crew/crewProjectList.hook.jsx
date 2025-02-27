@@ -40,16 +40,27 @@ export const useCrewProjectListHook = () => {
       value: "pending",
     },
     {
+      key: 4,
+      label: "Approval",
+      value: "accept",
+    },
+    {
+      key: 5,
+      label: "Reject",
+      value: "reject",
+    },
+    {
       key: 2,
       label: "Completed",
       value: "completed",
     },
     {
-      key: 1,
+      key: 3,
       label: "In process",
       value: "in-process",
     },
   ];
+
   const crewProjectsHandledColumns = useMemo(() => {
     return [
       {
