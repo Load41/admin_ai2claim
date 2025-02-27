@@ -95,8 +95,8 @@ export const useCrewPendingListHook = () => {
       other_reason: crewData?.other_reason,
     });
     if (crewStatusUpdateResponse?.status == 200) {
-      doGetCrewList();
       handleCloseModal();
+      doGetCrewList();
       toast.success(crewStatusUpdateResponse?.message);
     } else {
       toast.error(crewStatusUpdateResponse?.data?.message);

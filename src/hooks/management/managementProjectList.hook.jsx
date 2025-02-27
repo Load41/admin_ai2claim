@@ -38,7 +38,7 @@ export const useManagementProjectListHook = () => {
     },
     {
       key: 4,
-      label: "Approval",
+      label: "Accept",
       value: "accept",
     },
     {
@@ -46,15 +46,15 @@ export const useManagementProjectListHook = () => {
       label: "Reject",
       value: "reject",
     },
+    // {
+    //   key: 3,
+    //   label: "In process",
+    //   value: "in-process",
+    // },
     {
       key: 2,
       label: "Completed",
       value: "completed",
-    },
-    {
-      key: 3,
-      label: "In process",
-      value: "in-process",
     },
   ];
 
