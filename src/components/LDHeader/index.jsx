@@ -168,7 +168,7 @@ export const LDHeader = ({ }) => {
       >
         {/* <img src={logo} className={clsx(styles.logo, "img-fluid")} alt="Ai2claim inc" /> */}
         {/* <h4 className='mb-0'>Christo Jr.</h4> */}
-        <LDInput
+        {/* <LDInput
           id="searchData"
           dataTestId="searchData"
           name="searchData"
@@ -181,8 +181,8 @@ export const LDHeader = ({ }) => {
           className={clsx(styles.headerSearchBarWrap, "mb-0 search-min-300")}
           suffix={svgIcons.searchIcon}
           isNotBottomSpace
-        />
-        <div className="d-flex align-items-center gap-5">
+        /> */}
+        <div className="d-flex align-items-center gap-5 ms-auto">
           <Popover content={notificationPopoverData} title="Notification">
             <Link to="/" className="text-black">
               {svgIcons.bellIcon}
