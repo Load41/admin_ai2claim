@@ -643,3 +643,10 @@ hr {
   inset-inline-start: 0;
 }
 /* DEFAULT CSS END */
+
+.yellow-border{
+  border-color: yellow !important;
+}
+.blue-border{
+  border-color: orangered !important;
+}

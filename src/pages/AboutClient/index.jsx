@@ -100,7 +100,7 @@ const AboutClient = () => {
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-            // errorMessage={validateMessages?.email}
+          // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -158,7 +158,7 @@ const AboutClient = () => {
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-            // errorMessage={validateMessages?.email}
+          // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -193,7 +193,7 @@ const AboutClient = () => {
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-            // errorMessage={validateMessages?.email}
+          // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -216,7 +216,7 @@ const AboutClient = () => {
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-            // errorMessage={validateMessages?.email}
+          // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -239,7 +239,7 @@ const AboutClient = () => {
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-            // errorMessage={validateMessages?.email}
+          // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -262,7 +262,7 @@ const AboutClient = () => {
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-            // errorMessage={validateMessages?.email}
+          // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -285,7 +285,7 @@ const AboutClient = () => {
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-            // errorMessage={validateMessages?.email}
+          // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -309,7 +309,7 @@ const AboutClient = () => {
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-            // errorMessage={validateMessages?.email}
+          // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -345,7 +345,7 @@ const AboutClient = () => {
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-            // errorMessage={validateMessages?.email}
+          // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -389,7 +389,7 @@ const AboutClient = () => {
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-            // errorMessage={validateMessages?.email}
+          // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -412,7 +412,7 @@ const AboutClient = () => {
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-            // errorMessage={validateMessages?.email}
+          // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -435,7 +435,7 @@ const AboutClient = () => {
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-            // errorMessage={validateMessages?.email}
+          // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -458,7 +458,7 @@ const AboutClient = () => {
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-            // errorMessage={validateMessages?.email}
+          // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -482,7 +482,7 @@ const AboutClient = () => {
             className={clsx("w-100")}
             isSmallCustomInput
             isNotBottomSpace
-            // errorMessage={validateMessages?.email}
+          // errorMessage={validateMessages?.email}
           />
         </div>
       ),
@@ -655,9 +655,19 @@ const AboutClient = () => {
                 let crew =
                   projectData?.linkin?.crew?.status == "accept" ? 25 : 0;
                 let total = insurance_company + crew + management + material;
+                const createdAtDate = new Date(projectData.createdAt);
+                const updatedAtDate = new Date(projectData.updatedAt);
+                const now = new Date();
+                const twoDaysAgo = new Date();
+                const updateTwoDaysAgo = new Date();
+                twoDaysAgo.setDate(now.getDate() - 2);
+                updateTwoDaysAgo.setDate(now.getDate() - 3);
+                console.log(createdAtDate, updatedAtDate , twoDaysAgo)
+                const isRecent = createdAtDate >= twoDaysAgo
+                const isUpdated = updatedAtDate >= updateTwoDaysAgo
                 return (
                   <div className="w-100" key={index}>
-                    <div className="pendingProjectListCard aboutListProjectListCard h-100 cursor cursor-auto">
+                    <div className={`pendingProjectListCard aboutListProjectListCard h-100 cursor cursor-auto  ${isRecent ? "yellow-border" : isUpdated ? "blue-border" : "n"}  `}>
                       <div
                         className="text-end cursor-pointer mb-4 hover-text-secondary"
                         onClick={() =>
@@ -718,28 +728,28 @@ const AboutClient = () => {
                               </h6>
                               {projectData?.linkin?.insurance_company?.linkinId
                                 ?.name && (
-                                <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
-                                  {
-                                    projectData?.linkin?.insurance_company
-                                      ?.linkinId?.name
-                                  }
-                                  <div
-                                    className={clsx(
-                                      styles.clientDetailProjectImgWrap,
-                                      "ratio ratio-21x9 mt-2"
-                                    )}
-                                  >
-                                    <img
-                                      src={
-                                        projectData?.linkin?.insurance_company
-                                          ?.linkinId?.image
-                                      }
-                                      className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
-                                      alt="Ai2claim inc"
-                                    />
-                                  </div>
-                                </h6>
-                              )}
+                                  <h6 className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0">
+                                    {
+                                      projectData?.linkin?.insurance_company
+                                        ?.linkinId?.name
+                                    }
+                                    <div
+                                      className={clsx(
+                                        styles.clientDetailProjectImgWrap,
+                                        "ratio ratio-21x9 mt-2"
+                                      )}
+                                    >
+                                      <img
+                                        src={
+                                          projectData?.linkin?.insurance_company
+                                            ?.linkinId?.image
+                                        }
+                                        className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
+                                        alt="Ai2claim inc"
+                                      />
+                                    </div>
+                                  </h6>
+                                )}
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
                               <h6 className="w-45 mb-0 lh-base fw-bold">
@@ -749,10 +759,10 @@ const AboutClient = () => {
                               <div className="w-55 mb-0 lh-base word-break-word ps-sm-3 mt-3 mt-sm-0 d-flex flex-wrap gap-3">
                                 {projectData?.linkin?.insurance_company
                                   ?.files &&
-                                typeof projectData?.linkin?.insurance_company
-                                  ?.files !== "string" &&
-                                projectData?.linkin?.insurance_company?.files
-                                  ?.length > 0 ? (
+                                  typeof projectData?.linkin?.insurance_company
+                                    ?.files !== "string" &&
+                                  projectData?.linkin?.insurance_company?.files
+                                    ?.length > 0 ? (
                                   projectData?.linkin?.insurance_company?.files?.map(
                                     (fileItem, index) => {
                                       return (
@@ -864,24 +874,24 @@ const AboutClient = () => {
                                 {projectData?.linkin?.management?.linkinId
                                   ?.company_name
                                   ? projectData?.linkin?.management?.linkinId
-                                      ?.company_name
+                                    ?.company_name
                                   : "-"}
                                 {"  "}
                                 {projectData?.linkin?.management?.status && (
                                   <span
                                     className={
                                       projectData?.linkin?.management?.status ==
-                                      "accept"
+                                        "accept"
                                         ? "text-matt-green "
                                         : projectData?.linkin?.management
-                                            ?.status == "reject"
-                                        ? "text-arcade-fire "
-                                        : "text-bright-red"
+                                          ?.status == "reject"
+                                          ? "text-arcade-fire "
+                                          : "text-bright-red"
                                     }
                                   >
                                     (
                                     {projectData?.linkin?.management?.status ==
-                                    "accept"
+                                      "accept"
                                       ? "Hire"
                                       : projectData?.linkin?.management?.status}
                                     )
@@ -889,22 +899,22 @@ const AboutClient = () => {
                                 )}
                                 {projectData?.linkin?.management?.linkinId
                                   ?.image && (
-                                  <div
-                                    className={clsx(
-                                      styles.clientDetailProjectImgWrap,
-                                      "ratio ratio-21x9 mt-2"
-                                    )}
-                                  >
-                                    <img
-                                      src={
-                                        projectData?.linkin?.management
-                                          ?.linkinId?.image
-                                      }
-                                      className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
-                                      alt="Ai2claim inc"
-                                    />
-                                  </div>
-                                )}
+                                    <div
+                                      className={clsx(
+                                        styles.clientDetailProjectImgWrap,
+                                        "ratio ratio-21x9 mt-2"
+                                      )}
+                                    >
+                                      <img
+                                        src={
+                                          projectData?.linkin?.management
+                                            ?.linkinId?.image
+                                        }
+                                        className="img-fluid w-100 h-100 radius-inherit object-fit-cover"
+                                        alt="Ai2claim inc"
+                                      />
+                                    </div>
+                                  )}
                               </h6>
                             </div>
                             <div className="d-flex flex-column flex-sm-row w-100">
@@ -927,7 +937,7 @@ const AboutClient = () => {
                                 {projectData?.linkin?.material
                                   ?.pick_your_singles
                                   ? projectData?.linkin?.material
-                                      ?.pick_your_singles
+                                    ?.pick_your_singles
                                   : "-"}
                               </h6>
                             </div>
@@ -958,24 +968,24 @@ const AboutClient = () => {
                                 {projectData?.linkin?.crew?.linkinId
                                   ?.company_name
                                   ? projectData?.linkin?.crew?.linkinId
-                                      ?.company_name
+                                    ?.company_name
                                   : "-"}
                                 &nbsp;
                                 {projectData?.linkin?.crew?.status && (
                                   <span
                                     className={
                                       projectData?.linkin?.crew?.status ==
-                                      "accept"
+                                        "accept"
                                         ? "text-matt-green "
                                         : projectData?.linkin?.crew?.status ==
                                           "reject"
-                                        ? "text-arcade-fire "
-                                        : "text-bright-red"
+                                          ? "text-arcade-fire "
+                                          : "text-bright-red"
                                     }
                                   >
                                     (
                                     {projectData?.linkin?.crew?.status ==
-                                    "accept"
+                                      "accept"
                                       ? "Hire"
                                       : projectData?.linkin?.crew?.status}
                                     )
@@ -1101,7 +1111,7 @@ const AboutClient = () => {
                           <div className="d-flex flex-wrap justify-content-center gap-4">
                             {projectData?.linkin?.optimation?.file &&
                               projectData?.linkin?.optimation?.file?.length >
-                                0 &&
+                              0 &&
                               projectData?.linkin?.optimation?.file?.map(
                                 (fileItem, index) => {
                                   return (
@@ -1453,9 +1463,9 @@ const AboutClient = () => {
                     $&nbsp;
                     {optimizationData?.originalEstimatePrice
                       ? parseInt(optimizationData?.ai2ClaimServiceCostPrice) +
-                        parseInt(optimizationData?.ai2ClaimServiceAddOnCost) -
-                        parseInt(optimizationData?.originalEstimatePrice) +
-                        parseInt(optimizationData?.originalEstimateAddOnCost)
+                      parseInt(optimizationData?.ai2ClaimServiceAddOnCost) -
+                      parseInt(optimizationData?.originalEstimatePrice) +
+                      parseInt(optimizationData?.originalEstimateAddOnCost)
                       : 0}
                   </h5>
                 </div>
@@ -1520,24 +1530,24 @@ const AboutClient = () => {
                     {finalEstimateData?.optimizationWith
                       ?.insuranceEstimatedOptimization
                       ? parseInt(
-                          finalEstimateData?.optimizationWith
-                            ?.insuranceEstimatedOptimization
-                        ) -
-                        parseInt(
-                          finalEstimateData?.optimizationWith?.managementCost
-                        ) -
-                        parseInt(
-                          finalEstimateData?.optimizationWith?.crewCost
-                        ) -
-                        parseInt(
-                          finalEstimateData?.optimizationWith?.materialCost
-                        ) -
-                        parseInt(
-                          finalEstimateData?.optimizationWith?.serviceFees
-                        ) -
-                        parseInt(
-                          finalEstimateData?.optimizationWith?.deductible
-                        )
+                        finalEstimateData?.optimizationWith
+                          ?.insuranceEstimatedOptimization
+                      ) -
+                      parseInt(
+                        finalEstimateData?.optimizationWith?.managementCost
+                      ) -
+                      parseInt(
+                        finalEstimateData?.optimizationWith?.crewCost
+                      ) -
+                      parseInt(
+                        finalEstimateData?.optimizationWith?.materialCost
+                      ) -
+                      parseInt(
+                        finalEstimateData?.optimizationWith?.serviceFees
+                      ) -
+                      parseInt(
+                        finalEstimateData?.optimizationWith?.deductible
+                      )
                       : 0}
                   </h5>
                 </div>
@@ -1571,24 +1581,24 @@ const AboutClient = () => {
                     {finalEstimateData?.optimizationWithout
                       ?.insuranceEstimatedOptimization
                       ? parseInt(
-                          finalEstimateData?.optimizationWithout
-                            ?.insuranceEstimatedOptimization
-                        ) -
-                        parseInt(
-                          finalEstimateData?.optimizationWithout?.managementCost
-                        ) -
-                        parseInt(
-                          finalEstimateData?.optimizationWithout?.crewCost
-                        ) -
-                        parseInt(
-                          finalEstimateData?.optimizationWithout?.materialCost
-                        ) -
-                        parseInt(
-                          finalEstimateData?.optimizationWithout?.serviceFees
-                        ) -
-                        parseInt(
-                          finalEstimateData?.optimizationWithout?.deductible
-                        )
+                        finalEstimateData?.optimizationWithout
+                          ?.insuranceEstimatedOptimization
+                      ) -
+                      parseInt(
+                        finalEstimateData?.optimizationWithout?.managementCost
+                      ) -
+                      parseInt(
+                        finalEstimateData?.optimizationWithout?.crewCost
+                      ) -
+                      parseInt(
+                        finalEstimateData?.optimizationWithout?.materialCost
+                      ) -
+                      parseInt(
+                        finalEstimateData?.optimizationWithout?.serviceFees
+                      ) -
+                      parseInt(
+                        finalEstimateData?.optimizationWithout?.deductible
+                      )
                       : 0}
                   </h5>
                 </div>

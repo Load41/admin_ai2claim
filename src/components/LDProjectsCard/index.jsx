@@ -39,9 +39,19 @@ export const LDProjectsCard = ({
             )}
           >
             {projectCardData?.map((item, index) => {
+              const createdAtDate = new Date(item.createdAt);
+              const updatedAtDate = new Date(item.updatedAt);
+              const now = new Date();
+              const twoDaysAgo = new Date();
+              const updateTwoDaysAgo = new Date();
+              twoDaysAgo.setDate(now.getDate() - 2);
+              updateTwoDaysAgo.setDate(now.getDate() - 3);
+              // console.log(createdAtDate, updatedAtDate , twoDaysAgo)
+              const isRecent = createdAtDate >= twoDaysAgo
+              const isUpdated = updatedAtDate >= updateTwoDaysAgo
               return (
                 <div className="mt-4" key={index}>
-                  <div className="pendingProjectListCard h-100 d-flex flex-column">
+                  <div className={`pendingProjectListCard h-100 d-flex flex-column ${isRecent ? "yellow-border" : isUpdated ? "blue-border" : "n"}`}>
                     {isNotShowDeleteIcon ? (
                       ""
                     ) : (
@@ -86,8 +96,8 @@ export const LDProjectsCard = ({
                           {item?.username
                             ? item?.username
                             : item?.createdBy?.username
-                            ? item?.createdBy?.username
-                            : item?.company_name}
+                              ? item?.createdBy?.username
+                              : item?.company_name}
                         </h6>
                       </div>
 
@@ -127,8 +137,8 @@ export const LDProjectsCard = ({
                               {item?.username
                                 ? item?.username
                                 : item?.createdBy?.username
-                                ? item?.createdBy?.username
-                                : item?.company_name}
+                                  ? item?.createdBy?.username
+                                  : item?.company_name}
                             </h6>
                           </div>
                           {/* <div className="d-flex flex-column flex-sm-row w-100 mb-4">
@@ -260,8 +270,8 @@ export const LDProjectsCard = ({
                               item?.username
                                 ? item?.username
                                 : item?.createdBy?.username
-                                ? item?.createdBy?.username
-                                : item?.company_name
+                                  ? item?.createdBy?.username
+                                  : item?.company_name
                             )
                           }
                         >
@@ -284,8 +294,8 @@ export const LDProjectsCard = ({
                               item?.username
                                 ? item?.username
                                 : item?.createdBy?.username
-                                ? item?.createdBy?.username
-                                : item?.company_name
+                                  ? item?.createdBy?.username
+                                  : item?.company_name
                             )
                           }
                         >
@@ -324,10 +334,20 @@ export const LDProjectsCard = ({
                   <>
                     {projectCardData?.length > 0 &&
                       projectCardData?.map((item, index) => {
+                        const createdAtDate = new Date(item.createdAt);
+                        const updatedAtDate = new Date(item.updatedAt);
+                        const now = new Date();
+                        const twoDaysAgo = new Date();
+                        const updateTwoDaysAgo = new Date();
+                        twoDaysAgo.setDate(now.getDate() - 2);
+                        updateTwoDaysAgo.setDate(now.getDate() - 3);
+                        // console.log(createdAtDate, updatedAtDate , twoDaysAgo)
+                        const isRecent = createdAtDate >= twoDaysAgo
+                        const isUpdated = updatedAtDate >= updateTwoDaysAgo
                         return (
                           <SwiperSlide key={index}>
                             <div
-                              className="pendingProjectListCard h-100"
+                              className={`pendingProjectListCard h-100  ${isRecent ? "yellow-border" : isUpdated ? "blue-border" : "n"} `}
                               key={index}
                             >
                               {isNotShowDeleteIcon ? (
@@ -378,8 +398,8 @@ export const LDProjectsCard = ({
                                     {item?.username
                                       ? item?.username
                                       : item?.createdBy?.username
-                                      ? item?.createdBy?.username
-                                      : item?.company_name}
+                                        ? item?.createdBy?.username
+                                        : item?.company_name}
                                   </h6>
                                 </div>
                                 <div
@@ -427,8 +447,8 @@ export const LDProjectsCard = ({
                                       {item?.mobile
                                         ? formatPhoneNumber(item.mobile)
                                         : formatPhoneNumber(
-                                            item?.createdBy?.mobile
-                                          )}
+                                          item?.createdBy?.mobile
+                                        )}
                                     </h6>
                                   </div>
                                   <div className="d-flex w-100 mb-4">

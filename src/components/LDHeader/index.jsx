@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { clsx } from "clsx";
 import {
   companyOne,
@@ -14,9 +14,11 @@ import { Modal, Popover } from "antd";
 import styles from "./LDHeader.module.css";
 import { LDButton } from "../LDButton";
 import { useNavigate } from "react-router-dom";
+import { useAllUserNotificationListHook } from "../../hooks";
 
 export const LDHeader = ({ }) => {
   // logout modal js start
+  const { notificationList } = useAllUserNotificationListHook()
   const navigate = useNavigate();
   const location = useLocation();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -44,35 +46,38 @@ export const LDHeader = ({ }) => {
   }, [location])
   // logout modal js end
 
-  const notificationPopoverData = (
-    <div className={styles.popoverList}>
-      <Link
-        to="/"
-        className={clsx("d-flex align-items-center gap-4 text-black")}
-      >
-        <div
-          className={clsx(
-            styles.profileIcon,
-            "ratio ratio-1x1 rounded-circle flex-0-auto"
-          )}
+  const notificationPopoverData = useMemo(() => {
+    return <div className={styles.popoverList}>
+      {notificationList &&
+        notificationList?.length > 0 &&
+        notificationList?.map((items, index) => <Link
+          to="/"
+          className={clsx("d-flex align-items-center gap-4 text-black")}
+          key={index}
         >
-          <img
-            src={manWorkerFive}
-            className="w-100 h-100 radius-inherit object-fit-cover"
-            alt="Ai2claim inc"
-          />
-        </div>
-        <div>
-          <h6 className="fw-noraml mb-0 word-break-word">
-            <span className="fw-semibold text-bleu-de-france-two me-2 d-inline-flex">
-              Mr.Roof
-            </span>
-            was waiting for approval
-          </h6>
-          <p className="mb-0">2 mins ago</p>
-        </div>
-      </Link>
-      <Link
+          <div
+            className={clsx(
+              styles.profileIcon,
+              "ratio ratio-1x1 rounded-circle flex-0-auto"
+            )}
+          >
+            <img
+              src={manWorkerFive}
+              className="w-100 h-100 radius-inherit object-fit-cover"
+              alt="Ai2claim inc"
+            />
+          </div>
+          <div>
+            <h6 className="fw-noraml mb-0 word-break-word">
+              <span className="fw-semibold text-bleu-de-france-two me-2 d-inline-flex">
+                {items?.body}
+              </span>
+              was waiting for approval
+            </h6>
+            <p className="mb-0">2 mins ago</p>
+          </div>
+        </Link>)}
+      {/* <Link
         to="/"
         className={clsx("d-flex align-items-center gap-4 text-black")}
       >
@@ -123,12 +128,12 @@ export const LDHeader = ({ }) => {
           </h6>
           <p className="mb-0">4 mins ago</p>
         </div>
-      </Link>
+      </Link> */}
       <Link to="/" className="text-center pt-4 d-block">
         View More
       </Link>
     </div>
-  );
+  });
   const settingsPopoverData = (
     <div className={styles.popoverList}>
       <Link to="/" className={clsx("d-block mb-0 text-black h5")}>
