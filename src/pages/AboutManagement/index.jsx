@@ -54,7 +54,7 @@ const AboutManagement = () => {
         <div className="w-100 mt-5">
           <div className="row mt-4">
             <div className="col-xxl-6">
-              <div className="pendingProjectListCard aboutPendingProjectListCard h-100">
+              <div className="pendingProjectListCard aboutPendingProjectListCard h-100 cursor cursor-auto">
                 <div className="pendingProjectLisRow w-100">
                   <div
                     className={
@@ -221,7 +221,7 @@ const AboutManagement = () => {
           </div>
           <div className="row align-items-start">
             <div className="col-xxl-6 mt-5 mt-xxl-4">
-              <div className="pendingProjectListCard d-flex flex-column gap-4">
+              <div className="pendingProjectListCard d-flex flex-column gap-4 cursor cursor-auto">
                 <h4 className="mb-0">About</h4>
                 <p className="lh-base mb-0">
                   {managementData?.managementDetail?.description}

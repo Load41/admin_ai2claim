@@ -235,7 +235,7 @@ const ComplaintsQueries = () => {
               />
               <LDInput isTextarea placeholder="Enter your message here...." />
             </div>
-            <div className="d-flex align-items-centr gap-5 justify-content-center mt-5 mt-xxl-3">
+            <div className="d-flex align-items-centr gap-4 gap-sm-5 justify-content-center mt-5 mt-xxl-3">
               <LDButton
                 type="fill"
                 shape={"round"}

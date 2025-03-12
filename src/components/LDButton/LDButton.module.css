@@ -167,4 +167,8 @@
   .button:global.ant-btn.ant-btn-round.ant-btn {
     border-radius: 8px;
   }
+  .isSmallBtn.button:global.ant-btn.ant-btn-round.ant-btn,
+  .isSmallBtn.button:global.ant-btn-fill{
+    font-size: 14px;
+  }
 }
