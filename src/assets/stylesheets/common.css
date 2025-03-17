@@ -193,6 +193,28 @@ table thead.ant-table-thead tr th.ant-table-cell {
   margin: 20px 0;
   gap: 15px;
 }
+/* image taken by... css start */
+.imageTakenRow{
+  grid-template-columns: repeat(6, 1fr);
+}
+.imageTakenRow > div{
+  border: 1px solid rgba(var(--clr-black), 0.2);
+}
+.imageTakenRow > div :global .ratio{
+  background-color: rgba(var(--clr-black), 0.04);
+  max-height: 150px;
+}
+.imageTakenRow h5{
+  font-size: 16px;
+}
+.imageTakenRow{
+  display: grid;
+}
+/* image taken by... css end */
+.ant-collapse-header-text {
+  font-size: 18px;
+  font-weight: 500;
+}
 /* radio button end */
 @media (min-width: 1680px) and (max-width: 1799px) {
   /* .pendingProjectListCard{
@@ -213,6 +235,11 @@ table thead.ant-table-thead tr th.ant-table-cell {
   .aboutListProjectListCard .pendingProjectLisRow > div:not(:last-child) {
     border-bottom: 1px solid rgba(var(--clr-black), 1);
     border-right: 0;
+  }
+}
+@media (max-width: 1365px) {
+  .imageTakenRow{
+      grid-template-columns: repeat(5, 1fr);
   }
 }
 @media (min-width: 1200px) and (max-width: 1279px) {
@@ -259,6 +286,16 @@ table thead.ant-table-thead tr th.ant-table-cell {
     width: calc(100% - var(--pendingProjectListCardWidth));
   }
 }
+@media (max-width: 1199px){
+  .imageTakenRow{
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (max-width: 991px){
+  .imageTakenRow{
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
 @media (max-width: 767px) {
   .admin-content {
     height: calc(100vh - var(--header-height) - var(--footer-height) * 1.7);
@@ -274,5 +311,21 @@ table thead.ant-table-thead tr th.ant-table-cell {
   }
   .queries-list-box {
     padding: 10px;
+  }
+  .imageTakenRow{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 575px){
+  .imageTakenRow h5{
+    font-size: 14px;
+  }
+  .ant-collapse-header-text {
+    font-size: 14px;
+  }
+}
+@media (max-width: 399px){
+  .imageTakenRow{
+      grid-template-columns: repeat(1, 1fr);
   }
 }

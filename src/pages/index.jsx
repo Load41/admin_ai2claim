@@ -18,3 +18,4 @@ export * from "./ApprovedThings";
 export * from "./AboutUs";
 export * from "./ProjectHandle";
 export * from "./TransactionsReport";
+export * from "./AboutClient/ImageUpload/ManagementImageUpload";
