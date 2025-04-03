@@ -647,6 +647,11 @@ hr {
 .yellow-border{
   border-color: yellow !important;
 }
-.blue-border{
-  border-color: orangered !important;
+.blue-border
+{
+  border-color: var(--clr-bleu-de-france-one) !important;
+}
+.pendingProjectListCard.blue-border{
+  border-width: 3px;
+  background-color: #e6f4ff;
 }
