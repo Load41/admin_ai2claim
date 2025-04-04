@@ -15,6 +15,7 @@ import styles from "./LDHeader.module.css";
 import { LDButton } from "../LDButton";
 import { useNavigate } from "react-router-dom";
 import { useAllUserNotificationListHook } from "../../hooks";
+import moment from "moment";
 
 export const LDHeader = ({ }) => {
   // logout modal js start
@@ -72,9 +73,11 @@ export const LDHeader = ({ }) => {
               <span className="fw-semibold text-bleu-de-france-two me-2 d-inline-flex">
                 {items?.body}
               </span>
-              was waiting for approval
+              {/* was waiting for approval */}
             </h6>
-            <p className="mb-0">2 mins ago</p>
+            <p className="mb-0">{moment(items?.createdAt).format(
+              `YYYY-MM-DD hh:mm`
+            )}</p>
           </div>
         </Link>)}
       {/* <Link
