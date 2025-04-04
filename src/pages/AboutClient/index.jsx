@@ -644,7 +644,7 @@ const AboutClient = () => {
           <h4 className="mt-5 fw-semibold">List Projects :-</h4>
           <div className="d-flex flex-column gap-5 mt-4">
             {clientData?.projects &&
-              clientData?.projects?.map((projectData, index) => {
+              clientData?.projects?.sort((a, b) => b.updatedAt?.localeCompare(a.updatedAt))?.map((projectData, index) => {
                 let insurance_company = projectData?.linkin?.insurance_company
                   ?.linkinId?._id
                   ? 25
@@ -662,7 +662,7 @@ const AboutClient = () => {
                 const updateTwoDaysAgo = new Date();
                 twoDaysAgo.setDate(now.getDate() - 2);
                 updateTwoDaysAgo.setDate(now.getDate() - 3);
-                console.log(createdAtDate, updatedAtDate , twoDaysAgo)
+                console.log(createdAtDate, updatedAtDate, twoDaysAgo)
                 const isRecent = createdAtDate >= twoDaysAgo
                 const isUpdated = updatedAtDate >= updateTwoDaysAgo
                 return (
