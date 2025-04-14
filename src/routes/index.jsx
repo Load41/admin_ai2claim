@@ -26,7 +26,9 @@ import AboutUs from "../pages/AboutUs";
 import ProjectsHandledManagementList from "../pages/ProjectHandle/ProjectsHandledManagementList";
 import ProjectsHandledCrewList from "../pages/ProjectHandle/ProjectsHandledCrewList";
 import TransactionsReport from "../pages/TransactionsReport";
-import ManagementImageUpload from "../pages/AboutClient/ImageUpload/ManagementImageUpload";
+import ClientImageUpload from "../pages/AboutClient/ImageUpload/ClientImageUpload";
+import CrewImageUpload from "../pages/AboutCrew/ImageUpload/CrewImageUpload";
+import ManagementImageUpload from "../pages/AboutManagement/ImageUpload/ManagementImageUpload";
 
 export const router = createBrowserRouter([
   {
@@ -80,6 +82,14 @@ export const router = createBrowserRouter([
       {
         path: "/crew-detail/:id",
         element: <AboutCrew />,
+      },
+      {
+        path: "/image-upload-by-client",
+        element: <ClientImageUpload />,
+      },
+      {
+        path: "/image-upload-by-crew",
+        element: <CrewImageUpload />,
       },
       {
         path: "/image-upload-by-management",

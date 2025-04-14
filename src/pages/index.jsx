@@ -18,4 +18,7 @@ export * from "./ApprovedThings";
 export * from "./AboutUs";
 export * from "./ProjectHandle";
 export * from "./TransactionsReport";
-export * from "./AboutClient/ImageUpload/ManagementImageUpload";
+export * from "./AboutClient/ImageUpload/ClientImageUpload";
+export * from "./AboutCrew/ImageUpload/CrewImageUpload";
+export * from "./AboutManagement/ImageUpload/ManagementImageUpload";
+

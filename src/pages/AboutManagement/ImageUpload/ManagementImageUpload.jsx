@@ -2,7 +2,7 @@ import React from "react";
 import { clsx } from "clsx";
 import { Link } from "react-router-dom";
 import { svgIcons } from "../../../constants/icons";
-import { Collapse } from "antd";
+import { Col, Collapse, Row } from "antd";
 import { ImageTakenData } from "./ImageTakenData";
 import { text } from "../../../constants/data";
 const ManagementImageUpload = () => {
@@ -83,17 +83,27 @@ const ManagementImageUpload = () => {
           >
             {svgIcons.backArrowFillIcon}
           </Link>
-          <h4 className="text-bleu-de-france-one mb-0">Client List</h4>
-          <b>{svgIcons.doubleRightArrowIcon}</b>
+          <h4 className="text-bleu-de-france-one mb-0">Image Upload by Management</h4>
+          {/* <b>{svgIcons.doubleRightArrowIcon}</b>
           <h4 className="mb-0">
             Thomas<span className="ps-2"></span>
           </h4>
           <b>{svgIcons.doubleRightArrowIcon}</b>
           <h4 className="mb-0">
             Drimo (Images uploaded by management)
-          </h4>
+          </h4> */}
         </div>
       </div>
+      <Row>
+        <Col xs={24} xl={18} xxl={12}>
+          <div className="pt-5 pt-xl-4">
+            <h5 className="fw-medium mt-4 d-sm-flex lh-base"><span className="w-100-xs w-35 d-inline-flex">Name: -</span>  <span className="fw-normal w-100-xs w-65 d-inline-flex">Linkin Park</span></h5>
+            <h5 className="fw-medium mt-4 d-sm-flex lh-base"><span className="w-100-xs w-35 d-inline-flex">Date & time of Uploads: -</span>  <span className="fw-normal w-100-xs w-65 d-inline-flex">11:00  5/10/2024</span></h5>
+            <h5 className="fw-medium mt-4 d-sm-flex lh-base"><span className="w-100-xs w-35 d-inline-flex">Project name: -</span>  <span className="fw-normal w-100-xs w-65 d-inline-flex">toms</span></h5>
+            <h5 className="fw-medium mt-4 d-sm-flex lh-base"><span className="w-100-xs w-35 d-inline-flex">location: -</span>  <span className="fw-normal w-100-xs w-65 d-inline-flex">1006 W Centennial Rd, Papillion, NE 68046, United States</span></h5>
+          </div>
+        </Col>
+      </Row>
       {/* collapse start */}
       <Collapse onChange={onChange} items={items} className="mt-5"/>
       {/* collapse end */}

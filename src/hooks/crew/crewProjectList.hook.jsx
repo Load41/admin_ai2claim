@@ -109,6 +109,7 @@ export const useCrewProjectListHook = () => {
               handleSelectChange("status", value, record?._id)
             }
             isFlipInput={true}
+                 className="mb-0 box-shadow-unset inline-start inset-inline-start-0"
           />
         ),
       },
