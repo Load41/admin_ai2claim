@@ -78,7 +78,7 @@ const ManagementImageUpload = () => {
        <div className="d-flex align-items-center justify-content-between flex-wrap gap-5 gap-xxl-4">
         <div className="d-flex align-items-center flex-wrap gap-4 gap-xl-3">
           <Link
-            to="/client-detail/:id"
+            to="/management-detail/:id"
             className="back-next-arrow-wrap flex-0-auto d-flex align-items-center justify-content-center rounded-circle cursor-pointer hover-text-white me-2"
           >
             {svgIcons.backArrowFillIcon}
