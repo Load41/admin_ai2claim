@@ -655,3 +655,8 @@ hr {
   border-width: 3px;
   background-color: #e6f4ff;
 }
+.ant-popover-inner-content{
+  max-height: calc(100svh - 150px);
+  overflow-y: auto;
+  max-width: 500px;
+}
